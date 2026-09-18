@@ -1,0 +1,13 @@
+{
+  "name": "multipost",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dang bai dong thoi len Facebook, Instagram, Threads, TikTok, Telegram, WhatsApp",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {}
+}

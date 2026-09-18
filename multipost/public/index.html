@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MultiPost — Đăng bài đa nền tảng</title>
+<meta name="description" content="Soạn một lần, đăng đồng thời lên Facebook, Instagram, Threads, TikTok, Telegram và WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">🚀</span>
+    <div>
+      <h1>MultiPost</h1>
+      <p>Soạn một lần — đăng đồng thời 6 nền tảng</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <span id="mode-badge" class="badge badge-muted">Đang tải…</span>
+    <button id="theme-toggle" class="btn btn-ghost" type="button" title="Đổi giao diện sáng/tối">🌙</button>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-tab="compose" role="tab">✍️ Soạn bài</button>
+  <button class="tab" data-tab="history" role="tab">🗂️ Lịch sử &amp; Hàng đợi</button>
+  <button class="tab" data-tab="settings" role="tab">⚙️ Kết nối nền tảng</button>
+  <button class="tab" data-tab="guide" role="tab">📖 Hướng dẫn</button>
+</nav>
+
+<main>
+  <!-- ============ SOẠN BÀI ============ -->
+  <section id="tab-compose" class="tab-panel active">
+    <div class="layout">
+      <div class="col-main">
+        <div class="card">
+          <div class="card-head">
+            <h2>Nội dung bài đăng</h2>
+            <div class="card-head-actions">
+              <select id="template-picker" class="select-sm" title="Chèn mẫu đã lưu">
+                <option value="">— Mẫu có sẵn —</option>
+              </select>
+              <button id="save-template" class="btn btn-ghost btn-sm" type="button">💾 Lưu mẫu</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Tiêu đề <em>(TikTok dùng làm tiêu đề, tối đa 90 ký tự)</em></span>
+            <input id="title" type="text" maxlength="90" placeholder="VD: Khai giảng năm học mới 2026–2027">
+          </label>
+
+          <label class="field">
+            <span class="field-label">Nội dung chính</span>
+            <textarea id="text" rows="9" placeholder="Viết nội dung bài đăng ở đây…"></textarea>
+          </label>
+          <div class="counter-row">
+            <span id="char-count">0 ký tự · 0 từ</span>
+            <button id="btn-clear" class="btn btn-ghost btn-sm" type="button">Xoá nội dung</button>
+          </div>
+
+          <div class="grid-2">
+            <label class="field">
+              <span class="field-label">Liên kết đính kèm <em>(Facebook)</em></span>
+              <input id="link" type="url" placeholder="https://…">
+            </label>
+            <label class="field">
+              <span class="field-label">Chữ ký cuối bài</span>
+              <input id="signature" type="text" placeholder="VD: — UBND Phường Nhiêu Lộc">
+            </label>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Hashtag</span>
+            <div id="hashtag-box" class="chips-input">
+              <input id="hashtag-input" type="text" placeholder="Gõ hashtag rồi Enter…">
+            </div>
+            <div class="hint">Gợi ý nhanh:
+              <button class="chip-suggest" type="button">giaoduc</button>
+              <button class="chip-suggest" type="button">chuyendoiso</button>
+              <button class="chip-suggest" type="button">phuongnhieuloc</button>
+              <button class="chip-suggest" type="button">tphcm</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Hình ảnh &amp; video</h2></div>
+          <div id="dropzone" class="dropzone">
+            <input id="file-input" type="file" accept="image/*,video/*" multiple hidden>
+            <p><strong>Kéo thả</strong> hoặc <button id="btn-browse" class="btn btn-link" type="button">chọn file</button></p>
+            <p class="hint">Tối đa 30MB mỗi file · JPG, PNG, WEBP, GIF, MP4, MOV</p>
+          </div>
+          <div class="or-row">
+            <input id="media-url" type="url" placeholder="…hoặc dán URL media công khai">
+            <button id="btn-add-url" class="btn btn-secondary" type="button">Thêm URL</button>
+          </div>
+          <div id="media-list" class="media-list"></div>
+          <p id="media-warning" class="warning hidden"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Thời điểm đăng</h2></div>
+          <div class="radio-row">
+            <label class="radio"><input type="radio" name="when" value="now" checked> Đăng ngay</label>
+            <label class="radio"><input type="radio" name="when" value="later"> Hẹn giờ</label>
+          </div>
+          <div id="schedule-box" class="hidden">
+            <input id="scheduled-at" type="datetime-local">
+            <p class="hint">Theo giờ máy bạn đang dùng. Bộ lập lịch kiểm tra mỗi 15 giây nên server phải luôn chạy.</p>
+          </div>
+          <label class="checkbox">
+            <input id="dry-run" type="checkbox"> Chạy thử (không gọi API thật — chỉ mô phỏng kết quả)
+          </label>
+        </div>
+      </div>
+
+      <aside class="col-side">
+        <div class="card sticky">
+          <div class="card-head">
+            <h2>Chọn nền tảng</h2>
+            <button id="btn-toggle-all" class="btn btn-ghost btn-sm" type="button">Chọn tất cả</button>
+          </div>
+          <div id="platform-list" class="platform-list"><p class="hint">Đang tải nền tảng…</p></div>
+
+          <div id="validation" class="validation hidden"></div>
+
+          <div class="publish-row">
+            <button id="btn-check" class="btn btn-secondary" type="button">🔍 Kiểm tra</button>
+            <button id="btn-publish" class="btn btn-primary" type="button">🚀 Đăng bài</button>
+          </div>
+          <p id="publish-status" class="publish-status"></p>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Xem trước</h2></div>
+          <div id="preview-list" class="preview-list"><p class="hint">Chọn nền tảng để xem trước.</p></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ LỊCH SỬ ============ -->
+  <section id="tab-history" class="tab-panel">
+    <div class="card">
+      <div class="card-head">
+        <h2>Thống kê</h2>
+        <button id="btn-refresh" class="btn btn-ghost btn-sm" type="button">↻ Làm mới</button>
+      </div>
+      <div id="stats" class="stats-grid"></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <h2>Bài đã soạn</h2>
+        <select id="history-filter" class="select-sm">
+          <option value="">Tất cả trạng thái</option>
+          <option value="scheduled">Đang hẹn giờ</option>
+          <option value="published">Đăng thành công</option>
+          <option value="partial">Thành công một phần</option>
+          <option value="failed">Thất bại</option>
+        </select>
+      </div>
+      <div id="history-list" class="history-list"><p class="hint">Chưa có bài nào.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ CÀI ĐẶT ============ -->
+  <section id="tab-settings" class="tab-panel">
+    <div class="card">
+      <div class="card-head"><h2>Thông tin kết nối</h2></div>
+      <p class="hint">Khoá lưu tại <code>data/db.json</code> trên máy chủ của bạn, không gửi đi đâu khác. Bạn cũng có thể khai báo trong file <code>.env</code>. Trường bí mật hiển thị dạng che — để trống nghĩa là giữ nguyên giá trị cũ.</p>
+      <div id="settings-form" class="settings-form"></div>
+      <div class="publish-row">
+        <button id="btn-save-settings" class="btn btn-primary" type="button">💾 Lưu kết nối</button>
+        <span id="settings-status" class="publish-status"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HƯỚNG DẪN ============ -->
+  <section id="tab-guide" class="tab-panel">
+    <div class="card guide">
+      <h2>Lấy khoá kết nối ở đâu?</h2>
+      <table class="guide-table">
+        <thead><tr><th>Nền tảng</th><th>Cần có</th><th>Lấy ở đâu</th><th>Quyền (scope)</th></tr></thead>
+        <tbody>
+          <tr><td>📘 Facebook Page</td><td>Page ID + Page Access Token</td><td>Meta for Developers → App → Graph API Explorer</td><td><code>pages_manage_posts</code>, <code>pages_read_engagement</code></td></tr>
+          <tr><td>📸 Instagram</td><td>IG Business User ID + Token</td><td>Tài khoản Instagram Business liên kết Facebook Page</td><td><code>instagram_basic</code>, <code>instagram_content_publish</code></td></tr>
+          <tr><td>🧵 Threads</td><td>Threads User ID + Token</td><td>Threads API (developers.facebook.com/docs/threads)</td><td><code>threads_basic</code>, <code>threads_content_publish</code></td></tr>
+          <tr><td>🎵 TikTok</td><td>Access Token</td><td>TikTok for Developers → Content Posting API</td><td><code>video.publish</code>, <code>video.upload</code></td></tr>
+          <tr><td>✈️ Telegram</td><td>Bot Token + Chat ID</td><td>Chat với <code>@BotFather</code>; thêm bot làm quản trị kênh</td><td>—</td></tr>
+          <tr><td>💬 WhatsApp</td><td>Phone Number ID + Token</td><td>Meta for Developers → WhatsApp → API Setup</td><td><code>whatsapp_business_messaging</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Ba điều cần nhớ</h2>
+      <ol class="guide-list">
+        <li><strong>Media phải có URL công khai.</strong> Instagram, Threads và TikTok tự tải ảnh/video từ URL bạn đưa. Nếu upload file từ máy, hãy đặt <code>PUBLIC_BASE_URL</code> trỏ tới tên miền công khai của server (dùng ngrok/Cloudflare Tunnel khi chạy thử).</li>
+        <li><strong>WhatsApp có cửa sổ 24 giờ.</strong> Chỉ nhắn tự do trong 24 giờ kể từ tin nhắn cuối của người dùng; ngoài khung đó phải dùng mẫu (template) đã được duyệt.</li>
+        <li><strong>TikTok đăng bất đồng bộ.</strong> API trả về <code>publish_id</code> trước, video hoàn tất sau. Dùng nút “Kiểm tra trạng thái” trong Lịch sử để tra cứu.</li>
+      </ol>
+
+      <h2>Giới hạn ký tự</h2>
+      <table class="guide-table">
+        <thead><tr><th>Nền tảng</th><th>Nội dung</th><th>Chú thích kèm media</th><th>Media</th></tr></thead>
+        <tbody>
+          <tr><td>Facebook</td><td>63.206</td><td>63.206</td><td>Tối đa 10 ảnh hoặc 1 video</td></tr>
+          <tr><td>Instagram</td><td>2.200</td><td>2.200</td><td>Bắt buộc có media · tối đa 10 · 30 hashtag</td></tr>
+          <tr><td>Threads</td><td>500</td><td>500</td><td>Tối đa 20 ảnh</td></tr>
+          <tr><td>TikTok</td><td>2.200</td><td>2.200</td><td>Bắt buộc có media · 1 video hoặc 35 ảnh</td></tr>
+          <tr><td>Telegram</td><td>4.096</td><td>1.024</td><td>Tối đa 10 media/nhóm</td></tr>
+          <tr><td>WhatsApp</td><td>4.096</td><td>1.024</td><td>1 media mỗi tin</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div id="toast-wrap" class="toast-wrap"></div>
+<script src="app.js"></script>
+</body>
+</html>
