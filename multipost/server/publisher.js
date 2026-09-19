@@ -26,11 +26,11 @@ export function buildPayload(post, platformId) {
 }
 
 /** Kiem tra truoc khi dang, tra ve { platformId: [loi...] }. */
-export function validatePost(post) {
+export function validatePost(post, creds = credentialsFrom(store.settings)) {
   const report = {};
   for (const platformId of post.platforms) {
     const platform = getPlatform(platformId);
-    report[platformId] = platform.validate(buildPayload(post, platformId));
+    report[platformId] = platform.validate(buildPayload(post, platformId), creds);
   }
   return report;
 }
@@ -65,7 +65,7 @@ async function publishOne(post, platformId, creds) {
   }
 
   const payload = buildPayload(post, platformId);
-  const errors = platform.validate(payload);
+  const errors = platform.validate(payload, creds);
   if (errors.length > 0) {
     return { ...base, status: 'error', error: errors.join('; '), durationMs: Date.now() - startedAt };
   }
@@ -74,7 +74,7 @@ async function publishOne(post, platformId, creds) {
   if (simulate) {
     const reason = config.dryRun || post.dryRun
       ? 'Che do mo phong (DRY_RUN)'
-      : `Chua cau hinh: ${platform.credentialKeys.join(', ')}`;
+      : `Chua cau hinh: ${(platform.requiredKeys || platform.credentialKeys).join(', ')}`;
     return {
       ...base,
       status: 'simulated',

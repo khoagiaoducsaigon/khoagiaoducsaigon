@@ -4,8 +4,9 @@ import threads from './threads.js';
 import tiktok from './tiktok.js';
 import telegram from './telegram.js';
 import whatsapp from './whatsapp.js';
+import zalo from './zalo.js';
 
-export const platforms = [facebook, instagram, threads, tiktok, telegram, whatsapp];
+export const platforms = [facebook, instagram, threads, tiktok, telegram, whatsapp, zalo];
 export const platformMap = new Map(platforms.map((p) => [p.id, p]));
 
 export function getPlatform(id) {

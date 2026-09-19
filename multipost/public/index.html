@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MultiPost — Đăng bài đa nền tảng</title>
-<meta name="description" content="Soạn một lần, đăng đồng thời lên Facebook, Instagram, Threads, TikTok, Telegram và WhatsApp.">
+<meta name="description" content="Soạn một lần, đăng đồng thời lên Facebook, Instagram, Threads, TikTok, Telegram, WhatsApp và Zalo OA.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,7 +14,7 @@
     <span class="logo">🚀</span>
     <div>
       <h1>MultiPost</h1>
-      <p>Soạn một lần — đăng đồng thời 6 nền tảng</p>
+      <p>Soạn một lần — đăng đồng thời 7 nền tảng</p>
     </div>
   </div>
   <div class="topbar-actions">
@@ -191,6 +191,7 @@
           <tr><td>🎵 TikTok</td><td>Access Token</td><td>TikTok for Developers → Content Posting API</td><td><code>video.publish</code>, <code>video.upload</code></td></tr>
           <tr><td>✈️ Telegram</td><td>Bot Token + Chat ID</td><td>Chat với <code>@BotFather</code>; thêm bot làm quản trị kênh</td><td>—</td></tr>
           <tr><td>💬 WhatsApp</td><td>Phone Number ID + Token</td><td>Meta for Developers → WhatsApp → API Setup</td><td><code>whatsapp_business_messaging</code></td></tr>
+          <tr><td>💙 Zalo OA</td><td>OA Access Token (+ App ID, App Secret, Refresh Token)</td><td>Zalo for Developers → Official Account → Ứng dụng của tôi</td><td><code>oa.manage.message</code>, <code>oa.manage.article</code></td></tr>
         </tbody>
       </table>
 
@@ -199,6 +200,7 @@
         <li><strong>Media phải có URL công khai.</strong> Instagram, Threads và TikTok tự tải ảnh/video từ URL bạn đưa. Nếu upload file từ máy, hãy đặt <code>PUBLIC_BASE_URL</code> trỏ tới tên miền công khai của server (dùng ngrok/Cloudflare Tunnel khi chạy thử).</li>
         <li><strong>WhatsApp có cửa sổ 24 giờ.</strong> Chỉ nhắn tự do trong 24 giờ kể từ tin nhắn cuối của người dùng; ngoài khung đó phải dùng mẫu (template) đã được duyệt.</li>
         <li><strong>TikTok đăng bất đồng bộ.</strong> API trả về <code>publish_id</code> trước, video hoàn tất sau. Dùng nút “Kiểm tra trạng thái” trong Lịch sử để tra cứu.</li>
+        <li><strong>Token Zalo OA chỉ sống 1 giờ.</strong> Khai báo thêm App ID, App Secret và Refresh Token thì hệ thống tự làm mới và lưu lại token mới — không phải dán tay mỗi giờ. Zalo cấp refresh token mới sau mỗi lần làm mới, nên đừng dùng lại token cũ ở nơi khác.</li>
       </ol>
 
       <h2>Giới hạn ký tự</h2>
@@ -211,6 +213,7 @@
           <tr><td>TikTok</td><td>2.200</td><td>2.200</td><td>Bắt buộc có media · 1 video hoặc 35 ảnh</td></tr>
           <tr><td>Telegram</td><td>4.096</td><td>1.024</td><td>Tối đa 10 media/nhóm</td></tr>
           <tr><td>WhatsApp</td><td>4.096</td><td>1.024</td><td>1 media mỗi tin</td></tr>
+          <tr><td>Zalo OA</td><td>2.000</td><td>2.000</td><td>1 ảnh mỗi tin · chưa hỗ trợ video</td></tr>
         </tbody>
       </table>
     </div>

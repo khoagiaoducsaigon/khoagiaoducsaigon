@@ -61,6 +61,15 @@ export function credentialsFrom(stored = {}) {
       accessToken: pick('WHATSAPP_ACCESS_TOKEN'),
       recipients: list('WHATSAPP_RECIPIENTS'),
     },
+    zalo: {
+      accessToken: pick('ZALO_OA_ACCESS_TOKEN'),
+      refreshToken: pick('ZALO_OA_REFRESH_TOKEN'),
+      appId: pick('ZALO_APP_ID'),
+      appSecret: pick('ZALO_APP_SECRET'),
+      userIds: list('ZALO_USER_IDS'),
+      mode: pick('ZALO_POST_MODE', 'message'),
+      author: pick('ZALO_ARTICLE_AUTHOR'),
+    },
   };
 }
 
@@ -72,12 +81,15 @@ export const CREDENTIAL_KEYS = [
   'TIKTOK_ACCESS_TOKEN', 'TIKTOK_PRIVACY_LEVEL',
   'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_IDS',
   'WHATSAPP_PHONE_NUMBER_ID', 'WHATSAPP_ACCESS_TOKEN', 'WHATSAPP_RECIPIENTS',
+  'ZALO_OA_ACCESS_TOKEN', 'ZALO_POST_MODE', 'ZALO_USER_IDS',
+  'ZALO_APP_ID', 'ZALO_APP_SECRET', 'ZALO_OA_REFRESH_TOKEN', 'ZALO_ARTICLE_AUTHOR',
 ];
 
 /** Khoa bi mat -> che bot khi tra ve giao dien. */
 export const SECRET_KEYS = new Set([
   'FACEBOOK_PAGE_ACCESS_TOKEN', 'INSTAGRAM_ACCESS_TOKEN', 'THREADS_ACCESS_TOKEN',
   'TIKTOK_ACCESS_TOKEN', 'TELEGRAM_BOT_TOKEN', 'WHATSAPP_ACCESS_TOKEN',
+  'ZALO_OA_ACCESS_TOKEN', 'ZALO_OA_REFRESH_TOKEN', 'ZALO_APP_SECRET',
 ]);
 
 export function maskSecret(value) {

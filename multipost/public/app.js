@@ -27,6 +27,13 @@ const LABELS = {
   WHATSAPP_PHONE_NUMBER_ID: 'Phone Number ID',
   WHATSAPP_ACCESS_TOKEN: 'Access Token',
   WHATSAPP_RECIPIENTS: 'Số người nhận — E.164 không dấu +, ngăn cách bằng dấu phẩy (VD: 84901234567)',
+  ZALO_OA_ACCESS_TOKEN: 'OA Access Token',
+  ZALO_POST_MODE: 'Cách đăng: message (nhắn người theo dõi) / article (bài trên trang OA) / both',
+  ZALO_USER_IDS: 'User ID người theo dõi — ngăn cách bằng dấu phẩy',
+  ZALO_APP_ID: 'App ID (để tự làm mới token)',
+  ZALO_APP_SECRET: 'App Secret (để tự làm mới token)',
+  ZALO_OA_REFRESH_TOKEN: 'Refresh Token (để tự làm mới token)',
+  ZALO_ARTICLE_AUTHOR: 'Tên tác giả hiển thị trên bài viết OA',
 };
 
 const STATUS_TEXT = {
