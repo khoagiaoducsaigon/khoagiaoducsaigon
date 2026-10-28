@@ -1,0 +1,36 @@
+name: Deploy EduLesson to Hostinger (ncbh.thaykhoa-ai.tech)
+
+on:
+  push:
+    branches: [main, claude/brave-allen-altyrb]
+    paths: ['edulesson-copilot/**', '.github/workflows/deploy-hostinger.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Kiểm tra đã khai báo FTP secrets
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -z "$FTP_SERVER" ]; then
+            echo "::error::Chưa có secret FTP_SERVER / FTP_USERNAME / FTP_PASSWORD (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
+
+      - name: Upload qua FTPS lên Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./edulesson-copilot/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
