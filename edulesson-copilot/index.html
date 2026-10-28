@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduLesson Study CoPilot</title>
+<meta name="description" content="Hệ thống thông minh hỗ trợ Sinh hoạt chuyên môn theo Nghiên cứu bài học – CV 1315 & CV 5555">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  if (window.tailwind) {
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] } } } };
+  }
+</script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+  body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .fade-in { animation: fadeIn .25s ease-out; }
+  .scroll-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  .doc { font-family: 'Times New Roman', Times, serif; line-height: 1.55; }
+  .doc table { border-collapse: collapse; width: 100%; }
+  .doc td, .doc th { border: 1px solid #334155; padding: 6px 8px; vertical-align: top; }
+  .md h3 { font-weight: 700; font-size: 1rem; margin: .9rem 0 .35rem; color: #312e81; }
+  .md h4 { font-weight: 600; margin: .7rem 0 .25rem; }
+  .md p { margin: .2rem 0; }
+  .md blockquote { border-left: 3px solid #a5b4fc; padding: .35rem .75rem; background: #eef2ff; border-radius: .5rem; margin: .6rem 0; font-size: .85rem; color: #3730a3; }
+  #printArea { display: none; }
+  @media print {
+    body > *:not(#printArea) { display: none !important; }
+    #printArea { display: block !important; }
+    @page { size: A4; margin: 18mm 15mm; }
+  }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+<div id="app"></div>
+<div id="modalRoot"></div>
+<div id="toasts" class="fixed bottom-4 right-4 z-[100] flex flex-col gap-2 items-end"></div>
+<div id="printArea"></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   EduLesson Study CoPilot v1.0
+   Sinh hoạt chuyên môn theo Nghiên cứu bài học (NCBH)
+   Căn cứ: CV 1315/BGDĐT-GDTrH (16/4/2020) & CV 5555/BGDĐT-GDTrH (08/10/2014)
+   Kiến trúc: Single-file · Vanilla JS · IndexedDB + LocalStorage · Gemini / Mock AI
+   ===================================================================== */
+
+// ---------------------------------------------------------------- 1. HẰNG SỐ
+const APP = { name: 'EduLesson Study CoPilot', version: '1.0.0' };
+const LS = { session: 'edulesson_session', settings: 'edulesson_settings', lesson: 'edulesson_current_lesson', tab: 'edulesson_tab', fallback: 'edulesson_fallback_db', lastWrite: 'edulesson_last_write' };
+const STORES = ['users', 'lesson_studies', 'observation_logs', 'meeting_minutes', 'adapted_plans', 'audit_logs'];
+const STORE_LABELS = { users: 'Người dùng', lesson_studies: 'Chu trình NCBH', observation_logs: 'Nhật ký dự giờ', meeting_minutes: 'Biên bản SHCM', adapted_plans: 'KHBD tinh chỉnh', audit_logs: 'Nhật ký hệ thống' };
+
+const ROLES = {
+  admin:    { label: 'Ban Giám hiệu / Admin', short: 'BGH',    icon: 'shield-check', pill: 'bg-rose-100 text-rose-700 ring-rose-200',       active: 'bg-rose-600 text-white ring-rose-600' },
+  leader:   { label: 'Tổ trưởng chuyên môn',  short: 'TTCM',   icon: 'users',        pill: 'bg-indigo-100 text-indigo-700 ring-indigo-200', active: 'bg-indigo-600 text-white ring-indigo-600' },
+  teacher:  { label: 'GV dạy minh họa',       short: 'GV dạy', icon: 'presentation', pill: 'bg-emerald-100 text-emerald-700 ring-emerald-200', active: 'bg-emerald-600 text-white ring-emerald-600' },
+  observer: { label: 'GV dự giờ',             short: 'GV dự',  icon: 'eye',          pill: 'bg-amber-100 text-amber-800 ring-amber-200',    active: 'bg-amber-500 text-white ring-amber-500' }
+};
+const PERMS = {
+  'lesson.create':  ['admin', 'leader'],
+  'lesson.edit':    ['admin', 'leader'],
+  'lesson.approve': ['admin'],
+  'log.create':     ['admin', 'leader', 'observer'],
+  'log.deleteAny':  ['admin', 'leader'],
+  'feedback.create':['admin', 'leader', 'observer'],
+  'analysis.run':   ['admin', 'leader', 'teacher', 'observer'],
+  'minutes.manage': ['admin', 'leader'],
+  'plan.adapt':     ['admin', 'leader', 'teacher'],
+  'admin.view':     ['admin']
+};
+const STATUS = {
+  planning:  { label: 'Chuẩn bị',      cls: 'bg-amber-100 text-amber-800',     icon: 'clipboard-list' },
+  taught:    { label: 'Đã dạy',        cls: 'bg-sky-100 text-sky-800',         icon: 'presentation' },
+  discussed: { label: 'Đã thảo luận',  cls: 'bg-emerald-100 text-emerald-800', icon: 'messages-square' }
+};
+const PHASES = {
+  receive:    { label: 'Tiếp nhận nhiệm vụ', short: 'Tiếp nhận', cls: 'bg-sky-100 text-sky-800',       hex: '#0ea5e9', icon: 'inbox' },
+  individual: { label: 'Làm việc cá nhân',   short: 'Cá nhân',   cls: 'bg-violet-100 text-violet-800', hex: '#8b5cf6', icon: 'user' },
+  group:      { label: 'Thảo luận nhóm',     short: 'Nhóm',      cls: 'bg-orange-100 text-orange-800', hex: '#f97316', icon: 'users' },
+  report:     { label: 'Báo cáo',            short: 'Báo cáo',   cls: 'bg-teal-100 text-teal-800',     hex: '#14b8a6', icon: 'megaphone' }
+};
+const LEVELS = {
+  positive:   { label: 'Tích cực',              card: 'border-emerald-200 bg-emerald-50/60', badge: 'bg-emerald-600', hex: '#10b981' },
+  neutral:    { label: 'Trung tính',            card: 'border-amber-200 bg-amber-50/60',     badge: 'bg-amber-500',   hex: '#f59e0b' },
+  difficulty: { label: 'Khó khăn / Điểm nghẽn', card: 'border-rose-200 bg-rose-50/60',       badge: 'bg-rose-600',    hex: '#e11d48' }
+};
+const SUBJECTS = ['Toán', 'Ngữ văn', 'Tiếng Anh', 'Vật lí', 'Hóa học', 'Sinh học', 'Lịch sử', 'Địa lí', 'Tin học', 'Công nghệ', 'GDKT&PL', 'KHTN', 'Lịch sử & Địa lí', 'GDCD', 'Giáo dục thể chất', 'Nghệ thuật', 'HĐTN-HN'];
+const CAMPUSES = ['Trường chính', 'Phân hiệu 1', 'Phân hiệu 2'];
+const DEPARTMENTS = ['Tổ Toán – Tin', 'Tổ Ngữ văn', 'Tổ Ngoại ngữ', 'Tổ Khoa học tự nhiên', 'Tổ Khoa học xã hội', 'Tổ GDTC – Nghệ thuật', 'Ban Giám hiệu'];
+const MODULES = [
+  { id: 'plan',      step: 'Bước 1',     title: 'Kế hoạch & Mục tiêu NC',  icon: 'book-open-check' },
+  { id: 'logger',    step: 'Bước 2',     title: 'Nhật ký dự giờ',          icon: 'timer' },
+  { id: 'analytics', step: 'AI',         title: 'Phân tích & Bản đồ nhiệt', icon: 'activity' },
+  { id: 'minutes',   step: 'Bước 3 & 4', title: 'Biên bản & Tinh chỉnh',    icon: 'file-text' },
+  { id: 'admin',     step: 'BGH',        title: 'Admin Dashboard',          icon: 'layout-dashboard' }
+];
+const SUBJECT_COLORS = { 'Toán': 'from-indigo-500 to-blue-500', 'Ngữ văn': 'from-rose-500 to-orange-400', 'Tiếng Anh': 'from-teal-500 to-emerald-400', 'Vật lí': 'from-violet-500 to-fuchsia-500', 'Hóa học': 'from-cyan-500 to-sky-500', 'Sinh học': 'from-lime-500 to-green-500' };
+
+/* 12 tiêu chí phân tích bài dạy – 3 nhóm (dùng trong Bước 3) */
+const RUBRIC = [
+  { code: '1.1', group: 'Kế hoạch và tài liệu dạy học', text: 'Mức độ phù hợp của chuỗi hoạt động học với mục tiêu, nội dung và phương pháp dạy học được sử dụng.' },
+  { code: '1.2', group: 'Kế hoạch và tài liệu dạy học', text: 'Mức độ rõ ràng của mục tiêu, nội dung, kĩ thuật tổ chức và sản phẩm cần đạt của mỗi nhiệm vụ học tập.' },
+  { code: '1.3', group: 'Kế hoạch và tài liệu dạy học', text: 'Mức độ phù hợp của thiết bị dạy học và học liệu được sử dụng để tổ chức hoạt động học.' },
+  { code: '1.4', group: 'Kế hoạch và tài liệu dạy học', text: 'Mức độ hợp lí của phương án kiểm tra, đánh giá trong quá trình tổ chức hoạt động học.' },
+  { code: '2.1', group: 'Tổ chức hoạt động học cho học sinh', text: 'Mức độ sinh động, hấp dẫn học sinh của phương pháp và hình thức chuyển giao nhiệm vụ học tập.' },
+  { code: '2.2', group: 'Tổ chức hoạt động học cho học sinh', text: 'Khả năng theo dõi, quan sát, phát hiện kịp thời những khó khăn của học sinh.' },
+  { code: '2.3', group: 'Tổ chức hoạt động học cho học sinh', text: 'Mức độ phù hợp, hiệu quả của các biện pháp hỗ trợ, khuyến khích học sinh hợp tác, giúp đỡ nhau.' },
+  { code: '2.4', group: 'Tổ chức hoạt động học cho học sinh', text: 'Mức độ hiệu quả trong tổng hợp, phân tích, đánh giá kết quả hoạt động và thảo luận của học sinh.' },
+  { code: '3.1', group: 'Hoạt động của học sinh', text: 'Khả năng tiếp nhận và sẵn sàng thực hiện nhiệm vụ học tập của tất cả học sinh trong lớp.' },
+  { code: '3.2', group: 'Hoạt động của học sinh', text: 'Mức độ tích cực, chủ động, sáng tạo, hợp tác của học sinh trong thực hiện nhiệm vụ học tập.' },
+  { code: '3.3', group: 'Hoạt động của học sinh', text: 'Mức độ tham gia tích cực của học sinh trong trình bày, trao đổi, thảo luận kết quả.' },
+  { code: '3.4', group: 'Hoạt động của học sinh', text: 'Mức độ đúng đắn, chính xác, phù hợp của kết quả thực hiện nhiệm vụ học tập của học sinh.' }
+];
+const RATINGS = ['Tốt', 'Khá', 'Đạt', 'Cần cải thiện'];
+
+/* Bộ quy tắc Regex sư phạm – chẩn đoán nguyên nhân điểm nghẽn */
+const CAUSE_RULES = [
+  { key: 'instruction', label: 'Lệnh giao việc chưa rõ ràng', re: /chưa hiểu (?:yêu cầu|nhiệm vụ)|hỏi lại|lệnh giao|yêu cầu chưa rõ|chưa rõ|không biết bắt đầu|làm gì trước|theo nét nào/i,
+    fix: 'Viết lại lệnh giao việc theo cấu trúc 3 thành phần "Làm gì – Làm thế nào – Sản phẩm là gì", chiếu suốt hoạt động; mời 1–2 HS nhắc lại nhiệm vụ trước khi bắt đầu.' },
+  { key: 'material', label: 'Thiếu học liệu / phương tiện trực quan', re: /mô hình|học liệu|trực quan|hình minh h[oọ]a|đồ dùng|phiếu học tập|chỉ có hình|thiết bị|tranh ảnh/i,
+    fix: 'Bổ sung học liệu trực quan: mô hình/khung lớn có tô màu yếu tố trọng tâm, phiếu học tập có hình minh họa từng bước, thẻ gợi ý theo mức độ.' },
+  { key: 'grouping', label: 'Tổ chức, phân công nhóm chưa hiệu quả', re: /phân công|nhóm trưởng|ngồi chờ|vai trò|không tham gia|làm thay/i,
+    fix: 'Phát "thẻ vai trò" (Nhóm trưởng – Thư ký – Kỹ thuật – Báo cáo) trước khi phát học liệu; quy định sản phẩm cá nhân trong sản phẩm nhóm.' },
+  { key: 'concept', label: 'Nhầm lẫn khái niệm / hổng kiến thức nền', re: /nhầm|sai|lẫn|chưa nắm|chưa phân biệt|hiểu sai/i,
+    fix: 'Thêm nhiệm vụ "phát hiện lỗi sai" và câu hỏi phân biệt khái niệm dễ nhầm; kiểm tra nhanh 2–3 câu trắc nghiệm tức thì (Plickers/Quizizz).' },
+  { key: 'support', label: 'Hỗ trợ của GV chưa kịp thời', re: /chưa được (?:gv|giáo viên)|chưa kịp thời|gv chưa|giáo viên chưa/i,
+    fix: 'GV di chuyển theo "bản đồ nhiệt" – ưu tiên nhóm có tín hiệu khó khăn; dùng HS hoàn thành sớm làm "trợ giảng đồng đẳng".' }
+];
+
+// ---------------------------------------------------------------- 2. TIỆN ÍCH
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const uid = p => `${p}_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+const nowISO = () => new Date().toISOString();
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const ic = (name, cls = 'w-4 h-4') => `<i data-lucide="${name}" class="${cls}"></i>`;
+const refreshIcons = () => { try { window.lucide && lucide.createIcons(); } catch (e) { /* CDN chưa tải */ } };
+const fmtD = d => { if (!d) return '—'; const m = String(d).match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? `${m[3]}/${m[2]}/${m[1]}` : d; };
+const fmtDT = iso => { if (!iso) return '—'; const d = new Date(iso); return d.toLocaleDateString('vi-VN') + ' ' + d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }); };
+const fmtBytes = b => b < 1024 ? b + ' B' : b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(2) + ' MB';
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+const initials = name => { const w = String(name || '?').replace(/^(TS\.|ThS\.|PGS\.|Cô|Thầy)\s*/i, '').trim().split(/\s+/); return ((w[0] || '?')[0] + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase(); };
+const termKey = l => `${l.schoolYear || '—'} · ${l.semester || '—'}`;
+
+const BTN = 'inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-xl text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed';
+const B = {
+  primary:   BTN + ' bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm',
+  secondary: BTN + ' bg-white border border-slate-200 text-slate-700 hover:bg-slate-50',
+  danger:    BTN + ' bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100',
+  success:   BTN + ' bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm',
+  ai:        BTN + ' bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:opacity-90 shadow-sm',
+  ghost:     BTN + ' text-slate-600 hover:bg-slate-100'
+};
+const INPUT = 'w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500';
+const LABEL = 'block text-xs font-semibold text-slate-600 mb-1';
+const CARD = 'bg-white rounded-2xl border border-slate-200 shadow-sm';
+
+function toast(msg, type = 'info') {
+  const map = { info: 'bg-slate-900', success: 'bg-emerald-600', error: 'bg-rose-600', warn: 'bg-amber-600' };
+  const icons = { info: 'info', success: 'circle-check', error: 'circle-x', warn: 'triangle-alert' };
+  const el = document.createElement('div');
+  el.className = `${map[type] || map.info} fade-in text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-start gap-2 max-w-sm`;
+  el.innerHTML = ic(icons[type] || 'info', 'w-4 h-4 mt-0.5 shrink-0') + `<span>${esc(msg)}</span>`;
+  $('#toasts').appendChild(el); refreshIcons();
+  setTimeout(() => { el.style.transition = 'opacity .3s'; el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3600);
+}
+function download(blob, filename) {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function stamp() { const d = new Date(); return d.toISOString().slice(0, 10).replace(/-/g, '') + '_' + String(d.getHours()).padStart(2, '0') + String(d.getMinutes()).padStart(2, '0'); }
+async function hashPw(pw) {
+  const salted = 'edulesson::' + pw;
+  try {
+    if (window.crypto && crypto.subtle) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(salted));
+      return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+  } catch (e) { /* bối cảnh không an toàn */ }
+  let h = 0; for (const c of salted) h = (h * 31 + c.charCodeAt(0)) | 0; return 'f' + h;
+}
+/* Trình hiển thị Markdown tối giản */
+function md(text) {
+  const inline = s => s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*])\*(?!\s)(.+?)\*/g, '$1<em>$2</em>');
+  let html = '', list = false;
+  for (const raw of esc(text || '').split('\n')) {
+    const l = raw.trimEnd();
+    if (/^\s*[-*•]\s+/.test(l)) { if (!list) { html += '<ul class="list-disc pl-5 space-y-1 my-1">'; list = true; } html += `<li>${inline(l.replace(/^\s*[-*•]\s+/, ''))}</li>`; continue; }
+    if (list) { html += '</ul>'; list = false; }
+    if (/^#{1,2}\s+/.test(l)) html += `<h3>${inline(l.replace(/^#+\s+/, ''))}</h3>`;
+    else if (/^#{3,}\s+/.test(l)) html += `<h4>${inline(l.replace(/^#+\s+/, ''))}</h4>`;
+    else if (/^&gt;\s?/.test(l)) html += `<blockquote>${inline(l.replace(/^&gt;\s?/, ''))}</blockquote>`;
+    else if (!l.trim()) html += '<div class="h-1.5"></div>';
+    else html += `<p>${inline(l)}</p>`;
+  }
+  if (list) html += '</ul>';
+  return `<div class="md text-sm text-slate-700 leading-relaxed">${html}</div>`;
+}
+const mdPlain = t => String(t || '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/^#+\s+/gm, '').replace(/^>\s?/gm, '');
+
+// ---------------------------------------------------------------- 3. CÀI ĐẶT (LocalStorage)
+const Settings = {
+  d: {},
+  load() {
+    try { this.d = JSON.parse(localStorage.getItem(LS.settings)) || {}; } catch (e) { this.d = {}; }
+    this.d = Object.assign({ aiMode: 'mock', model: 'gemini-2.5-flash', apiKey: '', schoolName: 'Trường THCS – THPT Demo EduLesson', schoolUnit: 'Sở GD&ĐT TP. Hồ Chí Minh' }, this.d);
+  },
+  get(k) { return this.d[k]; },
+  set(k, v) { this.d[k] = v; try { localStorage.setItem(LS.settings, JSON.stringify(this.d)); } catch (e) {} }
+};
+
+// ---------------------------------------------------------------- 4. DATABASE LAYER (IndexedDB + LocalStorage)
+const DB = {
+  name: 'edulesson_copilot_db', version: 1, idb: null, mode: 'IndexedDB', cache: {},
+  async init() {
+    STORES.forEach(s => this.cache[s] = []);
+    try {
+      if (!window.indexedDB) throw new Error('no idb');
+      this.idb = await new Promise((res, rej) => {
+        const r = indexedDB.open(this.name, this.version);
+        r.onupgradeneeded = () => { const db = r.result; STORES.forEach(s => { if (!db.objectStoreNames.contains(s)) db.createObjectStore(s, { keyPath: 'id' }); }); };
+        r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+      });
+      for (const s of STORES) this.cache[s] = await this._getAll(s);
+    } catch (e) {
+      this.idb = null; this.mode = 'LocalStorage (dự phòng)';
+      try { const raw = JSON.parse(localStorage.getItem(LS.fallback) || '{}'); STORES.forEach(s => this.cache[s] = raw[s] || []); } catch (er) {}
+    }
+  },
+  _store(s, mode) { return this.idb.transaction(s, mode).objectStore(s); },
+  _req(r) { return new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }); },
+  _getAll(s) { return this._req(this._store(s, 'readonly').getAll()).then(x => x || []); },
+  _fallback() { try { localStorage.setItem(LS.fallback, JSON.stringify(this.cache)); } catch (e) { toast('LocalStorage đầy – hãy sao lưu JSON!', 'error'); } },
+  _touch() { try { localStorage.setItem(LS.lastWrite, nowISO()); } catch (e) {} },
+  all(s) { return this.cache[s]; },
+  get(s, id) { return this.cache[s].find(x => x.id === id); },
+  where(s, fn) { return this.cache[s].filter(fn); },
+  async put(s, obj) {
+    const arr = this.cache[s]; const i = arr.findIndex(x => x.id === obj.id);
+    if (i >= 0) arr[i] = obj; else arr.push(obj);
+    if (this.idb) await this._req(this._store(s, 'readwrite').put(JSON.parse(JSON.stringify(obj)))); else this._fallback();
+    this._touch(); return obj;
+  },
+  async putMany(s, list) {
+    for (const o of list) { const i = this.cache[s].findIndex(x => x.id === o.id); if (i >= 0) this.cache[s][i] = o; else this.cache[s].push(o); }
+    if (this.idb) { const tx = this.idb.transaction(s, 'readwrite'); const st = tx.objectStore(s); list.forEach(o => st.put(JSON.parse(JSON.stringify(o)))); await new Promise((res, rej) => { tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); } else this._fallback();
+    this._touch();
+  },
+  async remove(s, id) {
+    this.cache[s] = this.cache[s].filter(x => x.id !== id);
+    if (this.idb) await this._req(this._store(s, 'readwrite').delete(id)); else this._fallback();
+    this._touch();
+  },
+  async clear(s) { this.cache[s] = []; if (this.idb) await this._req(this._store(s, 'readwrite').clear()); else this._fallback(); },
+  async replaceAll(data) { for (const s of STORES) { await this.clear(s); if (Array.isArray(data[s]) && data[s].length) await this.putMany(s, data[s]); } },
+  snapshot() { const o = {}; STORES.forEach(s => o[s] = this.cache[s]); return o; },
+  sizeBytes(s) { return new Blob([JSON.stringify(s ? this.cache[s] : this.cache)]).size; }
+};
+
+// ---------------------------------------------------------------- 5. TRẠNG THÁI & TRUY VẤN
+const state = {
+  user: null, tab: 'plan', lessonId: null, authTab: 'login',
+  filters: { q: '', subject: '', grade: '', campus: '', term: '', status: '' },
+  logFilter: 'all', minutesEdit: false, planEdit: false,
+  auditQ: '', auditAction: '', userQ: '', busy: {}, _refocus: null,
+  timer: { running: false, sec: 0, speed: 1, handle: null, auto: true }
+};
+const can = p => !!state.user && (PERMS[p] || []).includes(state.user.role);
+const userById = id => DB.get('users', id);
+const userName = id => userById(id)?.name || '—';
+const teacherName = l => userById(l.teacherId)?.name || l.teacherName || '—';
+const curLesson = () => DB.get('lesson_studies', state.lessonId);
+const obsLogs = lid => DB.where('observation_logs', o => o.lessonId === lid).sort((a, b) => a.minute - b.minute);
+const minutesOf = lid => DB.where('meeting_minutes', m => m.lessonId === lid).sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''))[0];
+const plansOf = lid => DB.where('adapted_plans', p => p.lessonId === lid).sort((a, b) => b.version - a.version);
+const sortedLessons = () => [...DB.all('lesson_studies')].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+const canUpload = l => can('lesson.edit') || (state.user?.role === 'teacher' && l.teacherId === state.user.id);
+const activityAt = (l, m) => (l.activities || []).find(a => m >= a.start && m < a.end);
+
+async function audit(action, entity, detail) {
+  const u = state.user;
+  await DB.put('audit_logs', { id: uid('al'), at: nowISO(), userId: u?.id || null, userName: u?.name || 'Hệ thống', role: u?.role || '-', action, entity, detail: detail || '' });
+  if (state.tab === 'admin' && $('#auditBody')) { $('#auditBody').innerHTML = auditRows(); refreshIcons(); }
+}
+function ensureLesson() {
+  if (!DB.get('lesson_studies', state.lessonId)) {
+    const ls = sortedLessons(); const withLogs = ls.find(l => obsLogs(l.id).length);
+    state.lessonId = (withLogs || ls[0])?.id || null;
+  }
+  if (state.lessonId) localStorage.setItem(LS.lesson, state.lessonId);
+}
+
+// ---------------------------------------------------------------- 6. PHÂN TÍCH HỌC TẬP (Learning Analytics)
+function detectCauses(diffs) {
+  return CAUSE_RULES.map(r => {
+    const hits = diffs.filter(l => r.re.test(`${l.behavior} ${l.suggestion || ''}`));
+    return { ...r, hits: hits.length, minutes: hits.map(h => h.minute) };
+  }).filter(c => c.hits > 0).sort((a, b) => b.hits - a.hits);
+}
+function computeStats(lesson) {
+  const logs = obsLogs(lesson.id).filter(l => l.kind !== 'feedback');
+  const dur = Number(lesson.duration) || 45;
+  let eng = 0, obs = 0; logs.forEach(l => { if (Number(l.observed) > 0) { eng += Number(l.engaged) || 0; obs += Number(l.observed); } });
+  const activeRate = obs ? Math.round(eng / obs * 100) : null;
+  const acts = lesson.activities || [];
+  const totalMin = acts.reduce((s, a) => s + Math.max(0, a.end - a.start), 0) || dur;
+  const talkMin = acts.reduce((s, a) => s + Math.min(Number(a.teacherTalk) || 0, Math.max(0, a.end - a.start)), 0);
+  const teacherPct = pct(talkMin, totalMin);
+  const diffs = logs.filter(l => l.level === 'difficulty');
+  let best = { count: 0, start: null };
+  for (let t = 0; t < dur; t++) { const c = diffs.filter(l => l.minute >= t && l.minute < t + 5).length; if (c > best.count) best = { count: c, start: t }; }
+  let bottleneck = null;
+  if (best.count) {
+    const inWin = diffs.filter(l => l.minute >= best.start && l.minute < best.start + 5);
+    const from = Math.min(...inWin.map(l => l.minute)), to = Math.max(...inWin.map(l => l.minute));
+    bottleneck = { from, to, count: best.count, logs: inWin, activity: activityAt(lesson, from) };
+  }
+  const phaseCount = {}; Object.keys(PHASES).forEach(k => phaseCount[k] = logs.filter(l => l.phase === k).length);
+  const levelCount = {}; Object.keys(LEVELS).forEach(k => levelCount[k] = logs.filter(l => l.level === k).length);
+  return { logs, dur, activeRate, teacherPct, studentPct: 100 - teacherPct, talkMin, totalMin, diffs, bottleneck, phaseCount, levelCount, causes: detectCauses(diffs) };
+}
+const rateLabel = r => r == null ? 'chưa có số liệu' : r >= 80 ? 'mức Tốt ≥ 80%' : r >= 65 ? 'mức Khá' : 'cần cải thiện';
+
+function mockAnalysis(lesson) {
+  const s = computeStats(lesson);
+  if (!s.logs.length) return '## Chưa có dữ liệu\n- Hãy ghi nhật ký dự giờ ở Phân hệ 2 trước khi phân tích.';
+  const L = [];
+  L.push('## 1. Kết luận nhanh');
+  L.push(`- Tỷ lệ học sinh tích cực học tập: **${s.activeRate ?? '—'}%** (${rateLabel(s.activeRate)}).`);
+  L.push(`- Thời lượng GV nói ≈ **${s.teacherPct}%** (${s.talkMin}/${s.totalMin} phút) – HS hoạt động ≈ **${s.studentPct}%**. ${s.teacherPct <= 40 ? 'Đạt định hướng lấy HS làm trung tâm (GV nói ≤ 40%).' : 'GV nói còn nhiều – đề xuất giảm xuống ≤ 40%.'}`);
+  if (s.bottleneck) L.push(`- Điểm nghẽn nhận thức tập trung ở **phút ${s.bottleneck.from}${s.bottleneck.to !== s.bottleneck.from ? '–' + s.bottleneck.to : ''}** (${s.bottleneck.count} tình huống) thuộc *${s.bottleneck.activity?.name || 'hoạt động chưa xác định'}*.`);
+  L.push(`- Tổng ${s.logs.length} ghi chép: ${s.levelCount.positive} tích cực · ${s.levelCount.neutral} trung tính · ${s.levelCount.difficulty} khó khăn.`);
+  L.push('## 2. Chẩn đoán nguyên nhân khó khăn');
+  if (!s.causes.length) L.push('- Không phát hiện mẫu nguyên nhân lặp lại – các khó khăn mang tính cá biệt.');
+  s.causes.forEach(c => L.push(`- **${c.label}** — ${c.hits}/${s.diffs.length} tình huống (phút ${c.minutes.join(', ')}).`));
+  const ins = s.causes.find(c => c.key === 'instruction')?.hits || 0, mat = s.causes.find(c => c.key === 'material')?.hits || 0;
+  if (ins && mat) L.push(`- **Nhận định:** điểm nghẽn mang tính *kép* – học liệu trực quan chưa đủ (${mat} lượt) làm khuếch đại hệ quả của lệnh giao việc chưa rõ (${ins} lượt). Ưu tiên sửa lệnh giao việc trước, đồng thời bổ sung mô hình trực quan.`);
+  else if (ins) L.push('- **Nhận định:** nguyên nhân chính là **lệnh giao việc chưa rõ**, không phải do thiếu học liệu.');
+  else if (mat) L.push('- **Nhận định:** nguyên nhân chính là **thiếu học liệu trực quan**, lệnh giao việc cơ bản đã rõ.');
+  L.push('## 3. Khuyến nghị tinh chỉnh');
+  (s.causes.length ? s.causes : CAUSE_RULES.slice(0, 2)).slice(0, 4).forEach(c => L.push(`- ${c.fix}`));
+  if (s.teacherPct > 40) L.push('- Cắt giảm phần GV giảng giải, chuyển thành nhiệm vụ HS tự khám phá có phiếu hướng dẫn.');
+  L.push('## 4. Câu hỏi gợi mở cho buổi thảo luận (Bước 3)');
+  if (s.bottleneck) L.push(`- Vì sao ở phút ${s.bottleneck.from} học sinh ${s.bottleneck.logs[0]?.group ? 'nhóm ' + s.bottleneck.logs[0].group : ''} gặp khó khăn? Biểu hiện cụ thể là gì?`);
+  L.push('- Học sinh đã học được gì, chưa học được gì? Bằng chứng từ sản phẩm học tập?');
+  L.push('- Nếu dạy lại, tổ sẽ điều chỉnh lệnh giao việc / học liệu / cách tổ chức nhóm như thế nào?');
+  L.push('> Phân tích bởi **Demo Sư phạm (Mock AI)** – bộ quy tắc Regex nhận diện 5 nhóm nguyên nhân trên dữ liệu nhật ký dự giờ. Kết nối Gemini API để có phân tích ngôn ngữ tự nhiên sâu hơn.');
+  return L.join('\n');
+}
+
+function buildRubric(s) {
+  const has = k => s.causes.some(c => c.key === k);
+  const r32 = s.activeRate == null ? 'Đạt' : s.activeRate >= 80 ? 'Tốt' : s.activeRate >= 65 ? 'Khá' : 'Đạt';
+  const map = {
+    '1.1': ['Tốt', 'Chuỗi hoạt động bám sát mục tiêu, có sản phẩm rõ.'],
+    '1.2': has('instruction') ? ['Đạt', 'Lệnh giao việc ở hoạt động khám phá chưa tách bước.'] : ['Tốt', 'Nhiệm vụ rõ ràng.'],
+    '1.3': has('material') ? ['Khá', 'Cần bổ sung mô hình/học liệu trực quan lớn.'] : ['Tốt', 'Học liệu phù hợp.'],
+    '1.4': ['Khá', 'Nên có phiếu kiểm tra nhanh sau phần hình thành kiến thức.'],
+    '2.1': ['Tốt', 'Khởi động hấp dẫn, gắn thực tiễn.'],
+    '2.2': has('support') ? ['Đạt', 'Một số nhóm khó khăn chưa được phát hiện kịp thời.'] : ['Khá', 'Quan sát khá bao quát.'],
+    '2.3': has('grouping') ? ['Khá', 'Cần thẻ vai trò để mọi HS cùng tham gia.'] : ['Tốt', 'Hợp tác nhóm hiệu quả.'],
+    '2.4': ['Khá', 'Chốt kiến thức rõ, nên tận dụng lỗi sai của HS.'],
+    '3.1': has('instruction') ? ['Khá', 'Một số nhóm chậm tiếp nhận nhiệm vụ.'] : ['Tốt', 'HS tiếp nhận nhanh.'],
+    '3.2': [r32, `Tỷ lệ HS tích cực ${s.activeRate ?? '—'}%.`],
+    '3.3': s.levelCount.positive && s.phaseCount.report ? ['Tốt', 'Báo cáo tự tin, có nhận xét bổ sung.'] : ['Khá', 'Cần tăng tương tác khi báo cáo.'],
+    '3.4': has('concept') ? ['Khá', 'Còn nhầm lẫn khái niệm trọng tâm.'] : ['Tốt', 'Kết quả chính xác.']
+  };
+  return RUBRIC.map(r => ({ code: r.code, rating: map[r.code][0], note: map[r.code][1] }));
+}
+
+function buildMockMinutes(lesson) {
+  const s = computeStats(lesson);
+  const leader = userById(lesson.leaderId);
+  const ids = [...new Set([lesson.leaderId, lesson.teacherId, ...(lesson.observerIds || [])])].filter(Boolean);
+  const attendees = ids.map(userById).filter(Boolean).map(u => `${u.name} – ${u.title || ROLES[u.role].label}`);
+  const secretary = (lesson.observerIds || []).map(userById).find(u => u && u.role === 'observer');
+  const acts = lesson.activities || [];
+  const fb = lesson.feedbacks || [];
+  const step1 = [
+    `- ${lesson.department || 'Tổ chuyên môn'} thống nhất chọn bài **"${lesson.title}"** – ${lesson.subject} ${lesson.grade}, lớp ${lesson.className || '—'} để dạy minh họa.`,
+    `- Câu hỏi nghiên cứu: *${lesson.researchQuestion || 'chưa xác định'}*`,
+    `- Mục tiêu học sinh cần đạt:`, ...(lesson.objectives || []).map(o => `- ${o}`),
+    `- Hoạt động trọng tâm cần quan sát kỹ: ${lesson.focusActivity || '—'}`,
+    `- Chuỗi hoạt động học (${acts.length} hoạt động): ${acts.map(a => `${a.name} (${a.start}–${a.end}′)`).join('; ')}.`,
+    `- GV dạy minh họa: ${teacherName(lesson)}. Kế hoạch bài dạy ${lesson.approved ? `đã được BGH duyệt (${userName(lesson.approvedBy)}, ${fmtDT(lesson.approvedAt)})` : 'đang chờ BGH duyệt'}.`
+  ].join('\n');
+  const step2 = [
+    `- Thời gian: ${lesson.period || ''} ngày ${fmtD(lesson.date)} – ${lesson.room || ''}, ${lesson.campus}. Sĩ số: ${lesson.classSize || '—'} HS, chia ${lesson.groups || '—'} nhóm.`,
+    `- Số GV dự giờ: ${(lesson.observerIds || []).length}. Tổng số ghi chép quan sát: **${s.logs.length}** (${s.levelCount.positive} tích cực, ${s.levelCount.neutral} trung tính, ${s.levelCount.difficulty} khó khăn).`,
+    `- Diễn biến hoạt động học của HS theo mốc thời gian:`,
+    ...s.logs.map(l => `- Phút ${l.minute} – ${l.group ? 'Nhóm ' + l.group : 'Cả lớp'}${l.position && l.position !== 'Cả lớp' ? ' (' + l.position + ')' : ''} [${PHASES[l.phase]?.short}]: ${l.behavior} (GV ghi: ${userName(l.observerId)})`)
+  ].join('\n');
+  const step3 = [
+    `**a) GV dạy minh họa chia sẻ:** ${lesson.teacherReflection || 'GV chia sẻ mục tiêu, ý đồ sư phạm và những điểm chưa đạt so với dự kiến.'}`,
+    `**b) Ý kiến của GV dự giờ:**`,
+    ...(fb.length ? fb.map(f => `- ${userName(f.userId)}: ${f.content}`) : ['- (Chưa có góp ý bằng văn bản)']),
+    ...s.logs.filter(l => l.suggestion).map(l => `- Gợi ý tại phút ${l.minute} (${userName(l.observerId)}): ${l.suggestion}`),
+    `**c) Phân tích dữ liệu hoạt động học:**`,
+    `- Tỷ lệ HS tích cực: ${s.activeRate ?? '—'}%; GV nói ${s.teacherPct}% – HS hoạt động ${s.studentPct}%.`,
+    s.bottleneck ? `- Điểm nghẽn nhận thức: phút ${s.bottleneck.from}–${s.bottleneck.to}, thuộc ${s.bottleneck.activity?.name || '—'}.` : '- Không xuất hiện điểm nghẽn rõ rệt.',
+    ...s.causes.map(c => `- Nguyên nhân: ${c.label} (${c.hits} tình huống).`),
+    `**d) Trả lời các câu hỏi trọng tâm:** HS học được gì? – Phần lớn HS nhận biết được kiến thức cơ bản. HS chưa học được gì? – ${s.diffs.length ? 'Còn ' + s.diffs.length + ' tình huống khó khăn cần khắc phục.' : 'Không đáng kể.'} Vì sao? – Do ${s.causes.slice(0, 2).map(c => c.label.toLowerCase()).join(' và ') || 'các yếu tố cá biệt'}.`
+  ].join('\n');
+  const step4 = [
+    `**Đề xuất tinh chỉnh bài dạy:**`,
+    ...(s.causes.length ? s.causes : CAUSE_RULES.slice(0, 2)).map(c => `- ${c.fix}`),
+    `**Kế hoạch vận dụng:**`,
+    `- Các GV trong tổ vận dụng KHBD đã tinh chỉnh vào các lớp ${lesson.grade} còn lại trong 2 tuần tới; ghi nhận minh chứng vào sổ chuyên môn điện tử.`,
+    `- Chia sẻ kết quả lên hệ thống SHCM liên phân hiệu theo tinh thần CV 5555 để trường chính và các phân hiệu cùng học tập.`,
+    `- Chu trình NCBH tiếp theo: tập trung vào kỹ thuật giao nhiệm vụ học tập và hỗ trợ nhóm HS yếu.`
+  ].join('\n');
+  return {
+    id: uid('mm'), lessonId: lesson.id, meetingDate: lesson.date, time: '14h00', location: `Phòng họp ${lesson.department || 'tổ chuyên môn'} – ${lesson.campus}`,
+    chair: leader?.name || '', secretary: secretary?.name || '', attendees, absent: 'Không',
+    sections: { step1, step2, step3, step4 },
+    conclusion: `Tổ thống nhất ${s.activeRate != null && s.activeRate >= 80 ? 'đánh giá bài dạy đạt mục tiêu nghiên cứu ở mức Tốt' : 'bài dạy cơ bản đạt mục tiêu nghiên cứu'}; GV dạy minh họa hoàn thiện KHBD tinh chỉnh và nộp tổ trưởng trong 03 ngày làm việc. Biên bản được thông qua với 100% thành viên dự họp nhất trí.`,
+    rubric: buildRubric(s), status: 'draft', source: 'mock', createdAt: nowISO(), updatedAt: nowISO(), createdBy: state.user?.id || lesson.leaderId, exportCount: 0
+  };
+}
+
+function buildMockAdaptedPlan(lesson) {
+  const s = computeStats(lesson);
+  const rows = (lesson.activities || []).map(a => {
+    const dl = s.diffs.filter(l => l.minute >= a.start && l.minute < a.end);
+    const pos = s.logs.filter(l => l.level === 'positive' && l.minute >= a.start && l.minute < a.end);
+    const causes = detectCauses(dl);
+    const talkHigh = (a.teacherTalk || 0) / Math.max(1, a.end - a.start) > 0.5;
+    const original = `${a.desc || a.name} (${a.start}–${a.end}′, GV nói ~${a.teacherTalk || 0}′)`;
+    let revised, reason;
+    if (dl.length) {
+      revised = causes.map(c => '• ' + c.fix).join('\n') + (talkHigh ? '\n• Giảm thời lượng GV giảng, chuyển thành nhiệm vụ HS tự khám phá.' : '');
+      reason = dl.map(l => `Phút ${l.minute} (${l.group ? 'Nhóm ' + l.group : 'Cả lớp'}): ${l.behavior}`).join('\n');
+    } else {
+      revised = talkHigh ? '• Giữ mục tiêu; giảm phần GV giảng giải, tăng thời gian HS hoạt động.' : '• Giữ nguyên tiến trình; phát huy điểm mạnh đã quan sát được.';
+      reason = pos.length ? pos.map(l => `Phút ${l.minute}: ${l.behavior}`).join('\n') : 'Không ghi nhận điểm nghẽn trong hoạt động này.';
+    }
+    return { activity: `${a.name} (${a.start}–${a.end}′)`, original, revised, reason };
+  });
+  return { id: uid('ap'), lessonId: lesson.id, version: 1, rows, note: 'Phương án được tổng hợp tự động từ nhật ký dự giờ và ý kiến thảo luận.', status: 'draft', source: 'mock', createdAt: nowISO(), createdBy: state.user?.id || lesson.teacherId };
+}
+
+function mockLessonSuggest(title, subject, grade) {
+  return {
+    objectives: [
+      `Nhận biết và mô tả được các yếu tố cơ bản của nội dung "${title}".`,
+      `Vận dụng kiến thức "${title}" để giải quyết một tình huống thực tiễn gần gũi.`,
+      'Năng lực hợp tác: chủ động phân công, trao đổi trong nhóm 4–5 HS.',
+      'Năng lực giao tiếp: trình bày, phản biện sản phẩm nhóm trước lớp.'
+    ],
+    focus: `Hoạt động hình thành kiến thức trọng tâm của bài "${title}": quan sát cách HS tiếp nhận nhiệm vụ, phân công nhóm và các thời điểm HS lúng túng.`,
+    rq: `Làm thế nào để mọi HS lớp ${grade || '…'} đều tham gia và hiểu đúng kiến thức trọng tâm của bài "${title}" (${subject || 'môn học'}) thông qua hoạt động nhóm?`
+  };
+}
+
+// ---------------------------------------------------------------- 7. AI ENGINE (Gemini + Mock)
+async function callGemini(prompt, { json = false } = {}) {
+  const key = Settings.get('apiKey'); const model = Settings.get('model') || 'gemini-2.5-flash';
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+    body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], generationConfig: Object.assign({ temperature: 0.4 }, json ? { responseMimeType: 'application/json' } : {}) })
+  });
+  if (!res.ok) { let msg = res.status + ''; try { msg = (await res.json()).error?.message || msg; } catch (e) {} throw new Error(msg); }
+  const j = await res.json();
+  const text = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('');
+  if (!text) throw new Error('Phản hồi rỗng');
+  return text;
+}
+const parseJSONLoose = t => { const m = String(t).match(/[\[{][\s\S]*[\]}]/); return JSON.parse(m ? m[0] : t); };
+const aiReady = () => Settings.get('aiMode') === 'gemini' && !!Settings.get('apiKey');
+async function aiRun(mockFn, prompt, opts = {}) {
+  if (!aiReady()) { await sleep(650); return { data: mockFn(), source: 'mock' }; }
+  try { const t = await callGemini(prompt, opts); return { data: opts.json ? parseJSONLoose(t) : t, source: 'gemini' }; }
+  catch (e) { console.error(e); toast('Gemini lỗi: ' + e.message + ' → dùng Demo Sư phạm.', 'warn'); return { data: mockFn(), source: 'mock' }; }
+}
+function lessonContext(l) {
+  const s = computeStats(l);
+  return JSON.stringify({
+    bai_hoc: { ten: l.title, mon: l.subject, khoi: l.grade, lop: l.className, cau_hoi_nghien_cuu: l.researchQuestion, muc_tieu: l.objectives, hoat_dong_trong_tam: l.focusActivity, chuoi_hoat_dong: l.activities, chia_se_gv_day: l.teacherReflection },
+    thong_ke: { ty_le_hs_tich_cuc: s.activeRate, gv_noi_pct: s.teacherPct, diem_nghen: s.bottleneck && { tu: s.bottleneck.from, den: s.bottleneck.to, hoat_dong: s.bottleneck.activity?.name }, nguyen_nhan_regex: s.causes.map(c => ({ nguyen_nhan: c.label, so_lan: c.hits })) },
+    nhat_ky_du_gio: s.logs.map(o => ({ phut: o.minute, nhom: o.group || 'cả lớp', vi_tri: o.position, giai_doan: PHASES[o.phase]?.label, muc_do: LEVELS[o.level]?.label, hanh_vi: o.behavior, goi_y: o.suggestion, hs_tich_cuc: `${o.engaged}/${o.observed}`, nguoi_ghi: userName(o.observerId) })),
+    gop_y: (l.feedbacks || []).map(f => ({ nguoi: userName(f.userId), noi_dung: f.content }))
+  });
+}
+
+// ---------------------------------------------------------------- 8. DỮ LIỆU MẪU
+async function seedDemo() {
+  const pw = await hashPw('123456');
+  const T = (d, h = '07:30') => `${d}T${h}:00.000+07:00`;
+  const users = [
+    { id: 'u_quan',  name: 'TS. Trần Minh Quân', contact: 'hieutruong@edulesson.vn', role: 'admin',    title: 'Hiệu trưởng',                     department: 'Ban Giám hiệu', campus: 'Trường chính' },
+    { id: 'u_hanh',  name: 'ThS. Lê Thị Hạnh',   contact: 'phohieutruong@edulesson.vn', role: 'admin', title: 'Phó Hiệu trưởng phụ trách phân hiệu', department: 'Ban Giám hiệu', campus: 'Phân hiệu 1' },
+    { id: 'u_bao',   name: 'Phạm Quốc Bảo',      contact: 'totruong.toan@edulesson.vn', role: 'leader', title: 'Tổ trưởng Tổ Toán – Tin',          department: 'Tổ Toán – Tin', campus: 'Trường chính' },
+    { id: 'u_trang', name: 'Nguyễn Thu Trang',   contact: 'gv.trang@edulesson.vn', role: 'teacher',    title: 'GV Toán – dạy minh họa',          department: 'Tổ Toán – Tin', campus: 'Trường chính' },
+    { id: 'u_nam',   name: 'Võ Hoàng Nam',       contact: '0909123456', role: 'observer',               title: 'GV Toán – dự giờ',                department: 'Tổ Toán – Tin', campus: 'Trường chính' },
+    { id: 'u_linh',  name: 'Đặng Mỹ Linh',       contact: 'gv.linh@edulesson.vn', role: 'observer',     title: 'GV Ngữ văn – dự giờ liên môn',    department: 'Tổ Ngữ văn',    campus: 'Phân hiệu 1' }
+  ].map(u => ({ ...u, passwordHash: pw, status: 'active', createdAt: T('2026-08-20'), lastLogin: null }));
+  await DB.putMany('users', users);
+
+  const L1 = {
+    id: 'ls_toan8_chop', title: 'Hình chóp tam giác đều', subject: 'Toán', grade: 8, className: '8A3', date: '2026-10-15', period: 'Tiết 3', room: 'Phòng 204', duration: 45,
+    schoolYear: '2026-2027', semester: 'HK1', campus: 'Trường chính', department: 'Tổ Toán – Tin', teacherId: 'u_trang', leaderId: 'u_bao',
+    observerIds: ['u_bao', 'u_nam', 'u_linh', 'u_quan'], classSize: 40, groups: 8, status: 'discussed', approved: true, approvedBy: 'u_quan', approvedAt: T('2026-10-08', '15:20'),
+    researchQuestion: 'Làm thế nào để 100% nhóm HS chủ động phân công và nhận biết đúng các yếu tố của hình chóp tam giác đều thông qua hoạt động thực hành gấp mô hình?',
+    objectives: [
+      'Nhận biết được đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao và trung đoạn của hình chóp tam giác đều.',
+      'Tạo lập được mô hình hình chóp tam giác đều từ tấm bìa khai triển.',
+      'Tính được diện tích xung quanh của hình chóp tam giác đều: Sxq = p · d.',
+      'Phát triển năng lực hợp tác, giao tiếp toán học và mô hình hóa toán học.'
+    ],
+    focusActivity: 'HĐ2 – Khám phá: Nhóm HS gấp, dán mô hình hình chóp tam giác đều từ tấm bìa và chỉ ra các yếu tố. Quan sát kỹ cách nhóm tiếp nhận nhiệm vụ, phân công và thời điểm HS lúng túng.',
+    activities: [
+      { name: 'HĐ1. Khởi động', start: 0, end: 5, phase: 'receive', teacherTalk: 3, desc: 'GV chiếu ảnh kim tự tháp, lều trại; hỏi: Các vật này có dạng hình gì?' },
+      { name: 'HĐ2. Khám phá – gấp mô hình', start: 5, end: 20, phase: 'group', teacherTalk: 3, desc: 'Phát tấm bìa in hình khai triển; nhóm gấp mô hình hình chóp tam giác đều và gọi tên các yếu tố (phiếu học tập chỉ có hình).' },
+      { name: 'HĐ3. Hình thành kiến thức', start: 20, end: 28, phase: 'individual', teacherTalk: 5, desc: 'GV dùng hình vẽ trên bảng giới thiệu các yếu tố, trung đoạn; HS ghi vở.' },
+      { name: 'HĐ4. Luyện tập', start: 28, end: 38, phase: 'individual', teacherTalk: 3, desc: 'HS làm cá nhân bài tập tính diện tích xung quanh Sxq = p · d.' },
+      { name: 'HĐ5. Báo cáo – Vận dụng', start: 38, end: 45, phase: 'report', teacherTalk: 3, desc: 'Đại diện 1–2 nhóm trình bày; GV chốt kiến thức; giao bài về nhà.' }
+    ],
+    planFile: { name: 'KHBD_HinhChopTamGiacDeu_8A3.docx', size: 248320, type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', uploadedAt: T('2026-10-07', '20:15'), uploadedBy: 'u_trang', dataUrl: null },
+    teacherReflection: 'HĐ2 kéo dài hơn dự kiến 2 phút vì nhóm 3 và nhóm 4 chưa hiểu cách gấp; tôi chưa kịp đến hỗ trợ nhóm 7 khi các em nhầm trung đoạn với cạnh bên. Hoạt động báo cáo cuối giờ đạt kỳ vọng.',
+    feedbacks: [
+      { id: 'fb_1', userId: 'u_nam',  content: 'Lệnh giao việc ở HĐ2 nên tách thành 3 bước có hình minh họa; cho 1 HS nhắc lại nhiệm vụ trước khi làm.', createdAt: T('2026-10-15', '10:05') },
+      { id: 'fb_2', userId: 'u_bao',  content: 'Cần mô hình khung lớn tô màu trung đoạn để HS phân biệt với cạnh bên; GV nên di chuyển nhiều hơn đến nhóm 3, 4, 7.', createdAt: T('2026-10-15', '10:12') },
+      { id: 'fb_3', userId: 'u_linh', content: 'Hoạt động báo cáo rất tốt. Đề nghị bổ sung rubric đánh giá đồng đẳng để HS nhận xét bạn có tiêu chí.', createdAt: T('2026-10-15', '10:20') }
+    ],
+    createdBy: 'u_bao', createdAt: T('2026-10-01', '09:00')
+  };
+  const L2 = {
+    id: 'ls_van10_nhanvat', title: 'Nghệ thuật xây dựng nhân vật', subject: 'Ngữ văn', grade: 10, className: '10C2', date: '2026-11-12', period: 'Tiết 2', room: 'Phòng 105', duration: 45,
+    schoolYear: '2026-2027', semester: 'HK1', campus: 'Phân hiệu 1', department: 'Tổ Ngữ văn', teacherId: null, teacherName: 'Cô Lâm Thảo Vy', leaderId: 'u_bao',
+    observerIds: ['u_linh', 'u_hanh'], classSize: 38, groups: 6, status: 'planning', approved: false,
+    researchQuestion: 'Làm thế nào để HS tự phát hiện được các phương diện xây dựng nhân vật (ngoại hình, hành động, ngôn ngữ, nội tâm) qua kỹ thuật "mảnh ghép"?',
+    objectives: ['Phân tích được các phương diện nghệ thuật xây dựng nhân vật trong truyện.', 'Đánh giá được tác dụng của chi tiết nghệ thuật đối với việc khắc họa tính cách nhân vật.', 'Vận dụng viết đoạn văn phân tích một nhân vật yêu thích.'],
+    focusActivity: 'Hoạt động "mảnh ghép" – vòng chuyên gia và vòng mảnh ghép.',
+    activities: [
+      { name: 'HĐ1. Khởi động – Đoán nhân vật', start: 0, end: 5, phase: 'receive', teacherTalk: 2, desc: 'Trò chơi đoán nhân vật qua chi tiết.' },
+      { name: 'HĐ2. Vòng chuyên gia', start: 5, end: 18, phase: 'group', teacherTalk: 2, desc: 'Mỗi nhóm nghiên cứu 1 phương diện xây dựng nhân vật.' },
+      { name: 'HĐ3. Vòng mảnh ghép', start: 18, end: 32, phase: 'group', teacherTalk: 2, desc: 'Nhóm mới tổng hợp sơ đồ tư duy về nhân vật.' },
+      { name: 'HĐ4. Báo cáo & Vận dụng', start: 32, end: 45, phase: 'report', teacherTalk: 4, desc: 'Trình bày sơ đồ, viết đoạn văn ngắn.' }
+    ],
+    planFile: null, feedbacks: [], createdBy: 'u_bao', createdAt: T('2026-10-20', '08:30')
+  };
+  const L3 = {
+    id: 'ls_anh11_env', title: 'Unit 4 – ASEAN and Viet Nam (Speaking)', subject: 'Tiếng Anh', grade: 11, className: '11A1', date: '2026-03-18', period: 'Tiết 4', room: 'Phòng LAB 2', duration: 45,
+    schoolYear: '2025-2026', semester: 'HK2', campus: 'Phân hiệu 1', department: 'Tổ Ngoại ngữ', teacherId: null, teacherName: 'Cô Hồ Ngọc Ánh', leaderId: 'u_bao',
+    observerIds: ['u_hanh', 'u_linh'], classSize: 36, groups: 6, status: 'taught', approved: true, approvedBy: 'u_hanh', approvedAt: T('2026-03-10', '16:00'),
+    researchQuestion: 'Làm thế nào để HS mạnh dạn nói tiếng Anh trong hoạt động role-play?',
+    objectives: ['Use target vocabulary about ASEAN in a 2-minute talk.', 'Practise role-play with confidence.'],
+    focusActivity: 'Role-play – ASEAN Youth Forum.',
+    activities: [
+      { name: 'Warm-up', start: 0, end: 5, phase: 'receive', teacherTalk: 3, desc: 'Quiz về các nước ASEAN.' },
+      { name: 'Pre-speaking', start: 5, end: 17, phase: 'individual', teacherTalk: 6, desc: 'Học từ vựng, mẫu câu.' },
+      { name: 'While-speaking (Role-play)', start: 17, end: 35, phase: 'group', teacherTalk: 3, desc: 'Role-play theo nhóm 6.' },
+      { name: 'Post-speaking', start: 35, end: 45, phase: 'report', teacherTalk: 4, desc: 'Trình bày, nhận xét.' }
+    ],
+    planFile: null, feedbacks: [], createdBy: 'u_bao', createdAt: T('2026-03-01', '08:30')
+  };
+  await DB.putMany('lesson_studies', [L1, L2, L3]);
+
+  const logs = [
+    { minute: 3,  group: 0, position: 'Cả lớp',        phase: 'receive',    level: 'positive',   engaged: 35, observed: 40, observerId: 'u_nam',  behavior: 'Phần lớn HS hứng thú khi xem ảnh kim tự tháp Ai Cập; 6 HS giơ tay kể tên đồ vật có dạng hình chóp.', suggestion: 'Có thể cho HS tự tìm thêm hình ảnh thực tế ở nhà từ tiết trước.' },
+    { minute: 7,  group: 3, position: 'Bàn 2',          phase: 'receive',    level: 'difficulty', engaged: 3,  observed: 5,  observerId: 'u_nam',  behavior: 'Nhóm 3 chưa hiểu yêu cầu gấp; 2 HS hỏi lại "gấp theo nét nào trước" – phiếu học tập chỉ có hình, không có các bước.', suggestion: 'Bổ sung lệnh giao việc 3 bước kèm hình minh họa từng bước trên phiếu.' },
+    { minute: 12, group: 5, position: 'Bàn 4',          phase: 'group',      level: 'positive',   engaged: 5,  observed: 5,  observerId: 'u_bao',  behavior: 'Nhóm 5 phân công rõ: 1 bạn cắt, 2 bạn gấp, 1 bạn dán, 1 bạn ghi chép; hoàn thành mô hình sớm 3 phút.', suggestion: 'Mời nhóm 5 chia sẻ cách phân công cho cả lớp.' },
+    { minute: 18, group: 3, position: 'Bàn 2',          phase: 'group',      level: 'difficulty', engaged: 3,  observed: 5,  observerId: 'u_nam',  behavior: 'Bàn 2 nhóm 3 học sinh lúng túng khi vẽ hình; nhóm trưởng chưa phân công việc, 2 HS ngồi chờ vì chưa rõ nhiệm vụ của mình.', suggestion: 'Giao thẻ vai trò cụ thể trước khi phát học liệu.' },
+    { minute: 22, group: 7, position: 'Bàn 6',          phase: 'individual', level: 'difficulty', engaged: 3,  observed: 5,  observerId: 'u_bao',  behavior: '3 HS nhầm trung đoạn với cạnh bên khi chỉ trên mô hình; GV chưa dùng mô hình lớn để chỉ cho cả lớp.', suggestion: 'Dùng mô hình khung lớn có tô màu trung đoạn; cho HS dùng que đánh dấu.' },
+    { minute: 26, group: 2, position: 'Bàn 1',          phase: 'individual', level: 'neutral',    engaged: 4,  observed: 5,  observerId: 'u_linh', behavior: 'HS ghi chép đầy đủ nhưng chủ yếu chép từ bảng, ít đặt câu hỏi.', suggestion: 'Thêm câu hỏi mở để HS tự diễn đạt bằng lời của mình.' },
+    { minute: 33, group: 4, position: 'Bàn 3',          phase: 'individual', level: 'difficulty', engaged: 3,  observed: 5,  observerId: 'u_nam',  behavior: 'Nhóm 4 tính diện tích xung quanh sai do dùng chiều cao thay cho trung đoạn; chưa được GV hỗ trợ kịp thời.', suggestion: 'Thêm bài tập "phát hiện lỗi sai" trước khi luyện tập.' },
+    { minute: 41, group: 6, position: 'Bàn 5',          phase: 'report',     level: 'positive',   engaged: 6,  observed: 6,  observerId: 'u_linh', behavior: 'Đại diện nhóm 6 trình bày tự tin, các nhóm khác nhận xét bổ sung; 1 HS nêu ứng dụng làm hộp quà hình chóp.', suggestion: 'Bổ sung rubric đánh giá đồng đẳng.' }
+  ].map((l, i) => ({ id: 'ob_' + (i + 1), lessonId: L1.id, kind: 'observation', createdAt: T('2026-10-15', `${String(8 + Math.floor((30 + l.minute) / 60)).padStart(2, '0')}:${String((30 + l.minute) % 60).padStart(2, '0')}`), ...l }));
+  await DB.putMany('observation_logs', logs);
+
+  L1.analysis = { text: mockAnalysis(L1), source: 'mock', at: T('2026-10-15', '11:00'), by: 'u_bao' };
+  await DB.put('lesson_studies', L1);
+  const mm = buildMockMinutes(L1);
+  Object.assign(mm, { id: 'mm_toan8_chop', status: 'final', createdBy: 'u_bao', createdAt: T('2026-10-15', '15:30'), updatedAt: T('2026-10-15', '16:10'), secretary: 'Võ Hoàng Nam' });
+  await DB.put('meeting_minutes', mm);
+  await DB.put('adapted_plans', {
+    id: 'ap_toan8_chop_v1', lessonId: L1.id, version: 1, status: 'final', source: 'manual', createdBy: 'u_trang', createdAt: T('2026-10-16', '21:00'),
+    note: 'KHBD viết lại sau SHCM, áp dụng cho lớp 8A1, 8A2, 8A4 trong tuần 8–9.',
+    rows: [
+      { activity: 'HĐ1. Khởi động (0–5′)', original: 'GV chiếu ảnh kim tự tháp, lều trại; hỏi: Các vật này có dạng hình gì? (GV nói ~3′)', revised: '• Giữ nguyên; bổ sung câu hỏi dự đoán số mặt, số đỉnh để tạo "xung đột nhận thức" dẫn vào HĐ2.\n• Rút xuống 4′.', reason: 'Phút 3: 35/40 HS hào hứng – hoạt động hiệu quả.' },
+      { activity: 'HĐ2. Khám phá – gấp mô hình (5–20′)', original: 'Phát tấm bìa in hình khai triển; nhóm gấp mô hình và gọi tên các yếu tố (phiếu học tập chỉ có hình). (GV nói ~3′)', revised: '• Lệnh giao việc 3 bước có hình minh họa (Cắt – Gấp theo nét đứt – Dán mép), chiếu suốt hoạt động.\n• Phát thẻ vai trò (Nhóm trưởng/Thư ký/Kỹ thuật/Báo cáo) TRƯỚC khi phát học liệu.\n• Mời 1 HS nhắc lại nhiệm vụ trước khi bắt đầu.', reason: 'Phút 7: Nhóm 3 hỏi lại cách gấp.\nPhút 18: Nhóm trưởng chưa phân công, 2 HS ngồi chờ.' },
+      { activity: 'HĐ3. Hình thành kiến thức (20–28′)', original: 'GV dùng hình vẽ trên bảng giới thiệu các yếu tố, trung đoạn; HS ghi vở. (GV nói ~5′)', revised: '• Dùng mô hình khung lớn: tô đỏ trung đoạn, xanh cạnh bên.\n• HS dùng que tre đặt lên mô hình nhóm để "chỉ và gọi tên" (Think – Pair – Share 2′).\n• Kiểm tra nhanh 3 câu trắc nghiệm (Plickers).', reason: 'Phút 22: 3 HS nhóm 7 nhầm trung đoạn với cạnh bên.\nPhút 26: HS chủ yếu chép bảng.' },
+      { activity: 'HĐ4. Luyện tập (28–38′)', original: 'HS làm cá nhân bài tập tính Sxq = p · d. (GV nói ~3′)', revised: '• Thêm bài "phát hiện lỗi sai" (dùng chiều cao thay trung đoạn) trước bài mới.\n• GV đi vòng theo bản đồ nhiệt: ưu tiên nhóm 3, 4, 7.\n• HS xong sớm làm "trợ giảng đồng đẳng".', reason: 'Phút 33: Nhóm 4 dùng sai chiều cao; chưa được hỗ trợ kịp thời.' },
+      { activity: 'HĐ5. Báo cáo – Vận dụng (38–45′)', original: 'Đại diện 1–2 nhóm trình bày; GV chốt kiến thức; giao bài về nhà. (GV nói ~3′)', revised: '• Giữ nguyên; bổ sung rubric đánh giá đồng đẳng 3 mức.\n• Nhiệm vụ vận dụng: thiết kế hộp quà hình chóp tam giác đều.', reason: 'Phút 41: Nhóm 6 trình bày tự tin; HS nêu ý tưởng hộp quà – phát huy.' }
+    ]
+  });
+  const A0 = (id, at, userId, action, entity, detail) => ({ id, at, userId, userName: users.find(u => u.id === userId).name, role: users.find(u => u.id === userId).role, action, entity, detail });
+  await DB.putMany('audit_logs', [
+    A0('al_s1', T('2026-10-01', '09:00'), 'u_bao', 'Thêm bài học', 'lesson_studies', 'Tạo chu trình "Hình chóp tam giác đều" – Toán 8'),
+    A0('al_s2', T('2026-10-07', '20:15'), 'u_trang', 'Tải lên KHBD', 'lesson_studies', 'KHBD_HinhChopTamGiacDeu_8A3.docx'),
+    A0('al_s3', T('2026-10-08', '15:20'), 'u_quan', 'Duyệt kế hoạch', 'lesson_studies', 'Duyệt KHBD minh họa Toán 8'),
+    A0('al_s4', T('2026-10-15', '08:48'), 'u_nam', 'Ghi dự giờ', 'observation_logs', 'Phút 18 – Nhóm 3: lúng túng khi vẽ hình'),
+    A0('al_s5', T('2026-10-15', '11:00'), 'u_bao', 'Phân tích AI', 'lesson_studies', 'Phân tích hoạt động học – Demo Sư phạm'),
+    A0('al_s6', T('2026-10-15', '15:30'), 'u_bao', 'Tạo biên bản', 'meeting_minutes', 'Biên bản SHCM 4 bước – Toán 8'),
+    A0('al_s7', T('2026-10-16', '21:00'), 'u_trang', 'Tinh chỉnh KHBD', 'adapted_plans', 'Phiên bản v1 sau SHCM'),
+    A0('al_s8', T('2026-10-20', '08:30'), 'u_bao', 'Thêm bài học', 'lesson_studies', 'Tạo chu trình "Nghệ thuật xây dựng nhân vật" – Ngữ văn 10')
+  ]);
+}
+
+// ---------------------------------------------------------------- 9. MODAL
+function openModal({ title, icon = 'sparkles', body, footer = '', size = 'max-w-2xl' }) {
+  $('#modalRoot').innerHTML = `
+  <div class="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm overflow-y-auto" onclick="if(event.target===this)A.closeModal()">
+    <div class="fade-in w-full ${size} bg-white rounded-2xl shadow-2xl my-8">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+        <h3 class="font-semibold text-lg flex items-center gap-2">${ic(icon, 'w-5 h-5 text-indigo-600')}${title}</h3>
+        <button onclick="A.closeModal()" class="p-2 rounded-lg hover:bg-slate-100" aria-label="Đóng">${ic('x', 'w-5 h-5')}</button>
+      </div>
+      <div class="px-6 py-5 max-h-[70vh] overflow-y-auto scroll-thin">${body}</div>
+      ${footer ? `<div class="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-2xl flex flex-wrap justify-end gap-2">${footer}</div>` : ''}
+    </div>
+  </div>`;
+  refreshIcons();
+}
+
+// ---------------------------------------------------------------- 10. RENDER CHÍNH
+const A = {}; window.A = A;
+function render() {
+  if (!state.user) { renderAuth(); refreshIcons(); return; }
+  $('#app').innerHTML = headerHTML() + `<main id="main" class="max-w-7xl mx-auto px-4 py-6"></main>` + footerHTML();
+  renderMain();
+}
+function renderMain() {
+  const m = $('#main'); if (!m) return;
+  const views = { plan: viewPlan, logger: viewLogger, analytics: viewAnalytics, minutes: viewMinutes, admin: viewAdmin };
+  m.innerHTML = `<div class="fade-in">${(views[state.tab] || viewPlan)()}</div>`;
+  refreshIcons();
+  if (state._refocus) { const el = $('#' + state._refocus); if (el) { el.focus(); const n = el.value.length; try { el.setSelectionRange(n, n); } catch (e) {} } state._refocus = null; }
+  if (state.tab === 'admin') updateStorageEstimate();
+  if (state.tab === 'logger') updateTimerUI();
+}
+
+/* ------------------------------ ĐĂNG NHẬP / ĐĂNG KÝ */
+function renderAuth() {
+  const t = state.authTab;
+  const opts = (arr, sel) => arr.map(x => `<option ${x === sel ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  $('#app').innerHTML = `
+  <div class="min-h-screen grid lg:grid-cols-2">
+    <div class="hidden lg:flex flex-col justify-between p-12 bg-gradient-to-br from-indigo-700 via-indigo-600 to-teal-500 text-white relative overflow-hidden">
+      <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-white/10"></div>
+      <div class="absolute -left-16 bottom-10 w-72 h-72 rounded-full bg-teal-300/20"></div>
+      <div class="relative flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center">${ic('graduation-cap', 'w-7 h-7')}</div>
+        <div><div class="font-bold text-xl">EduLesson Study CoPilot</div><div class="text-indigo-100 text-sm">Lesson Study · Learning Analytics · AI</div></div></div>
+      <div class="relative space-y-6">
+        <h1 class="text-4xl font-extrabold leading-tight">Số hóa Sinh hoạt chuyên môn<br>theo Nghiên cứu bài học</h1>
+        <p class="text-indigo-100 max-w-md">Từ kế hoạch bài dạy minh họa → nhật ký dự giờ quan sát học sinh → phân tích AI → biên bản 4 bước và KHBD tinh chỉnh. Một quy trình, một nguồn dữ liệu.</p>
+        <div class="grid grid-cols-2 gap-3 max-w-lg">
+          ${[['timer', 'Smart Logger 0–45′'], ['flame', 'Bản đồ nhiệt hoạt động học'], ['bot', 'AI chẩn đoán điểm nghẽn'], ['scroll-text', 'Biên bản chuẩn CV 1315'], ['building-2', 'Giám sát liên phân hiệu CV 5555'], ['database', 'IndexedDB · Sao lưu JSON/CSV']].map(([i, s]) => `<div class="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2 text-sm">${ic(i, 'w-4 h-4')}${s}</div>`).join('')}
+        </div>
+      </div>
+      <div class="relative text-xs text-indigo-100">Căn cứ: CV 1315/BGDĐT-GDTrH ngày 16/4/2020 · CV 5555/BGDĐT-GDTrH ngày 08/10/2014</div>
+    </div>
+    <div class="flex items-center justify-center p-6">
+      <div class="w-full max-w-md">
+        <div class="lg:hidden flex items-center gap-2 mb-6"><div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center">${ic('graduation-cap', 'w-6 h-6')}</div><div class="font-bold text-lg">EduLesson Study CoPilot</div></div>
+        <div class="${CARD} p-6">
+          <div class="grid grid-cols-2 p-1 bg-slate-100 rounded-xl mb-5 text-sm font-semibold">
+            <button onclick="A.authTab('login')" class="py-2 rounded-lg ${t === 'login' ? 'bg-white shadow text-indigo-700' : 'text-slate-500'}">Đăng nhập</button>
+            <button onclick="A.authTab('register')" class="py-2 rounded-lg ${t === 'register' ? 'bg-white shadow text-indigo-700' : 'text-slate-500'}">Đăng ký tài khoản</button>
+          </div>
+          ${t === 'login' ? `
+          <form onsubmit="event.preventDefault();A.login()" class="space-y-4">
+            <div><label class="${LABEL}">Email / Số điện thoại</label><input id="lgContact" class="${INPUT}" placeholder="vd: totruong.toan@edulesson.vn" autocomplete="username"></div>
+            <div><label class="${LABEL}">Mật khẩu</label><input id="lgPw" type="password" class="${INPUT}" placeholder="••••••" autocomplete="current-password"></div>
+            <div id="authErr" class="text-sm text-rose-600"></div>
+            <button class="${B.primary} w-full py-2.5">${ic('log-in')}Đăng nhập</button>
+          </form>` : `
+          <form onsubmit="event.preventDefault();A.register()" class="space-y-3">
+            <div><label class="${LABEL}">Họ và tên *</label><input id="rgName" class="${INPUT}" placeholder="Nguyễn Văn A"></div>
+            <div><label class="${LABEL}">Email / Số điện thoại *</label><input id="rgContact" class="${INPUT}" placeholder="email@truong.edu.vn hoặc 09xxxxxxxx"></div>
+            <div class="grid grid-cols-2 gap-3">
+              <div><label class="${LABEL}">Vai trò *</label><select id="rgRole" class="${INPUT}">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${k === 'observer' ? 'selected' : ''}>${r.label}</option>`).join('')}</select></div>
+              <div><label class="${LABEL}">Trường chính / Phân hiệu *</label><select id="rgCampus" class="${INPUT}">${opts(CAMPUSES)}</select></div>
+            </div>
+            <div><label class="${LABEL}">Tổ chuyên môn *</label><select id="rgDept" class="${INPUT}">${opts(DEPARTMENTS)}</select></div>
+            <div class="grid grid-cols-2 gap-3">
+              <div><label class="${LABEL}">Mật khẩu * (≥ 6 ký tự)</label><input id="rgPw" type="password" class="${INPUT}" autocomplete="new-password"></div>
+              <div><label class="${LABEL}">Nhập lại mật khẩu *</label><input id="rgPw2" type="password" class="${INPUT}" autocomplete="new-password"></div>
+            </div>
+            <p class="text-xs text-slate-500">Tài khoản vai trò Ban Giám hiệu cần Admin hiện hữu phê duyệt trước khi sử dụng.</p>
+            <div id="authErr" class="text-sm text-rose-600"></div>
+            <button class="${B.primary} w-full py-2.5">${ic('user-plus')}Tạo tài khoản</button>
+          </form>`}
+          <div class="mt-6 pt-5 border-t border-slate-100">
+            <div class="text-xs font-semibold text-slate-500 mb-2 flex items-center gap-1">${ic('zap', 'w-3.5 h-3.5 text-amber-500')}Trải nghiệm nhanh – 1-Click vào vai trò demo (mật khẩu demo: <code class="bg-slate-100 px-1 rounded">123456</code>)</div>
+            <div class="grid grid-cols-2 gap-2">${Object.entries(ROLES).map(([k, r]) => `<button onclick="A.quickSwitch('${k}')" class="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-xl ring-1 ${r.pill} hover:opacity-80">${ic(r.icon, 'w-4 h-4')}${r.label}</button>`).join('')}</div>
+          </div>
+        </div>
+        <p class="text-center text-xs text-slate-400 mt-4">Dữ liệu lưu cục bộ trên trình duyệt (IndexedDB). Không gửi lên máy chủ nào ngoài Gemini API khi bạn bật.</p>
+      </div>
+    </div>
+  </div>`;
+}
+A.authTab = t => { state.authTab = t; render(); };
+A.login = async () => {
+  const c = $('#lgContact').value.trim().toLowerCase(), pw = $('#lgPw').value; const err = $('#authErr');
+  const u = DB.all('users').find(x => x.contact.toLowerCase() === c);
+  if (!u || u.passwordHash !== await hashPw(pw)) { err.textContent = 'Sai thông tin đăng nhập.'; return; }
+  if (u.status === 'locked') { err.textContent = 'Tài khoản đã bị khóa. Liên hệ Ban Giám hiệu.'; return; }
+  if (u.status === 'pending') { err.textContent = 'Tài khoản đang chờ Admin phê duyệt.'; return; }
+  await signIn(u, 'Đăng nhập');
+};
+A.register = async () => {
+  const v = id => $('#' + id).value.trim(); const err = $('#authErr');
+  const name = v('rgName'), contact = v('rgContact'), role = v('rgRole'), campus = v('rgCampus'), department = v('rgDept'), pw = $('#rgPw').value, pw2 = $('#rgPw2').value;
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact), isPhone = /^(?:0|\+84)\d{9,10}$/.test(contact.replace(/[\s.]/g, ''));
+  if (name.length < 3) return err.textContent = 'Họ tên tối thiểu 3 ký tự.';
+  if (!isEmail && !isPhone) return err.textContent = 'Email hoặc số điện thoại không hợp lệ.';
+  if (DB.all('users').some(u => u.contact.toLowerCase() === contact.toLowerCase())) return err.textContent = 'Email/SĐT đã được đăng ký.';
+  if (pw.length < 6) return err.textContent = 'Mật khẩu tối thiểu 6 ký tự.';
+  if (pw !== pw2) return err.textContent = 'Mật khẩu nhập lại không khớp.';
+  const u = { id: uid('u'), name, contact, role, campus, department, title: ROLES[role].label, passwordHash: await hashPw(pw), status: role === 'admin' ? 'pending' : 'active', createdAt: nowISO(), lastLogin: null };
+  await DB.put('users', u);
+  const prev = state.user; state.user = u; await audit('Đăng ký', 'users', `${name} – ${ROLES[role].label} – ${campus}`); state.user = prev;
+  if (u.status === 'pending') { state.authTab = 'login'; render(); toast('Đăng ký thành công! Tài khoản BGH đang chờ phê duyệt.', 'success'); return; }
+  await signIn(u, 'Đăng nhập');
+  toast('Chào mừng ' + name + '!', 'success');
+};
+async function signIn(u, action) {
+  u.lastLogin = nowISO(); await DB.put('users', u);
+  state.user = u; localStorage.setItem(LS.session, u.id);
+  await audit(action, 'users', `${u.name} (${ROLES[u.role].label})`);
+  if (state.tab === 'admin' && u.role !== 'admin') state.tab = 'plan';
+  ensureLesson(); render();
+}
+A.quickSwitch = async role => {
+  const order = ['u_quan', 'u_hanh', 'u_bao', 'u_trang', 'u_nam', 'u_linh'];
+  const cands = DB.where('users', u => u.role === role && u.status === 'active').sort((a, b) => ((order.indexOf(a.id) + 99) % 99) - ((order.indexOf(b.id) + 99) % 99));
+  if (!cands.length) return toast('Không có tài khoản hoạt động cho vai trò này.', 'error');
+  await signIn(cands[0], 'Chuyển vai trò');
+  toast(`Đang dùng vai trò: ${ROLES[role].label} – ${cands[0].name}`, 'success');
+};
+A.logout = async () => { await audit('Đăng xuất', 'users', state.user.name); state.user = null; localStorage.removeItem(LS.session); render(); };
+
+/* ------------------------------ HEADER / FOOTER */
+function headerHTML() {
+  const u = state.user; const r = ROLES[u.role];
+  const roleBtns = cls => Object.entries(ROLES).map(([k, x]) => `<button onclick="A.quickSwitch('${k}')" title="${x.label}" class="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg ring-1 transition ${u.role === k ? x.active : 'bg-white text-slate-600 ring-slate-200 hover:bg-slate-50'} ${cls}">${ic(x.icon, 'w-3.5 h-3.5')}${x.short}</button>`).join('');
+  return `
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-indigo-600 to-teal-500 text-white flex items-center justify-center shadow">${ic('graduation-cap', 'w-6 h-6')}</div>
+        <div class="min-w-0"><div class="font-bold leading-tight truncate">EduLesson Study CoPilot</div><div class="text-xs text-slate-500 truncate">${esc(Settings.get('schoolName'))}</div></div>
+      </div>
+      <div class="ml-auto flex items-center gap-2">
+        <div class="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-slate-100" title="1-Click Role Switcher"><span class="text-[10px] font-bold text-slate-400 px-1.5 uppercase tracking-wide">Vai trò</span>${roleBtns('')}</div>
+        <button onclick="A.openAI()" class="${B.secondary} !px-2.5" title="Cấu hình AI">${aiReady() ? `<span class="w-2 h-2 rounded-full bg-emerald-500"></span>${ic('sparkles', 'w-4 h-4 text-violet-600')}<span class="hidden sm:inline">Gemini</span>` : `<span class="w-2 h-2 rounded-full bg-amber-500"></span>${ic('bot', 'w-4 h-4 text-violet-600')}<span class="hidden sm:inline">Demo AI</span>`}</button>
+        <details class="relative">
+          <summary class="${B.secondary} !px-2.5" title="Sao lưu / Khôi phục">${ic('database', 'w-4 h-4 text-indigo-600')}<span class="hidden sm:inline">Dữ liệu</span>${ic('chevron-down', 'w-3.5 h-3.5')}</summary>
+          <div class="absolute right-0 mt-2 w-72 ${CARD} p-2 z-40 text-sm">
+            <div class="px-3 py-1.5 text-[11px] font-bold uppercase text-slate-400">Sao lưu Database</div>
+            <button onclick="A.exportJSON()" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50">${ic('file-json', 'w-4 h-4 text-indigo-600')}Xuất toàn bộ (JSON)</button>
+            ${['lesson_studies', 'observation_logs', 'users', 'audit_logs'].map(s => `<button onclick="A.exportCSV('${s}')" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50">${ic('file-spreadsheet', 'w-4 h-4 text-emerald-600')}CSV · ${STORE_LABELS[s]}</button>`).join('')}
+            <div class="px-3 pt-2 pb-1.5 text-[11px] font-bold uppercase text-slate-400 border-t border-slate-100 mt-1">Khôi phục</div>
+            <label class="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50 cursor-pointer">${ic('upload', 'w-4 h-4 text-amber-600')}Nhập JSON (khôi phục)<input type="file" accept=".json,application/json" class="hidden" onchange="A.importJSON(this)"></label>
+          </div>
+        </details>
+        <details class="relative">
+          <summary class="flex items-center gap-2 pl-1 pr-2 py-1 rounded-xl hover:bg-slate-100">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-slate-700 to-slate-500 text-white text-xs font-bold flex items-center justify-center">${initials(u.name)}</div>
+            <div class="hidden md:block text-left leading-tight"><div class="text-sm font-semibold max-w-[140px] truncate">${esc(u.name)}</div><div class="text-[11px] text-slate-500">${r.label}</div></div>
+          </summary>
+          <div class="absolute right-0 mt-2 w-64 ${CARD} p-3 z-40 text-sm">
+            <div class="font-semibold">${esc(u.name)}</div><div class="text-xs text-slate-500 mb-2">${esc(u.contact)}</div>
+            <div class="flex flex-wrap gap-1 mb-3"><span class="text-[11px] px-2 py-0.5 rounded-full ring-1 ${r.pill}">${r.label}</span><span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100">${esc(u.department)}</span><span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100">${esc(u.campus)}</span></div>
+            <button onclick="A.logout()" class="${B.danger} w-full">${ic('log-out')}Đăng xuất</button>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="lg:hidden max-w-7xl mx-auto px-4 pb-2 flex items-center gap-1 overflow-x-auto scroll-thin"><span class="text-[10px] font-bold text-slate-400 uppercase mr-1 shrink-0">1-Click</span>${roleBtns('shrink-0')}</div>
+    <nav class="max-w-7xl mx-auto px-4 flex gap-1 overflow-x-auto scroll-thin">
+      ${MODULES.map((m, i) => `<button onclick="A.go('${m.id}')" class="shrink-0 flex items-center gap-2 px-3 py-2.5 text-sm font-medium border-b-2 transition ${state.tab === m.id ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-800'}">
+        ${ic(m.icon, 'w-4 h-4')}<span class="hidden sm:inline text-[10px] font-bold px-1.5 py-0.5 rounded ${state.tab === m.id ? 'bg-indigo-100' : 'bg-slate-100'}">${i + 1} · ${m.step}</span>${m.title}${m.id === 'admin' && !can('admin.view') ? ic('lock', 'w-3 h-3 text-slate-400') : ''}</button>`).join('')}
+    </nav>
+  </header>`;
+}
+function footerHTML() {
+  return `<footer class="max-w-7xl mx-auto px-4 py-8 text-xs text-slate-400 flex flex-wrap gap-x-6 gap-y-1 justify-between">
+    <span>${APP.name} v${APP.version} · Database: ${DB.mode} · AI: ${aiReady() ? 'Gemini ' + esc(Settings.get('model')) : 'Demo Sư phạm (Mock)'}</span>
+    <span>Quy trình NCBH 4 bước theo CV 1315/BGDĐT-GDTrH · Quản trị chuyên môn theo CV 5555/BGDĐT-GDTrH</span></footer>`;
+}
+A.go = tab => { state.tab = tab; localStorage.setItem(LS.tab, tab); state.minutesEdit = false; state.planEdit = false; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+A.pickLesson = (id, scroll) => { state.lessonId = id; localStorage.setItem(LS.lesson, id); state.minutesEdit = false; state.planEdit = false; renderMain(); if (scroll) setTimeout(() => $('#lessonDetail')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); };
+
+function pageTitle(step, title, sub, actions = '') {
+  return `<div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+    <div><div class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-1">${step}</div><h1 class="text-2xl font-extrabold text-slate-900">${title}</h1><p class="text-sm text-slate-500 mt-1 max-w-3xl">${sub}</p></div>
+    <div class="flex flex-wrap gap-2">${actions}</div></div>`;
+}
+function lessonPicker() {
+  const l = curLesson();
+  return `<div class="${CARD} p-3 mb-6 flex flex-wrap items-center gap-3">
+    <div class="flex items-center gap-2 text-sm font-semibold text-slate-600">${ic('book-open', 'w-4 h-4 text-indigo-600')}Chu trình NCBH:</div>
+    <select onchange="A.pickLesson(this.value)" class="${INPUT} !w-auto min-w-[260px] flex-1 max-w-xl">${sortedLessons().map(x => `<option value="${x.id}" ${x.id === state.lessonId ? 'selected' : ''}>${esc(x.subject)} ${x.grade} – ${esc(x.title)} (${fmtD(x.date)} · ${esc(x.campus)})</option>`).join('')}</select>
+    ${l ? `<span class="text-xs px-2 py-1 rounded-full ${STATUS[l.status].cls}">${STATUS[l.status].label}</span><span class="text-xs text-slate-500">${ic('user', 'w-3.5 h-3.5 inline')} ${esc(teacherName(l))} · ${obsLogs(l.id).length} ghi chép</span>` : ''}
+  </div>`;
+}
+const emptyState = (icon, title, sub, action = '') => `<div class="${CARD} p-10 text-center"><div class="w-14 h-14 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">${ic(icon, 'w-7 h-7')}</div><div class="font-semibold">${title}</div><p class="text-sm text-slate-500 mt-1">${sub}</p>${action ? `<div class="mt-4">${action}</div>` : ''}</div>`;
+
+/* ================================================================ PHÂN HỆ 1 – KẾ HOẠCH */
+function filteredLessons() {
+  const f = state.filters, q = f.q.trim().toLowerCase();
+  return sortedLessons().filter(l => (!f.subject || l.subject === f.subject) && (!f.grade || String(l.grade) === f.grade) && (!f.campus || l.campus === f.campus) && (!f.term || termKey(l) === f.term) && (!f.status || l.status === f.status)
+    && (!q || [l.title, l.subject, l.className, teacherName(l), l.department, l.campus].join(' ').toLowerCase().includes(q)));
+}
+A.setFilter = (k, v, focusId) => { state.filters[k] = v; if (focusId) state._refocus = focusId; clearTimeout(state._ft); state._ft = setTimeout(renderMain, focusId ? 280 : 0); };
+A.resetFilters = () => { state.filters = { q: '', subject: '', grade: '', campus: '', term: '', status: '' }; renderMain(); };
+
+function viewPlan() {
+  const f = state.filters; const all = DB.all('lesson_studies'); const list = filteredLessons();
+  const uniq = arr => [...new Set(arr)].filter(Boolean).sort();
+  const sel = (k, label, items, fmt = x => x) => `<select onchange="A.setFilter('${k}',this.value)" class="${INPUT}"><option value="">${label}</option>${items.map(x => `<option value="${esc(x)}" ${String(f[k]) === String(x) ? 'selected' : ''}>${esc(fmt(x))}</option>`).join('')}</select>`;
+  const l = curLesson();
+  return pageTitle('Phân hệ 1 · Bước 1 chu trình', 'Kế hoạch bài dạy minh họa & Mục tiêu nghiên cứu', 'Tổ chuyên môn xác định bài học, mục tiêu học sinh cần đạt, hoạt động học trọng tâm cần quan sát kỹ và phân công giáo viên dự giờ.',
+    can('lesson.create') ? `<button onclick="A.openLessonForm()" class="${B.primary}">${ic('plus')}Tạo chu trình NCBH</button>` : '')
+  + `<div class="${CARD} p-4 mb-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div class="col-span-2 relative">${ic('search', 'w-4 h-4 absolute left-3 top-2.5 text-slate-400')}<input id="fq" value="${esc(f.q)}" oninput="A.setFilter('q',this.value,'fq')" class="${INPUT} pl-9" placeholder="Tìm tên bài, GV, lớp, tổ..."></div>
+        ${sel('subject', 'Môn học', uniq(all.map(x => x.subject)))}
+        ${sel('grade', 'Khối lớp', uniq(all.map(x => String(x.grade))).sort((a, b) => a - b), x => 'Khối ' + x)}
+        ${sel('campus', 'Điểm trường', uniq(all.map(x => x.campus)))}
+        ${sel('term', 'Năm học · Học kỳ', uniq(all.map(termKey)).reverse())}
+        ${sel('status', 'Trạng thái', Object.keys(STATUS), x => STATUS[x].label)}
+      </div>
+      <div class="flex items-center justify-between mt-3 text-xs text-slate-500"><span>Tìm thấy <b class="text-slate-800">${list.length}</b> / ${all.length} chu trình NCBH</span><button onclick="A.resetFilters()" class="${B.ghost} !py-1 !text-xs">${ic('rotate-ccw', 'w-3.5 h-3.5')}Xóa bộ lọc</button></div>
+    </div>
+    ${list.length ? `<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">${list.map(lessonCard).join('')}</div>` : emptyState('search-x', 'Không có chu trình phù hợp', 'Thử thay đổi bộ lọc hoặc tạo chu trình mới.')}
+    ${l ? lessonDetail(l) : ''}
+    ${historyTable()}`;
+}
+function lessonCard(l) {
+  const st = STATUS[l.status]; const n = obsLogs(l.id).length; const active = l.id === state.lessonId;
+  return `<button onclick="A.pickLesson('${l.id}',true)" class="text-left ${CARD} overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition ${active ? 'ring-2 ring-indigo-500' : ''}">
+    <div class="h-1.5 bg-gradient-to-r ${SUBJECT_COLORS[l.subject] || 'from-slate-500 to-slate-400'}"></div>
+    <div class="p-4">
+      <div class="flex items-center justify-between gap-2 mb-2"><span class="text-xs font-bold text-slate-500">Môn ${esc(l.subject)} ${l.grade} · ${esc(l.className || '')}</span><span class="text-[11px] px-2 py-0.5 rounded-full ${st.cls} flex items-center gap-1">${ic(st.icon, 'w-3 h-3')}${st.label}</span></div>
+      <div class="font-bold text-slate-900 leading-snug mb-3">"${esc(l.title)}"</div>
+      <div class="space-y-1 text-xs text-slate-500">
+        <div class="flex items-center gap-1.5">${ic('calendar', 'w-3.5 h-3.5')}${fmtD(l.date)} · ${esc(l.period || '')} · ${esc(termKey(l))}</div>
+        <div class="flex items-center gap-1.5">${ic('user', 'w-3.5 h-3.5')}GV dạy: ${esc(teacherName(l))}</div>
+        <div class="flex items-center gap-1.5">${ic('map-pin', 'w-3.5 h-3.5')}${esc(l.campus)} · ${esc(l.department)}</div>
+      </div>
+      <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100 text-[11px]">
+        <span class="px-2 py-0.5 rounded-full ${l.approved ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}">${l.approved ? '✓ BGH đã duyệt' : 'Chờ duyệt'}</span>
+        <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">${(l.observerIds || []).length} GV dự</span>
+        <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700">${n} ghi chép</span>
+      </div>
+    </div></button>`;
+}
+function lessonDetail(l) {
+  const st = STATUS[l.status]; const acts = l.activities || []; const dur = l.duration || 45;
+  const observers = (l.observerIds || []).map(userById).filter(Boolean);
+  return `<div id="lessonDetail" class="mt-8 ${CARD} overflow-hidden scroll-mt-32">
+    <div class="p-6 bg-gradient-to-r from-indigo-50 via-white to-teal-50 border-b border-slate-100 flex flex-wrap gap-4 items-start justify-between">
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-indigo-600 text-white">Bài học minh họa</span>
+          <span class="text-xs px-2 py-0.5 rounded-full ${st.cls}">${st.label}</span>
+          <span class="text-xs px-2 py-0.5 rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${l.approved ? `✓ Duyệt bởi ${esc(userName(l.approvedBy))}` : 'Chờ BGH duyệt'}</span>
+        </div>
+        <h2 class="text-xl font-extrabold">Môn ${esc(l.subject)} ${l.grade} – "${esc(l.title)}"</h2>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-500 mt-2">
+          <span>${ic('calendar', 'w-4 h-4 inline')} ${fmtD(l.date)} · ${esc(l.period || '')}</span><span>${ic('school', 'w-4 h-4 inline')} Lớp ${esc(l.className || '—')} · ${l.classSize || '—'} HS · ${l.groups || '—'} nhóm</span>
+          <span>${ic('map-pin', 'w-4 h-4 inline')} ${esc(l.room || '')} – ${esc(l.campus)}</span><span>${ic('user', 'w-4 h-4 inline')} GV dạy: <b class="text-slate-700">${esc(teacherName(l))}</b></span>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        ${can('lesson.approve') ? (l.approved ? `<button onclick="A.approveLesson('${l.id}',false)" class="${B.secondary}">${ic('undo-2')}Hủy duyệt</button>` : `<button onclick="A.approveLesson('${l.id}',true)" class="${B.success}">${ic('badge-check')}Duyệt kế hoạch</button>`) : ''}
+        ${can('lesson.edit') ? `<select onchange="A.setStatus('${l.id}',this.value)" class="${INPUT} !w-auto">${Object.entries(STATUS).map(([k, s]) => `<option value="${k}" ${k === l.status ? 'selected' : ''}>${s.label}</option>`).join('')}</select>
+          <button onclick="A.openLessonForm('${l.id}')" class="${B.secondary}">${ic('pencil')}Sửa</button><button onclick="A.deleteLesson('${l.id}')" class="${B.danger}">${ic('trash-2')}</button>` : ''}
+        <button onclick="A.go('logger')" class="${B.primary}">${ic('timer')}Vào dự giờ</button>
+      </div>
+    </div>
+    <div class="p-6 grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 space-y-6">
+        <div class="rounded-2xl bg-indigo-600 text-white p-5"><div class="text-xs font-bold uppercase tracking-wide text-indigo-200 mb-1 flex items-center gap-1">${ic('target', 'w-3.5 h-3.5')}Câu hỏi nghiên cứu của tổ</div><div class="font-semibold leading-relaxed">${esc(l.researchQuestion || 'Chưa xác định')}</div></div>
+        <div><h3 class="font-bold mb-2 flex items-center gap-2">${ic('list-checks', 'w-4 h-4 text-emerald-600')}Mục tiêu học sinh cần đạt</h3>
+          <ul class="space-y-2">${(l.objectives || []).map((o, i) => `<li class="flex gap-3 text-sm"><span class="w-6 h-6 shrink-0 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center justify-center">${i + 1}</span><span class="pt-0.5">${esc(o)}</span></li>`).join('') || '<li class="text-sm text-slate-400">Chưa có</li>'}</ul></div>
+        <div class="rounded-2xl border-2 border-dashed border-amber-300 bg-amber-50 p-4"><div class="text-xs font-bold uppercase text-amber-700 mb-1 flex items-center gap-1">${ic('eye', 'w-3.5 h-3.5')}Hoạt động học trọng tâm cần quan sát kỹ</div><div class="text-sm text-amber-900">${esc(l.focusActivity || '—')}</div></div>
+        <div><h3 class="font-bold mb-3 flex items-center gap-2">${ic('clock', 'w-4 h-4 text-indigo-600')}Chuỗi hoạt động học (0 – ${dur} phút)</h3>
+          <div class="flex h-9 rounded-xl overflow-hidden ring-1 ring-slate-200 mb-3">${acts.map(a => `<div title="${esc(a.name)}" style="width:${(a.end - a.start) / dur * 100}%;background:${PHASES[a.phase]?.hex}" class="text-white text-[10px] font-bold flex items-center justify-center border-r border-white/50 truncate px-1">${a.start}–${a.end}′</div>`).join('')}</div>
+          <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-xs text-slate-500 text-left"><tr><th class="py-2 pr-2">Hoạt động</th><th class="pr-2">Thời gian</th><th class="pr-2">Hình thức</th><th class="pr-2">GV nói</th><th>Mô tả</th></tr></thead>
+          <tbody class="divide-y divide-slate-100">${acts.map(a => `<tr><td class="py-2 pr-2 font-medium">${esc(a.name)}</td><td class="pr-2 whitespace-nowrap">${a.start}–${a.end}′</td><td class="pr-2"><span class="text-[11px] px-2 py-0.5 rounded-full ${PHASES[a.phase]?.cls}">${PHASES[a.phase]?.short}</span></td><td class="pr-2">${a.teacherTalk || 0}′</td><td class="text-slate-500 text-xs">${esc(a.desc || '')}</td></tr>`).join('')}</tbody></table></div>
+        </div>
+      </div>
+      <div class="space-y-5">
+        <div class="rounded-2xl border border-slate-200 p-4"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('users', 'w-4 h-4 text-indigo-600')}GV tham gia dự giờ (${observers.length})</h3>
+          <div class="space-y-2">${observers.map(u => `<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold flex items-center justify-center">${initials(u.name)}</div><div class="leading-tight"><div class="text-sm font-medium">${esc(u.name)}</div><div class="text-[11px] text-slate-500">${esc(u.title || ROLES[u.role].label)} · ${esc(u.campus)}</div></div></div>`).join('') || '<div class="text-sm text-slate-400">Chưa phân công</div>'}</div></div>
+        <div class="rounded-2xl border border-slate-200 p-4"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('paperclip', 'w-4 h-4 text-indigo-600')}Kế hoạch bài dạy (KHBD)</h3>
+          ${l.planFile ? `<div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50"><div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center">${ic('file-text', 'w-5 h-5')}</div><div class="min-w-0 flex-1"><div class="text-sm font-medium truncate">${esc(l.planFile.name)}</div><div class="text-[11px] text-slate-500">${fmtBytes(l.planFile.size || 0)} · ${esc(userName(l.planFile.uploadedBy))} · ${fmtDT(l.planFile.uploadedAt)}</div></div>${l.planFile.dataUrl ? `<a href="${l.planFile.dataUrl}" download="${esc(l.planFile.name)}" class="p-2 rounded-lg hover:bg-white" title="Tải về">${ic('download')}</a>` : ''}</div>` : '<div class="text-sm text-slate-400 mb-2">Chưa tải lên KHBD.</div>'}
+          ${canUpload(l) ? `<label class="${B.secondary} w-full mt-3 cursor-pointer">${ic('upload')}Tải lên KHBD (.docx, .pdf, .txt)<input type="file" accept=".doc,.docx,.pdf,.txt,.md,.pptx" class="hidden" onchange="A.uploadPlan(this,'${l.id}')"></label>` : ''}
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-4"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('route', 'w-4 h-4 text-indigo-600')}Tiến trình chu trình</h3>
+          ${[['Bước 1', 'KHBD & mục tiêu', true, 'plan'], ['Bước 2', 'Dạy minh họa & dự giờ', obsLogs(l.id).length > 0, 'logger'], ['AI', 'Phân tích hoạt động học', !!l.analysis, 'analytics'], ['Bước 3', 'Biên bản thảo luận', !!minutesOf(l.id), 'minutes'], ['Bước 4', 'KHBD tinh chỉnh', plansOf(l.id).length > 0, 'minutes']].map(([s, t, done, tab]) => `<button onclick="A.go('${tab}')" class="w-full flex items-center gap-3 py-1.5 text-left hover:bg-slate-50 rounded-lg px-1"><span class="w-6 h-6 rounded-full flex items-center justify-center ${done ? 'bg-emerald-500 text-white' : 'bg-slate-200 text-slate-400'}">${ic(done ? 'check' : 'circle', 'w-3.5 h-3.5')}</span><span class="text-sm"><b>${s}</b> · ${t}</span></button>`).join('')}
+        </div>
+      </div>
+    </div></div>`;
+}
+function historyTable() {
+  const groups = {}; sortedLessons().forEach(l => (groups[termKey(l)] = groups[termKey(l)] || []).push(l));
+  return `<div class="mt-8 ${CARD} p-5"><h3 class="font-bold mb-4 flex items-center gap-2">${ic('history', 'w-4 h-4 text-indigo-600')}Tra cứu lịch sử Sinh hoạt chuyên môn qua các học kỳ</h3>
+    <div class="space-y-5">${Object.entries(groups).map(([term, ls]) => `<div><div class="text-xs font-bold uppercase text-slate-500 mb-2">${esc(term)} · ${ls.length} chu trình</div>
+      <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-xs text-slate-500 bg-slate-50 text-left"><tr><th class="p-2">Ngày</th><th class="p-2">Môn – Bài học</th><th class="p-2">GV dạy</th><th class="p-2">Điểm trường</th><th class="p-2">Dự giờ</th><th class="p-2">Biên bản</th><th class="p-2">Trạng thái</th></tr></thead>
+      <tbody class="divide-y divide-slate-100">${ls.map(l => `<tr class="hover:bg-slate-50 cursor-pointer" onclick="A.pickLesson('${l.id}',true)"><td class="p-2 whitespace-nowrap">${fmtD(l.date)}</td><td class="p-2"><b>${esc(l.subject)} ${l.grade}</b> – ${esc(l.title)}</td><td class="p-2">${esc(teacherName(l))}</td><td class="p-2">${esc(l.campus)}</td><td class="p-2">${obsLogs(l.id).length}</td><td class="p-2">${minutesOf(l.id) ? '✓' : '—'}</td><td class="p-2"><span class="text-[11px] px-2 py-0.5 rounded-full ${STATUS[l.status].cls}">${STATUS[l.status].label}</span></td></tr>`).join('')}</tbody></table></div></div>`).join('')}</div></div>`;
+}
+A.approveLesson = async (id, ok) => {
+  const l = DB.get('lesson_studies', id); l.approved = ok; l.approvedBy = ok ? state.user.id : null; l.approvedAt = ok ? nowISO() : null;
+  await DB.put('lesson_studies', l); await audit(ok ? 'Duyệt kế hoạch' : 'Hủy duyệt kế hoạch', 'lesson_studies', l.title); renderMain(); toast(ok ? 'Đã duyệt kế hoạch bài dạy minh họa.' : 'Đã hủy duyệt.', 'success');
+};
+A.setStatus = async (id, st) => { const l = DB.get('lesson_studies', id); l.status = st; await DB.put('lesson_studies', l); await audit('Cập nhật trạng thái', 'lesson_studies', `${l.title} → ${STATUS[st].label}`); renderMain(); };
+A.deleteLesson = async id => {
+  const l = DB.get('lesson_studies', id); if (!confirm(`Xóa chu trình "${l.title}" và toàn bộ nhật ký, biên bản liên quan?`)) return;
+  for (const s of ['observation_logs', 'meeting_minutes', 'adapted_plans']) for (const x of DB.where(s, x => x.lessonId === id)) await DB.remove(s, x.id);
+  await DB.remove('lesson_studies', id); await audit('Xóa bài học', 'lesson_studies', l.title); state.lessonId = null; ensureLesson(); renderMain(); toast('Đã xóa chu trình.', 'success');
+};
+A.uploadPlan = (input, id) => {
+  const f = input.files[0]; if (!f) return; if (f.size > 5 * 1048576) return toast('Tệp vượt quá 5MB.', 'error');
+  const isText = /\.(txt|md)$/i.test(f.name); const rd = new FileReader();
+  rd.onload = async () => {
+    const l = DB.get('lesson_studies', id);
+    const dataUrl = isText ? 'data:text/plain;charset=utf-8,' + encodeURIComponent(rd.result) : (f.size <= 2 * 1048576 ? rd.result : null);
+    l.planFile = { name: f.name, size: f.size, type: f.type, uploadedAt: nowISO(), uploadedBy: state.user.id, dataUrl, text: isText ? String(rd.result).slice(0, 20000) : null };
+    await DB.put('lesson_studies', l); await audit('Tải lên KHBD', 'lesson_studies', `${f.name} – ${l.title}`); renderMain(); toast('Đã tải lên KHBD.', 'success');
+  };
+  isText ? rd.readAsText(f) : rd.readAsDataURL(f);
+};
+function actRowHTML(a = {}) {
+  return `<div class="act-row grid grid-cols-12 gap-1.5 items-center">
+    <input data-f="name" class="${INPUT} col-span-3 !text-xs" placeholder="Tên hoạt động" value="${esc(a.name || '')}">
+    <input data-f="start" type="number" min="0" max="120" class="${INPUT} col-span-1 !px-1.5 !text-xs" placeholder="Từ" value="${a.start ?? ''}">
+    <input data-f="end" type="number" min="0" max="120" class="${INPUT} col-span-1 !px-1.5 !text-xs" placeholder="Đến" value="${a.end ?? ''}">
+    <select data-f="phase" class="${INPUT} col-span-2 !px-1.5 !text-xs">${Object.entries(PHASES).map(([k, p]) => `<option value="${k}" ${k === a.phase ? 'selected' : ''}>${p.short}</option>`).join('')}</select>
+    <input data-f="teacherTalk" type="number" min="0" class="${INPUT} col-span-1 !px-1.5 !text-xs" placeholder="GV nói" value="${a.teacherTalk ?? ''}">
+    <input data-f="desc" class="${INPUT} col-span-3 !text-xs" placeholder="Mô tả" value="${esc(a.desc || '')}">
+    <button type="button" onclick="this.closest('.act-row').remove()" class="col-span-1 p-2 text-rose-500 hover:bg-rose-50 rounded-lg flex justify-center">${ic('x')}</button></div>`;
+}
+A.addActRow = () => { $('#actRows').insertAdjacentHTML('beforeend', actRowHTML()); refreshIcons(); };
+A.openLessonForm = id => {
+  const l = id ? DB.get('lesson_studies', id) : { subject: 'Toán', grade: 8, duration: 45, schoolYear: '2026-2027', semester: 'HK1', campus: state.user.campus, department: state.user.department !== 'Ban Giám hiệu' ? state.user.department : DEPARTMENTS[0], classSize: 40, groups: 8, observerIds: [], objectives: [], activities: [{ name: 'HĐ1. Khởi động', start: 0, end: 5, phase: 'receive', teacherTalk: 3 }, { name: 'HĐ2. Hình thành kiến thức', start: 5, end: 25, phase: 'group', teacherTalk: 4 }, { name: 'HĐ3. Luyện tập', start: 25, end: 38, phase: 'individual', teacherTalk: 3 }, { name: 'HĐ4. Vận dụng – Báo cáo', start: 38, end: 45, phase: 'report', teacherTalk: 2 }] };
+  const users = DB.where('users', u => u.status === 'active');
+  const opt = (arr, v) => arr.map(x => `<option ${String(x) === String(v) ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  openModal({
+    title: id ? 'Sửa chu trình NCBH' : 'Tạo chu trình Nghiên cứu bài học', icon: 'book-open-check', size: 'max-w-4xl',
+    body: `<div class="space-y-4">
+      <div class="grid md:grid-cols-4 gap-3">
+        <div class="md:col-span-2"><label class="${LABEL}">Tên bài học *</label><input id="lfTitle" class="${INPUT}" value="${esc(l.title || '')}" placeholder="vd: Hình chóp tam giác đều"></div>
+        <div><label class="${LABEL}">Môn học</label><select id="lfSubject" class="${INPUT}">${opt(SUBJECTS, l.subject)}</select></div>
+        <div><label class="${LABEL}">Khối</label><select id="lfGrade" class="${INPUT}">${opt([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], l.grade)}</select></div>
+        <div><label class="${LABEL}">Lớp</label><input id="lfClass" class="${INPUT}" value="${esc(l.className || '')}"></div>
+        <div><label class="${LABEL}">Ngày dạy</label><input id="lfDate" type="date" class="${INPUT}" value="${esc(l.date || '')}"></div>
+        <div><label class="${LABEL}">Tiết / Phòng</label><div class="flex gap-1"><input id="lfPeriod" class="${INPUT}" value="${esc(l.period || '')}" placeholder="Tiết 3"><input id="lfRoom" class="${INPUT}" value="${esc(l.room || '')}" placeholder="P.204"></div></div>
+        <div><label class="${LABEL}">Thời lượng (phút)</label><input id="lfDur" type="number" class="${INPUT}" value="${l.duration || 45}"></div>
+        <div><label class="${LABEL}">Năm học</label><input id="lfYear" class="${INPUT}" value="${esc(l.schoolYear || '')}"></div>
+        <div><label class="${LABEL}">Học kỳ</label><select id="lfSem" class="${INPUT}">${opt(['HK1', 'HK2'], l.semester)}</select></div>
+        <div><label class="${LABEL}">Điểm trường</label><select id="lfCampus" class="${INPUT}">${opt(CAMPUSES, l.campus)}</select></div>
+        <div><label class="${LABEL}">Tổ chuyên môn</label><select id="lfDept" class="${INPUT}">${opt(DEPARTMENTS, l.department)}</select></div>
+        <div><label class="${LABEL}">GV dạy minh họa</label><select id="lfTeacher" class="${INPUT}"><option value="">— Nhập tên ngoài hệ thống —</option>${users.map(u => `<option value="${u.id}" ${u.id === l.teacherId ? 'selected' : ''}>${esc(u.name)} (${ROLES[u.role].short})</option>`).join('')}</select></div>
+        <div><label class="${LABEL}">Tên GV (nếu ngoài hệ thống)</label><input id="lfTeacherName" class="${INPUT}" value="${esc(l.teacherName || '')}"></div>
+        <div><label class="${LABEL}">Sĩ số / Số nhóm</label><div class="flex gap-1"><input id="lfSize" type="number" class="${INPUT}" value="${l.classSize || ''}"><input id="lfGroups" type="number" class="${INPUT}" value="${l.groups || ''}"></div></div>
+      </div>
+      <div class="flex items-center justify-between"><span class="text-sm font-semibold">Mục tiêu nghiên cứu</span><button type="button" onclick="A.aiSuggestLesson()" class="${B.ai} !py-1.5 !text-xs" id="btnAiSuggest">${ic('sparkles', 'w-3.5 h-3.5')}AI gợi ý mục tiêu</button></div>
+      <div><label class="${LABEL}">Câu hỏi nghiên cứu</label><textarea id="lfRQ" rows="2" class="${INPUT}">${esc(l.researchQuestion || '')}</textarea></div>
+      <div class="grid md:grid-cols-2 gap-3">
+        <div><label class="${LABEL}">Mục tiêu học sinh cần đạt (mỗi dòng 1 mục tiêu)</label><textarea id="lfObj" rows="5" class="${INPUT}">${esc((l.objectives || []).join('\n'))}</textarea></div>
+        <div><label class="${LABEL}">Hoạt động học trọng tâm cần quan sát kỹ</label><textarea id="lfFocus" rows="5" class="${INPUT}">${esc(l.focusActivity || '')}</textarea></div>
+      </div>
+      <div><div class="flex items-center justify-between mb-2"><label class="${LABEL} !mb-0">Chuỗi hoạt động (phút bắt đầu – kết thúc · hình thức · phút GV nói)</label><button type="button" onclick="A.addActRow()" class="${B.ghost} !py-1 !text-xs">${ic('plus', 'w-3.5 h-3.5')}Thêm hoạt động</button></div>
+        <div id="actRows" class="space-y-1.5">${(l.activities || []).map(actRowHTML).join('')}</div></div>
+      <div><label class="${LABEL}">Danh sách GV tham gia dự giờ</label>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-2">${users.map(u => `<label class="flex items-center gap-2 text-sm p-2 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer"><input type="checkbox" class="lfObs accent-indigo-600" value="${u.id}" ${(l.observerIds || []).includes(u.id) ? 'checked' : ''}><span class="truncate">${esc(u.name)}</span><span class="ml-auto text-[10px] px-1.5 rounded ${ROLES[u.role].pill}">${ROLES[u.role].short}</span></label>`).join('')}</div></div>
+    </div>`,
+    footer: `<button onclick="A.closeModal()" class="${B.secondary}">Hủy</button><button onclick="A.saveLesson('${id || ''}')" class="${B.primary}">${ic('save')}Lưu chu trình</button>`
+  });
+};
+A.aiSuggestLesson = async () => {
+  const title = $('#lfTitle').value.trim(), subject = $('#lfSubject').value, grade = $('#lfGrade').value;
+  if (!title) return toast('Nhập tên bài học trước.', 'warn');
+  const btn = $('#btnAiSuggest'); btn.disabled = true; btn.innerHTML = 'Đang gợi ý...';
+  const r = await aiRun(() => mockLessonSuggest(title, subject, grade), `Bạn là chuyên gia SHCM theo Nghiên cứu bài học (CV 1315/BGDĐT-GDTrH, CTGDPT 2018). Với bài "${title}" môn ${subject} lớp ${grade}, trả về JSON {"objectives":[4 mục tiêu HS cần đạt, ngắn gọn, động từ đo lường được],"focus":"hoạt động học trọng tâm cần quan sát kỹ","rq":"câu hỏi nghiên cứu của tổ"} bằng tiếng Việt.`, { json: true });
+  const d = r.data || {};
+  if (Array.isArray(d.objectives)) $('#lfObj').value = d.objectives.join('\n');
+  if (d.focus) $('#lfFocus').value = d.focus; if (d.rq) $('#lfRQ').value = d.rq;
+  btn.disabled = false; btn.innerHTML = ic('sparkles', 'w-3.5 h-3.5') + 'AI gợi ý mục tiêu'; refreshIcons();
+  toast(`Đã gợi ý (${r.source === 'gemini' ? 'Gemini' : 'Demo Sư phạm'}).`, 'success');
+};
+A.saveLesson = async id => {
+  const v = k => $('#' + k).value.trim();
+  if (!v('lfTitle')) return toast('Vui lòng nhập tên bài học.', 'warn');
+  const acts = $$('.act-row').map(r => { const g = f => r.querySelector(`[data-f="${f}"]`).value; return { name: g('name').trim(), start: +g('start') || 0, end: +g('end') || 0, phase: g('phase'), teacherTalk: +g('teacherTalk') || 0, desc: g('desc').trim() }; }).filter(a => a.name).sort((a, b) => a.start - b.start);
+  if (acts.some(a => a.end <= a.start)) return toast('Mỗi hoạt động cần phút kết thúc > phút bắt đầu.', 'warn');
+  const base = id ? DB.get('lesson_studies', id) : { id: uid('ls'), status: 'planning', approved: false, feedbacks: [], planFile: null, createdBy: state.user.id, createdAt: nowISO(), leaderId: state.user.role === 'leader' ? state.user.id : (DB.all('users').find(u => u.role === 'leader')?.id || null) };
+  Object.assign(base, {
+    title: v('lfTitle'), subject: v('lfSubject'), grade: +v('lfGrade'), className: v('lfClass'), date: v('lfDate'), period: v('lfPeriod'), room: v('lfRoom'), duration: +v('lfDur') || 45,
+    schoolYear: v('lfYear'), semester: v('lfSem'), campus: v('lfCampus'), department: v('lfDept'), teacherId: v('lfTeacher') || null, teacherName: v('lfTeacherName'),
+    classSize: +v('lfSize') || null, groups: +v('lfGroups') || 6, researchQuestion: v('lfRQ'), objectives: v('lfObj').split('\n').map(s => s.trim()).filter(Boolean), focusActivity: v('lfFocus'),
+    activities: acts, observerIds: $$('.lfObs').filter(c => c.checked).map(c => c.value), updatedAt: nowISO()
+  });
+  await DB.put('lesson_studies', base); await audit(id ? 'Sửa bài học' : 'Thêm bài học', 'lesson_studies', `${base.subject} ${base.grade} – ${base.title}`);
+  A.closeModal(); state.lessonId = base.id; localStorage.setItem(LS.lesson, base.id); renderMain(); toast(id ? 'Đã cập nhật chu trình.' : 'Đã tạo chu trình NCBH mới.', 'success');
+};
+
+/* ================================================================ PHÂN HỆ 2 – SMART LOGGER */
+function viewLogger() {
+  const l = curLesson();
+  const head = pageTitle('Phân hệ 2 · Bước 2 chu trình', 'Nhật ký dự giờ quan sát học sinh – Smart Logger', 'Tập trung quan sát hoạt động học của HS (không đánh giá GV): mốc phút, vị trí, hành vi, khó khăn và gợi ý sư phạm.');
+  if (!l) return head + emptyState('book-open', 'Chưa có chu trình NCBH', 'Tạo chu trình ở Phân hệ 1 trước.');
+  const dur = l.duration || 45; const logs = obsLogs(l.id);
+  const shown = logs.filter(o => state.logFilter === 'all' ? true : state.logFilter === 'difficulty' ? o.level === 'difficulty' : o.phase === state.logFilter);
+  const canLog = can('log.create');
+  const chip = (name, k, p, checked) => `<label class="cursor-pointer"><input type="radio" name="${name}" value="${k}" class="peer sr-only" ${checked ? 'checked' : ''}><span class="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 rounded-lg ring-1 ring-slate-200 bg-white peer-checked:ring-2 peer-checked:ring-indigo-500 peer-checked:bg-indigo-50 peer-checked:text-indigo-700">${p}</span></label>`;
+  const groupOpts = `<option value="0">Cả lớp</option>` + Array.from({ length: l.groups || 6 }, (_, i) => `<option value="${i + 1}">Nhóm ${i + 1}</option>`).join('');
+  return head + lessonPicker() + `
+  <div class="grid lg:grid-cols-12 gap-6">
+    <div class="lg:col-span-5 space-y-5">
+      <div class="${CARD} p-5 bg-gradient-to-br from-slate-900 to-indigo-900 text-white !border-0">
+        <div class="flex items-center justify-between mb-3"><div class="text-xs font-bold uppercase tracking-wide text-indigo-200 flex items-center gap-1">${ic('timer', 'w-3.5 h-3.5')}Bộ bấm giờ tiết học</div>
+          <select onchange="A.timerSpeed(this.value)" class="text-xs bg-white/10 rounded-lg px-2 py-1 ring-1 ring-white/20">${[1, 10, 60].map(s => `<option value="${s}" class="text-slate-800" ${state.timer.speed === s ? 'selected' : ''}>Tốc độ ×${s}${s > 1 ? ' (demo)' : ''}</option>`).join('')}</select></div>
+        <div class="flex items-end justify-between gap-4"><div id="timerDisplay" class="text-5xl font-extrabold tabular-nums tracking-tight">00:00</div><div class="text-right text-xs text-indigo-200"><div>Phút thứ</div><div id="timerMinute" class="text-2xl font-bold text-white">0</div><div id="timerAct" class="max-w-[160px] truncate">—</div></div></div>
+        <div class="relative h-3 bg-white/10 rounded-full mt-4 overflow-hidden"><div id="timerBar" class="h-full bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full transition-all" style="width:0%"></div></div>
+        <div class="flex justify-between text-[10px] text-indigo-300 mt-1"><span>0′</span><span>${Math.round(dur / 3)}′</span><span>${Math.round(dur * 2 / 3)}′</span><span>${dur}′</span></div>
+        <div class="flex gap-2 mt-4">
+          <button onclick="A.timerToggle()" id="timerBtn" class="${BTN} flex-1 bg-white text-slate-900 hover:bg-indigo-50"></button>
+          <button onclick="A.timerReset()" class="${BTN} bg-white/10 hover:bg-white/20">${ic('rotate-ccw')}</button>
+          <label class="${BTN} bg-white/10 text-xs cursor-pointer"><input type="checkbox" ${state.timer.auto ? 'checked' : ''} onchange="state.timer.auto=this.checked" class="accent-emerald-400">Đồng bộ mốc phút</label>
+        </div>
+      </div>
+      ${canLog ? `
+      <div class="${CARD} p-5">
+        <h3 class="font-bold mb-3 flex items-center gap-2">${ic('pencil-line', 'w-4 h-4 text-indigo-600')}Ghi nhanh tình huống học tập</h3>
+        <div class="rounded-xl bg-violet-50 border border-violet-100 p-3 mb-4">
+          <label class="${LABEL} !text-violet-700 flex items-center gap-1">${ic('wand-sparkles', 'w-3.5 h-3.5')}Ghi chú tự do – Regex tự nhận diện phút, nhóm, bàn, hình thức, mức độ</label>
+          <div class="flex gap-2"><input id="qNote" class="${INPUT}" placeholder="Phút 18: Bàn 2 nhóm 3 học sinh lúng túng khi vẽ hình; nhóm trưởng chưa phân công việc" onkeydown="if(event.key==='Enter'){event.preventDefault();A.parseQuick()}"><button onclick="A.parseQuick()" class="${B.ai} shrink-0 !px-3">${ic('scan-text')}</button></div>
+        </div>
+        <form onsubmit="event.preventDefault();A.addLog()" class="space-y-3">
+          <div class="grid grid-cols-3 gap-2">
+            <div><label class="${LABEL}">Mốc phút</label><input id="fMinute" type="number" min="0" max="${dur}" value="${Math.min(dur, Math.floor(state.timer.sec / 60))}" class="${INPUT}"></div>
+            <div><label class="${LABEL}">Nhóm</label><select id="fGroup" class="${INPUT}">${groupOpts}</select></div>
+            <div><label class="${LABEL}">Vị trí HS</label><input id="fPos" class="${INPUT}" placeholder="Bàn 2"></div>
+          </div>
+          <div><label class="${LABEL}">Hình thức hoạt động</label><div class="flex flex-wrap gap-1.5">${Object.entries(PHASES).map(([k, p], i) => chip('fPhase', k, ic(p.icon, 'w-3.5 h-3.5') + p.label, i === 0)).join('')}</div></div>
+          <div><label class="${LABEL}">Mức độ</label><div class="flex flex-wrap gap-1.5">${Object.entries(LEVELS).map(([k, p]) => chip('fLevel', k, `<span class="w-2 h-2 rounded-full ${p.badge}"></span>` + p.label, k === 'neutral')).join('')}</div></div>
+          <div><label class="${LABEL}">Hành vi / Khó khăn quan sát được *</label><textarea id="fBehavior" rows="3" class="${INPUT}" placeholder="Mô tả cụ thể việc HS làm, nói, sản phẩm..."></textarea>
+            <div class="flex flex-wrap gap-1 mt-1.5">${['lúng túng khi', 'hỏi lại yêu cầu', 'nhóm trưởng chưa phân công', 'ngồi chờ', 'nhầm lẫn', 'hoàn thành sớm', 'thảo luận sôi nổi', 'trình bày tự tin'].map(t => `<button type="button" onclick="A.insertTag('${t}')" class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 hover:bg-indigo-100 text-slate-600">+ ${t}</button>`).join('')}</div></div>
+          <div><label class="${LABEL}">Gợi ý sư phạm</label><textarea id="fSuggest" rows="2" class="${INPUT}" placeholder="Đề xuất cụ thể nếu dạy lại..."></textarea></div>
+          <div class="grid grid-cols-2 gap-2">
+            <div><label class="${LABEL}">Số HS tích cực</label><input id="fEngaged" type="number" min="0" class="${INPUT}" placeholder="vd 3"></div>
+            <div><label class="${LABEL}">Số HS được quan sát</label><input id="fObserved" type="number" min="0" class="${INPUT}" placeholder="vd 5"></div>
+          </div>
+          <button class="${B.primary} w-full py-2.5">${ic('plus')}Lưu ghi chép dự giờ</button>
+        </form>
+      </div>` : `<div class="${CARD} p-5 text-sm text-slate-500 flex gap-3">${ic('info', 'w-5 h-5 text-indigo-500 shrink-0')}<div>Vai trò <b>${ROLES[state.user.role].label}</b> chỉ xem nhật ký dự giờ. Hãy chuyển sang vai trò <b>GV dự giờ</b> hoặc <b>Tổ trưởng</b> để ghi chép.</div></div>`}
+    </div>
+    <div class="lg:col-span-7 space-y-5">
+      <div class="${CARD} p-5">
+        <div class="flex items-center justify-between mb-3"><h3 class="font-bold flex items-center gap-2">${ic('git-commit-horizontal', 'w-4 h-4 text-indigo-600')}Dòng thời gian tiết học</h3><span class="text-xs text-slate-500">Bấm vào thanh để chọn mốc phút</span></div>
+        <div class="relative h-14 rounded-xl overflow-hidden ring-1 ring-slate-200 cursor-crosshair" onclick="A.timelineClick(event,${dur})">
+          ${(l.activities || []).map(a => `<div class="absolute top-0 bottom-0 opacity-20" style="left:${a.start / dur * 100}%;width:${(a.end - a.start) / dur * 100}%;background:${PHASES[a.phase]?.hex}"></div><div class="absolute top-1 text-[9px] font-semibold text-slate-600 truncate px-1" style="left:${a.start / dur * 100}%;width:${(a.end - a.start) / dur * 100}%">${esc(a.name)}</div>`).join('')}
+          ${logs.map(o => `<div title="Phút ${o.minute}: ${esc(o.behavior)}" class="absolute bottom-2 w-3.5 h-3.5 -ml-[7px] rounded-full ring-2 ring-white shadow" style="left:${o.minute / dur * 100}%;background:${LEVELS[o.level]?.hex}"></div>`).join('')}
+          <div id="timelineCursor" class="absolute top-0 bottom-0 w-0.5 bg-indigo-600" style="left:0%"></div>
+        </div>
+        <div class="flex justify-between text-[10px] text-slate-400 mt-1">${Array.from({ length: Math.floor(dur / 5) + 1 }, (_, i) => `<span>${i * 5}′</span>`).join('')}</div>
+      </div>
+      <div class="${CARD} p-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4"><h3 class="font-bold flex items-center gap-2">${ic('layout-grid', 'w-4 h-4 text-indigo-600')}Thẻ quan sát (${shown.length}/${logs.length})</h3>
+          <div class="flex flex-wrap gap-1">${[['all', 'Tất cả'], ...Object.entries(PHASES).map(([k, p]) => [k, p.label]), ['difficulty', '⚠ Khó khăn']].map(([k, t]) => `<button onclick="A.logFilter('${k}')" class="text-xs px-2.5 py-1 rounded-lg ${state.logFilter === k ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}">${t}</button>`).join('')}</div></div>
+        ${shown.length ? `<div class="grid sm:grid-cols-2 gap-3">${shown.map(logCard).join('')}</div>` : `<div class="text-sm text-slate-400 text-center py-10">Chưa có ghi chép phù hợp.</div>`}
+      </div>
+      ${feedbackPanel(l)}
+    </div>
+  </div>`;
+}
+function logCard(o) {
+  const ph = PHASES[o.phase] || PHASES.individual, lv = LEVELS[o.level] || LEVELS.neutral;
+  const canDel = can('log.deleteAny') || o.observerId === state.user.id;
+  return `<div class="rounded-xl border ${lv.card} p-3.5 relative">
+    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-extrabold text-white ${lv.badge} rounded-lg px-2 py-1">Phút ${o.minute}</span><span class="text-[11px] px-2 py-0.5 rounded-full ${ph.cls} flex items-center gap-1">${ic(ph.icon, 'w-3 h-3')}${ph.label}</span>
+      ${canDel ? `<button onclick="A.deleteLog('${o.id}')" class="ml-auto p-1 rounded hover:bg-white text-slate-400 hover:text-rose-600" title="Xóa">${ic('trash-2', 'w-3.5 h-3.5')}</button>` : ''}</div>
+    <div class="text-xs font-semibold text-slate-600 mb-1">${o.group ? 'Nhóm ' + o.group : 'Cả lớp'}${o.position ? ' · ' + esc(o.position) : ''}${o.observed ? ` · <span class="text-slate-800">${o.engaged}/${o.observed} HS tích cực</span>` : ''}</div>
+    <p class="text-sm text-slate-800">${esc(o.behavior)}</p>
+    ${o.suggestion ? `<div class="mt-2 text-xs text-indigo-800 bg-white/70 rounded-lg p-2 flex gap-1.5">${ic('lightbulb', 'w-3.5 h-3.5 shrink-0 text-amber-500')}<span>${esc(o.suggestion)}</span></div>` : ''}
+    <div class="text-[10px] text-slate-400 mt-2">${esc(userName(o.observerId))} · ${fmtDT(o.createdAt)}</div></div>`;
+}
+function feedbackPanel(l) {
+  const fb = l.feedbacks || [];
+  return `<div class="${CARD} p-5"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('message-square-plus', 'w-4 h-4 text-indigo-600')}Góp ý xây dựng bài học (${fb.length})</h3>
+    <div class="space-y-2 mb-3">${fb.map(f => `<div class="flex gap-2.5 p-3 rounded-xl bg-slate-50"><div class="w-8 h-8 shrink-0 rounded-full bg-indigo-100 text-indigo-700 text-[11px] font-bold flex items-center justify-center">${initials(userName(f.userId))}</div><div class="min-w-0"><div class="text-xs font-semibold">${esc(userName(f.userId))} <span class="font-normal text-slate-400">· ${fmtDT(f.createdAt)}</span></div><div class="text-sm text-slate-700">${esc(f.content)}</div></div></div>`).join('') || '<div class="text-sm text-slate-400">Chưa có góp ý.</div>'}</div>
+    ${can('feedback.create') ? `<div class="flex gap-2"><textarea id="fbText" rows="2" class="${INPUT}" placeholder="Góp ý mang tính xây dựng, tập trung vào việc học của HS..."></textarea><button onclick="A.addFeedback()" class="${B.primary} shrink-0">${ic('send')}</button></div>` : ''}</div>`;
+}
+A.logFilter = k => { state.logFilter = k; renderMain(); };
+A.insertTag = t => { const el = $('#fBehavior'); el.value = (el.value ? el.value.trimEnd() + ' ' : '') + t + ' '; el.focus(); };
+A.timelineClick = (e, dur) => { const r = e.currentTarget.getBoundingClientRect(); const m = Math.max(0, Math.min(dur, Math.round((e.clientX - r.left) / r.width * dur))); const f = $('#fMinute'); if (f) { f.value = m; f.focus(); } toast(`Đã chọn mốc phút ${m}`); };
+function parseQuickNote(raw) {
+  const t = raw.normalize('NFC');
+  const num = re => { const m = t.match(re); return m ? parseInt(m[1], 10) : null; };
+  const minute = num(/ph[uú]t\s*(?:th[uứ]\s*)?(\d{1,3})/i) ?? num(/^\s*(\d{1,2})\s*['′:]/);
+  const group = num(/nh[oó]m\s*(\d{1,2})/i), ban = num(/b[aà]n\s*(\d{1,2})/i);
+  let phase = 'individual';
+  if (/b[aá]o c[aá]o|tr[iì]nh b[aà]y|chia s[eẻ] tr[uư][oớ]c l[oớ]p/i.test(t)) phase = 'report';
+  else if (/th[aả]o lu[aậ]n|nh[oó]m tr[uư][oở]ng|ph[aâ]n c[oô]ng|h[oợ]p t[aá]c/i.test(t)) phase = 'group';
+  else if (/ti[eế]p nh[aậ]n|giao (?:vi[eệ]c|nhi[eệ]m v[uụ])|y[eê]u c[aầ]u|h[oỏ]i l[aạ]i/i.test(t)) phase = 'receive';
+  let level = 'neutral';
+  if (/l[uú]ng t[uú]ng|kh[oó] kh[aă]n|ch[uư]a|nh[aầ]m|sai|ng[oồ]i ch[oờ]|m[aấ]t t[aậ]p trung|h[oỏ]i l[aạ]i|kh[oô]ng hi[eể]u/i.test(t)) level = 'difficulty';
+  else if (/t[ií]ch c[uự]c|h[aà]o h[uứ]ng|s[oô]i n[oổ]i|ho[aà]n th[aà]nh|t[uự] tin|ch[uủ] [dđ][oộ]ng/i.test(t)) level = 'positive';
+  const behavior = t.replace(/^\s*ph[uú]t\s*(?:th[uứ]\s*)?\d{1,3}\s*[:\-–,.]?\s*/i, '').trim();
+  return { minute, group, pos: ban != null ? `Bàn ${ban}` : '', phase, level, behavior };
+}
+const setRadio = (name, v) => { const el = document.querySelector(`input[name="${name}"][value="${v}"]`); if (el) el.checked = true; };
+A.parseQuick = () => {
+  const t = $('#qNote').value.trim(); if (!t) return toast('Nhập ghi chú nhanh trước.', 'warn');
+  const p = parseQuickNote(t);
+  if (p.minute != null) $('#fMinute').value = p.minute; if (p.group != null) $('#fGroup').value = String(p.group);
+  if (p.pos) $('#fPos').value = p.pos; setRadio('fPhase', p.phase); setRadio('fLevel', p.level); $('#fBehavior').value = p.behavior;
+  toast(`Regex nhận diện: phút ${p.minute ?? '?'} · ${p.group ? 'nhóm ' + p.group : 'cả lớp'}${p.pos ? ' · ' + p.pos : ''} · ${PHASES[p.phase].short} · ${LEVELS[p.level].label}. Kiểm tra rồi bấm Lưu.`, 'success');
+};
+A.addLog = async () => {
+  const l = curLesson(); const dur = l.duration || 45;
+  const minute = parseInt($('#fMinute').value, 10), behavior = $('#fBehavior').value.trim();
+  const engaged = $('#fEngaged').value === '' ? null : +$('#fEngaged').value, observed = $('#fObserved').value === '' ? null : +$('#fObserved').value;
+  if (isNaN(minute) || minute < 0 || minute > dur) return toast(`Mốc phút phải trong 0–${dur}.`, 'warn');
+  if (!behavior) return toast('Vui lòng mô tả hành vi/khó khăn quan sát được.', 'warn');
+  if (engaged != null && observed != null && engaged > observed) return toast('Số HS tích cực không thể lớn hơn số HS quan sát.', 'warn');
+  const o = { id: uid('ob'), lessonId: l.id, kind: 'observation', minute, group: +$('#fGroup').value, position: $('#fPos').value.trim(), phase: document.querySelector('input[name="fPhase"]:checked')?.value || 'individual', level: document.querySelector('input[name="fLevel"]:checked')?.value || 'neutral', behavior, suggestion: $('#fSuggest').value.trim(), engaged, observed, observerId: state.user.id, createdAt: nowISO() };
+  await DB.put('observation_logs', o);
+  if (!(l.observerIds || []).includes(state.user.id)) { l.observerIds = [...(l.observerIds || []), state.user.id]; }
+  if (l.status === 'planning') { l.status = 'taught'; toast('Chu trình chuyển sang trạng thái "Đã dạy".'); }
+  await DB.put('lesson_studies', l);
+  await audit('Ghi dự giờ', 'observation_logs', `Phút ${minute} – ${o.group ? 'Nhóm ' + o.group : 'Cả lớp'}: ${behavior.slice(0, 60)}`);
+  renderMain(); toast('Đã lưu ghi chép dự giờ.', 'success');
+};
+A.deleteLog = async id => { if (!confirm('Xóa ghi chép này?')) return; const o = DB.get('observation_logs', id); await DB.remove('observation_logs', id); await audit('Xóa ghi chép', 'observation_logs', `Phút ${o.minute}: ${o.behavior.slice(0, 50)}`); renderMain(); };
+A.addFeedback = async () => {
+  const t = $('#fbText').value.trim(); if (!t) return toast('Nhập nội dung góp ý.', 'warn');
+  const l = curLesson(); l.feedbacks = [...(l.feedbacks || []), { id: uid('fb'), userId: state.user.id, content: t, createdAt: nowISO() }];
+  await DB.put('lesson_studies', l); await audit('Gửi góp ý', 'lesson_studies', `${l.title}: ${t.slice(0, 60)}`); renderMain(); toast('Đã gửi góp ý.', 'success');
+};
+/* Timer */
+function updateTimerUI() {
+  const T = state.timer, l = curLesson(); if (!l) return; const dur = l.duration || 45;
+  const sec = Math.floor(T.sec), m = Math.floor(sec / 60);
+  const d = $('#timerDisplay'); if (!d) return;
+  d.textContent = `${String(m).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
+  $('#timerMinute').textContent = Math.min(m, dur); $('#timerAct').textContent = activityAt(l, m)?.name || (m >= dur ? 'Hết giờ' : '—');
+  $('#timerBar').style.width = Math.min(100, T.sec / (dur * 60) * 100) + '%';
+  const c = $('#timelineCursor'); if (c) c.style.left = Math.min(100, T.sec / (dur * 60) * 100) + '%';
+  $('#timerBtn').innerHTML = T.running ? ic('pause') + 'Tạm dừng' : ic('play') + (T.sec > 0 ? 'Tiếp tục' : 'Bắt đầu tiết học'); refreshIcons();
+  const f = $('#fMinute'); if (T.auto && T.running && f && document.activeElement !== f) f.value = Math.min(m, dur);
+}
+A.timerToggle = () => {
+  const T = state.timer;
+  if (T.running) { clearInterval(T.handle); T.running = false; }
+  else { T.running = true; T.handle = setInterval(() => { const l = curLesson(); const max = (l?.duration || 45) * 60; T.sec = Math.min(max, T.sec + 0.25 * T.speed); if (T.sec >= max) { clearInterval(T.handle); T.running = false; toast('Hết giờ tiết học!', 'warn'); } if (state.tab === 'logger') { const prev = Math.floor((T.sec - 0.25 * T.speed) / 60); if ($('#timerDisplay')) { $('#timerDisplay').textContent = `${String(Math.floor(T.sec / 60)).padStart(2, '0')}:${String(Math.floor(T.sec) % 60).padStart(2, '0')}`; $('#timerBar').style.width = Math.min(100, T.sec / max * 100) + '%'; const c = $('#timelineCursor'); if (c) c.style.left = Math.min(100, T.sec / max * 100) + '%'; if (prev !== Math.floor(T.sec / 60) || !T.running) updateTimerUI(); } } }, 250); }
+  updateTimerUI();
+};
+A.timerReset = () => { clearInterval(state.timer.handle); Object.assign(state.timer, { running: false, sec: 0 }); updateTimerUI(); };
+A.timerSpeed = v => { state.timer.speed = +v; };
+
+/* ================================================================ PHÂN HỆ 3 – ANALYTICS */
+function viewAnalytics() {
+  const l = curLesson();
+  const head = pageTitle('Phân hệ 3 · AI Learning Analytics', 'Phân tích hoạt động học & Bản đồ nhiệt', 'Biến nhật ký dự giờ thành bằng chứng: tỷ lệ HS tích cực, thời lượng GV nói – HS hoạt động, điểm nghẽn nhận thức và nguyên nhân gốc.',
+    l && can('analysis.run') ? `<button onclick="A.runAnalysis()" class="${B.ai}" ${state.busy.analysis ? 'disabled' : ''}>${ic(state.busy.analysis ? 'loader-circle' : 'sparkles', 'w-4 h-4 ' + (state.busy.analysis ? 'animate-spin' : ''))}${state.busy.analysis ? 'AI đang phân tích...' : 'Chạy phân tích AI'}</button>` : '');
+  if (!l) return head + emptyState('book-open', 'Chưa có chu trình', 'Tạo chu trình ở Phân hệ 1.');
+  const s = computeStats(l);
+  if (!s.logs.length) return head + lessonPicker() + emptyState('activity', 'Chưa có dữ liệu dự giờ', 'Ghi nhật ký quan sát ở Phân hệ 2 để hệ thống phân tích.', `<button onclick="A.go('logger')" class="${B.primary}">${ic('timer')}Đến Smart Logger</button>`);
+  const kpi = (icon, label, value, sub, color) => `<div class="${CARD} p-5"><div class="flex items-center justify-between mb-2"><span class="text-xs font-semibold text-slate-500">${label}</span><span class="w-9 h-9 rounded-xl flex items-center justify-center ${color}">${ic(icon, 'w-5 h-5')}</span></div><div class="text-3xl font-extrabold text-slate-900">${value}</div><div class="text-xs text-slate-500 mt-1">${sub}</div></div>`;
+  const maxPhase = Math.max(1, ...Object.values(s.phaseCount));
+  return head + lessonPicker() + `
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    ${kpi('gauge', 'Tỷ lệ HS tích cực học tập', (s.activeRate ?? '—') + '%', rateLabel(s.activeRate), 'bg-emerald-100 text-emerald-700')}
+    ${kpi('mic', 'GV nói vs HS hoạt động', `${s.teacherPct}<span class="text-lg text-slate-400">/</span>${s.studentPct}`, `${s.talkMin} phút GV nói / ${s.totalMin} phút`, 'bg-indigo-100 text-indigo-700')}
+    ${kpi('flame', 'Điểm nghẽn nhận thức', s.bottleneck ? `Phút ${s.bottleneck.from}${s.bottleneck.to !== s.bottleneck.from ? '–' + s.bottleneck.to : ''}` : 'Không', s.bottleneck ? esc(s.bottleneck.activity?.name || '') : 'Không có cụm khó khăn', 'bg-rose-100 text-rose-700')}
+    ${kpi('clipboard-list', 'Ghi chép quan sát', s.logs.length, `${s.levelCount.difficulty} khó khăn · ${s.levelCount.positive} tích cực`, 'bg-amber-100 text-amber-700')}
+  </div>
+  <div class="grid lg:grid-cols-3 gap-6 mb-6">
+    <div class="lg:col-span-2 ${CARD} p-5"><h3 class="font-bold mb-1 flex items-center gap-2">${ic('trending-up', 'w-4 h-4 text-indigo-600')}Diễn biến mức độ tích cực theo thời gian</h3><p class="text-xs text-slate-500 mb-3">% HS tích cực tại mỗi mốc quan sát · nền màu = hình thức hoạt động · vùng đỏ = điểm nghẽn</p>${lineChart(l, s)}</div>
+    <div class="${CARD} p-5"><h3 class="font-bold mb-4 flex items-center gap-2">${ic('pie-chart', 'w-4 h-4 text-indigo-600')}Thời lượng GV nói – HS hoạt động</h3>
+      <div class="flex justify-center"><div class="relative w-40 h-40 rounded-full" style="background:conic-gradient(#6366f1 0 ${s.teacherPct}%, #14b8a6 ${s.teacherPct}% 100%)"><div class="absolute inset-5 bg-white rounded-full flex flex-col items-center justify-center"><div class="text-2xl font-extrabold">${s.studentPct}%</div><div class="text-[11px] text-slate-500">HS hoạt động</div></div></div></div>
+      <div class="flex justify-center gap-4 mt-4 text-xs"><span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-indigo-500"></span>GV nói ${s.teacherPct}%</span><span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-teal-500"></span>HS hoạt động ${s.studentPct}%</span></div>
+      <div class="mt-4 text-xs p-3 rounded-xl ${s.teacherPct <= 40 ? 'bg-emerald-50 text-emerald-800' : 'bg-amber-50 text-amber-800'}">${s.teacherPct <= 40 ? '✓ Đạt chuẩn GV nói ≤ 40% – HS là trung tâm.' : '⚠ GV nói > 40% – cần chuyển giao nhiều nhiệm vụ hơn cho HS.'}</div>
+      <h4 class="font-semibold text-sm mt-5 mb-2">Phân bố ghi chép theo hình thức</h4>
+      <div class="space-y-2">${Object.entries(PHASES).map(([k, p]) => `<div class="text-xs"><div class="flex justify-between mb-0.5"><span>${p.label}</span><b>${s.phaseCount[k]}</b></div><div class="h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full" style="width:${s.phaseCount[k] / maxPhase * 100}%;background:${p.hex}"></div></div></div>`).join('')}</div>
+    </div>
+  </div>
+  <div class="${CARD} p-5 mb-6"><div class="flex flex-wrap items-center justify-between gap-2 mb-3"><h3 class="font-bold flex items-center gap-2">${ic('flame', 'w-4 h-4 text-rose-600')}Bản đồ nhiệt hoạt động học (Nhóm × Thời gian)</h3>
+    <div class="flex items-center gap-1 text-[11px] text-slate-500">Thấp ${['#e11d48', '#fb923c', '#fcd34d', '#34d399', '#059669'].map(c => `<span class="w-5 h-3 rounded" style="background:${c}"></span>`).join('')} Cao <span class="ml-2 w-5 h-3 rounded bg-slate-100 ring-1 ring-slate-200"></span> Chưa quan sát</div></div>
+    ${heatmap(l, s)}</div>
+  <div class="grid lg:grid-cols-5 gap-6">
+    <div class="lg:col-span-2 ${CARD} p-5"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('stethoscope', 'w-4 h-4 text-violet-600')}Chẩn đoán nguyên nhân (Regex sư phạm)</h3>
+      ${s.causes.length ? `<div class="space-y-3">${s.causes.map(c => `<div><div class="flex justify-between text-sm mb-1"><span class="font-medium">${c.label}</span><b>${c.hits}/${s.diffs.length}</b></div><div class="h-2.5 rounded-full bg-slate-100"><div class="h-2.5 rounded-full bg-gradient-to-r from-violet-500 to-rose-500" style="width:${pct(c.hits, s.diffs.length)}%"></div></div><div class="text-[11px] text-slate-500 mt-0.5">Phút ${c.minutes.join(', ')}</div></div>`).join('')}</div>` : '<div class="text-sm text-slate-400">Không phát hiện nguyên nhân lặp lại.</div>'}
+      <details class="mt-4 text-xs"><summary class="text-indigo-600 font-medium">Xem bộ quy tắc Regex</summary><div class="mt-2 space-y-1.5">${CAUSE_RULES.map(r => `<div class="p-2 rounded-lg bg-slate-50"><b>${r.label}</b><code class="block text-[10px] text-slate-500 break-all mt-0.5">${esc(r.re.source)}</code></div>`).join('')}</div></details>
+    </div>
+    <div class="lg:col-span-3 ${CARD} p-5"><div class="flex items-center justify-between mb-3"><h3 class="font-bold flex items-center gap-2">${ic('bot', 'w-4 h-4 text-violet-600')}AI phân tích hoạt động học</h3>${l.analysis ? `<span class="text-[11px] px-2 py-0.5 rounded-full ${l.analysis.source === 'gemini' ? 'bg-violet-100 text-violet-700' : 'bg-amber-100 text-amber-700'}">${l.analysis.source === 'gemini' ? 'Gemini' : 'Demo Sư phạm'} · ${fmtDT(l.analysis.at)}</span>` : ''}</div>
+      ${state.busy.analysis ? `<div class="space-y-2 animate-pulse">${'<div class="h-3 bg-slate-100 rounded"></div>'.repeat(8)}</div>` : l.analysis ? md(l.analysis.text) : `<div class="text-sm text-slate-500">Chưa chạy phân tích. Bấm <b>Chạy phân tích AI</b> để AI chẩn đoán nguyên nhân HS gặp khó khăn là do lệnh giao việc chưa rõ hay do thiếu học liệu trực quan.</div>`}
+    </div>
+  </div>`;
+}
+function lineChart(l, s) {
+  const W = 640, H = 230, P = { l: 38, r: 14, t: 14, b: 30 }, dur = s.dur;
+  const x = m => P.l + (m / dur) * (W - P.l - P.r), y = v => P.t + (1 - v / 100) * (H - P.t - P.b);
+  const pts = s.logs.filter(o => Number(o.observed) > 0).map(o => ({ m: o.minute, v: Math.round(o.engaged / o.observed * 100), o }));
+  let svg = `<svg viewBox="0 0 ${W} ${H}" class="w-full h-auto" role="img" aria-label="Biểu đồ mức độ tích cực">`;
+  (l.activities || []).forEach(a => { svg += `<rect x="${x(a.start)}" y="${P.t}" width="${x(a.end) - x(a.start)}" height="${H - P.t - P.b}" fill="${PHASES[a.phase]?.hex}" opacity="0.08"/><text x="${x(a.start) + 3}" y="${P.t + 10}" font-size="9" fill="#64748b">${esc(a.name.split('.')[0])}</text>`; });
+  if (s.bottleneck) svg += `<rect x="${x(s.bottleneck.from) - 6}" y="${P.t}" width="${x(s.bottleneck.to) - x(s.bottleneck.from) + 12}" height="${H - P.t - P.b}" fill="#e11d48" opacity="0.12"/><text x="${x(s.bottleneck.from) - 4}" y="${H - P.b - 6}" font-size="10" font-weight="700" fill="#e11d48">Điểm nghẽn</text>`;
+  [0, 25, 50, 75, 100].forEach(v => { svg += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e2e8f0" stroke-dasharray="${v ? '3 3' : ''}"/><text x="${P.l - 6}" y="${y(v) + 3}" font-size="10" text-anchor="end" fill="#94a3b8">${v}%</text>`; });
+  for (let m = 0; m <= dur; m += 5) svg += `<text x="${x(m)}" y="${H - 10}" font-size="10" text-anchor="middle" fill="#94a3b8">${m}′</text>`;
+  svg += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(80)}" y2="${y(80)}" stroke="#10b981" stroke-width="1"/><text x="${W - P.r}" y="${y(80) - 4}" font-size="9" text-anchor="end" fill="#10b981">Mục tiêu 80%</text>`;
+  if (pts.length > 1) svg += `<polyline fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linejoin="round" points="${pts.map(p => `${x(p.m)},${y(p.v)}`).join(' ')}"/>`;
+  pts.forEach(p => { svg += `<circle cx="${x(p.m)}" cy="${y(p.v)}" r="5.5" fill="${LEVELS[p.o.level]?.hex}" stroke="#fff" stroke-width="2"><title>Phút ${p.m}: ${p.v}% – ${esc(p.o.behavior)}</title></circle>`; });
+  return svg + '</svg>';
+}
+function heatmap(l, s) {
+  const bins = Math.ceil(s.dur / 5), groups = l.groups || 6;
+  const color = r => r < 50 ? '#e11d48' : r < 65 ? '#fb923c' : r < 80 ? '#fcd34d' : r < 95 ? '#34d399' : '#059669';
+  const lvlRate = { difficulty: 40, neutral: 70, positive: 95 };
+  const bn = s.bottleneck ? [Math.floor(s.bottleneck.from / 5), Math.floor(s.bottleneck.to / 5)] : null;
+  let h = `<div class="overflow-x-auto"><table class="w-full border-separate" style="border-spacing:3px"><thead><tr><th class="text-[11px] text-slate-500 text-left font-medium pr-2">Nhóm \\ Phút</th>${Array.from({ length: bins }, (_, b) => `<th class="text-[10px] font-medium ${bn && b >= bn[0] && b <= bn[1] ? 'text-rose-600 font-bold' : 'text-slate-500'}">${b * 5}–${Math.min(s.dur, b * 5 + 5)}</th>`).join('')}</tr></thead><tbody>`;
+  for (let g = 0; g <= groups; g++) {
+    h += `<tr><td class="text-xs font-semibold text-slate-600 pr-2 whitespace-nowrap">${g ? 'Nhóm ' + g : 'Cả lớp'}</td>`;
+    for (let b = 0; b < bins; b++) {
+      const cell = s.logs.filter(o => (o.group || 0) === g && Math.min(bins - 1, Math.floor(o.minute / 5)) === b);
+      if (!cell.length) { h += `<td class="h-9 min-w-[44px] rounded-md bg-slate-100"></td>`; continue; }
+      const rates = cell.map(o => Number(o.observed) > 0 ? o.engaged / o.observed * 100 : lvlRate[o.level]);
+      const r = Math.round(rates.reduce((a, c) => a + c, 0) / rates.length);
+      h += `<td class="h-9 min-w-[44px] rounded-md text-center text-[10px] font-bold text-white cursor-help ${bn && b >= bn[0] && b <= bn[1] ? 'ring-2 ring-rose-600' : ''}" style="background:${color(r)}" title="${cell.map(o => `Phút ${o.minute}: ${esc(o.behavior)}`).join('&#10;')}">${r}%</td>`;
+    }
+    h += '</tr>';
+  }
+  return h + '</tbody></table></div>';
+}
+A.runAnalysis = async () => {
+  const l = curLesson(); if (!l || state.busy.analysis) return;
+  state.busy.analysis = true; renderMain();
+  const prompt = `Bạn là chuyên gia Nghiên cứu bài học (Lesson Study) và khoa học học tập, am hiểu CV 1315/BGDĐT-GDTrH. Dựa trên dữ liệu dự giờ JSON dưới đây, viết phân tích bằng tiếng Việt, định dạng Markdown, ≤ 380 từ, với đúng 4 mục:
+## 1. Kết luận nhanh (tỷ lệ HS tích cực, GV nói vs HS hoạt động, điểm nghẽn nhận thức ở phút nào)
+## 2. Chẩn đoán nguyên nhân (trả lời rõ: HS khó khăn chủ yếu do LỆNH GIAO VIỆC CHƯA RÕ hay do THIẾU HỌC LIỆU TRỰC QUAN, hay nguyên nhân khác; dẫn chứng mốc phút)
+## 3. Khuyến nghị tinh chỉnh (cụ thể, khả thi)
+## 4. Câu hỏi gợi mở cho buổi thảo luận Bước 3
+Chỉ tập trung vào việc học của HS, không phán xét GV.
+DỮ LIỆU: ${lessonContext(l)}`;
+  const r = await aiRun(() => mockAnalysis(l), prompt);
+  l.analysis = { text: r.data, source: r.source, at: nowISO(), by: state.user.id };
+  await DB.put('lesson_studies', l); await audit('Phân tích AI', 'lesson_studies', `${l.title} – ${r.source === 'gemini' ? 'Gemini' : 'Demo Sư phạm'}`);
+  state.busy.analysis = false; renderMain(); toast('Đã hoàn tất phân tích hoạt động học.', 'success');
+};
+
+/* ================================================================ PHÂN HỆ 4 – BIÊN BẢN & TINH CHỈNH */
+function viewMinutes() {
+  const l = curLesson();
+  const head = pageTitle('Phân hệ 4 · Bước 3 & 4 chu trình', 'Biên bản thảo luận & Đề xuất tinh chỉnh bài dạy', 'AI tổng hợp ý kiến của cả tổ thành biên bản SHCM chuẩn 4 bước theo CV 1315; so sánh KHBD ban đầu với phương án viết lại sau sinh hoạt chuyên môn.');
+  if (!l) return head + emptyState('book-open', 'Chưa có chu trình', 'Tạo chu trình ở Phân hệ 1.');
+  return head + lessonPicker() + minutesPanel(l) + adaptedPanel(l);
+}
+function minutesDocHTML(mm, l) {
+  const school = esc(Settings.get('schoolName')), unit = esc(Settings.get('schoolUnit'));
+  const sec = (n, t, k) => `<h3 style="font-size:13pt;font-weight:bold;margin:14px 0 6px">${n}. ${t}</h3><div style="text-align:justify">${md(mm.sections[k])}</div>`;
+  const rows = (mm.rubric || []).map(r => { const c = RUBRIC.find(x => x.code === r.code); return `<tr><td style="text-align:center">${r.code}</td><td>${esc(c?.text || '')}</td><td style="text-align:center;white-space:nowrap"><b>${esc(r.rating)}</b></td><td>${esc(r.note || '')}</td></tr>`; }).join('');
+  return `<div class="doc text-[15px] text-slate-900">
+    <table style="border:none;width:100%;margin-bottom:10px"><tr><td style="border:none;text-align:center;width:45%;padding:0">${unit.toUpperCase()}<br><b>${school.toUpperCase()}</b><br><b>${esc((l.department || '').toUpperCase())}</b><br>───────</td>
+    <td style="border:none;text-align:center;padding:0"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b><br><b><u>Độc lập – Tự do – Hạnh phúc</u></b><br><i>${esc(l.campus)}, ngày ${fmtD(mm.meetingDate).replace(/\//g, ' tháng ').replace(/ tháng (\d{4})$/, ' năm $1')}</i></td></tr></table>
+    <h2 style="text-align:center;font-size:15pt;font-weight:bold;margin:16px 0 2px">BIÊN BẢN SINH HOẠT TỔ CHUYÊN MÔN</h2>
+    <div style="text-align:center;font-weight:bold;margin-bottom:2px">THEO NGHIÊN CỨU BÀI HỌC</div>
+    <div style="text-align:center;font-style:italic;margin-bottom:12px">Bài: "${esc(l.title)}" – Môn ${esc(l.subject)} ${l.grade} (Thực hiện theo CV 1315/BGDĐT-GDTrH)</div>
+    <p><b>Thời gian:</b> ${esc(mm.time)}, ngày ${fmtD(mm.meetingDate)} &nbsp;·&nbsp; <b>Địa điểm:</b> ${esc(mm.location)}</p>
+    <p><b>Chủ trì:</b> ${esc(mm.chair)} &nbsp;·&nbsp; <b>Thư ký:</b> ${esc(mm.secretary)}</p>
+    <p><b>Thành phần tham dự (${(mm.attendees || []).length}):</b> ${(mm.attendees || []).map(esc).join('; ')}. <b>Vắng:</b> ${esc(mm.absent || 'Không')}</p>
+    <h3 style="font-size:13pt;font-weight:bold;margin:14px 0 6px">NỘI DUNG</h3>
+    ${sec('Bước 1', 'Xây dựng kế hoạch bài dạy minh họa', 'step1')}
+    ${sec('Bước 2', 'Tổ chức dạy minh họa và dự giờ', 'step2')}
+    ${sec('Bước 3', 'Phân tích, rút kinh nghiệm bài dạy', 'step3')}
+    ${rows ? `<p style="margin-top:8px"><b>Kết quả phân tích bài dạy theo 3 nhóm – 12 tiêu chí:</b></p><table><thead><tr><th style="width:44px">TT</th><th>Tiêu chí</th><th style="width:80px">Mức</th><th>Minh chứng / Ghi chú</th></tr></thead><tbody>${rows}</tbody></table>` : ''}
+    ${sec('Bước 4', 'Vận dụng kết quả sinh hoạt chuyên môn vào bài dạy hằng ngày', 'step4')}
+    <h3 style="font-size:13pt;font-weight:bold;margin:14px 0 6px">KẾT LUẬN</h3><p style="text-align:justify">${esc(mm.conclusion)}</p>
+    <table style="border:none;width:100%;margin-top:24px"><tr><td style="border:none;text-align:center;width:50%"><b>THƯ KÝ</b><br><i>(Ký, ghi rõ họ tên)</i><br><br><br><br>${esc(mm.secretary)}</td><td style="border:none;text-align:center"><b>CHỦ TRÌ – TỔ TRƯỞNG</b><br><i>(Ký, ghi rõ họ tên)</i><br><br><br><br>${esc(mm.chair)}</td></tr></table>
+  </div>`;
+}
+function adaptedDocHTML(ap) {
+  if (!ap) return '';
+  return `<div class="doc" style="margin-top:24px"><h3 style="font-size:13pt;font-weight:bold;margin:14px 0 6px">PHỤ LỤC: SO SÁNH KHBD BAN ĐẦU VÀ PHƯƠNG ÁN VIẾT LẠI SAU SHCM (v${ap.version})</h3>
+    <table><thead><tr><th>Hoạt động</th><th>KHBD ban đầu</th><th>Phương án viết lại sau SHCM</th><th>Căn cứ (minh chứng quan sát)</th></tr></thead><tbody>${ap.rows.map(r => `<tr><td><b>${esc(r.activity)}</b></td><td>${esc(r.original).replace(/\n/g, '<br>')}</td><td>${esc(r.revised).replace(/\n/g, '<br>')}</td><td><i>${esc(r.reason).replace(/\n/g, '<br>')}</i></td></tr>`).join('')}</tbody></table></div>`;
+}
+function minutesPanel(l) {
+  const mm = minutesOf(l.id); const manage = can('minutes.manage');
+  const genBtn = `<button onclick="A.genMinutes()" class="${B.ai}" ${state.busy.minutes ? 'disabled' : ''}>${ic(state.busy.minutes ? 'loader-circle' : 'sparkles', 'w-4 h-4 ' + (state.busy.minutes ? 'animate-spin' : ''))}${state.busy.minutes ? 'AI đang tổng hợp...' : mm ? 'Tổng hợp lại bằng AI' : 'AI tổng hợp biên bản'}</button>`;
+  if (!mm) return `<div class="mb-8">${emptyState('scroll-text', 'Chưa có biên bản sinh hoạt chuyên môn', manage ? 'AI sẽ tổng hợp nhật ký dự giờ, góp ý và phân tích thành biên bản chuẩn 4 bước CV 1315.' : 'Tổ trưởng chuyên môn / BGH sẽ tạo biên bản sau buổi thảo luận.', manage ? genBtn : '')}</div>`;
+  const toolbar = `<div class="flex flex-wrap items-center gap-2">
+      ${manage && !state.minutesEdit ? `${genBtn}<button onclick="A.editMinutes(true)" class="${B.secondary}">${ic('pencil')}Chỉnh sửa</button>` : ''}
+      ${manage && state.minutesEdit ? `<button onclick="A.saveMinutes()" class="${B.success}">${ic('save')}Lưu biên bản</button><button onclick="A.editMinutes(false)" class="${B.secondary}">Hủy</button>` : ''}
+      ${!state.minutesEdit ? `<button onclick="A.printMinutes()" class="${B.secondary}">${ic('printer')}In / PDF</button><button onclick="A.wordMinutes()" class="${B.secondary}">${ic('file-down')}Word</button><button onclick="A.copyMinutes()" class="${B.secondary}">${ic('copy')}Sao chép vào sổ CM điện tử</button>` : ''}
+      ${manage && mm.status !== 'final' && !state.minutesEdit ? `<button onclick="A.finalizeMinutes()" class="${B.primary}">${ic('badge-check')}Thông qua biên bản</button>` : ''}
+    </div>`;
+  const meta = `<div class="flex flex-wrap items-center gap-2 text-xs text-slate-500"><span class="px-2 py-0.5 rounded-full ${mm.status === 'final' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${mm.status === 'final' ? '✓ Đã thông qua' : 'Bản nháp'}</span><span class="px-2 py-0.5 rounded-full ${mm.source === 'gemini' ? 'bg-violet-100 text-violet-700' : 'bg-slate-100'}">${mm.source === 'gemini' ? 'Gemini' : mm.source === 'mock' ? 'Demo Sư phạm' : 'Thủ công'}</span><span>Cập nhật ${fmtDT(mm.updatedAt)} · ${esc(userName(mm.createdBy))}</span>${mm.exportCount ? `<span>· Đã xuất ${mm.exportCount} lần</span>` : ''}</div>`;
+  let body;
+  if (state.minutesEdit) {
+    const ta = (k, label, rows = 7) => `<div><label class="${LABEL}">${label}</label><textarea id="mm_${k}" rows="${rows}" class="${INPUT} font-mono !text-xs">${esc(mm.sections[k])}</textarea></div>`;
+    body = `<div class="space-y-3">
+      <div class="grid md:grid-cols-3 gap-3">
+        <div><label class="${LABEL}">Ngày họp</label><input id="mm_date" type="date" class="${INPUT}" value="${esc(mm.meetingDate || '')}"></div>
+        <div><label class="${LABEL}">Giờ</label><input id="mm_time" class="${INPUT}" value="${esc(mm.time || '')}"></div>
+        <div><label class="${LABEL}">Địa điểm</label><input id="mm_loc" class="${INPUT}" value="${esc(mm.location || '')}"></div>
+        <div><label class="${LABEL}">Chủ trì</label><input id="mm_chair" class="${INPUT}" value="${esc(mm.chair || '')}"></div>
+        <div><label class="${LABEL}">Thư ký</label><input id="mm_sec" class="${INPUT}" value="${esc(mm.secretary || '')}"></div>
+        <div><label class="${LABEL}">Vắng</label><input id="mm_absent" class="${INPUT}" value="${esc(mm.absent || '')}"></div>
+      </div>
+      <div><label class="${LABEL}">Thành phần tham dự (mỗi dòng 1 người)</label><textarea id="mm_att" rows="3" class="${INPUT}">${esc((mm.attendees || []).join('\n'))}</textarea></div>
+      ${ta('step1', 'Bước 1 – Xây dựng KHBD minh họa')}${ta('step2', 'Bước 2 – Dạy minh họa & dự giờ')}${ta('step3', 'Bước 3 – Phân tích, rút kinh nghiệm', 10)}
+      <div><label class="${LABEL}">Đánh giá 12 tiêu chí</label><div class="grid md:grid-cols-2 gap-2">${(mm.rubric || []).map((r, i) => `<div class="flex items-center gap-2 text-xs p-2 rounded-lg bg-slate-50"><b class="w-7">${r.code}</b><select id="rb_r_${i}" class="${INPUT} !w-28 !py-1 !text-xs">${RATINGS.map(x => `<option ${x === r.rating ? 'selected' : ''}>${x}</option>`).join('')}</select><input id="rb_n_${i}" class="${INPUT} !py-1 !text-xs" value="${esc(r.note || '')}"></div>`).join('')}</div></div>
+      ${ta('step4', 'Bước 4 – Vận dụng kết quả SHCM')}
+      <div><label class="${LABEL}">Kết luận</label><textarea id="mm_concl" rows="3" class="${INPUT}">${esc(mm.conclusion)}</textarea></div>
+      <p class="text-[11px] text-slate-400">Hỗ trợ định dạng: dòng bắt đầu bằng "- " là gạch đầu dòng; **chữ đậm**; *chữ nghiêng*.</p></div>`;
+  } else body = `<div class="bg-white border border-slate-200 rounded-xl p-6 md:p-10 shadow-inner max-w-4xl mx-auto">${minutesDocHTML(mm, l)}</div>`;
+  return `<div class="${CARD} p-5 mb-8"><div class="flex flex-wrap items-start justify-between gap-3 mb-4"><div><h3 class="font-bold text-lg flex items-center gap-2">${ic('scroll-text', 'w-5 h-5 text-indigo-600')}Biên bản Sinh hoạt tổ chuyên môn – 4 bước CV 1315</h3>${meta}</div>${toolbar}</div>
+    ${state.busy.minutes ? `<div class="space-y-2 animate-pulse p-6">${'<div class="h-3 bg-slate-100 rounded"></div>'.repeat(12)}</div>` : body}</div>`;
+}
+function adaptedPanel(l) {
+  const versions = plansOf(l.id); const ap = versions[0]; const canAdapt = can('plan.adapt') && (state.user.role !== 'teacher' || l.teacherId === state.user.id || !l.teacherId);
+  const genBtn = `<button onclick="A.genAdapted()" class="${B.ai}" ${state.busy.adapted ? 'disabled' : ''}>${ic(state.busy.adapted ? 'loader-circle' : 'sparkles', 'w-4 h-4 ' + (state.busy.adapted ? 'animate-spin' : ''))}${state.busy.adapted ? 'AI đang viết lại...' : ap ? 'AI đề xuất phiên bản mới' : 'AI đề xuất tinh chỉnh KHBD'}</button>`;
+  if (!ap) return emptyState('git-compare', 'Chưa có phương án bài dạy viết lại', canAdapt ? 'AI đối chiếu chuỗi hoạt động ban đầu với điểm nghẽn quan sát được để đề xuất phương án mới.' : 'GV dạy minh họa / Tổ trưởng sẽ tạo phương án tinh chỉnh.', canAdapt ? genBtn : '');
+  const edit = state.planEdit;
+  return `<div class="${CARD} p-5"><div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+      <div><h3 class="font-bold text-lg flex items-center gap-2">${ic('git-compare', 'w-5 h-5 text-teal-600')}So sánh "KHBD ban đầu" và "Phương án viết lại sau SHCM"</h3>
+      <div class="text-xs text-slate-500 mt-1">Phiên bản <b>v${ap.version}</b> / ${versions.length} · ${esc(userName(ap.createdBy))} · ${fmtDT(ap.createdAt)} · ${ap.source === 'gemini' ? 'Gemini' : ap.source === 'mock' ? 'Demo Sư phạm' : 'Thủ công'}</div></div>
+      <div class="flex flex-wrap gap-2">${canAdapt && !edit ? `${genBtn}<button onclick="A.editPlan(true)" class="${B.secondary}">${ic('pencil')}Chỉnh sửa</button>` : ''}${edit ? `<button onclick="A.savePlan()" class="${B.success}">${ic('save')}Lưu phiên bản mới</button><button onclick="A.editPlan(false)" class="${B.secondary}">Hủy</button>` : ''}</div></div>
+    <div class="overflow-x-auto"><table class="w-full text-sm min-w-[860px]"><thead><tr class="text-left text-xs"><th class="p-3 bg-slate-100 rounded-tl-xl w-44">Hoạt động</th><th class="p-3 bg-rose-50 text-rose-800">${ic('file-text', 'w-3.5 h-3.5 inline')} KHBD ban đầu</th><th class="p-3 bg-emerald-50 text-emerald-800">${ic('sparkles', 'w-3.5 h-3.5 inline')} Phương án viết lại sau SHCM</th><th class="p-3 bg-amber-50 text-amber-800 rounded-tr-xl">${ic('eye', 'w-3.5 h-3.5 inline')} Căn cứ minh chứng</th></tr></thead>
+    <tbody class="divide-y divide-slate-100">${ap.rows.map((r, i) => edit ? `<tr><td class="p-2"><input id="ap_a_${i}" class="${INPUT} !text-xs" value="${esc(r.activity)}"></td><td class="p-2"><textarea id="ap_o_${i}" rows="4" class="${INPUT} !text-xs">${esc(r.original)}</textarea></td><td class="p-2"><textarea id="ap_r_${i}" rows="4" class="${INPUT} !text-xs">${esc(r.revised)}</textarea></td><td class="p-2"><textarea id="ap_e_${i}" rows="4" class="${INPUT} !text-xs">${esc(r.reason)}</textarea></td></tr>`
+      : `<tr class="align-top"><td class="p-3 font-semibold">${esc(r.activity)}</td><td class="p-3 text-slate-600 bg-rose-50/30 whitespace-pre-line">${esc(r.original)}</td><td class="p-3 text-slate-800 bg-emerald-50/40 whitespace-pre-line">${esc(r.revised)}</td><td class="p-3 text-xs text-slate-500 italic whitespace-pre-line">${esc(r.reason)}</td></tr>`).join('')}</tbody></table></div>
+    ${edit ? `<div class="mt-3"><label class="${LABEL}">Ghi chú phiên bản</label><input id="ap_note" class="${INPUT}" value="${esc(ap.note || '')}"></div>` : ap.note ? `<div class="mt-3 text-xs text-slate-500 flex items-center gap-1">${ic('info', 'w-3.5 h-3.5')}${esc(ap.note)}</div>` : ''}
+  </div>`;
+}
+A.genMinutes = async () => {
+  const l = curLesson(); if (state.busy.minutes) return; const old = minutesOf(l.id);
+  if (old && !confirm('Tổng hợp lại sẽ thay nội dung biên bản hiện tại. Tiếp tục?')) return;
+  state.busy.minutes = true; renderMain();
+  const base = buildMockMinutes(l);
+  const prompt = `Bạn là thư ký chuyên môn giàu kinh nghiệm, viết biên bản SHCM theo Nghiên cứu bài học đúng CV 1315/BGDĐT-GDTrH. Từ dữ liệu JSON sau, tổng hợp ý kiến của cả tổ thành biên bản tiếng Việt trang trọng. Trả về JSON đúng khóa: {"step1":"Bước 1 – Xây dựng KHBD minh họa","step2":"Bước 2 – Tổ chức dạy minh họa và dự giờ (theo mốc thời gian)","step3":"Bước 3 – Phân tích, rút kinh nghiệm (GV dạy chia sẻ; ý kiến GV dự giờ; HS học được gì, chưa học được gì, vì sao)","step4":"Bước 4 – Vận dụng kết quả SHCM (đề xuất tinh chỉnh, kế hoạch áp dụng)","conclusion":"kết luận ngắn"}. Mỗi bước là chuỗi Markdown, dùng gạch đầu dòng "- ", **đậm** khi cần. Chỉ phân tích hoạt động học của HS. DỮ LIỆU: ${lessonContext(l)}`;
+  const r = await aiRun(() => null, prompt, { json: true });
+  if (r.source === 'gemini' && r.data) {
+    const norm = v => Array.isArray(v) ? v.map(x => '- ' + x).join('\n') : String(v);
+    ['step1', 'step2', 'step3', 'step4'].forEach(k => { if (r.data[k]) base.sections[k] = norm(r.data[k]); });
+    if (r.data.conclusion) base.conclusion = String(r.data.conclusion);
+  }
+  base.source = r.source;
+  if (old) { base.id = old.id; base.createdAt = old.createdAt; base.exportCount = old.exportCount || 0; }
+  await DB.put('meeting_minutes', base); await audit('Tạo biên bản', 'meeting_minutes', `${l.title} – ${r.source === 'gemini' ? 'Gemini' : 'Demo Sư phạm'}`);
+  state.busy.minutes = false; renderMain(); toast('Đã tổng hợp biên bản 4 bước.', 'success');
+};
+A.editMinutes = on => { state.minutesEdit = on; renderMain(); };
+A.saveMinutes = async () => {
+  const mm = minutesOf(state.lessonId); const v = id => $('#' + id).value;
+  Object.assign(mm, { meetingDate: v('mm_date'), time: v('mm_time'), location: v('mm_loc'), chair: v('mm_chair'), secretary: v('mm_sec'), absent: v('mm_absent'), attendees: v('mm_att').split('\n').map(s => s.trim()).filter(Boolean), conclusion: v('mm_concl'), updatedAt: nowISO() });
+  ['step1', 'step2', 'step3', 'step4'].forEach(k => mm.sections[k] = v('mm_' + k));
+  (mm.rubric || []).forEach((r, i) => { r.rating = v('rb_r_' + i); r.note = v('rb_n_' + i); });
+  await DB.put('meeting_minutes', mm); await audit('Sửa biên bản', 'meeting_minutes', curLesson().title); state.minutesEdit = false; renderMain(); toast('Đã lưu biên bản.', 'success');
+};
+A.finalizeMinutes = async () => {
+  const mm = minutesOf(state.lessonId), l = curLesson(); mm.status = 'final'; mm.updatedAt = nowISO(); l.status = 'discussed';
+  await DB.put('meeting_minutes', mm); await DB.put('lesson_studies', l); await audit('Thông qua biên bản', 'meeting_minutes', l.title); renderMain(); toast('Biên bản đã được thông qua – chu trình chuyển "Đã thảo luận".', 'success');
+};
+async function markExport(kind) { const mm = minutesOf(state.lessonId); mm.exportCount = (mm.exportCount || 0) + 1; await DB.put('meeting_minutes', mm); await audit('Xuất biên bản', 'meeting_minutes', `${curLesson().title} – ${kind}`); }
+A.printMinutes = async () => {
+  const l = curLesson(), mm = minutesOf(l.id);
+  $('#printArea').innerHTML = `<div style="font-family:'Times New Roman',serif;color:#000">${minutesDocHTML(mm, l)}${adaptedDocHTML(plansOf(l.id)[0])}</div>`;
+  await markExport('In/PDF'); setTimeout(() => { window.print(); setTimeout(() => { $('#printArea').innerHTML = ''; renderMain(); }, 400); }, 150);
+};
+A.wordMinutes = async () => {
+  const l = curLesson(), mm = minutesOf(l.id);
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Biên bản SHCM</title><style>body{font-family:'Times New Roman';font-size:13pt;line-height:1.5} table{border-collapse:collapse;width:100%} td,th{border:1px solid #000;padding:4px 6px;vertical-align:top;font-size:12pt} ul{margin:2px 0 2px 20px} p{margin:3px 0}</style></head><body>${minutesDocHTML(mm, l)}${adaptedDocHTML(plansOf(l.id)[0])}</body></html>`;
+  download(new Blob(['﻿', html], { type: 'application/msword' }), `BienBan_SHCM_${l.subject}${l.grade}_${stamp()}.doc`);
+  await markExport('Word'); renderMain(); toast('Đã xuất tệp Word (.doc).', 'success');
+};
+function minutesText(mm, l) {
+  const ap = plansOf(l.id)[0];
+  return [`BIÊN BẢN SINH HOẠT TỔ CHUYÊN MÔN THEO NGHIÊN CỨU BÀI HỌC`, `Bài: "${l.title}" – ${l.subject} ${l.grade} – ${l.campus}`, `Thời gian: ${mm.time}, ${fmtD(mm.meetingDate)} | Địa điểm: ${mm.location}`, `Chủ trì: ${mm.chair} | Thư ký: ${mm.secretary}`, `Thành phần: ${(mm.attendees || []).join('; ')}`, '',
+    'BƯỚC 1. XÂY DỰNG KẾ HOẠCH BÀI DẠY MINH HỌA', mdPlain(mm.sections.step1), '', 'BƯỚC 2. TỔ CHỨC DẠY MINH HỌA VÀ DỰ GIỜ', mdPlain(mm.sections.step2), '', 'BƯỚC 3. PHÂN TÍCH, RÚT KINH NGHIỆM BÀI DẠY', mdPlain(mm.sections.step3),
+    ...(mm.rubric || []).map(r => `  ${r.code} – ${r.rating}: ${r.note}`), '', 'BƯỚC 4. VẬN DỤNG KẾT QUẢ SHCM', mdPlain(mm.sections.step4), '', 'KẾT LUẬN: ' + mm.conclusion,
+    ...(ap ? ['', `PHỤ LỤC – KHBD TINH CHỈNH (v${ap.version})`, ...ap.rows.map(r => `• ${r.activity}\n  Ban đầu: ${r.original}\n  Viết lại: ${r.revised.replace(/\n/g, ' ')}\n  Căn cứ: ${r.reason.replace(/\n/g, ' ')}`)] : [])].join('\n');
+}
+A.copyMinutes = async () => {
+  const l = curLesson(), text = minutesText(minutesOf(l.id), l);
+  try { await navigator.clipboard.writeText(text); } catch (e) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  await markExport('Sao chép sổ CM điện tử'); renderMain(); toast('Đã sao chép – dán vào sổ chuyên môn điện tử của trường.', 'success');
+};
+A.genAdapted = async () => {
+  const l = curLesson(); if (state.busy.adapted) return; state.busy.adapted = true; renderMain();
+  const prompt = `Bạn là chuyên gia thiết kế KHBD theo CTGDPT 2018 và Nghiên cứu bài học. Dựa trên dữ liệu JSON, viết lại từng hoạt động của bài dạy để khắc phục điểm nghẽn quan sát được. Trả về JSON mảng: [{"activity":"tên hoạt động (phút)","original":"KHBD ban đầu tóm tắt","revised":"phương án viết lại, mỗi ý bắt đầu bằng • và xuống dòng","reason":"căn cứ minh chứng quan sát (mốc phút)"}], đủ mọi hoạt động trong chuoi_hoat_dong. DỮ LIỆU: ${lessonContext(l)}`;
+  const r = await aiRun(() => buildMockAdaptedPlan(l).rows, prompt, { json: true });
+  const rows = (Array.isArray(r.data) ? r.data : r.data?.rows || []).map(x => ({ activity: String(x.activity || ''), original: String(x.original || ''), revised: String(x.revised || ''), reason: String(x.reason || '') }));
+  const prev = plansOf(l.id)[0];
+  await DB.put('adapted_plans', { id: uid('ap'), lessonId: l.id, version: (prev?.version || 0) + 1, rows, note: 'Phương án do AI đề xuất từ nhật ký dự giờ – cần tổ chuyên môn thẩm định.', status: 'draft', source: r.source, createdAt: nowISO(), createdBy: state.user.id });
+  await audit('Tinh chỉnh KHBD', 'adapted_plans', `${l.title} – v${(prev?.version || 0) + 1} (${r.source === 'gemini' ? 'Gemini' : 'Demo Sư phạm'})`);
+  state.busy.adapted = false; renderMain(); toast('Đã tạo phương án bài dạy viết lại.', 'success');
+};
+A.editPlan = on => { state.planEdit = on; renderMain(); };
+A.savePlan = async () => {
+  const l = curLesson(), ap = plansOf(l.id)[0];
+  const rows = ap.rows.map((r, i) => ({ activity: $('#ap_a_' + i).value, original: $('#ap_o_' + i).value, revised: $('#ap_r_' + i).value, reason: $('#ap_e_' + i).value }));
+  await DB.put('adapted_plans', { id: uid('ap'), lessonId: l.id, version: ap.version + 1, rows, note: $('#ap_note').value, status: 'draft', source: 'manual', createdAt: nowISO(), createdBy: state.user.id });
+  await audit('Tinh chỉnh KHBD', 'adapted_plans', `${l.title} – v${ap.version + 1} (thủ công)`); state.planEdit = false; renderMain(); toast(`Đã lưu phiên bản v${ap.version + 1}.`, 'success');
+};
+
+/* ================================================================ PHÂN HỆ 5 – ADMIN DASHBOARD */
+function campusStats() {
+  const lessons = DB.all('lesson_studies'), logs = DB.where('observation_logs', o => o.kind !== 'feedback'), users = DB.all('users');
+  const contributors = new Set([...logs.map(o => o.observerId), ...lessons.flatMap(l => (l.feedbacks || []).map(f => f.userId))]);
+  const campuses = [...new Set([...CAMPUSES, ...lessons.map(l => l.campus), ...users.map(u => u.campus)])].filter(Boolean);
+  return campuses.map(c => {
+    const ls = lessons.filter(l => l.campus === c); const lg = logs.filter(o => ls.some(l => l.id === o.lessonId));
+    const staff = users.filter(u => u.campus === c && u.role !== 'admin' && u.status === 'active');
+    const part = staff.length ? pct(staff.filter(u => contributors.has(u.id)).length, staff.length) : null;
+    let e = 0, ob = 0; lg.forEach(o => { if (Number(o.observed) > 0) { e += +o.engaged || 0; ob += +o.observed; } });
+    const act = ob ? Math.round(e / ob * 100) : null; const done = ls.length ? pct(ls.filter(l => l.status === 'discussed').length, ls.length) : null;
+    const quality = ls.length ? Math.round(0.4 * (done || 0) + 0.3 * (act ?? 0) + 0.3 * (part ?? 0)) : null;
+    const cross = lg.filter(o => userById(o.observerId) && userById(o.observerId).campus !== c).length;
+    return { campus: c, lessons: ls.length, logs: lg.length, staff: staff.length, part, act, done, quality, cross, minutes: ls.filter(l => minutesOf(l.id)).length };
+  }).filter(x => x.lessons || x.staff);
+}
+function auditRows() {
+  const q = state.auditQ.trim().toLowerCase();
+  const list = [...DB.all('audit_logs')].sort((a, b) => b.at.localeCompare(a.at)).filter(a => (!state.auditAction || a.action === state.auditAction) && (!q || `${a.userName} ${a.action} ${a.detail} ${a.entity}`.toLowerCase().includes(q))).slice(0, 200);
+  return list.map(a => `<tr class="hover:bg-slate-50"><td class="p-2 whitespace-nowrap text-xs text-slate-500">${fmtDT(a.at)}</td><td class="p-2 text-xs font-medium">${esc(a.userName)}</td><td class="p-2"><span class="text-[10px] px-1.5 py-0.5 rounded ${ROLES[a.role]?.pill || 'bg-slate-100'}">${ROLES[a.role]?.short || '—'}</span></td><td class="p-2 text-xs"><b>${esc(a.action)}</b></td><td class="p-2 text-xs text-slate-400 font-mono">${esc(a.entity)}</td><td class="p-2 text-xs text-slate-600">${esc(a.detail)}</td></tr>`).join('') || `<tr><td colspan="6" class="p-6 text-center text-sm text-slate-400">Không có nhật ký phù hợp.</td></tr>`;
+}
+function viewAdmin() {
+  if (!can('admin.view')) return pageTitle('Phân hệ 5', 'Admin Dashboard', 'Dành cho Ban Giám hiệu & Quản trị viên.') + emptyState('lock', 'Bạn không có quyền truy cập phân hệ này', `Vai trò hiện tại: ${ROLES[state.user.role].label}. Chỉ Ban Giám hiệu / Admin được xem.`, `<button onclick="A.quickSwitch('admin')" class="${B.primary}">${ic('shield-check')}Chuyển nhanh sang vai trò BGH</button>`);
+  const lessons = DB.all('lesson_studies'), users = DB.all('users'), logs = DB.where('observation_logs', o => o.kind !== 'feedback');
+  const teachers = users.filter(u => u.role !== 'admin' && u.status === 'active');
+  const contributors = new Set([...logs.map(o => o.observerId), ...lessons.flatMap(l => (l.feedbacks || []).map(f => f.userId))]);
+  const partRate = pct(teachers.filter(u => contributors.has(u.id)).length, teachers.length);
+  const cs = campusStats(); const pendingPlans = lessons.filter(l => !l.approved); const pendingUsers = users.filter(u => u.status === 'pending');
+  const done = lessons.filter(l => l.status === 'discussed').length;
+  const allE = logs.reduce((a, o) => a + (Number(o.observed) > 0 ? +o.engaged : 0), 0), allO = logs.reduce((a, o) => a + (Number(o.observed) > 0 ? +o.observed : 0), 0);
+  const kpi = (icon, label, value, sub, grad) => `<div class="rounded-2xl p-5 text-white bg-gradient-to-br ${grad} shadow-sm"><div class="flex items-center justify-between"><span class="text-xs font-semibold text-white/80">${label}</span>${ic(icon, 'w-5 h-5 text-white/80')}</div><div class="text-3xl font-extrabold mt-2">${value}</div><div class="text-xs text-white/80 mt-1">${sub}</div></div>`;
+  const uq = state.userQ.trim().toLowerCase();
+  const userList = users.filter(u => !uq || `${u.name} ${u.contact} ${u.department} ${u.campus} ${ROLES[u.role].label}`.toLowerCase().includes(uq));
+  const actions = [...new Set(DB.all('audit_logs').map(a => a.action))].sort();
+  const subj = {}; lessons.forEach(l => subj[l.subject] = (subj[l.subject] || 0) + 1); const maxS = Math.max(1, ...Object.values(subj));
+  const best = [...cs].filter(c => c.quality != null).sort((a, b) => b.quality - a.quality);
+  return pageTitle('Phân hệ 5 · Ban Giám hiệu & Quản trị viên', 'Admin Dashboard – Quản trị chuyên môn toàn trường', 'Giám sát chất lượng SHCM giữa trường chính và các phân hiệu theo CV 5555; quản trị người dùng, cơ sở dữ liệu và nhật ký thao tác.',
+    `<button onclick="A.exportJSON()" class="${B.secondary}">${ic('file-json')}Sao lưu JSON</button><button onclick="A.openSchool()" class="${B.secondary}">${ic('settings')}Thông tin trường</button>`)
+  + `<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      ${kpi('repeat', 'Tổng số chu trình NCBH', lessons.length, `${done} đã thảo luận · ${lessons.filter(l => l.status === 'planning').length} đang chuẩn bị`, 'from-indigo-600 to-indigo-500')}
+      ${kpi('users', 'Tỷ lệ GV tham gia dự giờ', partRate + '%', `${teachers.filter(u => contributors.has(u.id)).length}/${teachers.length} GV có ghi chép/góp ý`, 'from-teal-600 to-emerald-500')}
+      ${kpi('gauge', 'Tỷ lệ HS tích cực (toàn trường)', allO ? pct(allE, allO) + '%' : '—', `Từ ${logs.length} ghi chép quan sát`, 'from-violet-600 to-fuchsia-500')}
+      ${kpi('bell-ring', 'Việc chờ BGH xử lý', pendingPlans.length + pendingUsers.length, `${pendingPlans.length} KHBD chờ duyệt · ${pendingUsers.length} tài khoản chờ duyệt`, 'from-rose-600 to-orange-500')}
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+      <div class="lg:col-span-2 ${CARD} p-5"><h3 class="font-bold mb-1 flex items-center gap-2">${ic('building-2', 'w-4 h-4 text-indigo-600')}Chất lượng chuyên môn: Trường chính vs Phân hiệu (CV 5555)</h3>
+        <p class="text-xs text-slate-500 mb-4">Chỉ số chất lượng = 40% tỷ lệ chu trình hoàn thành + 30% tỷ lệ HS tích cực + 30% tỷ lệ GV tham gia</p>
+        <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-xs text-slate-500 bg-slate-50 text-left"><tr><th class="p-2">Điểm trường</th><th class="p-2 text-right">Chu trình</th><th class="p-2 text-right">Biên bản</th><th class="p-2 text-right">Ghi chép</th><th class="p-2 text-right">Dự giờ liên PH</th><th class="p-2 text-right">GV tham gia</th><th class="p-2 text-right">HS tích cực</th><th class="p-2 w-40">Chỉ số chất lượng</th></tr></thead>
+        <tbody class="divide-y divide-slate-100">${cs.map(c => `<tr><td class="p-2 font-semibold">${esc(c.campus)}</td><td class="p-2 text-right">${c.lessons}</td><td class="p-2 text-right">${c.minutes}</td><td class="p-2 text-right">${c.logs}</td><td class="p-2 text-right">${c.cross}</td><td class="p-2 text-right">${c.part == null ? '—' : c.part + '%'}</td><td class="p-2 text-right">${c.act == null ? '—' : c.act + '%'}</td>
+          <td class="p-2">${c.quality == null ? '<span class="text-xs text-slate-400">Chưa có dữ liệu</span>' : `<div class="flex items-center gap-2"><div class="flex-1 h-2.5 rounded-full bg-slate-100"><div class="h-2.5 rounded-full ${c.quality >= 70 ? 'bg-emerald-500' : c.quality >= 40 ? 'bg-amber-500' : 'bg-rose-500'}" style="width:${c.quality}%"></div></div><b class="text-xs w-8 text-right">${c.quality}</b></div>`}</td></tr>`).join('')}</tbody></table></div>
+        <div class="mt-4 p-3 rounded-xl bg-indigo-50 text-sm text-indigo-900 flex gap-2">${ic('lightbulb', 'w-4 h-4 shrink-0 mt-0.5 text-amber-500')}<div>${best.length >= 2 ? `<b>${esc(best[0].campus)}</b> dẫn đầu (chỉ số ${best[0].quality}); <b>${esc(best[best.length - 1].campus)}</b> cần tăng cường (chỉ số ${best[best.length - 1].quality}). Gợi ý: tổ chức SHCM liên phân hiệu, mời GV ${esc(best[best.length - 1].campus)} dự giờ chu trình mẫu tại ${esc(best[0].campus)}, và hoàn thiện biên bản cho các chu trình "Đã dạy".` : 'Cần thêm dữ liệu từ nhiều điểm trường để so sánh.'}</div></div>
+      </div>
+      <div class="${CARD} p-5"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('badge-check', 'w-4 h-4 text-emerald-600')}Hàng chờ phê duyệt</h3>
+        <div class="space-y-2">${pendingPlans.map(l => `<div class="p-3 rounded-xl bg-amber-50 border border-amber-100"><div class="text-sm font-semibold">${esc(l.subject)} ${l.grade} – ${esc(l.title)}</div><div class="text-[11px] text-slate-500 mb-2">${esc(l.campus)} · ${fmtD(l.date)} · ${esc(teacherName(l))}</div><div class="flex gap-2"><button onclick="A.approveLesson('${l.id}',true)" class="${B.success} !py-1 !text-xs">${ic('check', 'w-3.5 h-3.5')}Duyệt KHBD</button><button onclick="A.pickLesson('${l.id}');A.go('plan')" class="${B.secondary} !py-1 !text-xs">Xem</button></div></div>`).join('')}
+        ${pendingUsers.map(u => `<div class="p-3 rounded-xl bg-rose-50 border border-rose-100"><div class="text-sm font-semibold">${esc(u.name)}</div><div class="text-[11px] text-slate-500 mb-2">Đăng ký: ${ROLES[u.role].label} · ${esc(u.campus)}</div><button onclick="A.approveUser('${u.id}')" class="${B.success} !py-1 !text-xs">${ic('user-check', 'w-3.5 h-3.5')}Duyệt tài khoản</button></div>`).join('')}
+        ${!pendingPlans.length && !pendingUsers.length ? '<div class="text-sm text-slate-400">Không có việc chờ duyệt. 🎉</div>' : ''}</div>
+        <h4 class="font-semibold text-sm mt-5 mb-2">Chu trình theo môn học</h4>
+        <div class="space-y-1.5">${Object.entries(subj).map(([k, v]) => `<div class="text-xs"><div class="flex justify-between"><span>${esc(k)}</span><b>${v}</b></div><div class="h-1.5 rounded-full bg-slate-100"><div class="h-1.5 rounded-full bg-indigo-500" style="width:${v / maxS * 100}%"></div></div></div>`).join('')}</div>
+      </div>
+    </div>
+    <div class="${CARD} p-5 mb-6"><div class="flex flex-wrap items-center justify-between gap-3 mb-4"><h3 class="font-bold flex items-center gap-2">${ic('users-round', 'w-4 h-4 text-indigo-600')}Quản trị người dùng (${users.length})</h3>
+      <div class="flex gap-2"><div class="relative">${ic('search', 'w-4 h-4 absolute left-3 top-2.5 text-slate-400')}<input id="uq" value="${esc(state.userQ)}" oninput="state.userQ=this.value;state._refocus='uq';clearTimeout(state._ut);state._ut=setTimeout(renderMain,250)" class="${INPUT} pl-9 !w-56" placeholder="Tìm người dùng..."></div><button onclick="A.openUserForm()" class="${B.primary}">${ic('user-plus')}Thêm</button></div></div>
+      <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-xs text-slate-500 bg-slate-50 text-left"><tr><th class="p-2">Họ tên</th><th class="p-2">Email/SĐT</th><th class="p-2">Vai trò</th><th class="p-2">Tổ chuyên môn</th><th class="p-2">Điểm trường</th><th class="p-2">Trạng thái</th><th class="p-2">Đăng nhập gần nhất</th><th class="p-2 text-right">Thao tác</th></tr></thead>
+      <tbody class="divide-y divide-slate-100">${userList.map(u => `<tr class="hover:bg-slate-50"><td class="p-2"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-slate-200 text-[11px] font-bold flex items-center justify-center">${initials(u.name)}</div><div><div class="font-medium">${esc(u.name)}</div><div class="text-[11px] text-slate-400">${esc(u.title || '')}</div></div></div></td><td class="p-2 text-xs">${esc(u.contact)}</td><td class="p-2"><span class="text-[11px] px-2 py-0.5 rounded-full ring-1 ${ROLES[u.role].pill}">${ROLES[u.role].label}</span></td><td class="p-2 text-xs">${esc(u.department)}</td><td class="p-2 text-xs">${esc(u.campus)}</td>
+        <td class="p-2"><span class="text-[11px] px-2 py-0.5 rounded-full ${u.status === 'active' ? 'bg-emerald-100 text-emerald-700' : u.status === 'locked' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}">${u.status === 'active' ? 'Hoạt động' : u.status === 'locked' ? 'Đã khóa' : 'Chờ duyệt'}</span></td><td class="p-2 text-xs text-slate-500">${fmtDT(u.lastLogin)}</td>
+        <td class="p-2 text-right whitespace-nowrap"><button onclick="A.openUserForm('${u.id}')" class="p-1.5 rounded-lg hover:bg-slate-100" title="Sửa">${ic('pencil')}</button>${u.status === 'pending' ? `<button onclick="A.approveUser('${u.id}')" class="p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-600" title="Duyệt">${ic('user-check')}</button>` : ''}${u.id !== state.user.id ? `<button onclick="A.toggleLock('${u.id}')" class="p-1.5 rounded-lg hover:bg-rose-50 ${u.status === 'locked' ? 'text-emerald-600' : 'text-rose-600'}" title="${u.status === 'locked' ? 'Mở khóa' : 'Khóa tài khoản'}">${ic(u.status === 'locked' ? 'lock-open' : 'lock')}</button>` : ''}</td></tr>`).join('')}</tbody></table></div></div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="${CARD} p-5"><h3 class="font-bold mb-3 flex items-center gap-2">${ic('hard-drive', 'w-4 h-4 text-indigo-600')}Quản trị Database</h3>
+        <div class="grid grid-cols-2 gap-2 text-xs mb-3"><div class="p-2.5 rounded-xl bg-slate-50"><div class="text-slate-500">Engine</div><b>${DB.mode}</b></div><div class="p-2.5 rounded-xl bg-slate-50"><div class="text-slate-500">Dung lượng dữ liệu</div><b>${fmtBytes(DB.sizeBytes())}</b></div><div class="p-2.5 rounded-xl bg-slate-50 col-span-2"><div class="text-slate-500">Hạn mức trình duyệt</div><b id="storageEst">Đang đo...</b></div></div>
+        <table class="w-full text-xs mb-4"><tbody class="divide-y divide-slate-100">${STORES.map(s => `<tr><td class="py-1.5 font-mono text-slate-500">${s}</td><td class="py-1.5">${STORE_LABELS[s]}</td><td class="py-1.5 text-right font-bold">${DB.all(s).length}</td><td class="py-1.5 text-right text-slate-400">${fmtBytes(DB.sizeBytes(s))}</td></tr>`).join('')}</tbody></table>
+        <div class="flex gap-2 mb-2"><select id="csvTable" class="${INPUT} !py-1.5 !text-xs">${STORES.map(s => `<option value="${s}">${STORE_LABELS[s]}</option>`).join('')}</select><button onclick="A.exportCSV($('#csvTable').value)" class="${B.secondary} !py-1.5 !text-xs shrink-0">${ic('file-spreadsheet', 'w-3.5 h-3.5')}CSV</button></div>
+        <div class="grid grid-cols-2 gap-2"><button onclick="A.exportJSON()" class="${B.primary} !text-xs">${ic('download', 'w-3.5 h-3.5')}Xuất JSON</button><label class="${B.secondary} !text-xs cursor-pointer">${ic('upload', 'w-3.5 h-3.5')}Khôi phục JSON<input type="file" accept=".json" class="hidden" onchange="A.importJSON(this)"></label>
+          <button onclick="A.resetDemo()" class="${B.danger} !text-xs col-span-2">${ic('refresh-cw', 'w-3.5 h-3.5')}Khôi phục dữ liệu mẫu ban đầu</button></div>
+        <div class="text-[11px] text-slate-400 mt-3">Ghi gần nhất: ${fmtDT(localStorage.getItem(LS.lastWrite))}. CSV người dùng không chứa mã băm mật khẩu.</div></div>
+      <div class="lg:col-span-2 ${CARD} p-5"><div class="flex flex-wrap items-center justify-between gap-2 mb-3"><h3 class="font-bold flex items-center gap-2">${ic('scroll', 'w-4 h-4 text-indigo-600')}Audit Logs – nhật ký thao tác thời gian thực <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span></h3>
+        <div class="flex gap-2"><input id="aq" value="${esc(state.auditQ)}" oninput="state.auditQ=this.value;$('#auditBody').innerHTML=auditRows()" class="${INPUT} !py-1.5 !text-xs !w-44" placeholder="Tìm..."><select onchange="state.auditAction=this.value;$('#auditBody').innerHTML=auditRows()" class="${INPUT} !py-1.5 !text-xs !w-40"><option value="">Mọi thao tác</option>${actions.map(a => `<option ${a === state.auditAction ? 'selected' : ''}>${esc(a)}</option>`).join('')}</select><button onclick="A.exportCSV('audit_logs')" class="${B.secondary} !py-1.5 !px-2" title="Xuất CSV">${ic('download', 'w-3.5 h-3.5')}</button></div></div>
+        <div class="overflow-auto max-h-[420px] scroll-thin"><table class="w-full text-sm"><thead class="text-xs text-slate-500 bg-slate-50 text-left sticky top-0"><tr><th class="p-2">Thời gian</th><th class="p-2">Người thực hiện</th><th class="p-2">Vai trò</th><th class="p-2">Thao tác</th><th class="p-2">Bảng</th><th class="p-2">Chi tiết</th></tr></thead><tbody id="auditBody" class="divide-y divide-slate-100">${auditRows()}</tbody></table></div></div>
+    </div>`;
+}
+async function updateStorageEstimate() {
+  const el = $('#storageEst'); if (!el) return;
+  try { const e = await navigator.storage.estimate(); el.textContent = `${fmtBytes(e.usage || 0)} / ${fmtBytes(e.quota || 0)} (${((e.usage || 0) / (e.quota || 1) * 100).toFixed(2)}%)`; } catch (er) { el.textContent = 'Không hỗ trợ'; }
+}
+A.openUserForm = id => {
+  const u = id ? userById(id) : { role: 'observer', campus: CAMPUSES[0], department: DEPARTMENTS[0], status: 'active' };
+  const opt = (arr, v) => arr.map(x => `<option ${x === v ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  openModal({ title: id ? 'Sửa tài khoản' : 'Thêm tài khoản', icon: 'user-cog', body: `<div class="grid md:grid-cols-2 gap-3">
+    <div><label class="${LABEL}">Họ tên *</label><input id="ufName" class="${INPUT}" value="${esc(u.name || '')}"></div>
+    <div><label class="${LABEL}">Email / SĐT *</label><input id="ufContact" class="${INPUT}" value="${esc(u.contact || '')}"></div>
+    <div><label class="${LABEL}">Vai trò</label><select id="ufRole" class="${INPUT}">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${k === u.role ? 'selected' : ''}>${r.label}</option>`).join('')}</select></div>
+    <div><label class="${LABEL}">Chức danh</label><input id="ufTitle" class="${INPUT}" value="${esc(u.title || '')}"></div>
+    <div><label class="${LABEL}">Tổ chuyên môn</label><select id="ufDept" class="${INPUT}">${opt(DEPARTMENTS, u.department)}</select></div>
+    <div><label class="${LABEL}">Điểm trường</label><select id="ufCampus" class="${INPUT}">${opt(CAMPUSES, u.campus)}</select></div>
+    <div><label class="${LABEL}">Trạng thái</label><select id="ufStatus" class="${INPUT}" ${id === state.user.id ? 'disabled' : ''}>${[['active', 'Hoạt động'], ['locked', 'Đã khóa'], ['pending', 'Chờ duyệt']].map(([k, t]) => `<option value="${k}" ${k === u.status ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+    <div><label class="${LABEL}">${id ? 'Đặt lại mật khẩu (để trống nếu giữ)' : 'Mật khẩu *'}</label><input id="ufPw" type="password" class="${INPUT}" autocomplete="new-password"></div></div>`,
+    footer: `<button onclick="A.closeModal()" class="${B.secondary}">Hủy</button><button onclick="A.saveUser('${id || ''}')" class="${B.primary}">${ic('save')}Lưu</button>` });
+};
+A.saveUser = async id => {
+  const v = k => $('#' + k).value.trim(); const name = v('ufName'), contact = v('ufContact'), pw = $('#ufPw').value;
+  if (name.length < 3 || !contact) return toast('Nhập họ tên và email/SĐT.', 'warn');
+  if (DB.all('users').some(u => u.id !== id && u.contact.toLowerCase() === contact.toLowerCase())) return toast('Email/SĐT đã tồn tại.', 'error');
+  if (!id && pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn');
+  if (id === state.user.id && v('ufRole') !== 'admin' && DB.where('users', u => u.role === 'admin' && u.status === 'active').length < 2) return toast('Không thể hạ quyền Admin cuối cùng.', 'error');
+  const u = id ? userById(id) : { id: uid('u'), createdAt: nowISO(), lastLogin: null };
+  Object.assign(u, { name, contact, role: v('ufRole'), title: v('ufTitle'), department: v('ufDept'), campus: v('ufCampus'), status: id === state.user.id ? 'active' : v('ufStatus') });
+  if (pw) { if (pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn'); u.passwordHash = await hashPw(pw); }
+  await DB.put('users', u); await audit('Quản trị người dùng', 'users', `${id ? 'Sửa' : 'Thêm'} ${name} – ${ROLES[u.role].label}`);
+  if (id === state.user.id) state.user = u; A.closeModal(); render(); toast('Đã lưu tài khoản.', 'success');
+};
+A.toggleLock = async id => { const u = userById(id); u.status = u.status === 'locked' ? 'active' : 'locked'; await DB.put('users', u); await audit('Quản trị người dùng', 'users', `${u.status === 'locked' ? 'Khóa' : 'Mở khóa'} ${u.name}`); renderMain(); toast(`${u.status === 'locked' ? 'Đã khóa' : 'Đã mở khóa'} ${u.name}.`, 'success'); };
+A.approveUser = async id => { const u = userById(id); u.status = 'active'; await DB.put('users', u); await audit('Quản trị người dùng', 'users', `Duyệt tài khoản ${u.name}`); renderMain(); toast('Đã duyệt tài khoản.', 'success'); };
+A.openSchool = () => openModal({ title: 'Thông tin đơn vị', icon: 'school', body: `<div class="space-y-3"><div><label class="${LABEL}">Cơ quan chủ quản</label><input id="scUnit" class="${INPUT}" value="${esc(Settings.get('schoolUnit'))}"></div><div><label class="${LABEL}">Tên trường</label><input id="scName" class="${INPUT}" value="${esc(Settings.get('schoolName'))}"></div><p class="text-xs text-slate-500">Hiển thị trên header và quốc hiệu biên bản.</p></div>`, footer: `<button onclick="A.closeModal()" class="${B.secondary}">Hủy</button><button onclick="A.saveSchool()" class="${B.primary}">${ic('save')}Lưu</button>` });
+A.saveSchool = async () => { Settings.set('schoolName', $('#scName').value.trim() || Settings.get('schoolName')); Settings.set('schoolUnit', $('#scUnit').value.trim()); await audit('Cấu hình hệ thống', 'settings', 'Cập nhật thông tin trường'); A.closeModal(); render(); };
+
+/* ------------------------------ SAO LƯU / KHÔI PHỤC */
+A.exportJSON = async () => {
+  const payload = { app: APP.name, version: APP.version, exportedAt: nowISO(), exportedBy: state.user?.name, data: DB.snapshot() };
+  download(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }), `EduLesson_Backup_${stamp()}.json`);
+  await audit('Sao lưu dữ liệu', 'database', `JSON – ${STORES.map(s => DB.all(s).length).join('/')} bản ghi`); toast('Đã xuất bản sao lưu JSON.', 'success');
+};
+A.exportCSV = async store => {
+  let rows = DB.all(store).map(r => { const o = { ...r }; delete o.passwordHash; if (o.planFile) o.planFile = o.planFile.name; return o; });
+  if (!rows.length) return toast('Bảng không có dữ liệu.', 'warn');
+  const cols = [...new Set(rows.flatMap(r => Object.keys(r)))];
+  const cell = v => { const s = v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v); return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  const csv = [cols.join(','), ...rows.map(r => cols.map(c => cell(r[c])).join(','))].join('\r\n');
+  download(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }), `EduLesson_${store}_${stamp()}.csv`);
+  await audit('Sao lưu dữ liệu', store, `CSV – ${rows.length} bản ghi`); toast(`Đã xuất CSV ${STORE_LABELS[store]}.`, 'success');
+};
+A.importJSON = input => {
+  const f = input.files[0]; if (!f) return; const rd = new FileReader();
+  rd.onload = async () => {
+    try {
+      const j = JSON.parse(rd.result); const data = j.data || j;
+      if (!STORES.some(s => Array.isArray(data[s]))) throw new Error('Không đúng định dạng sao lưu EduLesson.');
+      if (!confirm(`Khôi phục từ "${f.name}"?\n${STORES.map(s => `${STORE_LABELS[s]}: ${(data[s] || []).length}`).join('\n')}\n\nDữ liệu hiện tại sẽ bị THAY THẾ.`)) return;
+      await DB.replaceAll(data);
+      const me = state.user && userById(state.user.id);
+      if (!me || me.status !== 'active') { state.user = null; localStorage.removeItem(LS.session); render(); return toast('Đã khôi phục. Vui lòng đăng nhập lại.', 'success'); }
+      state.user = me; await audit('Khôi phục dữ liệu', 'database', f.name); state.lessonId = null; ensureLesson(); render(); toast('Khôi phục dữ liệu thành công.', 'success');
+    } catch (e) { toast('Lỗi khôi phục: ' + e.message, 'error'); }
+    input.value = '';
+  };
+  rd.readAsText(f);
+};
+A.resetDemo = async () => {
+  if (!confirm('Xóa TOÀN BỘ dữ liệu hiện tại và nạp lại dữ liệu mẫu? (Nên sao lưu JSON trước)')) return;
+  for (const s of STORES) await DB.clear(s);
+  await seedDemo(); state.user = userById('u_quan'); localStorage.setItem(LS.session, 'u_quan'); state.lessonId = null; ensureLesson();
+  await audit('Khôi phục dữ liệu', 'database', 'Nạp lại dữ liệu mẫu'); render(); toast('Đã nạp lại dữ liệu mẫu.', 'success');
+};
+
+/* ------------------------------ CẤU HÌNH AI */
+A.openAI = () => {
+  const mode = Settings.get('aiMode');
+  openModal({ title: 'Cấu hình trí tuệ nhân tạo', icon: 'sparkles', body: `<div class="space-y-4">
+    <div class="grid sm:grid-cols-2 gap-3">
+      ${[['mock', 'bot', 'Demo Sư phạm / Mock AI', 'Chạy ngay, không cần API key. Bộ quy tắc Regex + mẫu biên bản chuẩn.'], ['gemini', 'sparkles', 'Google Gemini API', 'Phân tích ngôn ngữ tự nhiên, tổng hợp biên bản sâu hơn.']].map(([k, i, t, d]) => `<label class="cursor-pointer"><input type="radio" name="aiMode" value="${k}" class="peer sr-only" ${mode === k ? 'checked' : ''}><div class="h-full p-4 rounded-2xl ring-1 ring-slate-200 peer-checked:ring-2 peer-checked:ring-violet-500 peer-checked:bg-violet-50"><div class="font-semibold flex items-center gap-2">${ic(i, 'w-4 h-4 text-violet-600')}${t}</div><div class="text-xs text-slate-500 mt-1">${d}</div></div></label>`).join('')}
+    </div>
+    <div><label class="${LABEL}">Gemini API Key</label><div class="flex gap-2"><input id="aiKey" type="password" class="${INPUT} font-mono" value="${esc(Settings.get('apiKey'))}" placeholder="AIza..." autocomplete="off"><button type="button" onclick="const k=$('#aiKey');k.type=k.type==='password'?'text':'password'" class="${B.secondary} !px-3">${ic('eye')}</button></div>
+      <p class="text-[11px] text-slate-500 mt-1">Lấy khóa tại Google AI Studio (aistudio.google.com). Khóa chỉ lưu trong LocalStorage của trình duyệt này và được gửi trực tiếp tới Google.</p></div>
+    <div><label class="${LABEL}">Mô hình</label><select id="aiModel" class="${INPUT}">${['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash', 'gemini-2.5-flash-lite'].map(m => `<option ${m === Settings.get('model') ? 'selected' : ''}>${m}</option>`).join('')}</select></div>
+    <div id="aiTest" class="text-sm"></div>
+    <div class="text-xs p-3 rounded-xl bg-amber-50 text-amber-800 flex gap-2">${ic('shield-alert', 'w-4 h-4 shrink-0')}Bảo vệ dữ liệu: dữ liệu gửi tới Gemini chỉ gồm nội dung bài học và nhật ký quan sát (không gửi họ tên học sinh). Không nhập thông tin định danh học sinh vào ghi chép.</div>
+  </div>`, footer: `<button onclick="A.testAI()" class="${B.secondary}">${ic('plug-zap')}Kiểm tra kết nối</button><button onclick="A.saveAI()" class="${B.primary}">${ic('save')}Lưu cấu hình</button>` });
+};
+A.testAI = async () => {
+  const key = $('#aiKey').value.trim(); const out = $('#aiTest'); if (!key) { out.innerHTML = '<span class="text-rose-600">Chưa nhập API key.</span>'; return; }
+  out.innerHTML = '<span class="text-slate-500">Đang kiểm tra...</span>';
+  const prevK = Settings.get('apiKey'), prevM = Settings.get('model'); Settings.d.apiKey = key; Settings.d.model = $('#aiModel').value;
+  try { const t = await callGemini('Trả lời đúng 1 câu tiếng Việt: "Kết nối thành công với EduLesson Study CoPilot."'); out.innerHTML = `<span class="text-emerald-600">✓ ${esc(t.trim().slice(0, 120))}</span>`; }
+  catch (e) { out.innerHTML = `<span class="text-rose-600">✗ ${esc(e.message)}</span>`; }
+  finally { Settings.d.apiKey = prevK; Settings.d.model = prevM; }
+};
+A.saveAI = async () => {
+  const mode = document.querySelector('input[name="aiMode"]:checked').value, key = $('#aiKey').value.trim();
+  if (mode === 'gemini' && !key) return toast('Chế độ Gemini cần API key.', 'warn');
+  Settings.set('aiMode', mode); Settings.set('apiKey', key); Settings.set('model', $('#aiModel').value);
+  await audit('Cấu hình AI', 'settings', `${mode === 'gemini' ? 'Gemini ' + $('#aiModel').value : 'Demo Sư phạm'}`); A.closeModal(); render(); toast('Đã lưu cấu hình AI.', 'success');
+};
+A.closeModal = () => { $('#modalRoot').innerHTML = ''; };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') A.closeModal(); });
+document.addEventListener('click', e => { $$('details[open]').forEach(d => { if (!d.contains(e.target)) d.removeAttribute('open'); }); });
+
+// ---------------------------------------------------------------- 11. KHỞI ĐỘNG
+async function boot() {
+  Settings.load();
+  await DB.init();
+  if (!DB.all('users').length) await seedDemo();
+  const sid = localStorage.getItem(LS.session); const u = sid && userById(sid);
+  if (u && u.status === 'active') state.user = u;
+  state.tab = localStorage.getItem(LS.tab) || 'plan';
+  state.lessonId = localStorage.getItem(LS.lesson);
+  ensureLesson();
+  render();
+}
+boot().catch(e => { console.error(e); document.getElementById('app').innerHTML = `<div style="padding:40px;font-family:sans-serif">Lỗi khởi động: ${esc(e.message)}</div>`; });
+</script>
+</body>
+</html>
