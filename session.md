@@ -11,7 +11,7 @@
 - Kiểm thử Playwright: không lỗi JS; KPI 82% · GV nói 38% · điểm nghẽn phút 18–22.
 
 ## Triển khai
-- Đích: https://ncbh.thaykhoa-ai.tech — hướng dẫn: `edulesson-copilot/DEPLOY.md`; workflow `.github/workflows/deploy-hostinger.yml` chờ chủ tài khoản tạo sub-domain + FTP secrets.
+- Đích: https://ncbh.thaykhoa-ai.tech (sub-domain ĐÃ TẠO 28/10/2026; chờ xác nhận upload + SSL) — hướng dẫn: `edulesson-copilot/DEPLOY.md`; workflow `.github/workflows/deploy-hostinger.yml` chờ chủ tài khoản tạo sub-domain + FTP secrets.
 
 ## Việc có thể làm tiếp
 - Đồng bộ đám mây (Supabase/Firebase) cho nhiều thiết bị; xuất .docx chuẩn; nhập KHBD .docx để AI đọc.
