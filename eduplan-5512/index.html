@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPlan 5512 CoPilot</title>
+<meta name="description" content="Hệ thống AI hỗ trợ BGH, Tổ trưởng chuyên môn và Giáo viên rà soát, tối ưu Kế hoạch bài dạy theo Công văn 5512/BGDĐT-GDTrH.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  if (window.tailwind) tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] },
+        colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } }
+      }
+    }
+  };
+</script>
+<style>
+  body { background:#f8fafc; }
+  .card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; box-shadow:0 1px 2px rgba(15,23,42,.04); }
+  .input { width:100%; border:1px solid #cbd5e1; border-radius:10px; padding:.5rem .75rem; font-size:.875rem; background:#fff; outline:none; transition:.15s; }
+  .input:focus { border-color:#2563eb; box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; border-radius:10px; padding:.5rem .9rem; font-size:.875rem; font-weight:600; transition:.15s; white-space:nowrap; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+  .btn-primary { background:#2563eb; color:#fff; } .btn-primary:hover:not(:disabled) { background:#1e40af; }
+  .btn-soft { background:#eff6ff; color:#1e40af; } .btn-soft:hover:not(:disabled) { background:#dbeafe; }
+  .btn-ghost { background:#fff; color:#334155; border:1px solid #e2e8f0; } .btn-ghost:hover:not(:disabled) { background:#f1f5f9; }
+  .btn-success { background:#059669; color:#fff; } .btn-success:hover:not(:disabled) { background:#047857; }
+  .btn-danger { background:#fff1f2; color:#be123c; border:1px solid #fecdd3; } .btn-danger:hover:not(:disabled) { background:#ffe4e6; }
+  .badge { display:inline-flex; align-items:center; gap:.25rem; padding:.15rem .55rem; border-radius:999px; font-size:.72rem; font-weight:600; white-space:nowrap; }
+  .label { display:flex; align-items:center; gap:.25rem; font-size:.75rem; font-weight:600; color:#475569; margin-bottom:.25rem; }
+  .nav-tab { display:flex; align-items:center; gap:.4rem; padding:.5rem .8rem; border-radius:10px; font-size:.85rem; font-weight:600; color:#475569; white-space:nowrap; }
+  .nav-tab:hover { background:#eff6ff; color:#1e40af; }
+  .nav-tab.active { background:#2563eb; color:#fff; }
+  .role-pill { padding:.3rem .7rem; border-radius:999px; font-size:.75rem; font-weight:600; color:#1e40af; white-space:nowrap; }
+  .role-pill.active { background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.12); color:#1e3a8a; }
+  .tbl th { text-align:left; font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:#64748b; font-weight:700; padding:.6rem .75rem; background:#f8fafc; border-bottom:1px solid #e2e8f0; }
+  .tbl td { padding:.6rem .75rem; border-bottom:1px solid #f1f5f9; font-size:.85rem; vertical-align:top; }
+  .tbl tr:hover td { background:#f8fafc; }
+  .scroll-thin::-webkit-scrollbar { width:8px; height:8px; } .scroll-thin::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:8px; }
+  .fade-in { animation:fade .25s ease; } @keyframes fade { from { opacity:0; transform:translateY(4px);} to { opacity:1; transform:none; } }
+  .spin { animation:spin 1s linear infinite; } @keyframes spin { to { transform:rotate(360deg); } }
+  textarea.plan { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.8rem; line-height:1.55; }
+  .phieu { font-family:"Times New Roman", Times, serif; color:#000; font-size:13.5pt; line-height:1.45; }
+  .phieu h1 { font-size:15pt; font-weight:700; text-align:center; text-transform:uppercase; }
+  .phieu .sec { font-weight:700; margin-top:.6em; }
+  .phieu table.info td { padding:1px 4px; vertical-align:top; }
+  .phieu table.grid { border-collapse:collapse; width:100%; } .phieu table.grid td, .phieu table.grid th { border:1px solid #000; padding:4px 6px; vertical-align:top; font-size:12.5pt; }
+  #print-area { display:none; }
+  @media print {
+    @page { size:A4; margin:2cm 1.5cm 2cm 2.5cm; }
+    body { background:#fff !important; }
+    body > *:not(#print-area) { display:none !important; }
+    #print-area { display:block !important; }
+  }
+</style>
+</head>
+<body class="font-sans text-slate-800 antialiased">
+
+<!-- ============ VÙNG ỨNG DỤNG ============ -->
+<div id="app"></div>
+<div id="modal-root"></div>
+<div id="toast-root" class="fixed bottom-4 right-4 z-[80] flex flex-col gap-2 items-end"></div>
+<div id="print-area"></div>
+
+<script>
+/* =====================================================================
+   EduPlan 5512 CoPilot — Single-file Web App
+   Kiến trúc: DB Layer (IndexedDB + LocalStorage mirror) · Auth & RBAC ·
+   AI Engine (Gemini API / Mock AI Sư phạm) · 4 phân hệ giao diện + Admin
+   ===================================================================== */
+
+/* ---------------------------- 1. TIỆN ÍCH ---------------------------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+const uid = p => p + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const nowISO = () => new Date().toISOString();
+const fmtDate = iso => { if (!iso) return '—'; const d = new Date(iso); return d.toLocaleDateString('vi-VN', { day:'2-digit', month:'2-digit', year:'numeric' }); };
+const fmtDT = iso => { if (!iso) return '—'; const d = new Date(iso); return d.toLocaleString('vi-VN', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }); };
+const clamp = (v, a = 0, b = 100) => Math.max(a, Math.min(b, Math.round(v)));
+const lsGet = (k, d = null) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } };
+const icons = () => { try { window.lucide && lucide.createIcons(); } catch {} };
+const ic = (name, cls = 'w-4 h-4') => `<i data-lucide="${name}" class="${cls}"></i>`;
+function download(filename, content, mime = 'text/plain;charset=utf-8') {
+  const blob = new Blob([content], { type: mime });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {} t.remove(); return ok; }
+}
+async function hashPw(pw) {
+  const s = 'eduplan5512::' + pw;
+  try {
+    if (window.crypto?.subtle) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+      return 'sha256:' + [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+  } catch {}
+  let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+  return 'djb2:' + h.toString(16);
+}
+
+/* ---------------------------- 2. DANH MỤC ---------------------------- */
+const ROLES = {
+  admin:   { label:'Ban Giám hiệu / Admin', short:'BGH', icon:'shield-check', color:'bg-indigo-100 text-indigo-700' },
+  leader:  { label:'Tổ trưởng chuyên môn', short:'Tổ trưởng', icon:'users', color:'bg-amber-100 text-amber-700' },
+  teacher: { label:'Giáo viên bộ môn', short:'Giáo viên', icon:'graduation-cap', color:'bg-emerald-100 text-emerald-700' }
+};
+const DEPTS = ['Toán', 'Ngữ văn', 'KHTN', 'KHXH', 'Ngoại ngữ'];
+const SUBJECTS = { 'Toán':'Toán', 'Ngữ văn':'Ngữ văn', 'KHTN':'KHTN', 'Vật lí':'KHTN', 'Hóa học':'KHTN', 'Sinh học':'KHTN', 'Lịch sử':'KHXH', 'Địa lí':'KHXH', 'GD Kinh tế & Pháp luật':'KHXH', 'Tiếng Anh':'Ngoại ngữ', 'Tiếng Pháp':'Ngoại ngữ' };
+const GRADES = ['6','7','8','9','10','11','12'];
+const BOOKS = ['Cánh diều', 'Kết nối tri thức', 'Chân trời sáng tạo'];
+const TERMS = ['Học kỳ I', 'Học kỳ II'];
+const STATUSES = {
+  draft:    { label:'Bản nháp', cls:'bg-slate-100 text-slate-600', icon:'file-pen' },
+  pending:  { label:'Chờ duyệt', cls:'bg-amber-100 text-amber-700', icon:'hourglass' },
+  revise:   { label:'Yêu cầu chỉnh sửa', cls:'bg-rose-100 text-rose-700', icon:'rotate-ccw' },
+  approved: { label:'Đã duyệt đạt chuẩn', cls:'bg-emerald-100 text-emerald-700', icon:'badge-check' }
+};
+const SCHOOL_YEAR = '2026 – 2027';
+/* Số liệu tích lũy từ báo cáo các tổ (trước khi số hóa) — cộng dồn với CSDL trực tiếp */
+const BASELINE = {
+  'Toán':     { submitted:97, approved:89, avg:84.1 },
+  'Ngữ văn':  { submitted:85, approved:75, avg:82.6 },
+  'KHTN':     { submitted:91, approved:81, avg:81.9 },
+  'KHXH':     { submitted:74, approved:64, avg:80.4 },
+  'Ngoại ngữ':{ submitted:62, approved:55, avg:83.2 }
+};
+const BASELINE_TEACHERS = { total:68, onTime:63 };
+
+/* ------------------------ 3. DỮ LIỆU MẪU KHBD ------------------------ */
+const T8_O1 = '- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.';
+const T8_O2 = '- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.';
+const T8_O3 = '- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.';
+const K6_O1 = '- Bước 1. Chuyển giao nhiệm vụ: GV yêu cầu HS đọc SGK mục I và cho biết thế nào là lực tiếp xúc.';
+const K6_O2 = '- Bước 2. Thực hiện nhiệm vụ: GV làm thí nghiệm biểu diễn dùng nam châm hút kẹp giấy và dùng tay đẩy xe lăn; HS quan sát.';
+const K6_O3 = '- Bước 3. Báo cáo, thảo luận: GV gọi 1–2 HS trả lời, GV nhận xét.';
+const NV_O1 = '- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.';
+const NV_O2 = '- Bước 4: GV chốt kiến thức.';
+
+const SAMPLES = {
+  nv10: {
+    btn:'Ngữ văn 10 (Chân trời sáng tạo - Bài: Nghệ thuật xây dựng hình tượng nhân vật)',
+    meta:{ title:'Nghệ thuật xây dựng hình tượng nhân vật', subject:'Ngữ văn', grade:'10', book:'Chân trời sáng tạo', term:'Học kỳ I', dept:'Ngữ văn' },
+    content:
+`KẾ HOẠCH BÀI DẠY
+Tổ: Ngữ văn — Giáo viên: Đặng Quốc Bảo
+Môn: Ngữ văn — Lớp 10 — Bộ sách: Chân trời sáng tạo — Thời lượng: 2 tiết
+TÊN BÀI DẠY: NGHỆ THUẬT XÂY DỰNG HÌNH TƯỢNG NHÂN VẬT
+(Ngữ liệu: đoạn trích "Chiến thắng Mtao Mxây" — sử thi Đăm Săn)
+
+I. MỤC TIÊU
+1. Về năng lực
+- Năng lực đặc thù: Nhận biết và phân tích được các phương diện xây dựng nhân vật người anh hùng sử thi (ngoại hình, hành động, lời nói, quan hệ với cộng đồng); phân tích được tác dụng của các thủ pháp so sánh, phóng đại, trùng điệp.
+- Năng lực chung: Tự chủ và tự học; giao tiếp và hợp tác; giải quyết vấn đề và sáng tạo.
+2. Về phẩm chất
+- Trân trọng vẻ đẹp của người anh hùng và giá trị văn hóa Tây Nguyên; có ý thức trách nhiệm với cộng đồng.
+
+II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU
+- Máy chiếu, video "Không gian văn hóa cồng chiêng Tây Nguyên" (2 phút).
+- Phiếu học tập số 1, số 2; giấy A0, bút lông, giấy ghi chú; bảng tiêu chí đánh giá sản phẩm nhóm.
+
+III. TIẾN TRÌNH DẠY HỌC
+Hoạt động 1: Mở đầu (7 phút)
+a) Mục tiêu: Tạo tâm thế, kết nối trải nghiệm của HS về hình mẫu người anh hùng.
+b) Nội dung: HS xem video và chia sẻ "Người anh hùng trong tâm trí em".
+c) Sản phẩm: Từ khóa cá nhân trên giấy ghi chú, dán lên "Bức tường anh hùng".
+d) Tổ chức thực hiện:
+- Bước 1. Chuyển giao nhiệm vụ: GV chiếu video, nêu nhiệm vụ: "Trong 2 phút, mỗi em viết 3 từ khóa mô tả một người anh hùng em ngưỡng mộ và dán lên Bức tường anh hùng."
+- Bước 2. Thực hiện nhiệm vụ: HS làm việc cá nhân, viết và dán giấy ghi chú.
+- Bước 3. Báo cáo, thảo luận: 2–3 HS đọc to từ khóa, cả lớp nhận xét điểm chung.
+- Bước 4. Kết luận, nhận định: GV tổng hợp từ khóa, dẫn dắt vào bài học.
+
+Hoạt động 2: Hình thành kiến thức (45 phút)
+a) Mục tiêu: Phân tích được nghệ thuật xây dựng hình tượng Đăm Săn qua ngoại hình, hành động, lời nói và thái độ cộng đồng.
+b) Nội dung: HS làm việc nhóm theo kĩ thuật mảnh ghép với phiếu học tập số 1.
+c) Sản phẩm: Sơ đồ tư duy trên giấy A0 của từng nhóm.
+d) Tổ chức thực hiện:
+- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 4 nhóm chuyên gia, mỗi nhóm phân tích một phương diện (ngoại hình; hành động qua các hiệp đấu; lời nói; thái độ của cộng đồng) trong 10 phút; sau đó lập nhóm mảnh ghép tổng hợp thành sơ đồ tư duy trong 10 phút.
+- Bước 2. Thực hiện nhiệm vụ: HS đọc văn bản, tìm chi tiết, thảo luận và ghi vào phiếu học tập; GV quan sát, hỗ trợ nhóm gặp khó khăn bằng câu hỏi gợi mở.
+- Bước 3. Báo cáo, thảo luận: Các nhóm treo sản phẩm theo hình thức phòng tranh; mỗi nhóm cử đại diện thuyết minh, các nhóm khác dùng giấy ghi chú đặt câu hỏi phản biện.
+- Bước 4. Kết luận, nhận định: GV nhận xét sản phẩm theo bảng tiêu chí, chuẩn hóa kiến thức về các thủ pháp so sánh, phóng đại, trùng điệp trong khắc họa người anh hùng.
+
+Hoạt động 3: Luyện tập (15 phút)
+a) Mục tiêu: Vận dụng kiến thức để so sánh hai hình tượng nhân vật.
+b) Nội dung: Hoàn thành phiếu học tập số 2 so sánh Đăm Săn và Mtao Mxây.
+c) Sản phẩm: Phiếu học tập số 2 của từng cặp.
+d) Tổ chức thực hiện:
+- Bước 1: GV phát phiếu học tập số 2, yêu cầu HS so sánh hình tượng Đăm Săn với Mtao Mxây trên 3 tiêu chí.
+- Bước 2: HS làm việc cặp đôi trong 8 phút.
+- Bước 3: Đại diện 2 cặp trình bày, các cặp khác bổ sung.
+${NV_O2}
+
+Hoạt động 4: Vận dụng (13 phút và ở nhà)
+a) Mục tiêu: Viết đoạn văn phân tích một chi tiết nghệ thuật.
+b) Nội dung: Viết đoạn văn nghị luận văn học ngắn.
+c) Sản phẩm: Đoạn văn 150–200 chữ nộp trên Padlet lớp.
+d) Tổ chức thực hiện:
+${NV_O1}
+- Bước 2: HS thực hiện ở nhà.
+- Bước 3: HS nộp bài trên Padlet lớp.
+- Bước 4: GV nhận xét vào tiết sau.`
+  },
+  toan8: {
+    btn:'Toán 8 (Kết nối tri thức - Bài: Hình chóp tam giác đều và diện tích xung quanh)',
+    meta:{ title:'Hình chóp tam giác đều và diện tích xung quanh', subject:'Toán', grade:'8', book:'Kết nối tri thức', term:'Học kỳ II', dept:'Toán' },
+    content:
+`KẾ HOẠCH BÀI DẠY
+Tổ: Toán — Giáo viên: Võ Thị Mai
+Môn: Toán — Lớp 8 — Bộ sách: Kết nối tri thức với cuộc sống — Thời lượng: 2 tiết
+TÊN BÀI DẠY: HÌNH CHÓP TAM GIÁC ĐỀU VÀ DIỆN TÍCH XUNG QUANH
+
+I. MỤC TIÊU
+1. Về kiến thức: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao, trung đoạn của hình chóp tam giác đều; tính được diện tích xung quanh của hình chóp tam giác đều.
+2. Về năng lực
+- Năng lực toán học: Tư duy và lập luận toán học; mô hình hóa toán học; giải quyết vấn đề gắn với thực tiễn (tính diện tích vật liệu làm mái lều, kim tự tháp mô hình).
+- Năng lực chung: Giao tiếp và hợp tác; tự chủ và tự học.
+3. Về phẩm chất: Chăm chỉ, trung thực, có trách nhiệm trong hoạt động nhóm.
+
+II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU
+- Mô hình hình chóp tam giác đều bằng bìa cứng (4 bộ), lưới hình chóp để cắt ghép, thước kẻ, kéo.
+- Phiếu học tập số 1, số 2; phần mềm GeoGebra 3D.
+
+III. TIẾN TRÌNH DẠY HỌC
+Hoạt động 1: Mở đầu (5 phút)
+a) Mục tiêu: Gợi mở nhu cầu nhận biết hình chóp tam giác đều trong thực tế.
+b) Nội dung: HS quan sát hình ảnh mái lều, hộp quà, kim tự tháp và trả lời câu hỏi.
+c) Sản phẩm: Câu trả lời của HS về điểm chung của các vật thể.
+d) Tổ chức thực hiện:
+- Bước 1. Chuyển giao nhiệm vụ: GV chiếu 4 hình ảnh và nêu câu hỏi: "Các vật thể này có điểm gì chung về hình dạng?"
+- Bước 2. Thực hiện nhiệm vụ: HS làm việc nhóm 4, quan sát mô hình thật và hình ảnh trong 2 phút.
+- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trả lời.
+- Bước 4. Kết luận, nhận định: GV nhận xét và giới thiệu bài mới.
+
+Hoạt động 2: Hình thành kiến thức (35 phút)
+2.1. Nhận biết hình chóp tam giác đều
+a) Mục tiêu: Nhận biết các yếu tố của hình chóp tam giác đều.
+b) Nội dung: Quan sát mô hình, xác định các yếu tố.
+c) Sản phẩm: Vở ghi của HS.
+d) Tổ chức thực hiện:
+- Bước 1. Chuyển giao nhiệm vụ: GV đưa mô hình và yêu cầu HS chú ý lên bảng.
+${T8_O2}
+- Bước 3. Báo cáo, thảo luận: GV hỏi lại một vài yếu tố, HS trả lời.
+- Bước 4. Kết luận, nhận định: GV chốt định nghĩa hình chóp tam giác đều.
+2.2. Diện tích xung quanh của hình chóp tam giác đều
+a) Mục tiêu: Xây dựng và vận dụng công thức Sxq = p.d.
+b) Nội dung: Cắt ghép lưới hình chóp, tính tổng diện tích các mặt bên.
+c) Sản phẩm: Phiếu học tập số 1 và công thức Sxq = p.d.
+d) Tổ chức thực hiện:
+${T8_O1}
+- Bước 2. Thực hiện nhiệm vụ: HS làm ví dụ 1 trong SGK theo cá nhân.
+- Bước 3. Báo cáo, thảo luận: 1 HS trình bày lời giải, HS khác nhận xét.
+- Bước 4. Kết luận, nhận định: GV chuẩn hóa công thức và lưu ý đơn vị đo.
+
+Hoạt động 3: Luyện tập (25 phút)
+a) Mục tiêu: Vận dụng công thức tính diện tích xung quanh.
+b) Nội dung: Bài tập 10.6, 10.7 SGK.
+c) Sản phẩm: Lời giải bài tập trong vở.
+d) Tổ chức thực hiện:
+- Bước 1. Chuyển giao nhiệm vụ: GV giao bài tập 10.6, 10.7.
+- Bước 2. Thực hiện nhiệm vụ: HS làm bài cá nhân.
+${T8_O3}
+- Bước 4. Kết luận, nhận định: GV chữa bài, chốt phương pháp.
+
+Hoạt động 4: Vận dụng (ở nhà)
+a) Mục tiêu: Giải quyết bài toán thực tiễn.
+b) Nội dung: Tính diện tích vải cần dùng để may mái một chiếc lều hình chóp tam giác đều.
+c) Sản phẩm: Bài làm nộp qua Google Classroom.
+d) Tổ chức thực hiện: HS đo đạc mô hình lều tự làm, tính diện tích vải và nộp bài; GV nhận xét trên Classroom.`
+  },
+  khtn6: {
+    btn:'KHTN 6 (Cánh diều - Bài: Lực tiếp xúc và lực không tiếp xúc)',
+    meta:{ title:'Lực tiếp xúc và lực không tiếp xúc', subject:'KHTN', grade:'6', book:'Cánh diều', term:'Học kỳ II', dept:'KHTN' },
+    content:
+`KẾ HOẠCH BÀI DẠY
+Tổ: KHTN — Giáo viên: Ngô Thanh Tâm
+Môn: Khoa học tự nhiên — Lớp 6 — Bộ sách: Cánh diều — Thời lượng: 2 tiết
+TÊN BÀI DẠY: LỰC TIẾP XÚC VÀ LỰC KHÔNG TIẾP XÚC
+
+I. MỤC TIÊU
+1. Về kiến thức: Nêu được lực tiếp xúc xuất hiện khi vật gây ra lực có sự tiếp xúc với vật chịu tác dụng của lực; lực không tiếp xúc xuất hiện khi vật gây ra lực không tiếp xúc với vật chịu tác dụng; lấy được ví dụ minh họa.
+2. Về năng lực: Năng lực nhận thức khoa học tự nhiên; tìm hiểu tự nhiên; vận dụng kiến thức, kĩ năng đã học.
+3. Về phẩm chất: Trung thực, chăm chỉ.
+
+II. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU
+- Nam châm, kẹp giấy, xe lăn, quả bóng, lò xo; máy chiếu.
+
+III. TIẾN TRÌNH DẠY HỌC
+Hoạt động 1: Mở đầu (5 phút)
+a) Mục tiêu: Tạo hứng thú cho HS.
+b) Nội dung: GV đặt câu hỏi vì sao quả táo rơi xuống đất.
+c) Sản phẩm: Câu trả lời của HS.
+d) Tổ chức thực hiện: GV đặt câu hỏi, HS suy nghĩ trả lời, GV dẫn vào bài.
+
+Hoạt động 2: Hình thành kiến thức (50 phút)
+2.1. Lực tiếp xúc
+a) Mục tiêu: Nêu được thế nào là lực tiếp xúc.
+b) Nội dung: Đọc SGK, quan sát thí nghiệm.
+d) Tổ chức thực hiện:
+${K6_O1}
+${K6_O2}
+${K6_O3}
+- Bước 4. Kết luận, nhận định: GV kết luận: lực tiếp xúc xuất hiện khi vật gây ra lực tiếp xúc với vật chịu tác dụng của lực.
+2.2. Lực không tiếp xúc
+a) Mục tiêu: Nêu được thế nào là lực không tiếp xúc.
+b) Nội dung: GV giảng giải về lực hấp dẫn, lực từ.
+d) Tổ chức thực hiện: GV thuyết trình kết hợp trình chiếu hình ảnh Trái Đất hút các vật, nam châm hút sắt; HS lắng nghe và ghi bài.
+- Bước 4. Kết luận, nhận định: GV chốt kiến thức và cho HS ghi bài.
+
+Hoạt động 3: Luyện tập (20 phút)
+a) Mục tiêu: Củng cố kiến thức.
+b) Nội dung: Bài tập 1, 2 SGK.
+c) Sản phẩm: Đáp án bài tập.
+d) Tổ chức thực hiện: GV đọc đề, HS làm bài, GV chữa bài.
+
+Hoạt động 4: Vận dụng (ở nhà)
+- HS tìm 3 ví dụ về lực tiếp xúc và lực không tiếp xúc trong đời sống.`
+  }
+};
+
+/* Kết quả phân tích mẫu (Mock AI Sư phạm) cho 3 KHBD mẫu */
+const PRESET_AUDITS = {
+  nv10: {
+    compliance:92, activeness:88,
+    summary:'KHBD có cấu trúc đầy đủ theo Phụ lục IV CV 5512; các hoạt động có đủ 4 thành phần (Mục tiêu – Nội dung – Sản phẩm – Tổ chức thực hiện). Kĩ thuật mảnh ghép, phòng tranh giúp HS thực sự là chủ thể. Cần chuẩn hóa thêm Bước 4 của Hoạt động Luyện tập và tiêu chí sản phẩm của Hoạt động Vận dụng.',
+    steps:[
+      { step:1, status:'Đạt', analysis:'Lệnh chuyển giao rõ mục tiêu, thời gian (2 phút, 10 phút), phương tiện (phiếu học tập số 1, giấy A0) và sản phẩm (sơ đồ tư duy). Riêng HĐ Vận dụng chưa nêu tiêu chí đánh giá đoạn văn.' },
+      { step:2, status:'Đạt', analysis:'HS chủ động làm việc cá nhân → nhóm chuyên gia → nhóm mảnh ghép; GV đóng vai trò quan sát, hỗ trợ bằng câu hỏi gợi mở, không làm thay.' },
+      { step:3, status:'Đạt', analysis:'Hình thức phòng tranh kết hợp câu hỏi phản biện bằng giấy ghi chú tạo cơ hội cho toàn bộ HS tham gia báo cáo, thảo luận.' },
+      { step:4, status:'Đạt', analysis:'HĐ2 có kết luận theo bảng tiêu chí và chuẩn hóa kiến thức. HĐ3 chỉ ghi "GV chốt kiến thức" — nên mô tả cụ thể nội dung chuẩn hóa và cách nhận xét quá trình.' }
+    ],
+    strengths:['Mục tiêu bám sát yêu cầu cần đạt của Chương trình GDPT 2018, phân tách rõ năng lực đặc thù – năng lực chung – phẩm chất.','Vận dụng hiệu quả kĩ thuật mảnh ghép, phòng tranh; sản phẩm học tập được mô tả cụ thể.','Có công cụ đánh giá (bảng tiêu chí) và học liệu số (video, Padlet).'],
+    weaknesses:['Bước 4 của Hoạt động Luyện tập mô tả chung chung ("GV chốt kiến thức").','Hoạt động Vận dụng chưa có tiêu chí đánh giá đoạn văn và cơ chế phản hồi đồng đẳng.'],
+    solutions:['Bổ sung nội dung chuẩn hóa cụ thể (bảng so sánh 3 tiêu chí) ở Bước 4 HĐ3.','Xây dựng rubric 4 mức cho đoạn văn, tổ chức đánh giá chéo trên Padlet trước khi GV nhận xét.'],
+    suggestions:[
+      { activity:'Hoạt động 4: Vận dụng — Bước 1', original:NV_O1, revised:'- Bước 1. Chuyển giao nhiệm vụ: GV giao nhiệm vụ: "Mỗi em chọn MỘT chi tiết nghệ thuật ấn tượng nhất trong đoạn trích, viết đoạn văn 150–200 chữ phân tích tác dụng của chi tiết đó trong việc khắc họa người anh hùng Đăm Săn. Sản phẩm nộp trên Padlet lớp trước 20 giờ thứ Năm; tự đối chiếu với rubric 4 tiêu chí (nêu chi tiết – phân tích thủ pháp – đánh giá tác dụng – diễn đạt) và nhận xét 1 bài của bạn bằng 1 khen + 1 góp ý."', rationale:'Làm rõ sản phẩm, thời hạn và tiêu chí; bổ sung đánh giá đồng đẳng giúp HS tự điều chỉnh trước khi GV nhận xét.' },
+      { activity:'Hoạt động 3: Luyện tập — Bước 4', original:NV_O2, revised:'- Bước 4. Kết luận, nhận định: GV mời 1 HS tự rút ra 2 điểm khác biệt cốt lõi giữa Đăm Săn và Mtao Mxây; GV chuẩn hóa bằng bảng so sánh 3 tiêu chí (ngoại hình – hành động – thái độ cộng đồng), nhận xét tinh thần hợp tác của các cặp và ghi nhận cặp có lập luận thuyết phục.', rationale:'Bước 4 cần thể hiện cả đánh giá quá trình lẫn chuẩn hóa kiến thức, để HS tự khái quát trước.' }
+    ]
+  },
+  toan8: {
+    compliance:78, activeness:65,
+    summary:'KHBD đảm bảo khung cấu trúc 5512 và có học liệu trực quan tốt (mô hình, lưới hình chóp, GeoGebra). Tuy nhiên ở HĐ 2.1 và 2.2, GV vẫn là người giới thiệu và cung cấp công thức; HS chủ yếu quan sát, ghi chép. Cần chuyển sang hoạt động cắt ghép – khám phá để HS tự xây dựng công thức Sxq = p.d.',
+    steps:[
+      { step:1, status:'Cần điều chỉnh', analysis:'Ở HĐ 2.2, lệnh "GV giảng công thức... yêu cầu HS ghi nhớ" là áp đặt kiến thức, chưa nêu nhiệm vụ khám phá, phương tiện và sản phẩm học tập.' },
+      { step:2, status:'Cần điều chỉnh', analysis:'HĐ 2.1: GV vẽ hình và giới thiệu các yếu tố, HS chỉ quan sát và ghi chép — HS chưa được thao tác trên mô hình dù đã chuẩn bị 4 bộ mô hình.' },
+      { step:3, status:'Cần điều chỉnh', analysis:'HĐ3 chỉ gọi 1 HS lên bảng, cả lớp theo dõi — tỉ lệ HS được báo cáo thấp; nên dùng đổi chéo vở, bảng nhóm.' },
+      { step:4, status:'Đạt', analysis:'Có chuẩn hóa công thức và lưu ý đơn vị đo; kết luận định nghĩa rõ ràng.' }
+    ],
+    strengths:['Mục tiêu rõ ràng, gắn với năng lực mô hình hóa và giải quyết vấn đề thực tiễn.','Chuẩn bị học liệu trực quan phong phú (mô hình bìa, lưới hình chóp, GeoGebra 3D).','Hoạt động Vận dụng gắn với thực tiễn (may mái lều).'],
+    weaknesses:['HĐ 2.1 và 2.2 còn nặng thuyết trình, HS thụ động quan sát – ghi chép.','Công thức Sxq = p.d được GV cung cấp sẵn, chưa tổ chức cho HS tự phát hiện.','Báo cáo, thảo luận ở HĐ3 chỉ có 1 HS tham gia.'],
+    solutions:['Tổ chức HS thao tác trên mô hình theo nhóm 4 để tự xác định các yếu tố.','Thiết kế phiếu học tập cắt ghép lưới hình chóp để HS tự rút ra công thức.','Dùng kĩ thuật "đổi chéo – chấm chéo" và bảng nhóm ở HĐ Luyện tập.'],
+    suggestions:[
+      { activity:'HĐ 2.1 — Bước 2: Thực hiện nhiệm vụ', original:T8_O2, revised:'- Bước 2. Thực hiện nhiệm vụ: Mỗi nhóm 4 HS nhận 1 mô hình hình chóp tam giác đều bằng bìa; trong 5 phút, nhóm dán nhãn giấy ghi chú lên đỉnh, cạnh bên, mặt bên, mặt đáy và dùng que tre mô tả đường cao, trung đoạn; ghi kết quả vào phiếu học tập số 1. GV quan sát, hỏi gợi mở: "Trung đoạn khác đường cao ở điểm nào?"', rationale:'Chuyển HS từ quan sát thụ động sang thao tác trực tiếp với mô hình đã chuẩn bị; sản phẩm học tập hữu hình.' },
+      { activity:'HĐ 2.2 — Bước 1: Chuyển giao nhiệm vụ', original:T8_O1, revised:'- Bước 1. Chuyển giao nhiệm vụ: GV phát lưới hình chóp tam giác đều (cạnh đáy 6 cm, trung đoạn 5 cm) và giao lệnh: "Trong 7 phút, nhóm cắt rời các mặt bên, tính diện tích từng mặt rồi tìm cách tính nhanh tổng diện tích các mặt bên theo nửa chu vi đáy và trung đoạn. Sản phẩm: công thức nhóm tự phát hiện, trình bày trên bảng nhóm."', rationale:'HS tự phát hiện công thức Sxq = p.d qua hoạt động khám phá, thay vì ghi nhớ máy móc.' },
+      { activity:'HĐ 3: Luyện tập — Bước 3', original:T8_O3, revised:'- Bước 3. Báo cáo, thảo luận: HS đổi chéo vở theo cặp, chấm theo đáp án GV chiếu (thang 10 điểm); 2 nhóm có cách giải khác nhau trình bày trên bảng nhóm, cả lớp so sánh và chọn cách giải tối ưu.', rationale:'Tăng tỉ lệ HS tham gia báo cáo, hình thành năng lực tự đánh giá và đánh giá đồng đẳng.' }
+    ]
+  },
+  khtn6: {
+    compliance:61, activeness:48,
+    summary:'KHBD có khung tiến trình 4 hoạt động nhưng nhiều hoạt động thiếu thành phần "Sản phẩm" và chưa tổ chức đủ 4 bước. Hình thức chủ đạo vẫn là GV thí nghiệm biểu diễn, thuyết trình; HS quan sát, lắng nghe và ghi bài. Đây là bài học rất thuận lợi để HS tự làm thí nghiệm theo nhóm — cần thiết kế lại theo hướng học sinh khám phá.',
+    steps:[
+      { step:1, status:'Cần điều chỉnh', analysis:'Lệnh "đọc SGK mục I và cho biết..." chưa nêu rõ hình thức, thời gian, phương tiện và sản phẩm; HĐ 2.2 không có bước chuyển giao.' },
+      { step:2, status:'Cần điều chỉnh', analysis:'GV tự làm thí nghiệm biểu diễn và thuyết trình; HS chỉ quan sát, lắng nghe — chưa được tự tiến hành thí nghiệm dù đã có đủ dụng cụ (nam châm, kẹp giấy, xe lăn, lò xo).' },
+      { step:3, status:'Cần điều chỉnh', analysis:'Chỉ gọi 1–2 HS trả lời; chưa có sản phẩm nhóm để báo cáo, thảo luận.' },
+      { step:4, status:'Đạt', analysis:'GV có kết luận kiến thức chính xác, ngắn gọn; nên bổ sung nhận xét quá trình hoạt động của HS.' }
+    ],
+    strengths:['Mục tiêu bám sát yêu cầu cần đạt của Chương trình môn KHTN 6.','Chuẩn bị dụng cụ thí nghiệm đơn giản, dễ tổ chức theo nhóm.'],
+    weaknesses:['Thiếu thành phần "c) Sản phẩm" ở HĐ 2.1 và 2.2.','GV làm thí nghiệm biểu diễn, thuyết trình; HS thụ động lắng nghe, ghi bài.','HĐ 2.2 và HĐ3 chưa tổ chức theo 4 bước.'],
+    solutions:['Bổ sung sản phẩm học tập (phiếu học tập, bảng phân loại lực).','Tổ chức học theo trạm: mỗi nhóm luân phiên tự làm 3 thí nghiệm nhỏ.','Chuẩn hóa 4 bước cho từng hoạt động, ưu tiên báo cáo bằng sản phẩm nhóm.'],
+    suggestions:[
+      { activity:'HĐ 2.1 — Bước 1: Chuyển giao nhiệm vụ', original:K6_O1, revised:'- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 6 nhóm, phát bộ dụng cụ (nam châm, kẹp giấy, xe lăn, quả bóng, lò xo) và phiếu học tập số 1, giao lệnh: "Trong 8 phút, nhóm thực hiện 3 thí nghiệm theo hướng dẫn, quan sát vật gây lực và vật chịu lực có chạm vào nhau không, rồi xếp mỗi lực vào cột Lực tiếp xúc / Lực không tiếp xúc. Sản phẩm: phiếu học tập số 1 hoàn chỉnh."', rationale:'Lệnh chuyển giao nêu rõ hình thức, thời gian, phương tiện và sản phẩm theo đúng yêu cầu 5512.' },
+      { activity:'HĐ 2.1 — Bước 2: Thực hiện nhiệm vụ', original:K6_O2, revised:'- Bước 2. Thực hiện nhiệm vụ: Các nhóm tự tiến hành thí nghiệm theo trạm (Trạm 1: đẩy xe lăn; Trạm 2: nam châm hút kẹp giấy từ xa; Trạm 3: thả rơi quả bóng), mỗi trạm 2 phút; thư kí nhóm ghi kết quả. GV đi đến các nhóm, hỏi gợi mở: "Nam châm có chạm vào kẹp giấy không mà kẹp vẫn chuyển động?"', rationale:'HS trực tiếp làm thí nghiệm, phát triển năng lực tìm hiểu tự nhiên; GV chuyển vai trò sang người hỗ trợ.' },
+      { activity:'HĐ 2.1 — Bước 3: Báo cáo, thảo luận', original:K6_O3, revised:'- Bước 3. Báo cáo, thảo luận: Các nhóm dán phiếu học tập lên bảng; GV mời 2 nhóm có kết quả phân loại khác nhau trình bày và tranh luận; các nhóm khác bổ sung ví dụ trong đời sống và giơ thẻ Đúng/Sai cho từng phân loại.', rationale:'Tạo cơ hội để toàn lớp tham gia thảo luận dựa trên sản phẩm thực tế của nhóm.' }
+    ]
+  }
+};
+
+/* ------------------------- 4. DATABASE LAYER ------------------------- */
+const DB_NAME = 'EduPlan5512DB', DB_VERSION = 1;
+const TABLES = ['users', 'lesson_plans', 'ai_audits', 'review_notes', 'audit_logs'];
+const LS_PREFIX = 'eduplan5512.tbl.';
+const DB = {
+  idb: null, cache: {}, engine: 'IndexedDB + LocalStorage',
+  async init() {
+    TABLES.forEach(t => this.cache[t] = []);
+    try {
+      if (!window.indexedDB) throw new Error('no idb');
+      this.idb = await new Promise((res, rej) => {
+        const r = indexedDB.open(DB_NAME, DB_VERSION);
+        r.onupgradeneeded = () => { const db = r.result; TABLES.forEach(t => { if (!db.objectStoreNames.contains(t)) db.createObjectStore(t, { keyPath:'id' }); }); };
+        r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+      });
+      for (const t of TABLES) this.cache[t] = await this._all(t);
+    } catch (e) {
+      this.idb = null; this.engine = 'LocalStorage (dự phòng)';
+    }
+    if (!this.cache.users.length) {
+      const mirror = {}; let has = false;
+      TABLES.forEach(t => { mirror[t] = lsGet(LS_PREFIX + t, []); if (mirror[t].length) has = true; });
+      if (has) await this.replaceAll(mirror); else await this.seed();
+    }
+  },
+  _store(t, mode) { return this.idb.transaction(t, mode).objectStore(t); },
+  _all(t) { return new Promise((res, rej) => { const r = this._store(t, 'readonly').getAll(); r.onsuccess = () => res(r.result || []); r.onerror = () => rej(r.error); }); },
+  _req(t, fn) { if (!this.idb) return Promise.resolve(); return new Promise((res, rej) => { const tx = this.idb.transaction(t, 'readwrite'); fn(tx.objectStore(t)); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); }); },
+  _mirror(t) { lsSet(LS_PREFIX + t, this.cache[t]); },
+  all(t) { return this.cache[t]; },
+  get(t, id) { return this.cache[t].find(r => r.id === id); },
+  where(t, fn) { return this.cache[t].filter(fn); },
+  async put(t, rec) {
+    const i = this.cache[t].findIndex(r => r.id === rec.id);
+    if (i >= 0) this.cache[t][i] = rec; else this.cache[t].push(rec);
+    this._mirror(t);
+    await this._req(t, s => s.put(rec)).catch(() => {});
+    return rec;
+  },
+  async del(t, id) { this.cache[t] = this.cache[t].filter(r => r.id !== id); this._mirror(t); await this._req(t, s => s.delete(id)).catch(() => {}); },
+  async replaceAll(data) {
+    for (const t of TABLES) {
+      this.cache[t] = Array.isArray(data[t]) ? data[t] : [];
+      this._mirror(t);
+      await this._req(t, s => { s.clear(); this.cache[t].forEach(r => s.put(r)); }).catch(() => {});
+    }
+  },
+  exportAll() { const o = { app:'EduPlan 5512 CoPilot', schema:1, exportedAt:nowISO(), tables:{} }; TABLES.forEach(t => o.tables[t] = this.cache[t]); return o; },
+  sizeBytes(t) { return new Blob([JSON.stringify(t ? this.cache[t] : this.cache)]).size; },
+  async seed() { await this.replaceAll(await buildSeed()); }
+};
+
+async function buildSeed() {
+  const pw = await hashPw('123456');
+  const d = s => new Date(s).toISOString();
+  const users = [
+    { id:'u1', name:'TS. Nguyễn Minh Quang', email:'hieutruong@eduplan.edu.vn', code:'BGH01', role:'admin', dept:'Ban Giám hiệu', grades:'6–12', title:'Hiệu trưởng', password:pw, status:'active', canApprove:true, createdAt:d('2026-08-15T08:00:00') },
+    { id:'u2', name:'ThS. Lê Văn Hùng', email:'tt.toan@eduplan.edu.vn', code:'GV-T01', role:'leader', dept:'Toán', grades:'8, 9', title:'Tổ trưởng tổ Toán', password:pw, status:'active', canApprove:true, createdAt:d('2026-08-16T08:00:00') },
+    { id:'u3', name:'ThS. Phạm Thị Lan', email:'tt.nguvan@eduplan.edu.vn', code:'GV-V01', role:'leader', dept:'Ngữ văn', grades:'10, 11', title:'Tổ trưởng tổ Ngữ văn', password:pw, status:'active', canApprove:true, createdAt:d('2026-08-16T08:30:00') },
+    { id:'u4', name:'Võ Thị Mai', email:'mai.vt@eduplan.edu.vn', code:'GV-T07', role:'teacher', dept:'Toán', grades:'8', title:'Giáo viên Toán', password:pw, status:'active', canApprove:false, createdAt:d('2026-08-20T09:00:00') },
+    { id:'u5', name:'Đặng Quốc Bảo', email:'bao.dq@eduplan.edu.vn', code:'GV-V05', role:'teacher', dept:'Ngữ văn', grades:'10', title:'Giáo viên Ngữ văn', password:pw, status:'active', canApprove:false, createdAt:d('2026-08-20T09:15:00') },
+    { id:'u6', name:'Ngô Thanh Tâm', email:'tam.nt@eduplan.edu.vn', code:'GV-K03', role:'teacher', dept:'KHTN', grades:'6', title:'Giáo viên KHTN', password:pw, status:'active', canApprove:false, createdAt:d('2026-08-21T10:00:00') }
+  ];
+  const nvV1 = SAMPLES.nv10.content.replace('- Bước 3. Báo cáo, thảo luận: Các nhóm treo sản phẩm theo hình thức phòng tranh; mỗi nhóm cử đại diện thuyết minh, các nhóm khác dùng giấy ghi chú đặt câu hỏi phản biện.', '- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trình bày sản phẩm, các nhóm khác nhận xét.');
+  const t8V1 = SAMPLES.toan8.content.replace('HS làm việc nhóm 4, quan sát mô hình thật và hình ảnh trong 2 phút.', 'HS nghe GV giới thiệu các hình ảnh.');
+  const plan = (id, key, teacherId, teacherName, status, versions, extra = {}) => ({
+    id, ...SAMPLES[key].meta, schoolYear:SCHOOL_YEAR, teacherId, teacherName, content:SAMPLES[key].content,
+    status, submittedAt:versions[versions.length - 1].at, createdAt:versions[0].at, updatedAt:versions[versions.length - 1].at,
+    ttSignedBy:null, ttSignedAt:null, bghSignedBy:null, bghSignedAt:null, onTime:true, sampleKey:key,
+    versions, ...extra
+  });
+  const lesson_plans = [
+    plan('lp1', 'nv10', 'u5', 'Đặng Quốc Bảo', 'approved', [
+      { v:1, at:d('2026-09-18T20:10:00'), by:'Đặng Quốc Bảo', note:'Bản nộp lần đầu', content:nvV1, score:84 },
+      { v:2, at:d('2026-09-21T21:05:00'), by:'Đặng Quốc Bảo', note:'Chỉnh sửa Bước 3 HĐ2 theo góp ý tổ: tổ chức phòng tranh + phản biện', content:SAMPLES.nv10.content, score:92 }
+    ], { ttSignedBy:'ThS. Phạm Thị Lan', ttSignedAt:d('2026-09-22T15:30:00'), bghSignedBy:'TS. Nguyễn Minh Quang', bghSignedAt:d('2026-09-25T10:00:00') }),
+    plan('lp2', 'toan8', 'u4', 'Võ Thị Mai', 'pending', [
+      { v:1, at:d('2026-10-06T19:40:00'), by:'Võ Thị Mai', note:'Bản nộp lần đầu', content:t8V1, score:66 },
+      { v:2, at:d('2026-10-14T20:20:00'), by:'Võ Thị Mai', note:'Bổ sung hoạt động nhóm ở HĐ Mở đầu theo góp ý tổ trưởng', content:SAMPLES.toan8.content, score:78 }
+    ], { ttSignedBy:'ThS. Lê Văn Hùng', ttSignedAt:d('2026-10-15T16:00:00') }),
+    plan('lp3', 'khtn6', 'u6', 'Ngô Thanh Tâm', 'revise', [
+      { v:1, at:d('2026-10-19T21:00:00'), by:'Ngô Thanh Tâm', note:'Bản nộp lần đầu', content:SAMPLES.khtn6.content, score:61 }
+    ], { onTime:false })
+  ];
+  const mk = (id, planId, v, at, by, key, compliance, activeness) => ({ id, planId, version:v, at:d(at), by, engine:'Mock AI Sư phạm', ...JSON.parse(JSON.stringify(PRESET_AUDITS[key])), compliance, activeness });
+  const ai_audits = [
+    mk('a1', 'lp1', 1, '2026-09-18T20:15:00', 'Đặng Quốc Bảo', 'nv10', 84, 80),
+    mk('a2', 'lp1', 2, '2026-09-21T21:10:00', 'Đặng Quốc Bảo', 'nv10', 92, 88),
+    mk('a3', 'lp2', 1, '2026-10-06T19:45:00', 'Võ Thị Mai', 'toan8', 66, 52),
+    mk('a4', 'lp2', 2, '2026-10-14T20:25:00', 'Võ Thị Mai', 'toan8', 78, 65),
+    mk('a5', 'lp3', 1, '2026-10-19T21:05:00', 'Ngô Thanh Tâm', 'khtn6', 61, 48)
+  ];
+  ai_audits[0].steps[2] = { step:3, status:'Cần điều chỉnh', analysis:'Chỉ 2 nhóm trình bày; chưa có cơ chế để các nhóm còn lại phản biện.' };
+  ai_audits[2].steps[0] = { step:1, status:'Cần điều chỉnh', analysis:'HĐ Mở đầu: HS chỉ nghe GV giới thiệu, chưa có nhiệm vụ cụ thể.' };
+  const rn = (id, planId, v, reviewerId, reviewerName, level, verdict, at, strengths, weaknesses, solutions, stepNotes) => ({ id, planId, version:v, reviewerId, reviewerName, level, verdict, at:d(at), strengths, weaknesses, solutions, stepNotes, general: verdict === 'Đạt' ? 'Kế hoạch bài dạy đạt yêu cầu theo Công văn 5512/BGDĐT-GDTrH.' : 'Kế hoạch bài dạy chưa đạt yêu cầu, đề nghị giáo viên điều chỉnh và nộp lại.' });
+  const review_notes = [
+    rn('r1', 'lp1', 2, 'u3', 'ThS. Phạm Thị Lan', 'Tổ chuyên môn', 'Đạt', '2026-09-22T15:30:00',
+      'Mục tiêu rõ ràng; vận dụng tốt kĩ thuật mảnh ghép, phòng tranh; sản phẩm học tập cụ thể.', 'Bước 4 HĐ Luyện tập còn chung chung.', 'Mô tả cụ thể nội dung chuẩn hóa kiến thức ở HĐ3.',
+      ['Lệnh chuyển giao rõ ràng.', 'HS chủ động làm việc nhóm.', 'Báo cáo bằng phòng tranh hiệu quả.', 'Cần cụ thể hóa ở HĐ3.']),
+    rn('r2', 'lp1', 2, 'u1', 'TS. Nguyễn Minh Quang', 'Ban Giám hiệu', 'Đạt', '2026-09-25T10:00:00',
+      'KHBD tiêu biểu của tổ Ngữ văn, thể hiện rõ HS là trung tâm; có ứng dụng học liệu số.', 'Hoạt động Vận dụng chưa có rubric đánh giá.', 'Bổ sung rubric 4 mức, tổ chức đánh giá chéo trên Padlet; đề nghị chia sẻ trong sinh hoạt chuyên môn theo nghiên cứu bài học.',
+      ['Đạt.', 'Đạt.', 'Đạt.', 'Đạt — cần chi tiết hóa HĐ3.']),
+    rn('r3', 'lp2', 1, 'u2', 'ThS. Lê Văn Hùng', 'Tổ chuyên môn', 'Chưa đạt', '2026-10-08T16:20:00',
+      'Học liệu trực quan phong phú; hoạt động vận dụng gắn thực tiễn.', 'HĐ Mở đầu và HĐ 2.1 HS thụ động; công thức do GV cung cấp sẵn.', 'Tổ chức nhóm thao tác mô hình; thiết kế phiếu học tập cắt ghép lưới hình chóp.',
+      ['Cần nêu rõ sản phẩm.', 'HS chỉ quan sát, ghi chép.', 'Chỉ 1 HS báo cáo.', 'Đạt.']),
+    rn('r4', 'lp2', 2, 'u2', 'ThS. Lê Văn Hùng', 'Tổ chuyên môn', 'Đạt', '2026-10-15T16:00:00',
+      'Đã điều chỉnh HĐ Mở đầu theo hướng hoạt động nhóm; tiến trình mạch lạc.', 'HĐ 2.1 vẫn còn GV giới thiệu các yếu tố.', 'Tiếp tục tinh chỉnh HĐ 2.1 theo đề xuất của AI trước khi lên lớp. Tổ ký duyệt, chuyển BGH.',
+      ['Đạt.', 'Cần tiếp tục cải thiện HĐ 2.1.', 'Đạt.', 'Đạt.']),
+    rn('r5', 'lp3', 1, 'u1', 'TS. Nguyễn Minh Quang', 'Ban Giám hiệu', 'Chưa đạt', '2026-10-21T09:30:00',
+      'Mục tiêu bám sát yêu cầu cần đạt; dụng cụ thí nghiệm đơn giản, dễ tổ chức.', 'Thiếu thành phần Sản phẩm ở HĐ2; GV thí nghiệm biểu diễn, thuyết trình; HS thụ động.', 'Tổ chức học theo trạm, HS tự làm thí nghiệm theo nhóm; chuẩn hóa 4 bước cho mọi hoạt động; tham khảo đề xuất tinh chỉnh của EduPlan CoPilot.',
+      ['Lệnh chưa rõ sản phẩm.', 'HS chưa được làm thí nghiệm.', 'Chỉ 1–2 HS trả lời.', 'Đạt.'])
+  ];
+  const L = (i, at, uidv, name, role, action, target, detail) => ({ id:'log' + String(i).padStart(3, '0'), at:d(at), userId:uidv, userName:name, role, action, target, detail });
+  const audit_logs = [
+    L(1, '2026-09-18T20:10:00', 'u5', 'Đặng Quốc Bảo', 'teacher', 'Nộp bài', 'Nghệ thuật xây dựng hình tượng nhân vật', 'Nộp phiên bản 1'),
+    L(2, '2026-09-18T20:15:00', 'u5', 'Đặng Quốc Bảo', 'teacher', 'Chạy phân tích AI', 'Nghệ thuật xây dựng hình tượng nhân vật', 'Chuẩn 5512: 84% · Tích cực: 80%'),
+    L(3, '2026-09-21T21:10:00', 'u5', 'Đặng Quốc Bảo', 'teacher', 'Chạy phân tích AI', 'Nghệ thuật xây dựng hình tượng nhân vật', 'Phiên bản 2 · Chuẩn 5512: 92%'),
+    L(4, '2026-09-22T15:30:00', 'u3', 'ThS. Phạm Thị Lan', 'leader', 'Ký duyệt cấp tổ', 'Nghệ thuật xây dựng hình tượng nhân vật', 'Đánh giá: Đạt'),
+    L(5, '2026-09-25T10:00:00', 'u1', 'TS. Nguyễn Minh Quang', 'admin', 'Phê duyệt', 'Nghệ thuật xây dựng hình tượng nhân vật', 'Đã duyệt đạt chuẩn'),
+    L(6, '2026-10-06T19:40:00', 'u4', 'Võ Thị Mai', 'teacher', 'Nộp bài', 'Hình chóp tam giác đều và diện tích xung quanh', 'Nộp phiên bản 1'),
+    L(7, '2026-10-06T19:45:00', 'u4', 'Võ Thị Mai', 'teacher', 'Chạy phân tích AI', 'Hình chóp tam giác đều và diện tích xung quanh', 'Chuẩn 5512: 66% · Tích cực: 52%'),
+    L(8, '2026-10-08T16:20:00', 'u2', 'ThS. Lê Văn Hùng', 'leader', 'Yêu cầu chỉnh sửa', 'Hình chóp tam giác đều và diện tích xung quanh', 'Đánh giá cấp tổ: Chưa đạt'),
+    L(9, '2026-10-14T20:25:00', 'u4', 'Võ Thị Mai', 'teacher', 'Chạy phân tích AI', 'Hình chóp tam giác đều và diện tích xung quanh', 'Phiên bản 2 · Chuẩn 5512: 78%'),
+    L(10, '2026-10-15T16:00:00', 'u2', 'ThS. Lê Văn Hùng', 'leader', 'Ký duyệt cấp tổ', 'Hình chóp tam giác đều và diện tích xung quanh', 'Đánh giá: Đạt · Chuyển BGH'),
+    L(11, '2026-10-19T21:00:00', 'u6', 'Ngô Thanh Tâm', 'teacher', 'Nộp bài', 'Lực tiếp xúc và lực không tiếp xúc', 'Nộp phiên bản 1 (quá hạn 2 ngày)'),
+    L(12, '2026-10-19T21:05:00', 'u6', 'Ngô Thanh Tâm', 'teacher', 'Chạy phân tích AI', 'Lực tiếp xúc và lực không tiếp xúc', 'Chuẩn 5512: 61% · Tích cực: 48%'),
+    L(13, '2026-10-21T09:30:00', 'u1', 'TS. Nguyễn Minh Quang', 'admin', 'Yêu cầu chỉnh sửa', 'Lực tiếp xúc và lực không tiếp xúc', 'Đánh giá BGH: Chưa đạt'),
+    L(14, '2026-10-22T14:00:00', 'u1', 'TS. Nguyễn Minh Quang', 'admin', 'Xuất báo cáo', 'Toàn bộ CSDL', 'Xuất JSON báo cáo Sở GD&ĐT'),
+    L(15, '2026-10-26T07:45:00', 'u3', 'ThS. Phạm Thị Lan', 'leader', 'Xuất báo cáo', 'Phiếu nhận xét', 'In phiếu A4 — Nghệ thuật xây dựng hình tượng nhân vật')
+  ];
+  return { users, lesson_plans, ai_audits, review_notes, audit_logs };
+}
+
+/* -------------------------- 5. TRẠNG THÁI APP ------------------------- */
+const SETTINGS_KEY = 'eduplan5512.settings';
+const SESSION_KEY = 'eduplan5512.session';
+const defaultSettings = { apiKey:'', model:'gemini-2.5-flash', school:'TRƯỜNG PHỔ THÔNG NHIỀU CẤP HỌC EDUPLAN', department:'SỞ GIÁO DỤC VÀ ĐÀO TẠO TP. HỒ CHÍ MINH', city:'TP. Hồ Chí Minh' };
+const S = {
+  user: null, view: 'workspace', authTab: 'login',
+  settings: { ...defaultSettings, ...lsGet(SETTINGS_KEY, {}) },
+  ws: { planId:null, sampleKey:null, meta:{ title:'', subject:'Toán', grade:'8', book:'Kết nối tri thức', term:'Học kỳ I' }, content:'', audit:null, running:false, dirty:false },
+  repoF: { q:'', subject:'', grade:'', dept:'', book:'', term:'', status:'' },
+  review: { planId:null, form:null },
+  logQ: '', exportTable: 'lesson_plans'
+};
+const aiMode = () => S.settings.apiKey ? 'gemini' : 'mock';
+const can = {
+  dashboard: () => S.user?.role === 'admin',
+  review: () => ['admin', 'leader'].includes(S.user?.role),
+  approve: () => S.user?.role === 'admin' || (S.user?.role === 'leader' && S.user?.canApprove),
+  seeAll: () => S.user?.role === 'admin'
+};
+function visiblePlans() {
+  const u = S.user; const all = DB.all('lesson_plans');
+  if (!u) return [];
+  if (u.role === 'admin') return all;
+  if (u.role === 'leader') return all.filter(p => p.dept === u.dept || p.teacherId === u.id);
+  return all.filter(p => p.teacherId === u.id);
+}
+const latestAudit = planId => DB.where('ai_audits', a => a.planId === planId).sort((a, b) => b.at.localeCompare(a.at))[0] || null;
+async function log(action, target = '', detail = '') {
+  const u = S.user || {};
+  await DB.put('audit_logs', { id:uid('log'), at:nowISO(), userId:u.id || '—', userName:u.name || 'Khách', role:u.role || '—', action, target, detail });
+  if (S.view === 'admin' && S.user?.role === 'admin') { const el = $('#log-body'); if (el) renderLogs(); }
+}
+
+/* ------------------------------ 6. TOAST / MODAL ----------------------------- */
+function toast(msg, type = 'info') {
+  const map = { info:['bg-slate-900', 'info'], success:['bg-emerald-600', 'check-circle-2'], error:['bg-rose-600', 'alert-triangle'], warn:['bg-amber-500', 'alert-circle'] };
+  const [bg, icon] = map[type] || map.info;
+  const el = document.createElement('div');
+  el.className = `${bg} text-white text-sm px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 max-w-sm fade-in`;
+  el.innerHTML = `${ic(icon)}<span>${esc(msg)}</span>`;
+  $('#toast-root').appendChild(el); icons();
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = '.3s'; setTimeout(() => el.remove(), 300); }, 3200);
+}
+function openModal(title, body, opts = {}) {
+  const w = opts.wide ? 'max-w-5xl' : (opts.size || 'max-w-lg');
+  $('#modal-root').innerHTML = `
+  <div class="fixed inset-0 z-[70] bg-slate-900/50 backdrop-blur-sm flex items-start sm:items-center justify-center p-3 overflow-y-auto" onclick="if(event.target===this)closeModal()">
+    <div class="card w-full ${w} fade-in my-6">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+        <h3 class="font-bold text-slate-900 flex items-center gap-2">${opts.icon ? ic(opts.icon, 'w-5 h-5 text-brand-600') : ''}${esc(title)}</h3>
+        <button class="p-1.5 rounded-lg hover:bg-slate-100" onclick="closeModal()" aria-label="Đóng">${ic('x', 'w-5 h-5')}</button>
+      </div>
+      <div class="p-5 max-h-[78vh] overflow-y-auto scroll-thin">${body}</div>
+    </div>
+  </div>`;
+  icons();
+}
+function closeModal() { $('#modal-root').innerHTML = ''; }
+function confirmBox(msg, onYes, yesLabel = 'Đồng ý') {
+  window.__confirmYes = onYes;
+  openModal('Xác nhận', `<p class="text-sm text-slate-600 mb-5">${esc(msg)}</p>
+    <div class="flex justify-end gap-2"><button class="btn btn-ghost" onclick="closeModal()">Hủy</button>
+    <button class="btn btn-primary" onclick="closeModal();window.__confirmYes&&window.__confirmYes()">${esc(yesLabel)}</button></div>`, { icon:'help-circle' });
+}
+
+/* ------------------------------- 7. AUTH ------------------------------- */
+async function login(identity, password) {
+  const id = identity.trim().toLowerCase();
+  const u = DB.all('users').find(x => x.email.toLowerCase() === id || x.code.toLowerCase() === id);
+  if (!u) return toast('Không tìm thấy tài khoản.', 'error');
+  if (u.password !== await hashPw(password)) return toast('Mật khẩu không đúng.', 'error');
+  if (u.status === 'locked') return toast('Tài khoản đã bị khóa. Vui lòng liên hệ Ban Giám hiệu.', 'error');
+  if (u.status === 'pending') return toast('Tài khoản đang chờ Ban Giám hiệu kích hoạt.', 'warn');
+  setSession(u); await log('Đăng nhập', u.name, ROLES[u.role].label);
+  toast(`Chào mừng ${u.name}!`, 'success'); render();
+}
+function setSession(u) { S.user = u; lsSet(SESSION_KEY, u.id); if (S.view === 'admin' && u.role !== 'admin') S.view = 'workspace'; }
+async function logout() { await log('Đăng xuất', S.user?.name); S.user = null; localStorage.removeItem(SESSION_KEY); render(); }
+async function register(form) {
+  const f = Object.fromEntries(new FormData(form));
+  if (!f.name.trim() || !f.identity.trim() || !f.password) return toast('Vui lòng nhập đủ thông tin bắt buộc.', 'warn');
+  if (f.password.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn');
+  if (f.password !== f.password2) return toast('Mật khẩu xác nhận không khớp.', 'warn');
+  const idt = f.identity.trim();
+  if (DB.all('users').some(u => u.email.toLowerCase() === idt.toLowerCase() || u.code.toLowerCase() === idt.toLowerCase())) return toast('Email/Mã giáo viên đã tồn tại.', 'error');
+  const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(idt);
+  const u = { id:uid('u'), name:f.name.trim(), email:isEmail ? idt : idt.toLowerCase() + '@eduplan.local', code:isEmail ? 'GV-' + Math.random().toString(36).slice(2, 6).toUpperCase() : idt.toUpperCase(),
+    role:f.role, dept:f.role === 'admin' ? 'Ban Giám hiệu' : f.dept, grades:f.grades || '', title:ROLES[f.role].label, password:await hashPw(f.password),
+    status:f.role === 'teacher' ? 'active' : 'pending', canApprove:f.role !== 'teacher', createdAt:nowISO() };
+  await DB.put('users', u);
+  S.user = null; await DB.put('audit_logs', { id:uid('log'), at:nowISO(), userId:u.id, userName:u.name, role:u.role, action:'Đăng ký', target:u.email, detail:`${ROLES[u.role].label} · ${u.dept}` });
+  if (u.status === 'active') { setSession(u); toast('Đăng ký thành công! Đã đăng nhập.', 'success'); render(); }
+  else { toast('Đăng ký thành công. Tài khoản Tổ trưởng/BGH cần Admin kích hoạt.', 'warn'); S.authTab = 'login'; render(); }
+}
+const DEMO_BY_ROLE = { admin:'u1', leader:'u2', teacher:'u4' };
+async function switchRole(role) {
+  if (S.user?.role === role) return;
+  let u = DB.get('users', DEMO_BY_ROLE[role]);
+  if (!u || u.status !== 'active') u = DB.all('users').find(x => x.role === role && x.status === 'active');
+  if (!u) return toast('Không có tài khoản hoạt động cho vai trò này.', 'warn');
+  const from = S.user?.name;
+  setSession(u);
+  if (role === 'teacher' && S.view === 'admin') S.view = 'workspace';
+  if (role !== 'admin' && S.view === 'admin') S.view = 'workspace';
+  await log('Chuyển vai trò', u.name, `Từ ${from || '—'} → ${ROLES[role].label}`);
+  toast(`Đang xem với vai trò: ${ROLES[role].label} (${u.name})`, 'info'); render();
+}
+
+/* --------------------------- 8. AI ENGINE ----------------------------- */
+const RX = {
+  muctieu: /I\.\s*M[ỤU]C\s*TI[ÊE]U|M[ụu]c\s*ti[êe]u\s*(b[àa]i|d[ạa]y)/i,
+  thietbi: /THI[ẾE]T\s*B[ỊI]|H[ỌO]C\s*LI[ỆE]U/i,
+  tientrinh: /TI[ẾE]N\s*TR[ÌI]NH/i,
+  nangluc: /n[ăa]ng\s*l[ựu]c/i, phamchat: /ph[ẩa]m\s*ch[ấa]t/i,
+  hd: { modau:/(M[ởo]\s*[đd][ầa]u|Kh[ởo]i\s*[đd][ộo]ng|X[áa]c\s*[đd][ịi]nh\s*v[ấa]n\s*[đd][ềe])/i, hinhthanh:/H[ìi]nh\s*th[àa]nh\s*ki[ếe]n\s*th[ứu]c/i, luyentap:/Luy[ệe]n\s*t[ậa]p/i, vandung:/V[ậa]n\s*d[ụu]ng/i },
+  partA: /^\s*a\)\s*M[ụu]c\s*ti[êe]u/gim, partB: /^\s*b\)\s*N[ộo]i\s*dung/gim, partC: /^\s*c\)\s*S[ảa]n\s*ph[ẩa]m/gim, partD: /^\s*d\)\s*T[ổo]\s*ch[ứu]c/gim,
+  step: [/Chuy[ểe]n\s*giao|giao\s*nhi[ệe]m\s*v[ụu]/gi, /Th[ựu]c\s*hi[ệe]n\s*nhi[ệe]m\s*v[ụu]/gi, /B[áa]o\s*c[áa]o|th[ảa]o\s*lu[ậa]n/gi, /K[ếe]t\s*lu[ậa]n|nh[ậa]n\s*[đd][ịi]nh|chu[ẩa]n\s*h[óo]a/gi],
+  active: /(th[ảa]o\s*lu[ậa]n|nh[óo]m|c[ặa]p\s*[đd][ôo]i|phi[ếe]u\s*h[ọo]c\s*t[ậa]p|tr[ìi]nh\s*b[àa]y|th[ựu]c\s*h[àa]nh|th[íi]\s*nghi[ệe]m\s*theo\s*nh[óo]m|t[ựu]\s*l[àa]m\s*th[íi]\s*nghi[ệe]m|[đd][óo]ng\s*vai|tranh\s*bi[ệe]n|kh[ăa]n\s*tr[ảa]i\s*b[àa]n|m[ảa]nh\s*gh[ée]p|s[ơo]\s*[đd][ồo]\s*t[ưu]\s*duy|tr[òo]\s*ch[ơo]i|ph[òo]ng\s*tranh|tr[ạa]m|kh[áa]m\s*ph[áa]|ph[ảa]n\s*bi[ệe]n|[đd][áa]nh\s*gi[áa]\s*ch[ée]o|[đd][ổo]i\s*ch[ée]o|t[ựu]\s*[đd][áa]nh\s*gi[áa]|d[ựu]\s*[áa]n|c[ắa]t\s*gh[ée]p|[đd]o\s*[đd][ạa]c|KWL|Padlet|Quizizz|Kahoot)/gi,
+  passive: /(GV\s*gi[ảa]ng|GV\s*thuy[ếe]t\s*tr[ìi]nh|GV\s*[đd][ọo]c|GV\s*gi[ảa]i\s*th[íi]ch|GV\s*gi[ớo]i\s*thi[ệe]u|GV\s*l[àa]m\s*th[íi]\s*nghi[ệe]m\s*bi[ểe]u\s*di[ễe]n|GV\s*v[ẽe]|HS\s*(l[ắa]ng\s*)?nghe|HS\s*ghi\s*ch[ée]p|ghi\s*b[àa]i|HS\s*quan\s*s[áa]t\.?$|ghi\s*nh[ớo]|ch[úu]\s*[ýy]\s*l[êe]n\s*b[ảa]ng|[đd][ọo]c\s*SGK|GV\s*g[ọo]i\s*1)/gi,
+  product: /(s[ảa]n\s*ph[ẩa]m|phi[ếe]u\s*h[ọo]c\s*t[ậa]p|b[ảa]ng\s*nh[óo]m|s[ơo]\s*[đd][ồo])/i,
+  time: /\d+\s*ph[úu]t/i
+};
+const countRx = (rx, s) => (s.match(rx) || []).length;
+
+function mockAnalyze(text) {
+  const t = text || '';
+  const lines = t.split(/\r?\n/);
+  const structure = [RX.muctieu.test(t), RX.thietbi.test(t), RX.tientrinh.test(t), RX.nangluc.test(t), RX.phamchat.test(t)];
+  const acts = Object.values(RX.hd).map(r => r.test(t));
+  const nA = countRx(RX.partA, t), nB = countRx(RX.partB, t), nC = countRx(RX.partC, t), nD = countRx(RX.partD, t);
+  const nAct = Math.max(1, acts.filter(Boolean).length, nA, nD);
+  const partRatio = Math.min(1, (nA + nB + nC + nD) / (4 * nAct));
+  const stepCounts = RX.step.map(r => countRx(r, t));
+  const stepRatio = stepCounts.map(c => Math.min(1, c / nAct));
+  const act = countRx(RX.active, t), pas = countRx(RX.passive, t);
+  const compliance = clamp(structure.filter(Boolean).length / 5 * 30 + acts.filter(Boolean).length / 4 * 20 + partRatio * 25 + stepRatio.reduce((a, b) => a + b, 0) / 4 * 25 - (t.trim().length < 300 ? 25 : 0));
+  const activeness = clamp(t.trim().length < 50 ? 10 : 20 + 72 * act / (act + pas + 1) + (RX.time.test(t) ? 4 : 0), 5, 96);
+
+  const passiveLines = lines.map((l, i) => ({ l: l.trim(), i })).filter(o => o.l && (o.l.match(RX.passive) || []).length);
+  const ctxOf = idx => { for (let j = idx; j >= 0; j--) { const m = lines[j].match(/^(Ho[ạa]t\s*[đd][ộo]ng\s*\d[^:]*:?[^\n(]*|\d\.\d\.\s*[^\n]+)/i); if (m) return m[1].trim(); } return 'Tiến trình dạy học'; };
+  const stepOf = l => { const m = l.match(/B[ưu][ớo]c\s*(\d)/i); if (m) return +m[1]; if (/g[ọo]i|tr[ảa]\s*l[ờo]i/i.test(l)) return 3; if (/ch[ốo]t|k[ếe]t\s*lu[ậa]n/i.test(l)) return 4; if (/quan\s*s[áa]t|nghe|ghi/i.test(l)) return 2; return 1; };
+  const REV = {
+    1: 'Bước 1. Chuyển giao nhiệm vụ: GV nêu mục tiêu, phát phiếu học tập và giao lệnh: "Trong 7 phút, làm việc nhóm 4, các em khai thác học liệu (SGK/mô hình/video) để trả lời các câu hỏi trong phiếu. Sản phẩm: phiếu học tập hoàn chỉnh trên bảng nhóm; tiêu chí: đúng – đủ – có ví dụ minh họa."',
+    2: 'Bước 2. Thực hiện nhiệm vụ: HS suy nghĩ cá nhân 2 phút, sau đó thảo luận nhóm theo kĩ thuật khăn trải bàn để thống nhất sản phẩm; GV quan sát, hỗ trợ bằng câu hỏi gợi mở, không làm thay HS.',
+    3: 'Bước 3. Báo cáo, thảo luận: Các nhóm trưng bày sản phẩm theo hình thức phòng tranh; GV mời 2 nhóm có kết quả khác nhau trình bày, các nhóm khác nhận xét – bổ sung – phản biện theo bảng tiêu chí; HS đánh giá chéo.',
+    4: 'Bước 4. Kết luận, nhận định: GV mời HS tự rút ra kết luận, sau đó chuẩn hóa kiến thức trọng tâm, nhận xét quá trình làm việc của các nhóm và ghi nhận sự tiến bộ của HS.'
+  };
+  const RAT = {
+    1: 'Lệnh chuyển giao cần nêu rõ hình thức, thời gian, phương tiện và sản phẩm học tập; HS được giao nhiệm vụ khám phá thay vì tiếp nhận thụ động.',
+    2: 'Chuyển HS từ nghe – ghi chép sang trực tiếp thực hiện nhiệm vụ; GV đóng vai trò người tổ chức, hỗ trợ.',
+    3: 'Tăng tỉ lệ HS tham gia báo cáo, hình thành năng lực giao tiếp và tự đánh giá, đánh giá đồng đẳng.',
+    4: 'Kết luận cần kết hợp đánh giá quá trình và chuẩn hóa kiến thức, để HS tự khái quát trước.'
+  };
+  const suggestions = passiveLines.slice(0, 4).map(o => {
+    const st = stepOf(o.l); const prefix = (o.l.match(/^[-–•]\s*/) || [''])[0];
+    return { activity: `${ctxOf(o.i)} — Bước ${st}`, original: o.l, revised: prefix + REV[st], rationale: RAT[st] };
+  });
+  if (!suggestions.length && t.trim()) suggestions.push({ activity:'Hoạt động Vận dụng', original:'', revised:'Bổ sung nhiệm vụ vận dụng gắn với thực tiễn: "Mỗi nhóm đề xuất một tình huống trong đời sống có sử dụng kiến thức bài học, trình bày giải pháp trong 1 trang A4 hoặc video 60 giây; nộp trên Padlet lớp và bình chọn sản phẩm xuất sắc."', rationale:'Phát triển năng lực vận dụng và giải quyết vấn đề thực tiễn; tạo sản phẩm học tập có thể đánh giá.' });
+
+  const passIn = k => stepRatio[k] >= 0.75;
+  const pasStep = s => passiveLines.filter(o => stepOf(o.l) === s).length;
+  const steps = [
+    { step:1, status: passIn(0) && pasStep(1) === 0 && RX.product.test(t) ? 'Đạt' : 'Cần điều chỉnh', analysis: passIn(0) ? (pasStep(1) ? `Có ${pasStep(1)} lệnh chuyển giao mang tính áp đặt (giảng, yêu cầu ghi nhớ/đọc SGK), chưa nêu rõ sản phẩm và tiêu chí.` : 'Lệnh chuyển giao thể hiện được mục tiêu, phương tiện và sản phẩm học tập.') : `Chỉ phát hiện ${stepCounts[0]}/${nAct} hoạt động có bước chuyển giao nhiệm vụ rõ ràng.` },
+    { step:2, status: passIn(1) && pasStep(2) === 0 && act >= 3 ? 'Đạt' : 'Cần điều chỉnh', analysis: act >= 3 && pasStep(2) === 0 ? `Có ${act} dấu hiệu HS chủ động (nhóm, thảo luận, thực hành…).` : `Phát hiện ${pas} dấu hiệu GV độc thoại / HS thụ động (nghe, ghi chép, quan sát) so với ${act} dấu hiệu học tập tích cực.` },
+    { step:3, status: passIn(2) && pasStep(3) === 0 ? 'Đạt' : 'Cần điều chỉnh', analysis: passIn(2) ? (pasStep(3) ? 'Báo cáo chủ yếu do GV gọi cá nhân, tỉ lệ HS tham gia thấp.' : 'Có tổ chức báo cáo, thảo luận dựa trên sản phẩm học tập.') : `Chỉ ${stepCounts[2]}/${nAct} hoạt động có bước báo cáo, thảo luận.` },
+    { step:4, status: passIn(3) ? 'Đạt' : 'Cần điều chỉnh', analysis: passIn(3) ? 'Có kết luận, nhận định và chuẩn hóa kiến thức.' : `Chỉ ${stepCounts[3]}/${nAct} hoạt động có bước kết luận, nhận định.` }
+  ];
+  const strengths = [], weaknesses = [], solutions = [];
+  structure[0] && structure[3] ? strengths.push('Có mục tiêu theo định hướng phát triển năng lực' + (structure[4] ? ', phẩm chất.' : '.')) : weaknesses.push('Mục tiêu chưa thể hiện rõ năng lực/phẩm chất theo Chương trình GDPT 2018.');
+  structure[1] ? strengths.push('Có chuẩn bị thiết bị dạy học và học liệu.') : weaknesses.push('Thiếu mục "Thiết bị dạy học và học liệu".');
+  acts.every(Boolean) ? strengths.push('Tiến trình đủ 4 hoạt động: Mở đầu – Hình thành kiến thức – Luyện tập – Vận dụng.') : weaknesses.push('Tiến trình chưa đủ 4 hoạt động theo Phụ lục IV CV 5512.');
+  partRatio >= 0.9 ? strengths.push('Mỗi hoạt động có đủ Mục tiêu – Nội dung – Sản phẩm – Tổ chức thực hiện.') : weaknesses.push(`Một số hoạt động thiếu thành phần a) b) c) d) (phát hiện: ${nA} mục tiêu, ${nB} nội dung, ${nC} sản phẩm, ${nD} tổ chức thực hiện).`);
+  if (act >= 4) strengths.push(`Sử dụng nhiều hình thức học tập tích cực (${act} dấu hiệu).`);
+  if (pas > 0) weaknesses.push(`Còn ${pas} dấu hiệu GV thuyết trình, HS thụ động nghe – ghi chép.`);
+  if (pas > 0) solutions.push('Viết lại lệnh chuyển giao theo cấu trúc: Nhiệm vụ – Hình thức – Thời gian – Phương tiện – Sản phẩm – Tiêu chí.');
+  if (partRatio < 0.9) solutions.push('Bổ sung đầy đủ thành phần "Sản phẩm" cho từng hoạt động để làm căn cứ đánh giá.');
+  if (steps.some(s => s.status !== 'Đạt')) solutions.push('Chuẩn hóa 4 bước tổ chức thực hiện cho tất cả hoạt động; ưu tiên báo cáo bằng sản phẩm nhóm.');
+  if (!solutions.length) solutions.push('Duy trì thiết kế; bổ sung rubric đánh giá và học liệu số để lan tỏa trong sinh hoạt chuyên môn.');
+  const summary = t.trim() ? `Mock AI Sư phạm (phân tích Regex theo Phụ lục IV CV 5512): Chỉ số tuân thủ ${compliance}%, tích cực hóa HS ${activeness}%. ${pas > act ? 'KHBD còn nặng về GV truyền thụ — cần tăng hoạt động khám phá của HS.' : 'KHBD có định hướng HS làm trung tâm; tiếp tục chuẩn hóa các bước tổ chức.'}` : 'Chưa có nội dung để phân tích.';
+  return { compliance, activeness, summary, steps, strengths, weaknesses, solutions, suggestions };
+}
+
+async function geminiAnalyze(text, meta) {
+  const prompt = `Bạn là chuyên gia quản lý chuyên môn của Sở GD&ĐT, am hiểu Công văn 5512/BGDĐT-GDTrH (Phụ lục IV - Khung kế hoạch bài dạy) và Chương trình GDPT 2018.
+Hãy rà soát Kế hoạch bài dạy sau (Môn: ${meta.subject}, Lớp: ${meta.grade}, Bộ sách: ${meta.book}, Bài: ${meta.title}).
+Tiêu chí: cấu trúc (Mục tiêu - Thiết bị dạy học và học liệu - Tiến trình 4 hoạt động; mỗi hoạt động có a) Mục tiêu b) Nội dung c) Sản phẩm d) Tổ chức thực hiện) và 4 bước tổ chức hoạt động (Chuyển giao nhiệm vụ; Thực hiện nhiệm vụ; Báo cáo, thảo luận; Kết luận, nhận định). Đánh giá mức độ học sinh làm trung tâm.
+Chỉ trả về JSON hợp lệ, KHÔNG markdown, theo cấu trúc:
+{"compliance":số 0-100,"activeness":số 0-100,"summary":"nhận định tổng quát 2-3 câu","steps":[{"step":1,"status":"Đạt" hoặc "Cần điều chỉnh","analysis":"..."},{"step":2,...},{"step":3,...},{"step":4,...}],"strengths":["..."],"weaknesses":["..."],"solutions":["..."],"suggestions":[{"activity":"tên hoạt động - bước","original":"trích NGUYÊN VĂN một dòng lệnh trong KHBD cần sửa","revised":"lệnh chuyển giao viết lại, HS làm trung tâm, nêu rõ nhiệm vụ - hình thức - thời gian - phương tiện - sản phẩm","rationale":"lý do sư phạm"}]}
+Đưa 2-4 đề xuất. Viết tiếng Việt sư phạm chuẩn mực.
+
+KẾ HOẠCH BÀI DẠY:
+"""
+${text}
+"""`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(S.settings.model)}:generateContent`;
+  const res = await fetch(url, { method:'POST', headers:{ 'Content-Type':'application/json', 'x-goog-api-key':S.settings.apiKey },
+    body: JSON.stringify({ contents:[{ role:'user', parts:[{ text:prompt }] }], generationConfig:{ temperature:0.4, responseMimeType:'application/json' } }) });
+  if (!res.ok) { let m = res.status + ''; try { m = (await res.json()).error?.message || m; } catch {} throw new Error(m); }
+  const data = await res.json();
+  const raw = data.candidates?.[0]?.content?.parts?.map(p => p.text).join('') || '';
+  const json = JSON.parse(raw.replace(/^```(json)?|```$/g, '').trim());
+  const arr = v => Array.isArray(v) ? v.map(String) : [];
+  const steps = [1, 2, 3, 4].map(n => { const s = (json.steps || []).find(x => +x.step === n) || {}; return { step:n, status: /^đạt$/i.test(String(s.status || '').trim()) ? 'Đạt' : 'Cần điều chỉnh', analysis:String(s.analysis || '—') }; });
+  return { compliance:clamp(+json.compliance || 0), activeness:clamp(+json.activeness || 0), summary:String(json.summary || ''), steps,
+    strengths:arr(json.strengths), weaknesses:arr(json.weaknesses), solutions:arr(json.solutions),
+    suggestions:(json.suggestions || []).map(s => ({ activity:String(s.activity || ''), original:String(s.original || ''), revised:String(s.revised || ''), rationale:String(s.rationale || '') })) };
+}
+
+async function runAnalysis() {
+  const content = $('#ws-content')?.value ?? S.ws.content;
+  S.ws.content = content; readWsMeta();
+  if (content.trim().length < 30) return toast('Vui lòng dán nội dung kế hoạch bài dạy (tối thiểu 30 ký tự).', 'warn');
+  S.ws.running = true; renderWsResult();
+  let result, engine;
+  const sample = S.ws.sampleKey && SAMPLES[S.ws.sampleKey]?.content === content ? S.ws.sampleKey : null;
+  try {
+    if (aiMode() === 'gemini') { result = await geminiAnalyze(content, S.ws.meta); engine = 'Google ' + S.settings.model; }
+    else { await new Promise(r => setTimeout(r, 900)); result = sample ? JSON.parse(JSON.stringify(PRESET_AUDITS[sample])) : mockAnalyze(content); engine = 'Mock AI Sư phạm'; }
+  } catch (e) {
+    toast('Gemini lỗi: ' + e.message + ' — chuyển sang Mock AI.', 'error');
+    result = sample ? JSON.parse(JSON.stringify(PRESET_AUDITS[sample])) : mockAnalyze(content); engine = 'Mock AI Sư phạm (dự phòng)';
+  }
+  S.ws.audit = { ...result, engine, at:nowISO(), by:S.user.name, saved:false };
+  S.ws.running = false;
+  await log('Chạy phân tích AI', S.ws.meta.title || '(chưa đặt tên)', `${engine} · Chuẩn 5512: ${result.compliance}% · Tích cực: ${result.activeness}%`);
+  renderWsResult(); toast('Đã hoàn tất rà soát 5512.', 'success');
+}
+
+/* ------------------------- 9. GIAO DIỆN CHUNG -------------------------- */
+function render() {
+  const app = $('#app');
+  if (!S.user) { app.innerHTML = authView(); icons(); return; }
+  if (S.view === 'admin' && !can.dashboard()) S.view = 'workspace';
+  app.innerHTML = headerView() + `<main class="max-w-[1400px] mx-auto px-3 sm:px-5 py-5 fade-in" id="main"></main>` + footerView();
+  const main = $('#main');
+  if (S.view === 'workspace') main.innerHTML = workspaceView();
+  else if (S.view === 'review') main.innerHTML = reviewView();
+  else if (S.view === 'repo') main.innerHTML = repoView();
+  else if (S.view === 'admin') main.innerHTML = adminView();
+  icons();
+  if (S.view === 'workspace') renderWsResult();
+  if (S.view === 'review') renderPhieuPreview();
+  if (S.view === 'repo') renderRepoTable();
+  if (S.view === 'admin') { renderLogs(); updateStorageEstimate(); }
+}
+function go(v) { if (S.view === 'workspace') saveWsDraftState(); S.view = v; render(); window.scrollTo({ top:0 }); }
+
+function headerView() {
+  const u = S.user;
+  const tabs = [
+    ['workspace', 'sparkles', 'Rà soát AI 5512', true],
+    ['review', 'clipboard-check', 'Phiếu nhận xét', true],
+    ['repo', 'library', 'Kho hồ sơ bài dạy', true],
+    ['admin', 'layout-dashboard', 'Admin Dashboard', can.dashboard()]
+  ].filter(t => t[3]);
+  const mode = aiMode();
+  return `
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="h-1 bg-gradient-to-r from-brand-800 via-brand-600 to-sky-400"></div>
+    <div class="max-w-[1400px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center gap-3">
+      <div class="flex items-center gap-2.5 mr-2">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 text-white grid place-items-center shadow">${ic('book-open-check', 'w-5 h-5')}</div>
+        <div class="leading-tight"><div class="font-extrabold text-brand-900">EduPlan 5512 <span class="text-brand-600">CoPilot</span></div>
+        <div class="text-[11px] text-slate-500">Rà soát KHBD chuẩn CV 5512/BGDĐT · Năm học ${SCHOOL_YEAR}</div></div>
+      </div>
+      <nav class="flex items-center gap-1 overflow-x-auto scroll-thin order-3 lg:order-none w-full lg:w-auto">
+        ${tabs.map(([k, i, l]) => `<button class="nav-tab ${S.view === k ? 'active' : ''}" onclick="go('${k}')">${ic(i)}${l}</button>`).join('')}
+      </nav>
+      <div class="ml-auto flex items-center gap-2 flex-wrap justify-end">
+        <div class="flex items-center bg-brand-50 border border-brand-100 rounded-full p-1" title="1-Click Role Switcher: chuyển nhanh vai trò để kiểm thử">
+          <span class="hidden xl:inline text-[11px] font-semibold text-brand-700 px-2">${ic('repeat', 'w-3.5 h-3.5 inline')} Vai trò</span>
+          ${Object.entries(ROLES).map(([k, r]) => `<button class="role-pill ${u.role === k ? 'active' : ''}" onclick="switchRole('${k}')">${r.short}</button>`).join('')}
+        </div>
+        <button class="badge ${mode === 'gemini' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'} cursor-pointer py-1.5" onclick="openSettings()" title="Cấu hình AI">
+          ${ic(mode === 'gemini' ? 'cpu' : 'flask-conical', 'w-3.5 h-3.5')}${mode === 'gemini' ? 'Gemini API' : 'Demo Sư phạm'}
+        </button>
+        <button class="p-2 rounded-lg hover:bg-slate-100" onclick="openSettings()" title="Cài đặt">${ic('settings', 'w-5 h-5 text-slate-600')}</button>
+        <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+          <div class="w-9 h-9 rounded-full bg-brand-100 text-brand-800 grid place-items-center font-bold text-sm">${esc(initials(u.name))}</div>
+          <div class="hidden md:block leading-tight max-w-[180px]"><div class="text-sm font-semibold truncate">${esc(u.name)}</div>
+            <div class="text-[11px] text-slate-500 truncate">${esc(ROLES[u.role].label)} · ${esc(u.dept)}</div></div>
+          <button class="p-2 rounded-lg hover:bg-rose-50 text-rose-600" onclick="logout()" title="Đăng xuất">${ic('log-out', 'w-4 h-4')}</button>
+        </div>
+      </div>
+    </div>
+  </header>`;
+}
+const initials = n => n.replace(/^(TS\.|ThS\.|PGS\.|CN\.)\s*/i, '').split(/\s+/).slice(-2).map(w => w[0]).join('').toUpperCase();
+function footerView() {
+  return `<footer class="max-w-[1400px] mx-auto px-5 py-6 text-xs text-slate-400 flex flex-wrap gap-2 justify-between">
+    <span>EduPlan 5512 CoPilot · Dữ liệu lưu cục bộ trên trình duyệt (${esc(DB.engine)}) · Không gửi dữ liệu ra ngoài trừ khi bật Gemini API.</span>
+    <span>Căn cứ: Công văn 5512/BGDĐT-GDTrH ngày 18/12/2020 · Chương trình GDPT 2018</span></footer>`;
+}
+
+/* ------------------------------ AUTH VIEW ------------------------------ */
+function authView() {
+  const demo = DB.all('users').filter(u => ['u1', 'u2', 'u3', 'u4', 'u5', 'u6'].includes(u.id));
+  const opt = (arr, sel) => arr.map(x => `<option ${x === sel ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  return `
+  <div class="min-h-screen grid lg:grid-cols-2">
+    <div class="hidden lg:flex flex-col justify-between bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 text-white p-12 relative overflow-hidden">
+      <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-white/5"></div><div class="absolute -left-20 bottom-10 w-72 h-72 rounded-full bg-white/5"></div>
+      <div class="flex items-center gap-3 relative"><div class="w-12 h-12 rounded-2xl bg-white/15 grid place-items-center">${ic('book-open-check', 'w-6 h-6')}</div>
+        <div><div class="text-xl font-extrabold">EduPlan 5512 CoPilot</div><div class="text-brand-100 text-sm">AI-first cho quản trị chuyên môn nhà trường</div></div></div>
+      <div class="relative space-y-6">
+        <h1 class="text-4xl font-extrabold leading-tight">Mỗi kế hoạch bài dạy<br>là một hành trình<br><span class="text-sky-300">học sinh làm trung tâm.</span></h1>
+        <p class="text-brand-100 max-w-md">Rà soát tức thì theo khung Phụ lục IV – Công văn 5512, đối soát 4 bước tổ chức hoạt động và đề xuất tinh chỉnh lệnh chuyển giao nhiệm vụ bằng AI.</p>
+        <div class="grid grid-cols-3 gap-3 max-w-md">
+          ${[['scan-search', 'Rà soát 5512'], ['users', 'Duyệt 2 cấp'], ['bar-chart-3', 'Dashboard dữ liệu']].map(([i, l]) => `<div class="bg-white/10 rounded-xl p-3 text-sm">${ic(i, 'w-5 h-5 mb-1')}${l}</div>`).join('')}
+        </div>
+      </div>
+      <div class="relative text-xs text-brand-200">Dữ liệu được lưu bền vững ngay trên trình duyệt (IndexedDB) · Sao lưu/khôi phục JSON theo năm học.</div>
+    </div>
+    <div class="flex items-center justify-center p-5 sm:p-10">
+      <div class="w-full max-w-md">
+        <div class="lg:hidden flex items-center gap-2 mb-6"><div class="w-10 h-10 rounded-xl bg-brand-600 text-white grid place-items-center">${ic('book-open-check', 'w-5 h-5')}</div><div class="font-extrabold text-brand-900 text-lg">EduPlan 5512 CoPilot</div></div>
+        <div class="flex bg-slate-100 rounded-xl p-1 mb-5">
+          <button class="flex-1 py-2 rounded-lg text-sm font-semibold ${S.authTab === 'login' ? 'bg-white shadow text-brand-800' : 'text-slate-500'}" onclick="S.authTab='login';render()">Đăng nhập</button>
+          <button class="flex-1 py-2 rounded-lg text-sm font-semibold ${S.authTab === 'register' ? 'bg-white shadow text-brand-800' : 'text-slate-500'}" onclick="S.authTab='register';render()">Đăng ký tài khoản</button>
+        </div>
+        ${S.authTab === 'login' ? `
+        <form class="card p-6 space-y-4" onsubmit="event.preventDefault();login(this.identity.value,this.password.value)">
+          <div><label class="label">Email hoặc Mã giáo viên</label><input name="identity" class="input" placeholder="vd: mai.vt@eduplan.edu.vn hoặc GV-T07" required></div>
+          <div><label class="label">Mật khẩu</label><input name="password" type="password" class="input" placeholder="••••••" required></div>
+          <button class="btn btn-primary w-full py-2.5">${ic('log-in')}Đăng nhập</button>
+        </form>
+        <div class="mt-5">
+          <div class="text-xs font-semibold text-slate-500 mb-2 flex items-center gap-1">${ic('zap', 'w-3.5 h-3.5 text-amber-500')}Đăng nhập nhanh tài khoản mẫu (mật khẩu: <code class="bg-slate-100 px-1 rounded">123456</code>)</div>
+          <div class="grid sm:grid-cols-2 gap-2">
+            ${demo.map(u => `<button class="card p-3 text-left hover:border-brand-500 transition" onclick="login('${esc(u.email)}','123456')">
+              <div class="flex items-center gap-2"><span class="badge ${ROLES[u.role].color}">${ROLES[u.role].short}</span><span class="text-[11px] text-slate-400">${esc(u.dept)}</span></div>
+              <div class="text-sm font-semibold mt-1 truncate">${esc(u.name)}</div><div class="text-[11px] text-slate-500 truncate">${esc(u.email)}</div></button>`).join('')}
+          </div>
+        </div>` : `
+        <form class="card p-6 space-y-3" onsubmit="event.preventDefault();register(this)">
+          <div><label class="label">Họ và tên *</label><input name="name" class="input" placeholder="Nguyễn Văn A" required></div>
+          <div><label class="label">Email / Mã giáo viên *</label><input name="identity" class="input" placeholder="email@truong.edu.vn hoặc GV-T15" required></div>
+          <div class="grid grid-cols-2 gap-3">
+            <div><label class="label">Vai trò</label><select name="role" class="input">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${k === 'teacher' ? 'selected' : ''}>${r.label}</option>`).join('')}</select></div>
+            <div><label class="label">Tổ chuyên môn</label><select name="dept" class="input">${opt(DEPTS, 'Toán')}</select></div>
+          </div>
+          <div><label class="label">Khối lớp phụ trách</label><input name="grades" class="input" placeholder="vd: 10, 11"></div>
+          <div class="grid grid-cols-2 gap-3">
+            <div><label class="label">Mật khẩu *</label><input name="password" type="password" class="input" minlength="6" required></div>
+            <div><label class="label">Nhập lại *</label><input name="password2" type="password" class="input" minlength="6" required></div>
+          </div>
+          <p class="text-[11px] text-slate-500">${ic('info', 'w-3 h-3 inline')} Tài khoản Giáo viên được kích hoạt ngay; Tổ trưởng/BGH cần Admin phê duyệt trong Admin Dashboard.</p>
+          <button class="btn btn-primary w-full py-2.5">${ic('user-plus')}Tạo tài khoản</button>
+        </form>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ------------------------- SETTINGS (API KEY) ------------------------- */
+function openSettings() {
+  const s = S.settings;
+  openModal('Cấu hình AI & Thông tin trường', `
+  <div class="space-y-4">
+    <div class="rounded-xl p-3 text-sm ${aiMode() === 'gemini' ? 'bg-emerald-50 text-emerald-800' : 'bg-amber-50 text-amber-800'}">
+      ${aiMode() === 'gemini' ? `${ic('check-circle-2', 'w-4 h-4 inline')} Đang dùng <b>Google Gemini API</b>. Nội dung KHBD sẽ được gửi tới Google để phân tích.` : `${ic('flask-conical', 'w-4 h-4 inline')} Đang ở chế độ <b>Demo Sư phạm / Mock AI</b>: phân tích bằng bộ quy tắc Regex + dữ liệu mẫu thực tế, không gửi dữ liệu ra ngoài.`}
+    </div>
+    <div><label class="label">Google Gemini API Key</label>
+      <div class="flex gap-2"><input id="set-key" type="password" class="input" value="${esc(s.apiKey)}" placeholder="AIza... (để trống = Mock AI Mode)">
+      <button class="btn btn-ghost" onclick="const i=$('#set-key');i.type=i.type==='password'?'text':'password'">${ic('eye')}</button></div>
+      <p class="text-[11px] text-slate-500 mt-1">Khóa chỉ lưu trong localStorage của trình duyệt này. Lấy khóa tại Google AI Studio.</p></div>
+    <div><label class="label">Mô hình Gemini</label>
+      <select id="set-model" class="input">${['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-2.0-flash'].map(m => `<option ${m === s.model ? 'selected' : ''}>${m}</option>`).join('')}</select></div>
+    <div class="grid sm:grid-cols-2 gap-3">
+      <div><label class="label">Cơ quan chủ quản (in trên phiếu)</label><input id="set-dept" class="input" value="${esc(s.department)}"></div>
+      <div><label class="label">Tên trường (in trên phiếu)</label><input id="set-school" class="input" value="${esc(s.school)}"></div>
+      <div><label class="label">Địa danh</label><input id="set-city" class="input" value="${esc(s.city)}"></div>
+    </div>
+    <div class="flex flex-wrap justify-between gap-2 pt-2">
+      <div class="flex gap-2"><button class="btn btn-ghost" onclick="testGemini()">${ic('plug-zap')}Kiểm tra kết nối</button>
+      <button class="btn btn-danger" onclick="$('#set-key').value='';saveSettings()">${ic('trash-2')}Xóa khóa</button></div>
+      <button class="btn btn-primary" onclick="saveSettings()">${ic('save')}Lưu cấu hình</button>
+    </div>
+  </div>`, { icon:'settings' });
+}
+function saveSettings() {
+  S.settings = { ...S.settings, apiKey:$('#set-key').value.trim(), model:$('#set-model').value, school:$('#set-school').value.trim() || defaultSettings.school, department:$('#set-dept').value.trim() || defaultSettings.department, city:$('#set-city').value.trim() || defaultSettings.city };
+  lsSet(SETTINGS_KEY, S.settings); closeModal(); toast(aiMode() === 'gemini' ? 'Đã bật Gemini API.' : 'Đang dùng chế độ Demo Sư phạm (Mock AI).', 'success'); render();
+}
+async function testGemini() {
+  const key = $('#set-key').value.trim(); if (!key) return toast('Chưa nhập API Key.', 'warn');
+  try {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent($('#set-model').value)}:generateContent`, { method:'POST', headers:{ 'Content-Type':'application/json', 'x-goog-api-key':key }, body:JSON.stringify({ contents:[{ parts:[{ text:'Trả lời đúng một từ: OK' }] }] }) });
+    if (!r.ok) throw new Error((await r.json()).error?.message || r.status);
+    toast('Kết nối Gemini thành công!', 'success');
+  } catch (e) { toast('Kết nối thất bại: ' + e.message, 'error'); }
+}
+
+/* ===================== PHÂN HỆ 1: AI WORKSPACE ===================== */
+function workspaceView() {
+  const m = S.ws.meta; const plan = S.ws.planId ? DB.get('lesson_plans', S.ws.planId) : null;
+  const opt = (arr, sel) => arr.map(x => `<option ${x === sel ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  return `
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-xl font-extrabold text-slate-900 flex items-center gap-2">${ic('sparkles', 'w-5 h-5 text-brand-600')}Không gian rà soát & đối soát 5512</h2>
+      <p class="text-sm text-slate-500">Dán kế hoạch bài dạy → AI đối soát khung Phụ lục IV và 4 bước tổ chức hoạt động → nhận đề xuất tinh chỉnh sư phạm.</p></div>
+    ${plan ? `<div class="badge bg-brand-50 text-brand-700 py-1.5">${ic('folder-open', 'w-3.5 h-3.5')}Đang mở: ${esc(plan.title)} · v${plan.versions.length} · ${statusBadge(plan.status)}</div>` : ''}
+  </div>
+  <div class="grid xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-5">
+    <section class="card p-4 sm:p-5 space-y-4">
+      <div class="flex items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('file-input', 'w-4 h-4 text-brand-600')}Đầu vào: Kế hoạch bài dạy</h3>
+        <button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="newWorkspace()">${ic('file-plus', 'w-3.5 h-3.5')}Bài mới</button></div>
+      <div>
+        <div class="label">Nạp nhanh dữ liệu mẫu thực tế</div>
+        <div class="grid gap-2">
+          ${Object.entries(SAMPLES).map(([k, s], i) => `<button class="text-left text-xs sm:text-sm px-3 py-2 rounded-xl border ${S.ws.sampleKey === k ? 'border-brand-500 bg-brand-50 text-brand-800' : 'border-slate-200 hover:border-brand-300 hover:bg-brand-50/50'} flex items-center gap-2" onclick="loadSample('${k}')">
+            <span class="w-6 h-6 shrink-0 rounded-lg bg-brand-600 text-white grid place-items-center text-xs font-bold">${i + 1}</span><span>${esc(s.btn)}</span></button>`).join('')}
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div class="col-span-2 sm:col-span-3"><label class="label">Tên bài dạy</label><input id="ws-title" class="input" value="${esc(m.title)}" placeholder="vd: Hình chóp tam giác đều" oninput="S.ws.dirty=true"></div>
+        <div><label class="label">Môn học</label><select id="ws-subject" class="input">${opt(Object.keys(SUBJECTS), m.subject)}</select></div>
+        <div><label class="label">Khối lớp</label><select id="ws-grade" class="input">${opt(GRADES, m.grade)}</select></div>
+        <div><label class="label">Bộ sách</label><select id="ws-book" class="input">${opt(BOOKS, m.book)}</select></div>
+        <div><label class="label">Học kỳ</label><select id="ws-term" class="input">${opt(TERMS, m.term)}</select></div>
+        <div class="col-span-2"><label class="label">Giáo viên / Tổ</label><input class="input bg-slate-50" disabled value="${esc(plan ? plan.teacherName + ' · Tổ ' + plan.dept : S.user.name + ' · ' + S.user.dept)}"></div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between"><label class="label">Nội dung kế hoạch bài dạy</label><span id="ws-count" class="text-[11px] text-slate-400">${S.ws.content.length.toLocaleString('vi-VN')} ký tự</span></div>
+        <textarea id="ws-content" class="input plan h-[460px] scroll-thin" placeholder="Dán toàn văn kế hoạch bài dạy theo Phụ lục IV – CV 5512 (I. Mục tiêu · II. Thiết bị dạy học và học liệu · III. Tiến trình dạy học với 4 hoạt động)..." oninput="S.ws.dirty=true;$('#ws-count').textContent=this.value.length.toLocaleString('vi-VN')+' ký tự'">${esc(S.ws.content)}</textarea>
+        <div class="flex flex-wrap gap-2 mt-2 items-center">
+          <label class="btn btn-ghost !py-1.5 text-xs cursor-pointer">${ic('upload', 'w-3.5 h-3.5')}Tải tệp .txt/.md<input type="file" accept=".txt,.md,.text" class="hidden" onchange="loadTxtFile(this)"></label>
+          <span class="text-[11px] text-slate-400">Mẹo: từ Word, chọn toàn bộ (Ctrl+A) → sao chép → dán vào đây.</span>
+        </div>
+      </div>
+      <button id="btn-run" class="btn btn-primary w-full py-3 text-base" onclick="runAnalysis()">${ic('scan-search', 'w-5 h-5')}Chạy AI rà soát chuẩn 5512</button>
+    </section>
+    <section id="ws-result" class="space-y-4"></section>
+  </div>`;
+}
+function readWsMeta() {
+  if (!$('#ws-title')) return;
+  S.ws.meta = { title:$('#ws-title').value.trim(), subject:$('#ws-subject').value, grade:$('#ws-grade').value, book:$('#ws-book').value, term:$('#ws-term').value };
+}
+function saveWsDraftState() { if ($('#ws-content')) { S.ws.content = $('#ws-content').value; readWsMeta(); } }
+function loadSample(k) {
+  const s = SAMPLES[k];
+  S.ws = { ...S.ws, planId:null, sampleKey:k, meta:{ ...s.meta }, content:s.content, audit:null, dirty:true };
+  render(); toast('Đã nạp KHBD mẫu: ' + s.meta.title, 'info');
+}
+function newWorkspace() { S.ws = { planId:null, sampleKey:null, meta:{ title:'', subject:SUBJECTS[S.user.dept] ? S.user.dept : 'Toán', grade:'8', book:'Kết nối tri thức', term:'Học kỳ I' }, content:'', audit:null, running:false, dirty:false }; render(); }
+function loadTxtFile(input) {
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader(); r.onload = () => { $('#ws-content').value = r.result; S.ws.content = r.result; S.ws.sampleKey = null; $('#ws-count').textContent = r.result.length.toLocaleString('vi-VN') + ' ký tự'; if (!$('#ws-title').value) $('#ws-title').value = f.name.replace(/\.[^.]+$/, ''); toast('Đã nạp tệp ' + f.name, 'success'); };
+  r.readAsText(f, 'utf-8');
+}
+
+const scoreColor = v => v >= 85 ? '#059669' : v >= 70 ? '#2563eb' : v >= 50 ? '#d97706' : '#e11d48';
+const scoreLabel = v => v >= 85 ? 'Tốt' : v >= 70 ? 'Khá' : v >= 50 ? 'Trung bình' : 'Cần cải thiện';
+function gauge(value, label, sub) {
+  const r = 52, c = 2 * Math.PI * r, off = c * (1 - value / 100), col = scoreColor(value);
+  return `<div class="card p-4 flex items-center gap-4">
+    <svg viewBox="0 0 128 128" class="w-28 h-28 shrink-0 -rotate-90">
+      <circle cx="64" cy="64" r="${r}" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+      <circle cx="64" cy="64" r="${r}" fill="none" stroke="${col}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" style="transition:stroke-dashoffset 1s ease"/>
+      <text x="64" y="64" transform="rotate(90 64 64)" text-anchor="middle" dominant-baseline="central" font-size="26" font-weight="800" fill="${col}">${value}%</text>
+    </svg>
+    <div><div class="text-sm font-bold text-slate-800">${label}</div><div class="badge mt-1" style="background:${col}1a;color:${col}">${scoreLabel(value)}</div>
+    <div class="text-xs text-slate-500 mt-1.5">${sub}</div></div></div>`;
+}
+const STEP_NAMES = ['Chuyển giao nhiệm vụ', 'Thực hiện nhiệm vụ', 'Báo cáo, thảo luận', 'Kết luận, nhận định'];
+const STEP_HINT = ['Rõ ràng về mục tiêu, phương tiện, sản phẩm', 'HS chủ động cá nhân/nhóm hay chỉ nghe giảng', 'Cách thức tổ chức chia sẻ sản phẩm học tập', 'Đánh giá quá trình và chuẩn hóa kiến thức'];
+
+function renderWsResult() {
+  const box = $('#ws-result'); if (!box) return;
+  const a = S.ws.audit;
+  const btn = $('#btn-run');
+  if (btn) { btn.disabled = S.ws.running; btn.innerHTML = S.ws.running ? `${ic('loader-2', 'w-5 h-5 spin')}AI đang đối soát 5512...` : `${ic('scan-search', 'w-5 h-5')}Chạy AI rà soát chuẩn 5512`; }
+  if (S.ws.running) {
+    box.innerHTML = `<div class="card p-10 text-center"><div class="w-14 h-14 mx-auto rounded-full bg-brand-50 grid place-items-center mb-3">${ic('brain-circuit', 'w-7 h-7 text-brand-600 spin')}</div>
+      <div class="font-bold">${aiMode() === 'gemini' ? 'Gemini' : 'Mock AI Sư phạm'} đang phân tích...</div>
+      <div class="text-sm text-slate-500 mt-1">Đối soát cấu trúc Phụ lục IV · Kiểm 4 bước · Đo mức độ tích cực hóa học sinh</div></div>`;
+    icons(); return;
+  }
+  if (!a) {
+    box.innerHTML = `<div class="card p-8 sm:p-10 text-center h-full flex flex-col items-center justify-center">
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-50 to-sky-50 grid place-items-center mb-4">${ic('scan-search', 'w-8 h-8 text-brand-600')}</div>
+      <h3 class="font-bold text-lg">Kết quả AI sẽ hiển thị tại đây</h3>
+      <p class="text-sm text-slate-500 max-w-md mt-1">Chọn một trong 3 KHBD mẫu hoặc dán kế hoạch của thầy cô, rồi bấm <b>Chạy AI rà soát</b>. Hệ thống trả về chỉ số tuân thủ 5512, chỉ số tích cực hóa HS, bảng kiểm 4 bước và đề xuất viết lại lệnh chuyển giao nhiệm vụ.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-5 text-xs w-full max-w-lg">${STEP_NAMES.map((s, i) => `<div class="rounded-xl bg-slate-50 p-2.5"><div class="font-bold text-brand-700">Bước ${i + 1}</div>${s}</div>`).join('')}</div></div>`;
+    icons(); return;
+  }
+  const plan = S.ws.planId ? DB.get('lesson_plans', S.ws.planId) : null;
+  const passed = a.steps.filter(s => s.status === 'Đạt').length;
+  box.innerHTML = `
+  <div class="grid sm:grid-cols-2 gap-4 fade-in">
+    ${gauge(a.compliance, 'Tỷ lệ tuân thủ CV 5512', 'Cấu trúc Phụ lục IV & 4 thành phần mỗi hoạt động')}
+    ${gauge(a.activeness, 'Tỷ lệ tích cực hóa học sinh', 'Mức độ HS chủ động so với GV độc thoại')}
+  </div>
+  <div class="card p-4 fade-in">
+    <div class="flex items-start gap-3"><div class="w-9 h-9 rounded-xl bg-brand-50 grid place-items-center shrink-0">${ic('message-square-quote', 'w-4 h-4 text-brand-600')}</div>
+    <div class="text-sm text-slate-700"><div class="text-[11px] text-slate-400 mb-0.5">${esc(a.engine)} · ${fmtDT(a.at)}</div>${esc(a.summary)}</div></div>
+  </div>
+  <div class="card fade-in overflow-hidden">
+    <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('list-checks', 'w-4 h-4 text-brand-600')}Bảng kiểm 4 bước tổ chức hoạt động</h3>
+      <span class="badge ${passed === 4 ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${passed}/4 bước đạt</span></div>
+    <div class="divide-y divide-slate-100">
+      ${a.steps.map((s, i) => `<div class="p-4 flex gap-3">
+        <div class="w-9 h-9 rounded-xl shrink-0 grid place-items-center font-extrabold ${s.status === 'Đạt' ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'}">${i + 1}</div>
+        <div class="flex-1 min-w-0"><div class="flex flex-wrap items-center gap-2"><span class="font-semibold text-sm">Bước ${i + 1}: ${STEP_NAMES[i]}</span>
+          <span class="badge ${s.status === 'Đạt' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${ic(s.status === 'Đạt' ? 'check' : 'wrench', 'w-3 h-3')}${s.status}</span></div>
+          <div class="text-[11px] text-slate-400">${STEP_HINT[i]}</div>
+          <p class="text-sm text-slate-600 mt-1">${esc(s.analysis)}</p></div></div>`).join('')}
+    </div>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3 fade-in">
+    ${[['Ưu điểm', 'thumbs-up', 'emerald', a.strengths], ['Tồn tại', 'alert-triangle', 'rose', a.weaknesses], ['Giải pháp', 'lightbulb', 'brand', a.solutions]].map(([t, i, c, list]) => `
+      <div class="card p-4"><div class="font-bold text-sm flex items-center gap-1.5 mb-2 text-${c}-700">${ic(i)}${t}</div>
+      <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">${(list || []).map(x => `<li>${esc(x)}</li>`).join('') || '<li>—</li>'}</ul></div>`).join('')}
+  </div>
+  <div class="card fade-in overflow-hidden">
+    <div class="px-4 py-3 border-b border-slate-100 flex flex-wrap gap-2 items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('wand-sparkles', 'w-4 h-4 text-brand-600')}Đề xuất tinh chỉnh sư phạm — HS làm trung tâm</h3>
+      ${a.suggestions.some(s => s.original) ? `<button class="btn btn-soft !py-1 text-xs" onclick="applyAllSuggestions()">${ic('replace-all', 'w-3.5 h-3.5')}Áp dụng tất cả vào bài</button>` : ''}</div>
+    <div class="divide-y divide-slate-100">
+      ${a.suggestions.map((s, i) => `<div class="p-4 space-y-2">
+        <div class="flex flex-wrap items-center justify-between gap-2"><span class="badge bg-brand-50 text-brand-700">${esc(s.activity)}</span>
+          <div class="flex gap-1">${s.original ? `<button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="applySuggestion(${i})">${ic('check-check', 'w-3.5 h-3.5')}Áp dụng</button>` : ''}
+          <button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="copySuggestion(${i})">${ic('copy', 'w-3.5 h-3.5')}Sao chép</button></div></div>
+        ${s.original ? `<div class="rounded-xl bg-rose-50 border border-rose-100 p-3 text-xs"><div class="font-bold text-rose-700 mb-1 flex items-center gap-1">${ic('user-round', 'w-3.5 h-3.5')}Trước — GV độc thoại / HS thụ động</div><div class="text-slate-700 line-through decoration-rose-300">${esc(s.original)}</div></div>` : ''}
+        <div class="rounded-xl bg-emerald-50 border border-emerald-100 p-3 text-xs"><div class="font-bold text-emerald-700 mb-1 flex items-center gap-1">${ic('users-round', 'w-3.5 h-3.5')}Sau — HS làm trung tâm</div><div class="text-slate-800">${esc(s.revised)}</div></div>
+        <div class="text-xs text-slate-500 flex gap-1">${ic('graduation-cap', 'w-3.5 h-3.5 shrink-0 mt-0.5')}<span><b>Cơ sở sư phạm:</b> ${esc(s.rationale)}</span></div>
+      </div>`).join('')}
+    </div>
+  </div>
+  <div class="card p-4 fade-in flex flex-wrap gap-2 items-center justify-between sticky bottom-3 shadow-lg">
+    <div class="text-xs text-slate-500">${plan ? `Hồ sơ: <b>${esc(plan.title)}</b> · ${statusBadge(plan.status)}` : 'Chưa lưu vào cơ sở dữ liệu'}${a.saved ? ` · <span class="text-emerald-600 font-semibold">đã lưu kết quả AI</span>` : ''}</div>
+    <div class="flex flex-wrap gap-2">
+      <button class="btn btn-ghost" onclick="exportOptimized()">${ic('file-down')}Xuất bài dạy hoàn thiện</button>
+      <button class="btn btn-soft" onclick="savePlan(false)">${ic('database')}Lưu vào Cơ sở dữ liệu trường</button>
+      <button class="btn btn-primary" onclick="savePlan(true)">${ic('send')}Gửi Tổ trưởng duyệt</button>
+    </div>
+  </div>`;
+  icons();
+}
+function applySuggestion(i, silent) {
+  const s = S.ws.audit.suggestions[i]; const ta = $('#ws-content'); if (!ta || !s.original) return false;
+  if (!ta.value.includes(s.original)) { if (!silent) toast('Không tìm thấy đoạn gốc trong bài (có thể đã được sửa).', 'warn'); return false; }
+  ta.value = ta.value.replace(s.original, s.revised); S.ws.content = ta.value; S.ws.dirty = true; S.ws.sampleKey = null;
+  $('#ws-count').textContent = ta.value.length.toLocaleString('vi-VN') + ' ký tự';
+  if (!silent) toast('Đã áp dụng đề xuất vào KHBD. Hãy chạy lại AI để cập nhật chỉ số.', 'success');
+  return true;
+}
+function applyAllSuggestions() { let n = 0; S.ws.audit.suggestions.forEach((_, i) => { if (applySuggestion(i, true)) n++; }); toast(n ? `Đã áp dụng ${n} đề xuất. Chạy lại AI để đo chỉ số mới.` : 'Không còn đoạn nào cần thay thế.', n ? 'success' : 'warn'); }
+async function copySuggestion(i) { const s = S.ws.audit.suggestions[i]; await copyText(s.revised) ? toast('Đã sao chép lệnh tinh chỉnh.', 'success') : toast('Không thể sao chép.', 'error'); }
+
+async function savePlan(submit) {
+  saveWsDraftState();
+  const m = S.ws.meta, a = S.ws.audit;
+  if (!m.title) return toast('Vui lòng nhập Tên bài dạy.', 'warn');
+  if (S.ws.content.trim().length < 30) return toast('Nội dung KHBD quá ngắn.', 'warn');
+  if (submit && !a) return toast('Vui lòng chạy AI rà soát trước khi gửi duyệt.', 'warn');
+  let plan = S.ws.planId ? DB.get('lesson_plans', S.ws.planId) : null;
+  const u = S.user;
+  if (plan && !(plan.teacherId === u.id || u.role === 'admin' || (u.role === 'leader' && plan.dept === u.dept))) plan = null;
+  const now = nowISO();
+  if (!plan) {
+    plan = { id:uid('lp'), ...m, dept:SUBJECTS[m.subject] || u.dept, schoolYear:SCHOOL_YEAR, teacherId:u.id, teacherName:u.name, content:S.ws.content,
+      status:'draft', createdAt:now, updatedAt:now, submittedAt:null, ttSignedBy:null, ttSignedAt:null, bghSignedBy:null, bghSignedAt:null, onTime:true, versions:[] };
+  }
+  const last = plan.versions[plan.versions.length - 1];
+  const changed = !last || last.content !== S.ws.content;
+  plan = { ...plan, ...m, dept:SUBJECTS[m.subject] || plan.dept, content:S.ws.content, updatedAt:now };
+  if (changed) plan.versions = [...plan.versions, { v:plan.versions.length + 1, at:now, by:u.name, note:plan.versions.length ? 'Cập nhật nội dung sau rà soát AI' : 'Tạo mới', content:S.ws.content, score:a ? a.compliance : null }];
+  else if (a && last) last.score = a.compliance;
+  if (submit) { plan.status = 'pending'; plan.submittedAt = now; plan.ttSignedBy = null; plan.ttSignedAt = null; plan.bghSignedBy = null; plan.bghSignedAt = null; }
+  await DB.put('lesson_plans', plan);
+  if (a && !a.saved) {
+    await DB.put('ai_audits', { id:uid('a'), planId:plan.id, version:plan.versions.length, at:a.at, by:a.by, engine:a.engine, compliance:a.compliance, activeness:a.activeness, summary:a.summary, steps:a.steps, strengths:a.strengths, weaknesses:a.weaknesses, solutions:a.solutions, suggestions:a.suggestions });
+    a.saved = true;
+  }
+  S.ws.planId = plan.id; S.ws.dirty = false;
+  await log(submit ? 'Nộp bài' : 'Lưu CSDL', plan.title, submit ? `Gửi Tổ trưởng duyệt · phiên bản ${plan.versions.length}` : `Lưu phiên bản ${plan.versions.length}`);
+  toast(submit ? 'Đã gửi Tổ trưởng chuyên môn duyệt!' : 'Đã lưu vào cơ sở dữ liệu trường.', 'success');
+  render();
+}
+
+function optimizedContent(content, audit) {
+  let out = content; const appended = [];
+  (audit?.suggestions || []).forEach(s => { if (s.original && out.includes(s.original)) out = out.replace(s.original, s.revised); else if (s.revised && !out.includes(s.revised)) appended.push(s); });
+  return { out, appended };
+}
+function wordDoc(title, bodyHtml) {
+  return `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>${esc(title)}</title>
+  <style>body{font-family:"Times New Roman";font-size:13pt;line-height:1.4} h1{font-size:15pt;text-align:center} h2{font-size:13pt} pre{font-family:"Times New Roman";white-space:pre-wrap;font-size:13pt} .note{color:#1e40af}</style></head><body>${bodyHtml}</body></html>`;
+}
+async function exportOptimized(planId) {
+  let meta, content, audit, teacher;
+  if (planId) { const p = DB.get('lesson_plans', planId); meta = p; content = p.content; audit = latestAudit(p.id); teacher = p.teacherName; }
+  else { saveWsDraftState(); meta = S.ws.meta; content = S.ws.content; audit = S.ws.audit; teacher = S.user.name; }
+  if (!content?.trim()) return toast('Chưa có nội dung để xuất.', 'warn');
+  const { out, appended } = optimizedContent(content, audit);
+  const body = `<p style="text-align:center"><b>${esc(S.settings.school)}</b></p><h1>KẾ HOẠCH BÀI DẠY (BẢN ĐÃ TỐI ƯU THEO CV 5512)</h1>
+    <p>Bài: <b>${esc(meta.title)}</b> — Môn ${esc(meta.subject)} ${esc(meta.grade)} — Bộ sách ${esc(meta.book)} — ${esc(meta.term)} — GV: ${esc(teacher)}</p>
+    ${audit ? `<p class="note">Kết quả rà soát: Chuẩn 5512 ${audit.compliance}% · Tích cực hóa HS ${audit.activeness}% · ${esc(audit.engine)}</p>` : ''}
+    <pre>${esc(out)}</pre>
+    ${appended.length ? `<h2>PHỤ LỤC — ĐỀ XUẤT TINH CHỈNH BỔ SUNG</h2>${appended.map(s => `<p><b>${esc(s.activity)}:</b> ${esc(s.revised)}<br><i>${esc(s.rationale)}</i></p>`).join('')}` : ''}
+    <p style="margin-top:24pt"><i>Xuất từ EduPlan 5512 CoPilot ngày ${fmtDT(nowISO())}</i></p>`;
+  download(`KHBD_toi-uu_${slug(meta.title)}.doc`, wordDoc(meta.title, body), 'application/msword');
+  await log('Xuất báo cáo', meta.title, 'Tải KHBD đã tối ưu (.doc)');
+  toast('Đã xuất bài dạy hoàn thiện (.doc mở bằng Word).', 'success');
+}
+const slug = s => String(s || 'bai-day').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+const statusBadge = st => { const s = STATUSES[st] || STATUSES.draft; return `<span class="badge ${s.cls}">${ic(s.icon, 'w-3 h-3')}${s.label}</span>`; };
+
+/* =================== PHÂN HỆ 2: PHIẾU NHẬN XÉT =================== */
+function reviewablePlans() {
+  const u = S.user;
+  if (u.role === 'admin') return DB.all('lesson_plans').filter(p => p.status !== 'draft');
+  if (u.role === 'leader') return DB.all('lesson_plans').filter(p => p.dept === u.dept && p.status !== 'draft');
+  return [];
+}
+function buildReviewForm(planId) {
+  const p = DB.get('lesson_plans', planId); const a = latestAudit(planId);
+  const isTT = S.user.role === 'leader';
+  return {
+    planId, level: isTT ? 'Tổ chuyên môn' : 'Ban Giám hiệu',
+    strengths: a ? a.strengths.join('\n') : '', weaknesses: a ? a.weaknesses.join('\n') : '', solutions: a ? a.solutions.join('\n') : '',
+    stepNotes: a ? a.steps.map(s => `${s.status}: ${s.analysis}`) : ['', '', '', ''],
+    verdict: a && a.compliance >= 70 && a.steps.filter(s => s.status === 'Đạt').length >= 3 ? 'Đạt' : 'Chưa đạt',
+    general: '', compliance: a?.compliance ?? null, activeness: a?.activeness ?? null, version: p.versions.length
+  };
+}
+function reviewView() {
+  const u = S.user;
+  if (!can.review()) return teacherReviewView();
+  const plans = reviewablePlans().sort((a, b) => (b.submittedAt || '').localeCompare(a.submittedAt || ''));
+  if (!S.review.planId || !plans.find(p => p.id === S.review.planId)) { const first = plans.find(p => p.status === 'pending') || plans[0]; S.review.planId = first?.id || null; S.review.form = first ? buildReviewForm(first.id) : null; }
+  const f = S.review.form; const p = f ? DB.get('lesson_plans', f.planId) : null;
+  const notes = DB.where('review_notes', n => plans.some(pl => pl.id === n.planId)).sort((a, b) => b.at.localeCompare(a.at));
+  return `
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-xl font-extrabold flex items-center gap-2">${ic('clipboard-check', 'w-5 h-5 text-brand-600')}Xuất phiếu nhận xét chuyên môn</h2>
+    <p class="text-sm text-slate-500">${u.role === 'leader' ? `Rà soát KHBD của thành viên tổ ${esc(u.dept)} · nhận xét 4 bước · ký duyệt cấp tổ.` : 'Ban Giám hiệu phê duyệt KHBD toàn trường sau khi tổ chuyên môn ký duyệt.'}</p></div>
+    ${!can.approve() ? `<span class="badge bg-rose-100 text-rose-700">${ic('lock', 'w-3 h-3')}Tài khoản chưa được cấp quyền ký duyệt</span>` : ''}
+  </div>
+  <div class="grid xl:grid-cols-[280px_minmax(0,1fr)_minmax(0,1fr)] gap-5">
+    <aside class="card overflow-hidden h-fit">
+      <div class="px-4 py-3 border-b border-slate-100 font-bold text-sm flex items-center gap-2">${ic('inbox', 'w-4 h-4 text-brand-600')}Hồ sơ cần xử lý <span class="badge bg-amber-100 text-amber-700 ml-auto">${plans.filter(x => x.status === 'pending').length} chờ</span></div>
+      <div class="max-h-[640px] overflow-y-auto scroll-thin divide-y divide-slate-100">
+        ${plans.map(pl => { const la = latestAudit(pl.id); return `<button class="w-full text-left p-3 hover:bg-brand-50/60 ${S.review.planId === pl.id ? 'bg-brand-50 border-l-4 border-brand-600' : ''}" onclick="selectReview('${pl.id}')">
+          <div class="text-sm font-semibold line-clamp-2">${esc(pl.title)}</div>
+          <div class="text-[11px] text-slate-500">${esc(pl.subject)} ${esc(pl.grade)} · ${esc(pl.teacherName)}</div>
+          <div class="flex items-center gap-1.5 mt-1 flex-wrap">${statusBadge(pl.status)}${la ? `<span class="badge bg-slate-100 text-slate-600">${la.compliance}%</span>` : ''}${pl.ttSignedBy && pl.status === 'pending' ? `<span class="badge bg-sky-100 text-sky-700">Tổ đã ký</span>` : ''}</div></button>`; }).join('') || `<div class="p-6 text-sm text-slate-500 text-center">Chưa có hồ sơ nào được nộp.</div>`}
+      </div>
+    </aside>
+    ${f ? `
+    <section class="card p-4 sm:p-5 space-y-3">
+      <div class="flex items-center justify-between"><h3 class="font-bold">Nội dung nhận xét</h3><span class="badge bg-indigo-100 text-indigo-700">Cấp: ${esc(f.level)}</span></div>
+      <div class="text-xs bg-slate-50 rounded-xl p-3 flex flex-wrap gap-x-4 gap-y-1"><span><b>${esc(p.title)}</b></span><span>GV: ${esc(p.teacherName)}</span><span>Phiên bản: v${f.version}</span>${f.compliance != null ? `<span>Chuẩn 5512: <b style="color:${scoreColor(f.compliance)}">${f.compliance}%</b></span><span>Tích cực: <b style="color:${scoreColor(f.activeness)}">${f.activeness}%</b></span>` : '<span class="text-amber-600">Chưa có kết quả AI</span>'}</div>
+      ${[['strengths', 'Ưu điểm', 'thumbs-up'], ['weaknesses', 'Tồn tại, hạn chế', 'alert-triangle'], ['solutions', 'Giải pháp khắc phục', 'lightbulb']].map(([k, l, i]) => `
+        <div><label class="label flex items-center gap-1">${ic(i, 'w-3.5 h-3.5')}${l}</label><textarea class="input h-24 text-sm" oninput="S.review.form.${k}=this.value;renderPhieuPreview()">${esc(f[k])}</textarea></div>`).join('')}
+      <div><div class="label">Nhận xét 4 bước tổ chức hoạt động</div>
+        <div class="space-y-2">${STEP_NAMES.map((s, i) => `<div class="flex gap-2 items-start"><span class="w-6 h-6 shrink-0 rounded-lg bg-brand-100 text-brand-700 grid place-items-center text-xs font-bold mt-1">${i + 1}</span>
+          <textarea rows="2" class="input text-xs" placeholder="${s}" oninput="S.review.form.stepNotes[${i}]=this.value;renderPhieuPreview()">${esc(f.stepNotes[i] || '')}</textarea></div>`).join('')}</div></div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div><div class="label">Đánh giá chung</div><div class="flex gap-2">
+          ${['Đạt', 'Chưa đạt'].map(v => `<label class="flex-1 cursor-pointer"><input type="radio" name="verdict" class="peer hidden" ${f.verdict === v ? 'checked' : ''} onchange="S.review.form.verdict='${v}';renderPhieuPreview()">
+            <div class="text-center py-2 rounded-xl border text-sm font-bold peer-checked:${v === 'Đạt' ? 'bg-emerald-600 border-emerald-600' : 'bg-rose-600 border-rose-600'} peer-checked:text-white border-slate-200">${v}</div></label>`).join('')}</div></div>
+        <div><label class="label">Ý kiến bổ sung</label><input class="input" value="${esc(f.general)}" placeholder="vd: Đề nghị chia sẻ trong SHCM" oninput="S.review.form.general=this.value;renderPhieuPreview()"></div>
+      </div>
+      <div class="flex flex-wrap gap-2 pt-1">
+        <button class="btn btn-success" ${can.approve() ? '' : 'disabled'} onclick="submitReview()">${ic('pen-line')}${S.user.role === 'leader' ? 'Lưu phiếu & ký duyệt cấp tổ' : 'Lưu phiếu & phê duyệt BGH'}</button>
+        <button class="btn btn-soft" onclick="copyPhieu()">${ic('copy')}Sao chép nhanh (Zalo/Email)</button>
+        <button class="btn btn-ghost" onclick="printPhieu()">${ic('printer')}In phiếu A4</button>
+        <button class="btn btn-ghost" onclick="openPlan('${p.id}')">${ic('scan-search')}Mở trong AI Workspace</button>
+      </div>
+    </section>
+    <section class="card p-3 sm:p-4 bg-slate-100/60"><div class="text-xs font-semibold text-slate-500 mb-2 flex items-center gap-1">${ic('file-text', 'w-3.5 h-3.5')}Xem trước phiếu (khổ A4)</div>
+      <div id="phieu-preview" class="bg-white shadow-sm rounded-lg p-6 sm:p-8 overflow-x-auto"></div></section>` : `<section class="xl:col-span-2 card p-10 text-center text-slate-500">Chưa có hồ sơ để nhận xét.</section>`}
+  </div>
+  ${notesHistoryTable(notes)}`;
+}
+function notesHistoryTable(notes) {
+  return `<div class="card mt-5 overflow-hidden"><div class="px-4 py-3 border-b border-slate-100 font-bold flex items-center gap-2">${ic('history', 'w-4 h-4 text-brand-600')}Lịch sử phiếu nhận xét (${notes.length})</div>
+  <div class="overflow-x-auto scroll-thin"><table class="w-full tbl"><thead><tr><th>Ngày</th><th>Bài dạy</th><th>Người nhận xét</th><th>Cấp</th><th>Đánh giá</th><th></th></tr></thead><tbody>
+  ${notes.map(n => { const p = DB.get('lesson_plans', n.planId); return `<tr><td class="whitespace-nowrap">${fmtDT(n.at)}</td><td><div class="font-semibold">${esc(p?.title || '(đã xóa)')}</div><div class="text-xs text-slate-500">${esc(p?.teacherName || '')} · v${n.version}</div></td>
+    <td>${esc(n.reviewerName)}</td><td>${esc(n.level)}</td><td><span class="badge ${n.verdict === 'Đạt' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">${n.verdict}</span></td>
+    <td class="whitespace-nowrap text-right"><button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="viewNote('${n.id}')">${ic('eye', 'w-3.5 h-3.5')}Xem</button>
+    <button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="printPhieu('${n.id}')">${ic('printer', 'w-3.5 h-3.5')}</button>
+    <button class="btn btn-ghost !py-1 !px-2 text-xs" onclick="copyPhieu('${n.id}')">${ic('copy', 'w-3.5 h-3.5')}</button></td></tr>`; }).join('') || `<tr><td colspan="6" class="text-center text-slate-500 py-6">Chưa có phiếu nhận xét.</td></tr>`}
+  </tbody></table></div></div>`;
+}
+function teacherReviewView() {
+  const mine = DB.all('lesson_plans').filter(p => p.teacherId === S.user.id).map(p => p.id);
+  const notes = DB.where('review_notes', n => mine.includes(n.planId)).sort((a, b) => b.at.localeCompare(a.at));
+  return `<div class="mb-4"><h2 class="text-xl font-extrabold flex items-center gap-2">${ic('clipboard-check', 'w-5 h-5 text-brand-600')}Phiếu nhận xét chuyên môn của tôi</h2>
+    <p class="text-sm text-slate-500">Các phiếu góp ý chính thức từ Tổ trưởng chuyên môn và Ban Giám hiệu gửi đến thầy/cô.</p></div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+    ${notes.map(n => { const p = DB.get('lesson_plans', n.planId); return `<div class="card p-4 flex flex-col gap-2">
+      <div class="flex items-center justify-between"><span class="badge ${n.verdict === 'Đạt' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">${n.verdict}</span><span class="text-[11px] text-slate-400">${fmtDT(n.at)}</span></div>
+      <div class="font-semibold">${esc(p?.title)}</div><div class="text-xs text-slate-500">${esc(n.level)} · ${esc(n.reviewerName)} · v${n.version}</div>
+      <p class="text-xs text-slate-600 line-clamp-3"><b>Giải pháp:</b> ${esc(n.solutions)}</p>
+      <div class="flex gap-2 mt-auto pt-2"><button class="btn btn-soft !py-1 text-xs" onclick="viewNote('${n.id}')">${ic('eye', 'w-3.5 h-3.5')}Xem phiếu</button>
+      <button class="btn btn-ghost !py-1 text-xs" onclick="printPhieu('${n.id}')">${ic('printer', 'w-3.5 h-3.5')}In</button>
+      <button class="btn btn-ghost !py-1 text-xs" onclick="openPlan('${n.planId}')">${ic('pencil', 'w-3.5 h-3.5')}Chỉnh sửa bài</button></div></div>`; }).join('') || `<div class="card p-10 text-center text-slate-500 md:col-span-3">Chưa có phiếu nhận xét nào. Hãy gửi KHBD để Tổ trưởng duyệt.</div>`}
+    </div>`;
+}
+function selectReview(id) { S.review.planId = id; S.review.form = buildReviewForm(id); render(); }
+function noteFromForm() {
+  const f = S.review.form;
+  return { planId:f.planId, version:f.version, reviewerName:S.user.name, reviewerTitle:S.user.title, level:f.level, verdict:f.verdict, at:nowISO(), strengths:f.strengths, weaknesses:f.weaknesses, solutions:f.solutions, stepNotes:f.stepNotes,
+    general:f.general || (f.verdict === 'Đạt' ? 'Kế hoạch bài dạy đạt yêu cầu theo Công văn 5512/BGDĐT-GDTrH.' : 'Kế hoạch bài dạy chưa đạt yêu cầu, đề nghị giáo viên điều chỉnh và nộp lại.'), compliance:f.compliance, activeness:f.activeness };
+}
+function phieuHTML(n) {
+  const p = DB.get('lesson_plans', n.planId) || {}; const s = S.settings; const d = new Date(n.at);
+  const ml = t => esc(t || '').split(/\n/).filter(Boolean).map(x => `<div>- ${x.replace(/^[-•]\s*/, '')}</div>`).join('') || '<div>…………………………………………</div>';
+  return `<div class="phieu">
+    <table style="width:100%"><tr><td style="width:45%;text-align:center;vertical-align:top"><div>${esc(s.department)}</div><div style="font-weight:700">${esc(s.school)}</div><div style="font-weight:700">${n.level === 'Tổ chuyên môn' ? 'TỔ ' + esc((p.dept || '').toUpperCase()) : 'BAN GIÁM HIỆU'}</div><div>────────</div></td>
+    <td style="text-align:center;vertical-align:top"><div style="font-weight:700">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div><div style="font-weight:700">Độc lập - Tự do - Hạnh phúc</div><div>──────────────</div>
+    <div style="font-style:italic;margin-top:4px">${esc(s.city)}, ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}</div></td></tr></table>
+    <h1 style="margin-top:14px">PHIẾU NHẬN XÉT KẾ HOẠCH BÀI DẠY</h1>
+    <div style="text-align:center;font-style:italic;margin-bottom:10px">(Theo Phụ lục IV Công văn số 5512/BGDĐT-GDTrH ngày 18/12/2020 của Bộ GD&ĐT)</div>
+    <table class="info" style="width:100%"><tr><td style="width:38%">Họ và tên giáo viên:</td><td><b>${esc(p.teacherName)}</b></td></tr>
+    <tr><td>Tổ chuyên môn:</td><td>${esc(p.dept)}</td></tr><tr><td>Tên bài dạy:</td><td><b>${esc(p.title)}</b></td></tr>
+    <tr><td>Môn học / Lớp / Bộ sách:</td><td>${esc(p.subject)} / ${esc(p.grade)} / ${esc(p.book)}</td></tr>
+    <tr><td>Học kỳ / Năm học:</td><td>${esc(p.term)} / ${esc(p.schoolYear)}</td></tr>
+    <tr><td>Người nhận xét:</td><td>${esc(n.reviewerName)} — Cấp ${esc(n.level)}</td></tr>
+    ${n.compliance != null ? `<tr><td>Kết quả rà soát AI:</td><td>Tuân thủ CV 5512: ${n.compliance}% · Tích cực hóa HS: ${n.activeness}%</td></tr>` : ''}</table>
+    <div class="sec">1. Ưu điểm</div>${ml(n.strengths)}
+    <div class="sec">2. Tồn tại, hạn chế</div>${ml(n.weaknesses)}
+    <div class="sec">3. Nhận xét việc tổ chức 4 bước của hoạt động học</div>
+    <table class="grid" style="margin-top:4px"><tr><th style="width:34%">Bước</th><th>Nhận xét</th></tr>
+    ${STEP_NAMES.map((st, i) => `<tr><td>Bước ${i + 1}: ${st}</td><td>${esc((n.stepNotes || [])[i] || '')}</td></tr>`).join('')}</table>
+    <div class="sec">4. Giải pháp khắc phục</div>${ml(n.solutions)}
+    <div class="sec">5. Đánh giá chung: <span style="font-weight:400">${n.verdict === 'Đạt' ? '☒ Đạt &nbsp;&nbsp; ☐ Chưa đạt' : '☐ Đạt &nbsp;&nbsp; ☒ Chưa đạt'}</span></div>
+    <div>${esc(n.general || '')}</div>
+    <table style="width:100%;margin-top:18px"><tr><td style="width:50%;text-align:center;vertical-align:top"><b>GIÁO VIÊN</b><div style="font-style:italic">(Ký, ghi rõ họ tên)</div><div style="height:70px"></div><b>${esc(p.teacherName)}</b></td>
+    <td style="text-align:center;vertical-align:top"><b>${n.level === 'Tổ chuyên môn' ? 'TỔ TRƯỞNG CHUYÊN MÔN' : 'KT. HIỆU TRƯỞNG / HIỆU TRƯỞNG'}</b><div style="font-style:italic">(Ký, ghi rõ họ tên)</div><div style="height:70px"></div><b>${esc(n.reviewerName)}</b></td></tr></table>
+  </div>`;
+}
+function renderPhieuPreview() { const el = $('#phieu-preview'); if (el && S.review.form) el.innerHTML = phieuHTML(noteFromForm()); }
+function phieuText(n) {
+  const p = DB.get('lesson_plans', n.planId) || {};
+  const list = t => (t || '').split(/\n/).filter(Boolean).map(x => '  • ' + x.replace(/^[-•]\s*/, '')).join('\n');
+  return `📋 PHIẾU NHẬN XÉT KẾ HOẠCH BÀI DẠY (CV 5512)
+${S.settings.school}
+— Giáo viên: ${p.teacherName} (Tổ ${p.dept})
+— Bài dạy: ${p.title} · ${p.subject} ${p.grade} · ${p.book}
+— Người nhận xét: ${n.reviewerName} · Cấp ${n.level} · ${fmtDT(n.at)}${n.compliance != null ? `\n— Rà soát AI: Chuẩn 5512 ${n.compliance}% · Tích cực HS ${n.activeness}%` : ''}
+
+✅ Ưu điểm:
+${list(n.strengths)}
+⚠️ Tồn tại:
+${list(n.weaknesses)}
+🔎 Nhận xét 4 bước:
+${STEP_NAMES.map((s, i) => `  ${i + 1}. ${s}: ${(n.stepNotes || [])[i] || ''}`).join('\n')}
+💡 Giải pháp khắc phục:
+${list(n.solutions)}
+🏁 Đánh giá chung: ${n.verdict.toUpperCase()}. ${n.general || ''}`;
+}
+async function copyPhieu(noteId) {
+  const n = noteId ? DB.get('review_notes', noteId) : noteFromForm();
+  if (!n) return;
+  (await copyText(phieuText(n))) ? toast('Đã sao chép phiếu — dán vào Zalo/Email để gửi giáo viên.', 'success') : toast('Không thể sao chép.', 'error');
+}
+async function printPhieu(noteId) {
+  const n = noteId ? DB.get('review_notes', noteId) : noteFromForm();
+  if (!n) return;
+  $('#print-area').innerHTML = phieuHTML(n);
+  await log('Xuất báo cáo', DB.get('lesson_plans', n.planId)?.title || '', 'In phiếu nhận xét A4');
+  setTimeout(() => window.print(), 50);
+}
+function viewNote(id) {
+  const n = DB.get('review_notes', id);
+  openModal('Phiếu nhận xét chuyên môn', `<div class="bg-white border rounded-lg p-6">${phieuHTML(n)}</div>
+    <div class="flex justify-end gap-2 mt-4"><button class="btn btn-soft" onclick="copyPhieu('${id}')">${ic('copy')}Sao chép</button><button class="btn btn-primary" onclick="printPhieu('${id}')">${ic('printer')}In phiếu A4</button></div>`, { size:'max-w-3xl', icon:'file-text' });
+}
+async function submitReview() {
+  if (!can.approve()) return toast('Tài khoản chưa có quyền ký duyệt.', 'error');
+  const n = { id:uid('r'), reviewerId:S.user.id, ...noteFromForm() };
+  const p = DB.get('lesson_plans', n.planId); if (!p) return;
+  await DB.put('review_notes', n);
+  const now = nowISO(); let action;
+  if (n.verdict === 'Chưa đạt') { p.status = 'revise'; action = 'Yêu cầu chỉnh sửa'; }
+  else if (S.user.role === 'leader') { p.status = 'pending'; p.ttSignedBy = S.user.name; p.ttSignedAt = now; action = 'Ký duyệt cấp tổ'; }
+  else { p.status = 'approved'; p.bghSignedBy = S.user.name; p.bghSignedAt = now; action = 'Phê duyệt'; }
+  p.updatedAt = now; await DB.put('lesson_plans', p);
+  await log(action, p.title, `${n.level}: ${n.verdict}`);
+  toast(action === 'Phê duyệt' ? 'Đã phê duyệt: KHBD đạt chuẩn.' : action === 'Ký duyệt cấp tổ' ? 'Đã ký duyệt cấp tổ — chuyển Ban Giám hiệu.' : 'Đã gửi yêu cầu chỉnh sửa cho giáo viên.', 'success');
+  S.review.form = buildReviewForm(p.id); render();
+}
+
+/* =================== PHÂN HỆ 3: KHO HỒ SƠ BÀI DẠY =================== */
+function repoView() {
+  const f = S.repoF; const opt = (arr, sel, all) => `<option value="">${all}</option>` + arr.map(x => `<option value="${esc(x)}" ${x === sel ? 'selected' : ''}>${esc(x)}</option>`).join('');
+  const scope = S.user.role === 'admin' ? 'toàn trường' : S.user.role === 'leader' ? `tổ ${S.user.dept}` : 'của tôi';
+  return `
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-xl font-extrabold flex items-center gap-2">${ic('library', 'w-5 h-5 text-brand-600')}Kho hồ sơ bài dạy ${scope}</h2>
+    <p class="text-sm text-slate-500">Tra cứu đa chiều, mở lại bài dạy cũ, xem lịch sử phiên chỉnh sửa và tải về bản đã tối ưu.</p></div>
+    <div class="flex gap-2"><button class="btn btn-ghost" onclick="exportCSV('lesson_plans', filteredPlans())">${ic('sheet')}Xuất CSV danh sách</button>
+    <button class="btn btn-primary" onclick="newWorkspace();go('workspace')">${ic('plus')}KHBD mới</button></div>
+  </div>
+  <div class="card p-4 mb-4">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 gap-2">
+      <div class="sm:col-span-2 relative"><span class="absolute left-3 top-2.5 text-slate-400">${ic('search')}</span><input class="input !pl-9" placeholder="Tìm tên bài dạy / giáo viên..." value="${esc(f.q)}" oninput="S.repoF.q=this.value;renderRepoTable()"></div>
+      <select class="input" onchange="S.repoF.subject=this.value;renderRepoTable()">${opt(Object.keys(SUBJECTS), f.subject, 'Tất cả môn')}</select>
+      <select class="input" onchange="S.repoF.grade=this.value;renderRepoTable()">${opt(GRADES, f.grade, 'Tất cả khối')}</select>
+      <select class="input" onchange="S.repoF.dept=this.value;renderRepoTable()">${opt(DEPTS, f.dept, 'Tất cả tổ')}</select>
+      <select class="input" onchange="S.repoF.book=this.value;renderRepoTable()">${opt(BOOKS, f.book, 'Tất cả bộ sách')}</select>
+      <select class="input" onchange="S.repoF.term=this.value;renderRepoTable()">${opt(TERMS, f.term, 'Cả năm học')}</select>
+      <select class="input" onchange="S.repoF.status=this.value;renderRepoTable()"><option value="">Mọi trạng thái</option>${Object.entries(STATUSES).map(([k, s]) => `<option value="${k}" ${f.status === k ? 'selected' : ''}>${s.label}</option>`).join('')}</select>
+    </div>
+  </div>
+  <div class="card overflow-hidden"><div class="overflow-x-auto scroll-thin"><table class="w-full tbl">
+    <thead><tr><th>Bài dạy</th><th>Môn / Khối</th><th>Bộ sách</th><th>Giáo viên</th><th>Ngày nộp</th><th>Điểm 5512</th><th>Trạng thái</th><th class="text-right">Thao tác</th></tr></thead>
+    <tbody id="repo-body"></tbody></table></div>
+    <div id="repo-foot" class="px-4 py-2.5 text-xs text-slate-500 border-t border-slate-100"></div></div>`;
+}
+function filteredPlans() {
+  const f = S.repoF; const q = f.q.trim().toLowerCase();
+  const norm = s => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
+  const nq = norm(q);
+  return visiblePlans().filter(p => (!q || norm(p.title).includes(nq) || norm(p.teacherName).includes(nq)) && (!f.subject || p.subject === f.subject) && (!f.grade || p.grade === f.grade) && (!f.dept || p.dept === f.dept) && (!f.book || p.book === f.book) && (!f.term || p.term === f.term) && (!f.status || p.status === f.status))
+    .sort((a, b) => (b.updatedAt || '').localeCompare(a.updatedAt || ''));
+}
+function renderRepoTable() {
+  const body = $('#repo-body'); if (!body) return;
+  const list = filteredPlans();
+  body.innerHTML = list.map(p => { const a = latestAudit(p.id); const sc = a?.compliance;
+    return `<tr>
+    <td class="min-w-[220px]"><div class="font-semibold text-slate-900">${esc(p.title)}</div><div class="text-[11px] text-slate-500">${esc(p.term)} · ${esc(p.schoolYear)} · v${p.versions.length}${p.ttSignedBy ? ` · Tổ ký: ${esc(p.ttSignedBy)}` : ''}</div></td>
+    <td class="whitespace-nowrap">${esc(p.subject)} ${esc(p.grade)}<div class="text-[11px] text-slate-500">Tổ ${esc(p.dept)}</div></td>
+    <td class="whitespace-nowrap">${esc(p.book)}</td><td class="whitespace-nowrap">${esc(p.teacherName)}</td>
+    <td class="whitespace-nowrap">${fmtDate(p.submittedAt)}${p.onTime === false ? '<div class="text-[11px] text-rose-600">Quá hạn</div>' : ''}</td>
+    <td>${sc != null ? `<div class="flex items-center gap-2 min-w-[110px]"><div class="flex-1 h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full" style="width:${sc}%;background:${scoreColor(sc)}"></div></div><b style="color:${scoreColor(sc)}">${sc}%</b></div>` : '<span class="text-slate-400 text-xs">Chưa rà soát</span>'}</td>
+    <td>${statusBadge(p.status)}</td>
+    <td class="text-right whitespace-nowrap">
+      <button class="btn btn-ghost !py-1 !px-2 text-xs" title="Mở lại" onclick="openPlan('${p.id}')">${ic('folder-open', 'w-3.5 h-3.5')}Mở</button>
+      <button class="btn btn-ghost !py-1 !px-2 text-xs" title="Lịch sử" onclick="planHistory('${p.id}')">${ic('history', 'w-3.5 h-3.5')}Lịch sử</button>
+      <button class="btn btn-ghost !py-1 !px-2 text-xs" title="Tải bản tối ưu" onclick="exportOptimized('${p.id}')">${ic('download', 'w-3.5 h-3.5')}</button>
+      ${S.user.role === 'admin' || p.teacherId === S.user.id ? `<button class="btn btn-danger !py-1 !px-2 text-xs" title="Xóa" onclick="deletePlan('${p.id}')">${ic('trash-2', 'w-3.5 h-3.5')}</button>` : ''}
+    </td></tr>`; }).join('') || `<tr><td colspan="8" class="text-center py-10 text-slate-500">${ic('search-x', 'w-6 h-6 mx-auto mb-2 text-slate-300')}Không tìm thấy hồ sơ phù hợp bộ lọc.</td></tr>`;
+  const foot = $('#repo-foot'); if (foot) foot.textContent = `Hiển thị ${list.length}/${visiblePlans().length} hồ sơ · Điểm 5512 trung bình: ${avg(list.map(p => latestAudit(p.id)?.compliance).filter(x => x != null))}%`;
+  icons();
+}
+const avg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : '—';
+function openPlan(id) {
+  const p = DB.get('lesson_plans', id); if (!p) return;
+  const a = latestAudit(id);
+  S.ws = { planId:id, sampleKey:p.sampleKey || null, meta:{ title:p.title, subject:p.subject, grade:p.grade, book:p.book, term:p.term }, content:p.content, audit:a ? { ...a, saved:true } : null, running:false, dirty:false };
+  S.view = 'workspace'; closeModal(); render(); window.scrollTo({ top:0 });
+  toast('Đã mở hồ sơ: ' + p.title, 'info');
+}
+function planHistory(id, tab = 'versions') {
+  const p = DB.get('lesson_plans', id); const audits = DB.where('ai_audits', a => a.planId === id).sort((a, b) => b.at.localeCompare(a.at));
+  const notes = DB.where('review_notes', n => n.planId === id).sort((a, b) => b.at.localeCompare(a.at));
+  const logs = DB.where('audit_logs', l => l.target === p.title).sort((a, b) => b.at.localeCompare(a.at));
+  const tabs = [['versions', 'git-branch', `Phiên chỉnh sửa (${p.versions.length})`], ['audits', 'brain-circuit', `Kết quả AI (${audits.length})`], ['notes', 'clipboard-check', `Phiếu nhận xét (${notes.length})`], ['logs', 'scroll-text', `Nhật ký (${logs.length})`]];
+  let body = '';
+  if (tab === 'versions') body = `<div class="space-y-3">${[...p.versions].reverse().map(v => `<details class="card p-3" ${v.v === p.versions.length ? 'open' : ''}><summary class="cursor-pointer flex flex-wrap items-center gap-2 text-sm"><span class="badge bg-brand-600 text-white">v${v.v}</span><b>${esc(v.note)}</b><span class="text-xs text-slate-500">${fmtDT(v.at)} · ${esc(v.by)}</span>${v.score != null ? `<span class="badge" style="background:${scoreColor(v.score)}1a;color:${scoreColor(v.score)}">${v.score}%</span>` : ''}
+      <span class="ml-auto flex gap-1"><button class="btn btn-ghost !py-0.5 !px-2 text-xs" onclick="event.preventDefault();restoreVersion('${id}',${v.v})">${ic('rotate-ccw', 'w-3 h-3')}Mở phiên bản này</button></span></summary>
+      <pre class="mt-2 text-xs whitespace-pre-wrap bg-slate-50 rounded-lg p-3 max-h-72 overflow-y-auto scroll-thin">${esc(v.content)}</pre></details>`).join('')}</div>`;
+  if (tab === 'audits') body = `<div class="overflow-x-auto"><table class="w-full tbl"><thead><tr><th>Thời gian</th><th>Phiên bản</th><th>Engine</th><th>Chuẩn 5512</th><th>Tích cực HS</th><th>4 bước đạt</th></tr></thead><tbody>${audits.map(a => `<tr><td>${fmtDT(a.at)}</td><td>v${a.version}</td><td>${esc(a.engine)}</td><td><b style="color:${scoreColor(a.compliance)}">${a.compliance}%</b></td><td><b style="color:${scoreColor(a.activeness)}">${a.activeness}%</b></td><td>${a.steps.filter(s => s.status === 'Đạt').length}/4</td></tr>`).join('') || '<tr><td colspan="6" class="text-center text-slate-500 py-4">Chưa có</td></tr>'}</tbody></table></div>
+    ${audits.length > 1 ? `<div class="mt-3 text-sm bg-brand-50 text-brand-800 rounded-xl p-3">${ic('trending-up', 'w-4 h-4 inline')} Tiến bộ qua các phiên: Chuẩn 5512 ${audits[audits.length - 1].compliance}% → ${audits[0].compliance}% (${audits[0].compliance - audits[audits.length - 1].compliance >= 0 ? '+' : ''}${audits[0].compliance - audits[audits.length - 1].compliance} điểm).</div>` : ''}`;
+  if (tab === 'notes') body = notes.map(n => `<div class="card p-3 mb-2 flex flex-wrap gap-2 items-center"><span class="badge ${n.verdict === 'Đạt' ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">${n.verdict}</span><b class="text-sm">${esc(n.reviewerName)}</b><span class="text-xs text-slate-500">${esc(n.level)} · ${fmtDT(n.at)} · v${n.version}</span><button class="btn btn-ghost !py-1 !px-2 text-xs ml-auto" onclick="viewNote('${n.id}')">${ic('eye', 'w-3.5 h-3.5')}Xem phiếu</button></div>`).join('') || '<p class="text-sm text-slate-500">Chưa có phiếu nhận xét.</p>';
+  if (tab === 'logs') body = `<ul class="space-y-2">${logs.map(l => `<li class="text-sm flex gap-2"><span class="text-xs text-slate-400 w-32 shrink-0">${fmtDT(l.at)}</span><span><b>${esc(l.userName)}</b> — ${esc(l.action)}<span class="text-slate-500"> · ${esc(l.detail)}</span></span></li>`).join('') || '<li class="text-sm text-slate-500">Chưa có</li>'}</ul>`;
+  openModal(`Lịch sử hồ sơ: ${p.title}`, `
+    <div class="flex flex-wrap gap-2 items-center mb-3 text-xs text-slate-500">${statusBadge(p.status)}<span>${esc(p.subject)} ${esc(p.grade)} · ${esc(p.book)} · GV ${esc(p.teacherName)}</span>
+      ${p.ttSignedBy ? `<span class="badge bg-sky-100 text-sky-700">Tổ ký: ${esc(p.ttSignedBy)} ${fmtDate(p.ttSignedAt)}</span>` : ''}${p.bghSignedBy ? `<span class="badge bg-indigo-100 text-indigo-700">BGH duyệt: ${esc(p.bghSignedBy)} ${fmtDate(p.bghSignedAt)}</span>` : ''}</div>
+    <div class="flex gap-1 border-b border-slate-200 mb-4 overflow-x-auto">${tabs.map(([k, i, l]) => `<button class="px-3 py-2 text-sm font-semibold flex items-center gap-1.5 border-b-2 whitespace-nowrap ${tab === k ? 'border-brand-600 text-brand-700' : 'border-transparent text-slate-500'}" onclick="planHistory('${id}','${k}')">${ic(i, 'w-3.5 h-3.5')}${l}</button>`).join('')}</div>
+    ${body}
+    <div class="flex justify-end gap-2 mt-4"><button class="btn btn-ghost" onclick="exportOptimized('${id}')">${ic('download')}Tải bản tối ưu</button><button class="btn btn-primary" onclick="openPlan('${id}')">${ic('folder-open')}Mở trong AI Workspace</button></div>`, { wide:true, icon:'history' });
+}
+function restoreVersion(id, v) {
+  const p = DB.get('lesson_plans', id); const ver = p.versions.find(x => x.v === v);
+  const a = DB.where('ai_audits', x => x.planId === id && x.version === v).sort((x, y) => y.at.localeCompare(x.at))[0];
+  S.ws = { planId:id, sampleKey:null, meta:{ title:p.title, subject:p.subject, grade:p.grade, book:p.book, term:p.term }, content:ver.content, audit:a ? { ...a, saved:true } : null, running:false, dirty:true };
+  S.view = 'workspace'; closeModal(); render(); toast(`Đã mở phiên bản v${v}. Lưu lại sẽ tạo phiên bản mới.`, 'info');
+}
+function deletePlan(id) {
+  const p = DB.get('lesson_plans', id);
+  confirmBox(`Xóa vĩnh viễn hồ sơ "${p.title}" cùng kết quả AI và phiếu nhận xét liên quan?`, async () => {
+    await DB.del('lesson_plans', id);
+    for (const a of DB.where('ai_audits', x => x.planId === id)) await DB.del('ai_audits', a.id);
+    for (const n of DB.where('review_notes', x => x.planId === id)) await DB.del('review_notes', n.id);
+    if (S.ws.planId === id) S.ws.planId = null;
+    await log('Xóa hồ sơ', p.title, 'Xóa KHBD và dữ liệu liên quan'); toast('Đã xóa hồ sơ.', 'success'); render();
+  }, 'Xóa');
+}
+
+/* =================== PHÂN HỆ 4: ADMIN DASHBOARD =================== */
+function computeStats() {
+  const plans = DB.all('lesson_plans').filter(p => p.status !== 'draft');
+  const byDept = DEPTS.map(d => {
+    const live = plans.filter(p => p.dept === d); const b = BASELINE[d];
+    const scores = live.map(p => latestAudit(p.id)?.compliance).filter(x => x != null);
+    const submitted = b.submitted + live.length, approved = b.approved + live.filter(p => p.status === 'approved').length;
+    const avgScore = scores.length ? (b.avg * b.submitted + scores.reduce((x, y) => x + y, 0)) / (b.submitted + scores.length) : b.avg;
+    return { dept:d, submitted, approved, rate: submitted ? approved / submitted * 100 : 0, avg: avgScore, live: live.length, pending: live.filter(p => p.status === 'pending').length, revise: live.filter(p => p.status === 'revise').length };
+  });
+  const submitted = byDept.reduce((a, b) => a + b.submitted, 0), approved = byDept.reduce((a, b) => a + b.approved, 0);
+  const teachers = DB.all('users').filter(u => u.role === 'teacher' && u.status === 'active');
+  const onTimeLive = teachers.filter(t => plans.some(p => p.teacherId === t.id && p.onTime !== false)).length;
+  const onTime = (BASELINE_TEACHERS.onTime + onTimeLive) / (BASELINE_TEACHERS.total + teachers.length) * 100;
+  const liveScores = plans.map(p => latestAudit(p.id)?.compliance).filter(x => x != null);
+  return { byDept, submitted, approved, rate: approved / submitted * 100, onTime, teachersTotal: BASELINE_TEACHERS.total + teachers.length, onTimeCount: BASELINE_TEACHERS.onTime + onTimeLive,
+    live: plans.length, liveApproved: plans.filter(p => p.status === 'approved').length, livePending: plans.filter(p => p.status === 'pending').length, liveRevise: plans.filter(p => p.status === 'revise').length,
+    liveAvg: avg(liveScores), liveAct: avg(plans.map(p => latestAudit(p.id)?.activeness).filter(x => x != null)) };
+}
+function adminView() {
+  const st = computeStats(); const users = DB.all('users').slice().sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  const kpi = (icon, label, value, sub, color) => `<div class="card p-4 relative overflow-hidden"><div class="absolute -right-4 -top-4 w-20 h-20 rounded-full ${color} opacity-10"></div>
+    <div class="flex items-center gap-2 text-xs font-semibold text-slate-500">${ic(icon, 'w-4 h-4')}${label}</div><div class="text-3xl font-extrabold text-slate-900 mt-1">${value}</div><div class="text-[11px] text-slate-500 mt-1">${sub}</div></div>`;
+  const total = DB.sizeBytes();
+  return `
+  <div class="flex flex-wrap items-end justify-between gap-3 mb-4">
+    <div><h2 class="text-xl font-extrabold flex items-center gap-2">${ic('layout-dashboard', 'w-5 h-5 text-brand-600')}Admin Dashboard — Quản trị chuyên môn toàn trường</h2>
+    <p class="text-sm text-slate-500">Dữ liệu cộng dồn: số liệu tổng hợp từ báo cáo các tổ + hồ sơ số hóa trong CSDL · Năm học ${SCHOOL_YEAR}</p></div>
+    <div class="flex gap-2 flex-wrap"><button class="btn btn-ghost" onclick="exportJSON()">${ic('file-json')}Xuất toàn bộ JSON</button><button class="btn btn-primary" onclick="exportReportCSV()">${ic('file-spreadsheet')}Báo cáo Phòng/Sở (CSV)</button></div>
+  </div>
+  <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-5">
+    ${kpi('badge-check', 'Tổng số giáo án đã duyệt', st.approved.toLocaleString('vi-VN'), `trên ${st.submitted} giáo án đã nộp · CSDL trực tiếp: ${st.liveApproved}/${st.live}`, 'bg-emerald-500')}
+    ${kpi('target', 'Tỷ lệ giáo án đạt chuẩn 5512', st.rate.toFixed(1) + '%', `${st.approved}/${st.submitted} giáo án · mục tiêu năm học ≥ 90%`, 'bg-brand-600')}
+    ${kpi('calendar-check', 'GV hoàn thành KHBD đúng hạn', st.onTime.toFixed(1) + '%', `${st.onTimeCount}/${st.teachersTotal} giáo viên`, 'bg-amber-500')}
+    ${kpi('gauge', 'Điểm 5512 TB (CSDL trực tiếp)', st.liveAvg + (st.liveAvg === '—' ? '' : '%'), `Tích cực hóa HS TB: ${st.liveAct}${st.liveAct === '—' ? '' : '%'} · ${st.livePending} chờ duyệt · ${st.liveRevise} cần sửa`, 'bg-indigo-500')}
+  </div>
+  <div class="grid xl:grid-cols-3 gap-5 mb-5">
+    <div class="card p-5 xl:col-span-2">
+      <div class="flex items-center justify-between mb-4"><h3 class="font-bold flex items-center gap-2">${ic('bar-chart-3', 'w-4 h-4 text-brand-600')}Phân bổ chất lượng bài dạy theo Tổ chuyên môn</h3>
+        <div class="flex gap-3 text-[11px] text-slate-500"><span class="flex items-center gap-1"><i class="w-3 h-3 rounded bg-brand-600 inline-block"></i>Tỷ lệ đạt chuẩn</span><span class="flex items-center gap-1"><i class="w-3 h-3 rounded bg-sky-300 inline-block"></i>Điểm 5512 TB</span></div></div>
+      ${deptChart(st.byDept)}
+    </div>
+    <div class="card p-5">
+      <h3 class="font-bold flex items-center gap-2 mb-3">${ic('pie-chart', 'w-4 h-4 text-brand-600')}Trạng thái hồ sơ trong CSDL</h3>
+      ${statusDonut()}
+      <div class="mt-4 text-xs text-slate-500 bg-brand-50 rounded-xl p-3">${ic('lightbulb', 'w-3.5 h-3.5 inline text-brand-600')} <b>Gợi ý điều hành:</b> ${insight(st)}</div>
+    </div>
+  </div>
+  <div class="card overflow-hidden mb-5">
+    <div class="px-4 py-3 border-b border-slate-100 flex flex-wrap gap-2 items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('table-2', 'w-4 h-4 text-brand-600')}Bảng số liệu theo tổ</h3></div>
+    <div class="overflow-x-auto"><table class="w-full tbl"><thead><tr><th>Tổ chuyên môn</th><th>Đã nộp</th><th>Đã duyệt</th><th>Tỷ lệ đạt</th><th>Điểm 5512 TB</th><th>Hồ sơ số hóa</th><th>Chờ duyệt</th><th>Cần sửa</th></tr></thead><tbody>
+    ${st.byDept.map(d => `<tr><td class="font-semibold">${d.dept}</td><td>${d.submitted}</td><td>${d.approved}</td><td><b style="color:${scoreColor(d.rate)}">${d.rate.toFixed(1)}%</b></td><td>${d.avg.toFixed(1)}%</td><td>${d.live}</td><td>${d.pending}</td><td>${d.revise}</td></tr>`).join('')}
+    <tr class="bg-slate-50 font-bold"><td>Toàn trường</td><td>${st.submitted}</td><td>${st.approved}</td><td>${st.rate.toFixed(1)}%</td><td>${avg(st.byDept.map(d => d.avg))}%</td><td>${st.live}</td><td>${st.livePending}</td><td>${st.liveRevise}</td></tr></tbody></table></div>
+  </div>
+  <div class="card overflow-hidden mb-5">
+    <div class="px-4 py-3 border-b border-slate-100 flex flex-wrap gap-2 items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('users', 'w-4 h-4 text-brand-600')}Quản lý người dùng (${users.length})</h3>
+      <div class="flex gap-2 text-xs"><span class="badge bg-emerald-100 text-emerald-700">${users.filter(u => u.status === 'active').length} hoạt động</span><span class="badge bg-amber-100 text-amber-700">${users.filter(u => u.status === 'pending').length} chờ kích hoạt</span><span class="badge bg-rose-100 text-rose-700">${users.filter(u => u.status === 'locked').length} bị khóa</span></div></div>
+    <div class="overflow-x-auto scroll-thin"><table class="w-full tbl"><thead><tr><th>Người dùng</th><th>Mã GV</th><th>Vai trò</th><th>Tổ / Khối</th><th>Quyền duyệt</th><th>Trạng thái</th><th>Ngày tạo</th><th class="text-right">Thao tác</th></tr></thead><tbody>
+    ${users.map(u => `<tr><td><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-brand-100 text-brand-800 grid place-items-center text-xs font-bold">${esc(initials(u.name))}</div><div><div class="font-semibold">${esc(u.name)}</div><div class="text-[11px] text-slate-500">${esc(u.email)}</div></div></div></td>
+      <td>${esc(u.code)}</td>
+      <td><select class="input !py-1 !text-xs w-auto" ${u.id === S.user.id ? 'disabled' : ''} onchange="setUserRole('${u.id}',this.value)">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${u.role === k ? 'selected' : ''}>${r.short}</option>`).join('')}</select></td>
+      <td>${esc(u.dept)}<div class="text-[11px] text-slate-500">Khối ${esc(u.grades || '—')}</div></td>
+      <td><label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-brand-600" ${u.canApprove ? 'checked' : ''} ${u.role === 'admin' ? 'disabled' : ''} onchange="toggleApprove('${u.id}',this.checked)"><span class="text-xs">${u.canApprove ? 'Được duyệt' : 'Không'}</span></label></td>
+      <td>${u.status === 'active' ? '<span class="badge bg-emerald-100 text-emerald-700">Hoạt động</span>' : u.status === 'pending' ? '<span class="badge bg-amber-100 text-amber-700">Chờ kích hoạt</span>' : '<span class="badge bg-rose-100 text-rose-700">Đã khóa</span>'}</td>
+      <td class="whitespace-nowrap">${fmtDate(u.createdAt)}</td>
+      <td class="text-right whitespace-nowrap">${u.id === S.user.id ? '<span class="text-xs text-slate-400">Tài khoản hiện tại</span>' : u.status === 'pending' ? `<button class="btn btn-success !py-1 !px-2 text-xs" onclick="setUserStatus('${u.id}','active')">${ic('user-check', 'w-3.5 h-3.5')}Kích hoạt</button>` : u.status === 'active' ? `<button class="btn btn-danger !py-1 !px-2 text-xs" onclick="setUserStatus('${u.id}','locked')">${ic('lock', 'w-3.5 h-3.5')}Khóa</button>` : `<button class="btn btn-soft !py-1 !px-2 text-xs" onclick="setUserStatus('${u.id}','active')">${ic('unlock', 'w-3.5 h-3.5')}Mở khóa</button>`}
+        ${u.id !== S.user.id ? `<button class="btn btn-ghost !py-1 !px-2 text-xs" title="Đặt lại mật khẩu 123456" onclick="resetPw('${u.id}')">${ic('key-round', 'w-3.5 h-3.5')}</button>` : ''}</td></tr>`).join('')}
+    </tbody></table></div>
+  </div>
+  <div class="grid xl:grid-cols-3 gap-5">
+    <div class="card overflow-hidden xl:col-span-2">
+      <div class="px-4 py-3 border-b border-slate-100 flex flex-wrap gap-2 items-center justify-between"><h3 class="font-bold flex items-center gap-2">${ic('scroll-text', 'w-4 h-4 text-brand-600')}Nhật ký hoạt động (Audit Logs) <span class="flex items-center gap-1 text-[11px] font-semibold text-emerald-600"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>thời gian thực</span></h3>
+        <div class="relative"><span class="absolute left-2.5 top-2 text-slate-400">${ic('search', 'w-3.5 h-3.5')}</span><input class="input !py-1.5 !pl-8 !text-xs w-56" placeholder="Lọc người dùng, thao tác..." value="${esc(S.logQ)}" oninput="S.logQ=this.value;renderLogs()"></div></div>
+      <div class="max-h-[420px] overflow-y-auto scroll-thin"><table class="w-full tbl"><thead class="sticky top-0"><tr><th>Thời gian</th><th>Người thực hiện</th><th>Thao tác</th><th>Đối tượng</th><th>Chi tiết</th></tr></thead><tbody id="log-body"></tbody></table></div>
+    </div>
+    <div class="card p-5 space-y-4">
+      <h3 class="font-bold flex items-center gap-2">${ic('database', 'w-4 h-4 text-brand-600')}Quản trị Database</h3>
+      <div class="text-xs space-y-1.5">
+        <div class="flex justify-between"><span class="text-slate-500">Engine lưu trữ</span><b>${esc(DB.engine)}</b></div>
+        <div class="flex justify-between"><span class="text-slate-500">Dung lượng dữ liệu</span><b>${fmtBytes(total)}</b></div>
+        <div class="flex justify-between"><span class="text-slate-500">Hạn mức trình duyệt</span><b id="storage-est">đang đo…</b></div>
+      </div>
+      <div class="space-y-1.5">${TABLES.map(t => { const sz = DB.sizeBytes(t); return `<div class="text-xs"><div class="flex justify-between"><code class="text-brand-700">${t}</code><span>${DB.all(t).length} dòng · ${fmtBytes(sz)}</span></div><div class="h-1.5 rounded-full bg-slate-100 mt-0.5"><div class="h-1.5 rounded-full bg-brand-500" style="width:${Math.max(2, sz / total * 100)}%"></div></div></div>`; }).join('')}</div>
+      <div class="border-t border-slate-100 pt-4 space-y-2">
+        <div class="label">Sao lưu & khôi phục</div>
+        <button class="btn btn-primary w-full" onclick="exportJSON()">${ic('download')}Sao lưu Database (JSON)</button>
+        <div class="flex gap-2"><select class="input !text-xs" onchange="S.exportTable=this.value">${TABLES.map(t => `<option ${S.exportTable === t ? 'selected' : ''}>${t}</option>`).join('')}</select>
+          <button class="btn btn-ghost" onclick="exportCSV(S.exportTable)">${ic('sheet')}CSV</button></div>
+        <label class="btn btn-soft w-full cursor-pointer">${ic('upload')}Khôi phục Database (Import JSON)<input type="file" accept=".json,application/json" class="hidden" onchange="importJSON(this)"></label>
+        <button class="btn btn-danger w-full" onclick="resetDB()">${ic('refresh-ccw')}Khôi phục dữ liệu mẫu ban đầu</button>
+      </div>
+    </div>
+  </div>`;
+}
+function deptChart(rows) {
+  return `<div class="space-y-4">${rows.map(d => `<div>
+    <div class="flex justify-between text-sm mb-1"><span class="font-semibold">${d.dept}</span><span class="text-xs text-slate-500">${d.approved}/${d.submitted} đạt · TB ${d.avg.toFixed(1)}%</span></div>
+    <div class="relative h-4 rounded-full bg-slate-100 overflow-hidden"><div class="h-4 rounded-full bg-gradient-to-r from-brand-700 to-brand-500 transition-all duration-700" style="width:${d.rate}%"></div>
+      <span class="absolute right-2 top-0 text-[10px] font-bold leading-4 ${d.rate > 90 ? 'text-white' : 'text-slate-600'}">${d.rate.toFixed(1)}%</span></div>
+    <div class="h-2 rounded-full bg-slate-50 mt-1 overflow-hidden"><div class="h-2 rounded-full bg-sky-300" style="width:${d.avg}%"></div></div></div>`).join('')}
+    <div class="flex justify-between text-[10px] text-slate-400 pt-1"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>`;
+}
+function statusDonut() {
+  const plans = DB.all('lesson_plans'); const keys = Object.keys(STATUSES); const colors = { draft:'#94a3b8', pending:'#f59e0b', revise:'#e11d48', approved:'#059669' };
+  const counts = keys.map(k => plans.filter(p => p.status === k).length); const tot = counts.reduce((a, b) => a + b, 0) || 1;
+  let acc = 0; const r = 40, c = 2 * Math.PI * r;
+  const arcs = counts.map((n, i) => { const len = n / tot * c; const s = `<circle cx="60" cy="60" r="${r}" fill="none" stroke="${colors[keys[i]]}" stroke-width="18" stroke-dasharray="${len} ${c - len}" stroke-dashoffset="${-acc}"/>`; acc += len; return n ? s : ''; }).join('');
+  return `<div class="flex items-center gap-4"><svg viewBox="0 0 120 120" class="w-32 h-32 -rotate-90"><circle cx="60" cy="60" r="${r}" fill="none" stroke="#f1f5f9" stroke-width="18"/>${arcs}
+    <text x="60" y="60" transform="rotate(90 60 60)" text-anchor="middle" dominant-baseline="central" font-size="20" font-weight="800" fill="#0f172a">${plans.length}</text></svg>
+    <ul class="text-xs space-y-1.5">${keys.map((k, i) => `<li class="flex items-center gap-2"><span class="w-3 h-3 rounded" style="background:${colors[k]}"></span>${STATUSES[k].label}: <b>${counts[i]}</b></li>`).join('')}</ul></div>`;
+}
+function insight(st) {
+  const low = [...st.byDept].sort((a, b) => a.rate - b.rate)[0];
+  const parts = [`Tổ <b>${low.dept}</b> có tỷ lệ đạt chuẩn thấp nhất (${low.rate.toFixed(1)}%) — ưu tiên dự giờ, sinh hoạt chuyên môn theo nghiên cứu bài học.`];
+  if (st.livePending) parts.push(`Còn <b>${st.livePending}</b> hồ sơ chờ duyệt.`);
+  if (st.rate < 90) parts.push(`Cần thêm khoảng <b>${Math.ceil(0.9 * st.submitted - st.approved)}</b> giáo án đạt chuẩn để chạm mục tiêu 90%.`);
+  return parts.join(' ');
+}
+function renderLogs() {
+  const body = $('#log-body'); if (!body) return;
+  const q = S.logQ.trim().toLowerCase();
+  const list = DB.all('audit_logs').filter(l => !q || [l.userName, l.action, l.target, l.detail].join(' ').toLowerCase().includes(q)).sort((a, b) => b.at.localeCompare(a.at)).slice(0, 300);
+  const actColor = a => /Phê duyệt|Ký duyệt/.test(a) ? 'bg-emerald-100 text-emerald-700' : /chỉnh sửa|Xóa|Khóa/.test(a) ? 'bg-rose-100 text-rose-700' : /AI/.test(a) ? 'bg-violet-100 text-violet-700' : /Nộp|Lưu/.test(a) ? 'bg-brand-100 text-brand-700' : /Xuất|Sao lưu|Khôi phục/.test(a) ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600';
+  body.innerHTML = list.map(l => `<tr><td class="whitespace-nowrap text-xs">${fmtDT(l.at)}</td><td><div class="font-semibold text-xs">${esc(l.userName)}</div><div class="text-[10px] text-slate-500">${esc(ROLES[l.role]?.short || l.role)}</div></td>
+    <td><span class="badge ${actColor(l.action)}">${esc(l.action)}</span></td><td class="text-xs max-w-[220px]">${esc(l.target)}</td><td class="text-xs text-slate-500 max-w-[260px]">${esc(l.detail)}</td></tr>`).join('') || '<tr><td colspan="5" class="text-center py-6 text-slate-500">Không có bản ghi.</td></tr>';
+}
+const fmtBytes = b => b < 1024 ? b + ' B' : b < 1048576 ? (b / 1024).toFixed(1) + ' KB' : (b / 1048576).toFixed(2) + ' MB';
+async function updateStorageEstimate() { const el = $('#storage-est'); if (!el) return; try { const e = await navigator.storage.estimate(); el.textContent = `${fmtBytes(e.usage || 0)} / ${fmtBytes(e.quota || 0)}`; } catch { el.textContent = 'Không hỗ trợ'; } }
+async function setUserRole(id, role) { const u = DB.get('users', id); const old = u.role; u.role = role; u.title = ROLES[role].label; if (role === 'admin') u.dept = 'Ban Giám hiệu'; else if (u.dept === 'Ban Giám hiệu') u.dept = 'Toán'; u.canApprove = role !== 'teacher'; await DB.put('users', u); await log('Phân quyền', u.name, `${ROLES[old].short} → ${ROLES[role].short}`); toast('Đã cập nhật vai trò.', 'success'); render(); }
+async function toggleApprove(id, v) { const u = DB.get('users', id); u.canApprove = v; await DB.put('users', u); await log('Phân quyền', u.name, v ? 'Cấp quyền duyệt' : 'Thu hồi quyền duyệt'); toast('Đã cập nhật quyền duyệt.', 'success'); render(); }
+async function setUserStatus(id, status) { const u = DB.get('users', id); u.status = status; await DB.put('users', u); await log(status === 'locked' ? 'Khóa tài khoản' : 'Kích hoạt tài khoản', u.name, u.email); toast(status === 'locked' ? 'Đã khóa tài khoản.' : 'Đã kích hoạt tài khoản.', 'success'); render(); }
+function resetPw(id) { const u = DB.get('users', id); confirmBox(`Đặt lại mật khẩu của ${u.name} về 123456?`, async () => { u.password = await hashPw('123456'); await DB.put('users', u); await log('Đặt lại mật khẩu', u.name, ''); toast('Đã đặt lại mật khẩu.', 'success'); }); }
+
+/* ------------------------ SAO LƯU / KHÔI PHỤC ------------------------ */
+async function exportJSON() {
+  const data = DB.exportAll(); data.tables.users = data.tables.users.map(u => ({ ...u }));
+  download(`EduPlan5512_backup_${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(data, null, 2), 'application/json');
+  await log('Sao lưu', 'Toàn bộ CSDL', `${TABLES.map(t => `${t}:${DB.all(t).length}`).join(', ')}`); toast('Đã xuất bản sao lưu JSON.', 'success');
+}
+function toCSV(rows, cols) {
+  const cell = v => { v = v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v); return /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+  return '﻿' + [cols.join(','), ...rows.map(r => cols.map(c => cell(r[c])).join(','))].join('\r\n');
+}
+async function exportCSV(table, rowsIn) {
+  let rows = (rowsIn || DB.all(table)).map(r => ({ ...r }));
+  if (table === 'users') rows = rows.map(({ password, ...r }) => r);
+  if (table === 'lesson_plans') rows = rows.map(p => ({ id:p.id, title:p.title, subject:p.subject, grade:p.grade, book:p.book, term:p.term, dept:p.dept, teacherName:p.teacherName, status:STATUSES[p.status]?.label, submittedAt:p.submittedAt, versions:p.versions.length, score5512:latestAudit(p.id)?.compliance ?? '', activeness:latestAudit(p.id)?.activeness ?? '', ttSignedBy:p.ttSignedBy || '', bghSignedBy:p.bghSignedBy || '', onTime:p.onTime === false ? 'Quá hạn' : 'Đúng hạn' }));
+  if (!rows.length) return toast('Bảng không có dữ liệu.', 'warn');
+  const cols = [...new Set(rows.flatMap(r => Object.keys(r)))];
+  download(`EduPlan5512_${table}_${new Date().toISOString().slice(0, 10)}.csv`, toCSV(rows, cols), 'text/csv;charset=utf-8');
+  await log('Xuất báo cáo', table, `CSV ${rows.length} dòng`); toast(`Đã xuất ${rows.length} dòng CSV.`, 'success');
+}
+async function exportReportCSV() {
+  const st = computeStats();
+  const rows = st.byDept.map(d => ({ 'Tổ chuyên môn':d.dept, 'Số KHBD đã nộp':d.submitted, 'Số KHBD đạt chuẩn':d.approved, 'Tỷ lệ đạt (%)':d.rate.toFixed(1), 'Điểm 5512 TB (%)':d.avg.toFixed(1), 'Chờ duyệt':d.pending, 'Yêu cầu chỉnh sửa':d.revise }));
+  rows.push({ 'Tổ chuyên môn':'TOÀN TRƯỜNG', 'Số KHBD đã nộp':st.submitted, 'Số KHBD đạt chuẩn':st.approved, 'Tỷ lệ đạt (%)':st.rate.toFixed(1), 'Điểm 5512 TB (%)':avg(st.byDept.map(d => d.avg)), 'Chờ duyệt':st.livePending, 'Yêu cầu chỉnh sửa':st.liveRevise });
+  download(`BaoCao_KHBD_5512_${slug(S.settings.school)}_${new Date().toISOString().slice(0, 10)}.csv`, toCSV(rows, Object.keys(rows[0])), 'text/csv;charset=utf-8');
+  await log('Xuất báo cáo', 'Báo cáo Phòng/Sở GD&ĐT', `Tỷ lệ đạt chuẩn ${st.rate.toFixed(1)}%`); toast('Đã xuất báo cáo tổng hợp CSV.', 'success');
+}
+function importJSON(input) {
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const d = JSON.parse(r.result); const tables = d.tables || d;
+      if (!TABLES.every(t => Array.isArray(tables[t]))) throw new Error('Tệp không đúng cấu trúc 5 bảng của EduPlan 5512.');
+      confirmBox(`Khôi phục từ "${f.name}"? Dữ liệu hiện tại sẽ được thay thế (${TABLES.map(t => `${t}: ${tables[t].length}`).join(' · ')}).`, async () => {
+        const me = S.user;
+        await DB.replaceAll(tables);
+        S.user = DB.get('users', me.id) || DB.all('users').find(u => u.role === 'admin' && u.status === 'active') || null;
+        if (S.user) { lsSet(SESSION_KEY, S.user.id); await log('Khôi phục', f.name, 'Import JSON thành công'); } else localStorage.removeItem(SESSION_KEY);
+        toast('Khôi phục cơ sở dữ liệu thành công.', 'success'); render();
+      }, 'Khôi phục');
+    } catch (e) { toast('Lỗi đọc tệp: ' + e.message, 'error'); }
+    input.value = '';
+  };
+  r.readAsText(f, 'utf-8');
+}
+function resetDB() {
+  confirmBox('Xóa toàn bộ dữ liệu hiện tại và nạp lại dữ liệu mẫu ban đầu (6 người dùng, 3 KHBD, 5 phiếu nhận xét, 15 nhật ký)?', async () => {
+    await DB.seed(); S.user = DB.get('users', 'u1'); lsSet(SESSION_KEY, 'u1'); S.ws.planId = null; S.review = { planId:null, form:null };
+    toast('Đã khôi phục dữ liệu mẫu.', 'success'); render();
+  }, 'Khôi phục mẫu');
+}
+
+/* ------------------------------ 10. KHỞI ĐỘNG ------------------------------ */
+(async function boot() {
+  $('#app').innerHTML = `<div class="min-h-screen grid place-items-center text-slate-500 text-sm">Đang khởi tạo cơ sở dữ liệu…</div>`;
+  await DB.init();
+  const sid = lsGet(SESSION_KEY); const u = sid && DB.get('users', sid);
+  if (u && u.status === 'active') S.user = u;
+  render();
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && S.view === 'workspace' && S.user) runAnalysis(); });
+})();
+</script>
+</body>
+</html>
