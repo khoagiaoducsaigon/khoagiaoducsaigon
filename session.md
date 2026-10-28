@@ -19,5 +19,12 @@
 - Test 2 trình duyệt với Supabase giả lập: 23/23 kịch bản đạt (realtime, duyệt TK, khóa TK, ngoại tuyến, không mất chữ đang gõ).
 - Việc của chủ tài khoản: tạo dự án Supabase, chạy SQL, điền URL + anon key (xem DEPLOY.md mục C).
 
+## v1.2 – Chuyển sang MySQL trên Hostinger (28/10/2026)
+- Lý do: Supabase miễn phí tự tạm dừng khi ít dùng → chọn MySQL sẵn có trong gói hosting (ổn định, 0đ, không giới hạn lượt).
+- `edulesson-copilot/api/`: index.php (API), schema.php, install.php (trình cài đặt tự khóa), .htaccess.
+- Ứng dụng tự dò `api/` → tự vào chế độ máy chủ; cập nhật 4 giây/lần; hàng đợi ngoại tuyến; BGH tạo TK + đặt lại mật khẩu.
+- Test thật PHP 8.3 + MariaDB 10.11: API bảo mật 24/24; đầu-cuối 2 trình duyệt 24/24; chế độ cục bộ không hồi quy.
+- Việc của chủ tài khoản: tạo MySQL DB trên hPanel → upload api/ → mở api/install.php (DEPLOY.md mục C).
+
 ## Việc có thể làm tiếp
 - Xuất .docx chuẩn; nhập KHBD .docx để AI đọc; lưu tệp KHBD trên Supabase Storage; gọi Gemini qua Edge Function để giấu API key.

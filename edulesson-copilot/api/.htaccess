@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Tệp nội bộ: không cho truy cập trực tiếp từ trình duyệt
+<FilesMatch "^(config|schema)\.php$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>

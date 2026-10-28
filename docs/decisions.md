@@ -13,3 +13,7 @@
 | 28/10/2026 | Mỗi bảng dạng (id, data jsonb) + cột role/status riêng cho users | Ánh xạ 1-1 với IndexedDB, không phải viết lại logic ứng dụng |
 | 28/10/2026 | Không tự vẽ lại màn hình khi người dùng đang gõ; hiện nút "Có cập nhật mới" | Realtime không được làm mất dữ liệu đang nhập |
 | 28/10/2026 | Đăng xuất ở chế độ đám mây xóa bộ nhớ đệm cục bộ | Máy tính phòng GV dùng chung – không để lộ dữ liệu trường |
+| 28/10/2026 | **Thay Supabase bằng MySQL trên Hostinger** (API PHP trong `api/`) | Supabase miễn phí tự tạm dừng khi ít dùng; MySQL đã có trong gói hosting, không giới hạn lượt, 0đ, cùng tên miền, dữ liệu do trường kiểm soát |
+| 28/10/2026 | Cập nhật theo chu kỳ 4 giây (30 giây khi ẩn tab) thay cho WebSocket | Hosting chia sẻ không hỗ trợ WebSocket; 4 giây đủ nhanh cho SHCM; mỗi lần hỏi rất nhẹ (chỉ lấy thay đổi mới theo số rev) |
+| 28/10/2026 | Trình cài đặt chỉ nhận CSDL `localhost`, tự khóa sau khi cài | Ngăn người lạ chiếm trang cài đặt trỏ ứng dụng sang CSDL của họ |
+| 28/10/2026 | Ứng dụng tự dò `api/` cạnh index.html | Giáo viên không phải cấu hình gì; BGH chỉ cài 1 lần |

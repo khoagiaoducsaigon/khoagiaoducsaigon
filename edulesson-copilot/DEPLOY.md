@@ -25,26 +25,38 @@ Từ đó, mỗi lần đẩy thay đổi trong `edulesson-copilot/` lên GitHub
 
 > Mật khẩu chỉ nhập vào GitHub Secrets (được mã hoá), không gửi qua chat, không ghi vào code.
 
-## C. Bật cơ sở dữ liệu đám mây Supabase (dùng chung toàn trường, thời gian thực)
-1. Tạo dự án miễn phí tại **supabase.com** → chọn vùng **Southeast Asia (Singapore)**.
-2. Mở ứng dụng → màn hình đăng nhập → **"Cấu hình máy chủ đám mây (Supabase)"** → **Sao chép SQL**.
-   Trên Supabase: **SQL Editor** → dán → **Run** (chạy 1 lần, chạy lại vẫn an toàn).
-3. **Authentication → Sign In / Providers → Email**: trường nội bộ có thể tắt *Confirm email*.
-   Nếu bật: **Authentication → URL Configuration → Site URL** = `https://ncbh.thaykhoa-ai.tech`.
-4. **Project Settings → API**: sao chép **Project URL** và khóa **anon public** → dán vào hộp cấu hình → **Kiểm tra kết nối** → **Lưu & kết nối**.
-   ⚠️ Không bao giờ dùng khóa `service_role` trên web.
-5. Đăng ký tài khoản **đầu tiên** → tự động là **Admin**. Giáo viên đăng ký sau sẽ ở trạng thái *chờ duyệt*; BGH duyệt tại **Admin Dashboard → Hàng chờ phê duyệt**.
-6. Để mọi giáo viên **không phải tự cấu hình**: mở `index.html`, điền vào dòng
-   `const CLOUD_PRESET = { url: '', anonKey: '' };` rồi tải lại tệp lên hosting.
-7. Dữ liệu mẫu/cục bộ cũ: sau khi Admin đăng nhập lần đầu, **Admin Dashboard** hiện nút
-   **"Đẩy dữ liệu cục bộ cũ lên mây"**. Hoặc dùng **Gộp JSON lên mây** với tệp sao lưu.
+## C. Bật máy chủ dữ liệu MySQL trên Hostinger (dùng chung toàn trường) – ~5 phút
+Không phát sinh chi phí, không tự tạm dừng, không giới hạn lượt đọc/ghi, dữ liệu nằm trên hosting của trường.
 
-### Bảo mật đã kiểm thử (PostgreSQL 16 thật, 11 kịch bản)
+1. **hPanel → Databases → MySQL Databases** → tạo:
+   - Tên cơ sở dữ liệu (vd `u123456789_ncbh`)
+   - Tên người dùng (vd `u123456789_ncbh`) + **mật khẩu mạnh** → ghi lại 3 thông tin này.
+2. Tải thư mục **`api/`** lên cùng chỗ với `index.html` (`public_html/ncbh/api/`) – bằng File Manager, hoặc GitHub Actions tự tải (mục B2).
+3. Mở **https://ncbh.thaykhoa-ai.tech/api/install.php** → nhập 3 thông tin ở bước 1 → **Cài đặt máy chủ**.
+   - Trang cài đặt tự tạo bảng + tệp `api/config.php`, sau đó **tự khóa**.
+   - Vì an toàn chỉ chấp nhận máy chủ CSDL `localhost` (mặc định của Hostinger).
+4. Mở lại **https://ncbh.thaykhoa-ai.tech** → ứng dụng **tự nhận ra máy chủ**, không cần cấu hình gì thêm.
+5. **Đăng ký tài khoản đầu tiên** → tự động là **Admin (BGH)**.
+6. Giáo viên tự đăng ký (email hoặc SĐT) → BGH duyệt ở **Admin Dashboard → Hàng chờ phê duyệt**.
+   Hoặc BGH tạo sẵn tài khoản: **Quản trị người dùng → Thêm** (nhập mật khẩu → tài khoản đăng nhập được ngay).
+7. Dữ liệu mẫu/cục bộ cũ: **Admin Dashboard → "Đẩy dữ liệu cục bộ cũ lên máy chủ"**, hoặc **Gộp JSON lên máy chủ**.
+8. (Khuyến nghị) Sau khi cài xong, xóa tệp `api/install.php` trong File Manager.
+
+### Quên mật khẩu / sao lưu
+- GV quên mật khẩu → BGH vào **Quản trị người dùng → Sửa → Đặt lại mật khẩu**.
+- Sao lưu: **Dữ liệu → Xuất toàn bộ (JSON)** trong ứng dụng, và/hoặc **hPanel → Databases → phpMyAdmin → Export**.
+- Hostinger cũng có sao lưu tự động hằng tuần/ngày tùy gói (hPanel → Files → Backups).
+
+### Bảo mật đã kiểm thử (PHP 8.3 + MariaDB 10.11 thật)
 | Kịch bản | Kết quả |
 |---|---|
-| Khách chưa đăng nhập đọc dữ liệu | Bị từ chối |
-| Tài khoản chờ duyệt / bị khóa đọc hoặc ghi | Không thấy gì, ghi bị chặn |
-| Người lạ tự khai vai trò Admin khi đăng ký | Vẫn ở trạng thái chờ duyệt |
-| GV tự nâng quyền / đổi vai trò người khác | Bị trigger và RLS chặn |
-| Giả mạo "người ghi" (updated_by) | Máy chủ ghi đè bằng danh tính thật |
-| Sửa hoặc xóa nhật ký hệ thống | Chỉ Admin được xóa, không ai được sửa |
+| Khách chưa đăng nhập đọc dữ liệu | 401 – bị từ chối |
+| Người lạ đăng ký và tự khai vai trò Admin | Chờ duyệt, không có phiên đăng nhập |
+| GV tự nâng quyền / đổi tên đăng nhập / sửa hồ sơ người khác | Máy chủ giữ nguyên / 403 |
+| SQL injection qua mã bản ghi, bảng lạ | Bị từ chối (truy vấn tham số hóa + kiểm tra định dạng) |
+| Dò mật khẩu 8 lần | Tạm khóa đăng nhập 15 phút |
+| Sửa / xóa nhật ký hệ thống | GV không được; chỉ Admin được xóa |
+| Lô thao tác có 1 lệnh trái phép | Cả lô bị hủy (giao dịch toàn vẹn) |
+| Admin khóa GV | Phiên của GV bị chặn ngay lập tức |
+| Mật khẩu | Băm bcrypt (`password_hash`), không bao giờ gửi về trình duyệt |
+| Tệp `config.php` chứa mật khẩu CSDL | Chặn truy cập web (.htaccess) + không đưa lên Git |

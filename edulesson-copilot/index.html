@@ -15,7 +15,6 @@
   }
 </script>
 <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <style>
   body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -45,163 +44,6 @@
 <div id="toasts" class="fixed bottom-4 right-4 z-[100] flex flex-col gap-2 items-end"></div>
 <div id="printArea"></div>
 
-<!-- SQL khởi tạo Supabase: Admin sao chép từ màn hình "Đám mây" và chạy 1 lần trong SQL Editor -->
-<script type="text/plain" id="sqlSchema">
--- =====================================================================
--- EduLesson Study CoPilot · Supabase schema (chạy 1 lần trong SQL Editor)
--- An toàn khi chạy lại nhiều lần.
--- Bảo mật: chỉ tài khoản đã được BGH duyệt (status = 'active') mới đọc/ghi
--- dữ liệu. Tài khoản đầu tiên đăng ký tự động là Admin.
--- =====================================================================
-
--- 1. Bảng ------------------------------------------------------------------
-create table if not exists public.users (
-  id         text primary key,
-  data       jsonb not null default '{}'::jsonb,
-  role       text  not null default 'observer' check (role in ('admin','leader','teacher','observer')),
-  status     text  not null default 'pending'  check (status in ('active','pending','locked','profile')),
-  updated_at timestamptz not null default now(),
-  updated_by text,
-  client_id  text
-);
-
-do $$
-declare t text;
-begin
-  foreach t in array array['lesson_studies','observation_logs','meeting_minutes','adapted_plans','audit_logs'] loop
-    execute format('create table if not exists public.%I (
-      id text primary key,
-      data jsonb not null default ''{}''::jsonb,
-      updated_at timestamptz not null default now(),
-      updated_by text,
-      client_id text)', t);
-  end loop;
-end $$;
-
--- 2. Hàm hỗ trợ phân quyền ---------------------------------------------------
-create or replace function public.app_role() returns text
-language sql stable security definer set search_path = public as $$
-  select role from public.users where id = auth.uid()::text and status = 'active'
-$$;
-
-create or replace function public.is_active_member() returns boolean
-language sql stable security definer set search_path = public as $$
-  select exists (select 1 from public.users where id = auth.uid()::text and status = 'active')
-$$;
-
--- 3. Tài khoản mới (Supabase Auth) -> hồ sơ trong public.users -----------------
-create or replace function public.handle_new_user() returns trigger
-language plpgsql security definer set search_path = public as $$
-declare
-  m jsonb := coalesce(new.raw_user_meta_data, '{}'::jsonb);
-  first_admin boolean;
-  req text := coalesce(m->>'role', 'observer');
-begin
-  first_admin := not exists (select 1 from public.users where role = 'admin' and status = 'active');
-  if req not in ('admin','leader','teacher','observer') then req := 'observer'; end if;
-  insert into public.users (id, data, role, status, updated_by)
-  values (
-    new.id::text,
-    jsonb_build_object(
-      'id', new.id::text,
-      'name', coalesce(nullif(m->>'name', ''), split_part(new.email, '@', 1)),
-      'contact', new.email,
-      'title', case when first_admin then 'Quản trị viên – Ban Giám hiệu' else m->>'title' end,
-      'department', m->>'department',
-      'campus', m->>'campus',
-      'createdAt', to_char(now() at time zone 'utc', 'YYYY-MM-DD"T"HH24:MI:SS"Z"')),
-    case when first_admin then 'admin' else req end,
-    case when first_admin then 'active' else 'pending' end,
-    new.id::text)
-  on conflict (id) do nothing;
-  return new;
-end $$;
-
-drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function public.handle_new_user();
-
--- 4. Chỉ Admin được đổi vai trò / trạng thái ----------------------------------
-create or replace function public.protect_user_fields() returns trigger
-language plpgsql security definer set search_path = public as $$
-begin
-  if coalesce(public.app_role(), '') <> 'admin' then
-    new.role := old.role;
-    new.status := old.status;
-  end if;
-  new.updated_at := now();
-  new.updated_by := coalesce(auth.uid()::text, new.updated_by);
-  return new;
-end $$;
-
-drop trigger if exists protect_user_fields on public.users;
-create trigger protect_user_fields
-  before update on public.users
-  for each row execute function public.protect_user_fields();
-
--- 5. Đóng dấu thời gian + người ghi phía máy chủ --------------------------------
-create or replace function public.stamp_row() returns trigger
-language plpgsql as $$
-begin
-  new.updated_at := now();
-  new.updated_by := coalesce(auth.uid()::text, new.updated_by);
-  return new;
-end $$;
-
--- 6. Row Level Security -------------------------------------------------------
-alter table public.users enable row level security;
-revoke all on public.users from anon;
-drop policy if exists users_select on public.users;
-drop policy if exists users_insert on public.users;
-drop policy if exists users_update on public.users;
-drop policy if exists users_delete on public.users;
-create policy users_select on public.users for select to authenticated
-  using (public.is_active_member() or id = auth.uid()::text);
-create policy users_insert on public.users for insert to authenticated
-  with check (public.app_role() = 'admin');
-create policy users_update on public.users for update to authenticated
-  using (public.app_role() = 'admin' or id = auth.uid()::text)
-  with check (public.app_role() = 'admin' or id = auth.uid()::text);
-create policy users_delete on public.users for delete to authenticated
-  using (public.app_role() = 'admin');
-
-do $$
-declare t text;
-begin
-  foreach t in array array['lesson_studies','observation_logs','meeting_minutes','adapted_plans','audit_logs'] loop
-    execute format('alter table public.%I enable row level security', t);
-    execute format('revoke all on public.%I from anon', t);
-    execute format('drop trigger if exists stamp_row on public.%I', t);
-    execute format('create trigger stamp_row before insert or update on public.%I for each row execute function public.stamp_row()', t);
-    execute format('drop policy if exists %I on public.%I', t || '_select', t);
-    execute format('drop policy if exists %I on public.%I', t || '_insert', t);
-    execute format('drop policy if exists %I on public.%I', t || '_update', t);
-    execute format('drop policy if exists %I on public.%I', t || '_delete', t);
-    execute format('create policy %I on public.%I for select to authenticated using (public.is_active_member())', t || '_select', t);
-    execute format('create policy %I on public.%I for insert to authenticated with check (public.is_active_member())', t || '_insert', t);
-    if t = 'audit_logs' then
-      -- Nhật ký hệ thống: chỉ ghi thêm, chỉ Admin được xóa
-      execute format('create policy %I on public.%I for delete to authenticated using (public.app_role() = ''admin'')', t || '_delete', t);
-    else
-      execute format('create policy %I on public.%I for update to authenticated using (public.is_active_member()) with check (public.is_active_member())', t || '_update', t);
-      execute format('create policy %I on public.%I for delete to authenticated using (public.is_active_member())', t || '_delete', t);
-    end if;
-  end loop;
-end $$;
-
--- 7. Realtime -----------------------------------------------------------------
-do $$
-declare t text;
-begin
-  foreach t in array array['users','lesson_studies','observation_logs','meeting_minutes','adapted_plans','audit_logs'] loop
-    if not exists (select 1 from pg_publication_tables
-                   where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = t) then
-      execute format('alter publication supabase_realtime add table public.%I', t);
-    end if;
-  end loop;
-end $$;
-</script>
 
 <script>
 'use strict';
@@ -213,10 +55,10 @@ end $$;
    ===================================================================== */
 
 // ---------------------------------------------------------------- 1. HẰNG SỐ
-const APP = { name: 'EduLesson Study CoPilot', version: '1.1.0' };
-/* Điền 1 lần trước khi upload lên hosting để mọi GV tự kết nối đám mây (anon key là khóa công khai, được bảo vệ bởi RLS). */
-const CLOUD_PRESET = { url: '', anonKey: '' };
-const LS = { session: 'edulesson_session', settings: 'edulesson_settings', lesson: 'edulesson_current_lesson', tab: 'edulesson_tab', fallback: 'edulesson_fallback_db', lastWrite: 'edulesson_last_write', cloudQueue: 'edulesson_cloud_queue', localStash: 'edulesson_local_stash', cloudSeen: 'edulesson_cloud_seen' };
+const APP = { name: 'EduLesson Study CoPilot', version: '1.2.0' };
+/* Máy chủ dữ liệu: để trống = tự dò thư mục api/ nằm cạnh index.html trên hosting. */
+const SERVER_PRESET = { apiUrl: '' };
+const LS = { session: 'edulesson_session', settings: 'edulesson_settings', lesson: 'edulesson_current_lesson', tab: 'edulesson_tab', fallback: 'edulesson_fallback_db', lastWrite: 'edulesson_last_write', cloudQueue: 'edulesson_cloud_queue', localStash: 'edulesson_local_stash', cloudSeen: 'edulesson_cloud_seen', token: 'edulesson_token', uid: 'edulesson_uid' };
 const STORES = ['users', 'lesson_studies', 'observation_logs', 'meeting_minutes', 'adapted_plans', 'audit_logs'];
 const STORE_LABELS = { users: 'Người dùng', lesson_studies: 'Chu trình NCBH', observation_logs: 'Nhật ký dự giờ', meeting_minutes: 'Biên bản SHCM', adapted_plans: 'KHBD tinh chỉnh', audit_logs: 'Nhật ký hệ thống' };
 
@@ -435,152 +277,204 @@ const DB = {
 };
 
 
-// ---------------------------------------------------------------- 4b. CLOUD SYNC (Supabase · Realtime · hàng đợi ngoại tuyến)
+// ---------------------------------------------------------------- 4b. ĐỒNG BỘ MÁY CHỦ (PHP + MySQL trên hosting · cập nhật 4 giây/lần · hàng đợi ngoại tuyến)
 const CLIENT_ID = (() => { try { let id = sessionStorage.getItem('edulesson_client'); if (!id) { id = uid('c'); sessionStorage.setItem('edulesson_client', id); } return id; } catch (e) { return uid('c'); } })();
-const isPermErr = e => !!e && (e.code === '42501' || /row-level security|permission denied|JWT/i.test(e.message || ''));
+const isAuthErr = e => !!e && e.status === 401;
+const isRejected = e => !!e && [400, 403, 404, 409, 413].includes(e.status);
 const Cloud = {
-  client: null, active: false, channel: null, status: 'off', error: '', pending: false, lastSync: null, timer: null,
-  url() { return String(Settings.get('cloudUrl') || CLOUD_PRESET.url || '').trim().replace(/\/+$/, ''); },
-  key() { return String(Settings.get('cloudKey') || CLOUD_PRESET.anonKey || '').trim(); },
-  enabled() { const on = Settings.get('cloudOn'); return !!(this.url() && this.key() && (on === undefined ? !!CLOUD_PRESET.url : on)); },
-  host() { try { return new URL(this.url()).host; } catch (e) { return this.url(); } },
-  init() {
-    if (!this.enabled()) return false;
-    if (!window.supabase || !window.supabase.createClient) { this.status = 'error'; this.error = 'Không tải được thư viện Supabase (kiểm tra Internet).'; return false; }
-    this.client = window.supabase.createClient(this.url(), this.key(), { auth: { persistSession: true, autoRefreshToken: true, storageKey: 'edulesson_sb_auth' } });
-    this.client.auth.onAuthStateChange(ev => { if (ev === 'PASSWORD_RECOVERY') setTimeout(() => A.recoverPassword(), 300); });
-    window.addEventListener('online', () => this.resync());
-    window.addEventListener('offline', () => this.setStatus('offline'));
-    return true;
+  on: false, base: '', server: null, token: null, active: false, status: 'off', error: '', pending: false,
+  lastSync: null, rev: 0, timer: null, polling: false, inflight: new Set(),
+  resolveBase() {
+    const custom = String(Settings.get('apiUrl') || SERVER_PRESET.apiUrl || '').trim();
+    if (custom) return custom.replace(/\/?$/, '/');
+    return /^https?:$/.test(location.protocol) ? new URL('api/', location.href).href : '';
+  },
+  host() { try { return new URL(this.base).host; } catch (e) { return this.base; } },
+  async req(r, { method = 'GET', body, query = '', timeout = 20000 } = {}) {
+    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), timeout);
+    try {
+      const res = await fetch(`${this.base}index.php?r=${encodeURIComponent(r)}${query}`, {
+        method, signal: ctl.signal, cache: 'no-store',
+        headers: Object.assign({ 'Content-Type': 'application/json' }, this.token ? { 'X-Auth-Token': this.token } : {}),
+        body: body ? JSON.stringify(body) : undefined
+      });
+      let j = null; try { j = await res.json(); } catch (e) {}
+      if (!res.ok || !j) { const err = new Error((j && j.message) || `Máy chủ trả lỗi HTTP ${res.status}`); err.status = res.status; err.code = j && j.error; throw err; }
+      return j;
+    } catch (e) {
+      if (e.name === 'AbortError') { const er = new Error('Máy chủ không phản hồi (hết thời gian chờ).'); er.status = 0; throw er; }
+      if (e.status === undefined) e.status = 0; // lỗi mạng
+      throw e;
+    } finally { clearTimeout(t); }
+  },
+  /* Tự dò máy chủ: có api/ đã cài đặt → chế độ máy chủ cho toàn trường */
+  async detect() {
+    if (Settings.get('cloudOn') === false) return false;
+    this.base = this.resolveBase(); if (!this.base) return false;
+    try { this.server = await this.req('ping', { timeout: 6000 }); this.on = !!this.server.installed; }
+    catch (e) {
+      this.server = { error: e.message, status: e.status };
+      // Mất mạng nhưng đã từng đăng nhập → vẫn vào chế độ máy chủ với dữ liệu lưu tạm
+      this.on = e.status === 0 && !!localStorage.getItem(LS.token) && !!localStorage.getItem(LS.cloudSeen);
+    }
+    if (this.on) {
+      this.token = localStorage.getItem(LS.token);
+      window.addEventListener('online', () => this.resync());
+      window.addEventListener('offline', () => this.setStatus('offline'));
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && this.active) this.poll(); });
+    }
+    return this.on;
   },
   setStatus(st, err = '') { this.status = st; this.error = err; const el = $('#syncPill'); if (el) { el.outerHTML = syncPillHTML(); refreshIcons(); } },
-  toRow(store, o) {
-    const data = JSON.parse(JSON.stringify(o)); delete data.passwordHash;
-    const row = { id: o.id, data, updated_at: nowISO(), updated_by: state.user?.id || null, client_id: CLIENT_ID };
-    if (store === 'users') { row.role = o.role; row.status = o.status; }
-    return row;
-  },
-  fromRow(store, r) { const o = { ...(r.data || {}), id: r.id }; if (store === 'users') { o.role = r.role; o.status = r.status; } return o; },
   queue() { try { return JSON.parse(localStorage.getItem(LS.cloudQueue) || '[]'); } catch (e) { return []; } },
   saveQueue(q) { try { localStorage.setItem(LS.cloudQueue, JSON.stringify(q)); } catch (e) {} },
   enqueue(op, store, id) { const q = this.queue().filter(x => !(x.store === store && x.id === id)); q.push({ op, store, id }); this.saveQueue(q); },
-  ok() { this.lastSync = nowISO(); if (this.status !== 'online' || this.error) this.setStatus('online'); else { const el = $('#syncPill'); if (el) { el.outerHTML = syncPillHTML(); refreshIcons(); } } },
+  ok() { this.lastSync = nowISO(); this.setStatus(this.queue().length ? (navigator.onLine ? 'error' : 'offline') : 'online', this.queue().length ? 'Còn ' + this.queue().length + ' thay đổi chờ gửi' : ''); },
   fail(e, items) {
-    console.warn('[Cloud]', e);
-    if (isPermErr(e)) { toast('Máy chủ từ chối thao tác (không đủ quyền): ' + (e.message || ''), 'error'); return; }
+    if (!this.active) return;
+    console.warn('[Máy chủ]', e);
+    if (isAuthErr(e) || e.code === 'not_active') return this.expired(e);
+    if (isRejected(e)) { toast('Máy chủ từ chối: ' + e.message, 'error'); return; }
     items.forEach(([op, store, id]) => this.enqueue(op, store, id));
-    this.setStatus(navigator.onLine ? 'error' : 'offline', e.message || String(e));
+    this.setStatus(navigator.onLine ? 'error' : 'offline', e.message);
   },
-  async push(store, obj) {
+  expired(e) {
+    if (!this.active) return;
+    this.active = false;
+    toast(e && e.code === 'not_active' ? e.message : 'Phiên đăng nhập đã hết hạn – vui lòng đăng nhập lại.', 'warn');
+    A.logout(true);
+  },
+  op(kind, store, o) {
+    if (kind === 'delete') return { op: kind, store, id: o };
+    const data = JSON.parse(JSON.stringify(o)); delete data.passwordHash; delete data.hasLogin;
+    return { op: kind, store, id: o.id, data };
+  },
+  send(ops) { return this.req('sync/push', { method: 'POST', body: { client_id: CLIENT_ID, ops } }); },
+  track(p) { this.inflight.add(p); p.finally(() => this.inflight.delete(p)); return p; },
+  push(store, obj) {
     if (!this.active || DB.silent) return;
-    try { const { error } = await this.client.from(store).upsert(this.toRow(store, obj)); if (error) throw error; this.ok(); }
-    catch (e) { this.fail(e, [['upsert', store, obj.id]]); }
+    return this.track(this.send([this.op('upsert', store, obj)]).then(() => this.ok(), e => this.fail(e, [['upsert', store, obj.id]])));
   },
   async pushMany(store, list) {
     if (!this.active || DB.silent || !list.length) return;
-    for (let i = 0; i < list.length; i += 500) {
-      const chunk = list.slice(i, i + 500);
-      try { const { error } = await this.client.from(store).upsert(chunk.map(o => this.toRow(store, o))); if (error) throw error; this.ok(); }
+    for (let i = 0; i < list.length; i += 200) {
+      const chunk = list.slice(i, i + 200);
+      try { await this.send(chunk.map(o => this.op('upsert', store, o))); this.ok(); }
       catch (e) { this.fail(e, chunk.map(o => ['upsert', store, o.id])); }
     }
   },
-  async drop(store, id) {
+  drop(store, id) {
     if (!this.active || DB.silent) return;
-    try { const { error } = await this.client.from(store).delete().eq('id', id); if (error) throw error; this.ok(); }
-    catch (e) { this.fail(e, [['delete', store, id]]); }
+    return this.track(this.send([this.op('delete', store, id)]).then(() => this.ok(), e => this.fail(e, [['delete', store, id]])));
   },
+  /* Gửi lại các thay đổi đã lưu khi mất mạng. Trả về true nếu hàng đợi đã sạch. */
   async flush() {
-    if (!this.active) return;
-    const q = this.queue(); if (!q.length) return;
-    const rest = [];
-    for (const it of q) {
-      try {
-        if (it.op === 'delete') { const { error } = await this.client.from(it.store).delete().eq('id', it.id); if (error) throw error; }
-        else { const o = DB.get(it.store, it.id); if (o) { const { error } = await this.client.from(it.store).upsert(this.toRow(it.store, o)); if (error) throw error; } }
-      } catch (e) { if (!isPermErr(e)) rest.push(it); }
+    if (!this.active) return false;
+    const q = this.queue(); if (!q.length) return true;
+    const ops = q.map(it => it.op === 'delete' ? this.op('delete', it.store, it.id) : (DB.get(it.store, it.id) ? this.op('upsert', it.store, DB.get(it.store, it.id)) : null)).filter(Boolean);
+    try { if (ops.length) await this.send(ops); this.saveQueue([]); return true; }
+    catch (e) {
+      if (isAuthErr(e) || e.code === 'not_active') { this.expired(e); return false; }
+      if (!isRejected(e)) { this.setStatus(navigator.onLine ? 'error' : 'offline', e.message); return false; }
+      const rest = []; // có lệnh bị từ chối → gửi từng lệnh để giữ lại các lệnh hợp lệ
+      for (const o of ops) { try { await this.send([o]); } catch (er) { if (!isRejected(er)) rest.push({ op: o.op, store: o.store, id: o.id }); } }
+      this.saveQueue(rest); return !rest.length;
     }
-    this.saveQueue(rest);
-    if (!rest.length) this.ok(); else this.setStatus(navigator.onLine ? 'error' : 'offline', 'Còn ' + rest.length + ' thay đổi chờ đồng bộ');
+  },
+  parse(c) {
+    let o = {}; try { o = JSON.parse(c.data || '{}'); } catch (e) {}
+    o.id = c.id;
+    if (c.store === 'users') { o.role = c.role; o.status = c.status; o.hasLogin = !!c.has_login; delete o.passwordHash; }
+    return o;
   },
   async pullAll() {
-    const out = {};
-    for (const st of STORES) {
-      out[st] = [];
-      for (let from = 0; ; from += 1000) {
-        const { data, error } = await this.client.from(st).select('*').range(from, from + 999);
-        if (error) throw error;
-        out[st].push(...data.map(r => this.fromRow(st, r)));
-        if (data.length < 1000) break;
-      }
+    const j = await this.req('sync/pull', { query: '&since=0', timeout: 60000 });
+    const out = {}; STORES.forEach(st => out[st] = []);
+    j.changes.forEach(c => { if (!c.deleted && out[c.store]) out[c.store].push(this.parse(c)); });
+    this.rev = j.rev; return out;
+  },
+  async pullDelta() {
+    const j = await this.req('sync/pull', { query: '&since=' + this.rev, timeout: 15000 });
+    this.rev = Math.max(this.rev, j.rev);
+    const others = j.changes.filter(c => c.client_id !== CLIENT_ID && STORES.includes(c.store));
+    if (!others.length) return;
+    let ui = false, audits = false;
+    for (const c of others) {
+      if (c.deleted) await DB.applyRemote(c.store, null, c.id); else await DB.applyRemote(c.store, this.parse(c));
+      if (c.store === 'audit_logs') audits = true; else ui = true;
     }
-    return out;
-  },
-  subscribe() {
-    if (this.channel) return;
-    this.channel = this.client.channel('edulesson-sync');
-    STORES.forEach(st => this.channel.on('postgres_changes', { event: '*', schema: 'public', table: st }, p => this.onChange(st, p)));
-    this.channel.subscribe(st => {
-      if (st === 'SUBSCRIBED') this.ok();
-      else if (st === 'CHANNEL_ERROR' || st === 'TIMED_OUT') this.setStatus('error', 'Mất kết nối thời gian thực – đang thử lại');
-    });
-  },
-  async onChange(store, p) {
-    const row = p.new && Object.keys(p.new).length ? p.new : null;
-    if (row && row.client_id === CLIENT_ID) return; // thay đổi do chính tab này gửi
-    if (p.eventType === 'DELETE') await DB.applyRemote(store, null, p.old && p.old.id);
-    else if (row) await DB.applyRemote(store, this.fromRow(store, row));
-    this.lastSync = nowISO();
-    if (store === 'users' && state.user) {
+    if (state.user) {
       const me = userById(state.user.id);
-      if (!me || me.status !== 'active') { toast('Tài khoản của bạn đã bị khóa hoặc thu hồi quyền.', 'error'); return A.logout(); }
+      if (!me || me.status !== 'active') return this.expired({ code: 'not_active', message: 'Tài khoản của bạn đã bị khóa hoặc thu hồi quyền.' });
       state.user = me;
     }
-    if (store === 'audit_logs') { if ($('#auditBody')) { $('#auditBody').innerHTML = auditRows(); refreshIcons(); } return; }
-    scheduleRemoteRender();
+    if (audits && $('#auditBody')) { $('#auditBody').innerHTML = auditRows(); refreshIcons(); }
+    if (ui) scheduleRemoteRender();
   },
-  /* Sau khi Supabase Auth xác thực: kiểm tra hồ sơ, tải toàn bộ dữ liệu, bật realtime */
-  async afterLogin(authUser) {
-    this.setStatus('connecting');
-    let prof;
-    try {
-      const { data, error } = await this.client.from('users').select('*').eq('id', authUser.id).maybeSingle();
-      if (error) throw error;
-      if (!data) throw Object.assign(new Error('Chưa có hồ sơ người dùng – Admin cần chạy SQL khởi tạo trên Supabase.'), { fatal: true });
-      prof = this.fromRow('users', data);
-      if (prof.status === 'pending') throw Object.assign(new Error('Tài khoản đang chờ Ban Giám hiệu phê duyệt.'), { fatal: true, pending: true });
-      if (prof.status !== 'active') throw Object.assign(new Error('Tài khoản đã bị khóa. Liên hệ Ban Giám hiệu.'), { fatal: true });
-      stashLocalOnce();
-      const all = await this.pullAll();
-      await DB.replaceLocal(all);
-    } catch (e) {
-      const cached = userById(authUser.id);
-      if (e.fatal || isPermErr(e) || !cached || cached.status !== 'active' || !localStorage.getItem(LS.cloudSeen)) throw e;
-      prof = cached; this.setStatus('offline', 'Đang dùng dữ liệu lưu tạm – sẽ đồng bộ khi có mạng');
+  /* Vòng cập nhật: 4 giây khi đang xem, 30 giây khi chuyển tab khác */
+  async poll() {
+    clearTimeout(this.timer);
+    if (!this.active) return;
+    if (!this.polling) {
+      this.polling = true;
+      try { await this.flush(); await this.pullDelta(); this.ok(); }
+      catch (e) {
+        if (isAuthErr(e) || e.code === 'not_active') { this.polling = false; return this.expired(e); }
+        this.setStatus(navigator.onLine ? 'error' : 'offline', e.message);
+      } finally { this.polling = false; }
     }
+    if (this.pending && safeToRender()) { this.pending = false; ensureLesson(); render(); }
+    if (this.active) this.timer = setTimeout(() => this.poll(), document.hidden ? 30000 : 4000);
+  },
+  async afterLogin(user) {
+    this.setStatus('connecting');
+    stashLocalOnce();
+    const all = await this.pullAll();
+    await DB.replaceLocal(all);
     this.active = true;
-    state.user = userById(prof.id) || prof;
-    if (this.status !== 'offline') { this.subscribe(); await this.flush(); this.ok(); }
-    clearInterval(this.timer);
-    this.timer = setInterval(() => { this.flush(); if (this.pending && safeToRender()) { this.pending = false; ensureLesson(); render(); } }, 15000);
+    state.user = userById(user.id) || user;
+    localStorage.setItem(LS.uid, state.user.id);
+    this.ok(); this.timer = setTimeout(() => this.poll(), 4000);
     return state.user;
   },
+  async login(login, password) {
+    const j = await this.req('auth/login', { method: 'POST', body: { login, password } });
+    this.token = j.token; localStorage.setItem(LS.token, j.token);
+    try { return await this.afterLogin(j.user); } catch (e) { this.clearToken(); throw e; }
+  },
+  /* Mở lại trang: dùng token đã lưu */
+  async resume() {
+    if (!this.token) return false;
+    try { const j = await this.req('auth/me'); await this.afterLogin(j.user); return true; }
+    catch (e) {
+      if (isAuthErr(e) || e.status === 403) { this.clearToken(); if (e.status === 403) toast(e.message, 'warn'); this.setStatus('off'); return false; }
+      const me = userById(localStorage.getItem(LS.uid) || '');
+      if (me && me.status === 'active' && localStorage.getItem(LS.cloudSeen)) {
+        this.active = true; state.user = me;
+        this.setStatus('offline', 'Đang dùng dữ liệu lưu tạm – sẽ đồng bộ khi có mạng');
+        this.timer = setTimeout(() => this.poll(), 4000); return true;
+      }
+      this.setStatus('error', e.message); return false;
+    }
+  },
+  clearToken() { this.token = null; localStorage.removeItem(LS.token); localStorage.removeItem(LS.uid); },
   async resync() {
     if (!this.active) return;
     try {
       this.setStatus('connecting');
-      await this.flush();
-      const all = await this.pullAll(); await DB.replaceLocal(all);
+      if (await this.flush()) { const all = await this.pullAll(); await DB.replaceLocal(all); } else await this.pullDelta();
       const me = userById(state.user.id);
-      if (!me || me.status !== 'active') return A.logout();
-      state.user = me; this.subscribe(); this.ok(); ensureLesson(); render();
-    } catch (e) { this.setStatus(navigator.onLine ? 'error' : 'offline', e.message); }
+      if (!me || me.status !== 'active') return this.expired({ code: 'not_active', message: 'Tài khoản của bạn đã bị khóa hoặc thu hồi quyền.' });
+      state.user = me; this.ok(); ensureLesson(); render(); this.poll();
+    } catch (e) {
+      if (isAuthErr(e) || e.code === 'not_active') return this.expired(e);
+      this.setStatus(navigator.onLine ? 'error' : 'offline', e.message);
+    }
   },
-  async stop() {
-    this.active = false; clearInterval(this.timer);
-    if (this.channel) { try { await this.client.removeChannel(this.channel); } catch (e) {} this.channel = null; }
-  }
+  async settle(ms = 3000) { if (this.inflight.size) await Promise.race([Promise.allSettled([...this.inflight]), sleep(ms)]); },
+  stop() { this.active = false; clearTimeout(this.timer); }
 };
-/* Lưu lại dữ liệu cục bộ trước lần đầu kết nối đám mây để Admin có thể đẩy lên */
+/* Lưu lại dữ liệu cục bộ trước lần đầu kết nối máy chủ để Admin có thể đẩy lên */
 function stashLocalOnce() {
   if (localStorage.getItem(LS.cloudSeen)) return;
   try {
@@ -610,14 +504,14 @@ function scheduleRemoteRender() {
 }
 function syncPillHTML() {
   const base = 'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1.5 rounded-lg ring-1 whitespace-nowrap shrink-0';
-  if (!Cloud.client) return `<span id="syncPill" class="hidden md:${base} bg-slate-50 text-slate-500 ring-slate-200" title="Dữ liệu chỉ lưu trên trình duyệt này">${ic('hard-drive', 'w-3.5 h-3.5')}Cục bộ</span>`;
+  if (!Cloud.on) return `<span id="syncPill" class="hidden md:${base} bg-slate-50 text-slate-500 ring-slate-200" title="Dữ liệu chỉ lưu trên trình duyệt này">${ic('hard-drive', 'w-3.5 h-3.5')}Cục bộ</span>`;
   const q = Cloud.queue().length;
   const v = Cloud.pending ? ['bg-indigo-600 text-white ring-indigo-600 animate-pulse', 'refresh-cw', 'Có cập nhật mới – bấm để xem']
-    : Cloud.status === 'online' ? ['bg-emerald-50 text-emerald-700 ring-emerald-200', 'cloud', 'Đám mây · Trực tuyến']
+    : Cloud.status === 'online' ? ['bg-emerald-50 text-emerald-700 ring-emerald-200', 'server', 'Máy chủ · Trực tuyến']
     : Cloud.status === 'connecting' ? ['bg-sky-50 text-sky-700 ring-sky-200', 'loader-circle', 'Đang đồng bộ...']
     : Cloud.status === 'offline' ? ['bg-amber-50 text-amber-800 ring-amber-200', 'cloud-off', `Ngoại tuyến${q ? ' · ' + q + ' chờ' : ''}`]
     : ['bg-rose-50 text-rose-700 ring-rose-200', 'triangle-alert', `Lỗi đồng bộ${q ? ' · ' + q + ' chờ' : ''}`];
-  const title = `Supabase: ${Cloud.host()} · Đồng bộ lần cuối: ${fmtDT(Cloud.lastSync)}${Cloud.error ? ' · ' + Cloud.error : ''}`;
+  const title = `Máy chủ: ${Cloud.host()} · Đồng bộ lần cuối: ${fmtDT(Cloud.lastSync)}${Cloud.error ? ' · ' + Cloud.error : ''}`;
   return `<button id="syncPill" onclick="A.syncNow()" title="${esc(title)}" class="${base} ${v[0]}">${ic(v[1], 'w-3.5 h-3.5' + (v[1] === 'loader-circle' ? ' animate-spin' : ''))}<span class="hidden xl:inline">${v[2]}</span></button>`;
 }
 
@@ -1025,35 +919,35 @@ function renderAuth() {
           </div>
           ${t === 'login' ? `
           <form onsubmit="event.preventDefault();A.login()" class="space-y-4">
-            <div><label class="${LABEL}">${Cloud.client ? 'Email' : 'Email / Số điện thoại'}</label><input id="lgContact" class="${INPUT}" placeholder="${Cloud.client ? 'email@truong.edu.vn' : 'vd: totruong.toan@edulesson.vn'}" autocomplete="username"></div>
+            <div><label class="${LABEL}">Email / Số điện thoại</label><input id="lgContact" class="${INPUT}" placeholder="${Cloud.on ? 'email@truong.edu.vn hoặc 09xxxxxxxx' : 'vd: totruong.toan@edulesson.vn'}" autocomplete="username"></div>
             <div><label class="${LABEL}">Mật khẩu</label><input id="lgPw" type="password" class="${INPUT}" placeholder="••••••" autocomplete="current-password"></div>
             <div id="authErr" class="text-sm text-rose-600"></div>
             <button id="btnLogin" class="${B.primary} w-full py-2.5">${ic('log-in')}Đăng nhập</button>
-            ${Cloud.client ? `<button type="button" onclick="A.forgotPw()" class="w-full text-xs text-indigo-600 hover:underline">Quên mật khẩu?</button>` : ''}
+            ${Cloud.on ? `<button type="button" onclick="A.forgotPw()" class="w-full text-xs text-indigo-600 hover:underline">Quên mật khẩu?</button>` : ''}
           </form>` : `
           <form onsubmit="event.preventDefault();A.register()" class="space-y-3">
             <div><label class="${LABEL}">Họ và tên *</label><input id="rgName" class="${INPUT}" placeholder="Nguyễn Văn A"></div>
-            <div><label class="${LABEL}">${Cloud.client ? 'Email *' : 'Email / Số điện thoại *'}</label><input id="rgContact" class="${INPUT}" placeholder="${Cloud.client ? 'email@truong.edu.vn' : 'email@truong.edu.vn hoặc 09xxxxxxxx'}"></div>
+            <div><label class="${LABEL}">Email / Số điện thoại *</label><input id="rgContact" class="${INPUT}" placeholder="email@truong.edu.vn hoặc 09xxxxxxxx"></div>
             <div class="grid grid-cols-2 gap-3">
               <div><label class="${LABEL}">Vai trò *</label><select id="rgRole" class="${INPUT}">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${k === 'observer' ? 'selected' : ''}>${r.label}</option>`).join('')}</select></div>
               <div><label class="${LABEL}">Trường chính / Phân hiệu *</label><select id="rgCampus" class="${INPUT}">${opts(CAMPUSES)}</select></div>
             </div>
             <div><label class="${LABEL}">Tổ chuyên môn *</label><select id="rgDept" class="${INPUT}">${opts(DEPARTMENTS)}</select></div>
             <div class="grid grid-cols-2 gap-3">
-              <div><label class="${LABEL}">Mật khẩu * (≥ 6 ký tự)</label><input id="rgPw" type="password" class="${INPUT}" autocomplete="new-password"></div>
+              <div><label class="${LABEL}">Mật khẩu * (≥ ${Cloud.on ? 8 : 6} ký tự)</label><input id="rgPw" type="password" class="${INPUT}" autocomplete="new-password"></div>
               <div><label class="${LABEL}">Nhập lại mật khẩu *</label><input id="rgPw2" type="password" class="${INPUT}" autocomplete="new-password"></div>
             </div>
-            <p class="text-xs text-slate-500">${Cloud.client ? 'Tài khoản mới cần Ban Giám hiệu phê duyệt trước khi sử dụng (tài khoản đầu tiên của trường tự động là Admin).' : 'Tài khoản vai trò Ban Giám hiệu cần Admin hiện hữu phê duyệt trước khi sử dụng.'}</p>
+            <p class="text-xs text-slate-500">${Cloud.on ? 'Tài khoản mới cần Ban Giám hiệu phê duyệt trước khi sử dụng (tài khoản đầu tiên của trường tự động là Admin).' : 'Tài khoản vai trò Ban Giám hiệu cần Admin hiện hữu phê duyệt trước khi sử dụng.'}</p>
             <div id="authErr" class="text-sm text-rose-600"></div>
             <button id="btnRegister" class="${B.primary} w-full py-2.5">${ic('user-plus')}Tạo tài khoản</button>
           </form>`}
-          ${Cloud.client ? `<div class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs text-emerald-700">${ic('cloud', 'w-4 h-4')}<span>Chế độ đám mây dùng chung toàn trường · <b>${esc(Cloud.host())}</b></span></div>` : `<div class="mt-6 pt-5 border-t border-slate-100">
+          ${Cloud.on ? `<div class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-xs text-emerald-700">${ic('server', 'w-4 h-4')}<span>Chế độ máy chủ dùng chung toàn trường · <b>${esc(Cloud.host())}</b></span></div>` : `<div class="mt-6 pt-5 border-t border-slate-100">
             <div class="text-xs font-semibold text-slate-500 mb-2 flex items-center gap-1">${ic('zap', 'w-3.5 h-3.5 text-amber-500')}Trải nghiệm nhanh – 1-Click vào vai trò demo (mật khẩu demo: <code class="bg-slate-100 px-1 rounded">123456</code>)</div>
             <div class="grid grid-cols-2 gap-2">${Object.entries(ROLES).map(([k, r]) => `<button onclick="A.quickSwitch('${k}')" class="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-xl ring-1 ${r.pill} hover:opacity-80">${ic(r.icon, 'w-4 h-4')}${r.label}</button>`).join('')}</div>
           </div>`}
         </div>
-        <p class="text-center text-xs text-slate-400 mt-4">${Cloud.client ? 'Dữ liệu dùng chung trên Supabase, bảo vệ bằng phân quyền hàng (RLS) – chỉ tài khoản đã được duyệt mới truy cập.' : 'Dữ liệu lưu cục bộ trên trình duyệt (IndexedDB). Không gửi lên máy chủ nào ngoài Gemini API khi bạn bật.'}</p>
-        <p class="text-center mt-2"><button onclick="A.openCloud()" class="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1">${ic('cloud-cog', 'w-3.5 h-3.5')}Cấu hình máy chủ đám mây (Supabase)</button></p>
+        <p class="text-center text-xs text-slate-400 mt-4">${Cloud.on ? 'Dữ liệu dùng chung trên máy chủ MySQL của trường – chỉ tài khoản đã được Ban Giám hiệu duyệt mới truy cập.' : 'Dữ liệu lưu cục bộ trên trình duyệt (IndexedDB). Không gửi lên máy chủ nào ngoài Gemini API khi bạn bật.'}</p>
+        <p class="text-center mt-2"><button onclick="A.openCloud()" class="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1">${ic('server-cog', 'w-3.5 h-3.5')}Máy chủ dữ liệu của trường</button></p>
         ${Cloud.error ? `<p class="text-center text-xs text-rose-600 mt-1">${esc(Cloud.error)}</p>` : ''}
       </div>
     </div>
@@ -1062,14 +956,10 @@ function renderAuth() {
 A.authTab = t => { state.authTab = t; render(); };
 A.login = async () => {
   const c = $('#lgContact').value.trim().toLowerCase(), pw = $('#lgPw').value; const err = $('#authErr');
-  if (Cloud.client) {
+  if (Cloud.on) {
     const btn = $('#btnLogin'); btn.disabled = true; err.textContent = '';
-    try {
-      const { data, error } = await Cloud.client.auth.signInWithPassword({ email: c, password: pw });
-      if (error) throw new Error(/invalid login/i.test(error.message) ? 'Sai email hoặc mật khẩu.' : /not confirmed/i.test(error.message) ? 'Email chưa được xác nhận – hãy mở thư xác nhận trong hộp thư.' : error.message);
-      try { await Cloud.afterLogin(data.user); } catch (e) { await Cloud.client.auth.signOut(); throw e; }
-      await finishCloudSignIn('Đăng nhập');
-    } catch (e) { err.textContent = e.message; btn.disabled = false; Cloud.setStatus('off'); }
+    try { await Cloud.login(c, pw); await finishCloudSignIn('Đăng nhập'); }
+    catch (e) { err.textContent = e.status === 0 ? 'Không kết nối được máy chủ: ' + e.message : e.message; btn.disabled = false; Cloud.setStatus('off'); }
     return;
   }
   const u = DB.all('users').find(x => x.contact.toLowerCase() === c);
@@ -1084,19 +974,20 @@ A.register = async () => {
   const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact), isPhone = /^(?:0|\+84)\d{9,10}$/.test(contact.replace(/[\s.]/g, ''));
   if (name.length < 3) return err.textContent = 'Họ tên tối thiểu 3 ký tự.';
   if (!isEmail && !isPhone) return err.textContent = 'Email hoặc số điện thoại không hợp lệ.';
-  if (DB.all('users').some(u => u.contact.toLowerCase() === contact.toLowerCase())) return err.textContent = 'Email/SĐT đã được đăng ký.';
+  if (!Cloud.on && DB.all('users').some(u => u.contact.toLowerCase() === contact.toLowerCase())) return err.textContent = 'Email/SĐT đã được đăng ký.';
   if (pw.length < 6) return err.textContent = 'Mật khẩu tối thiểu 6 ký tự.';
   if (pw !== pw2) return err.textContent = 'Mật khẩu nhập lại không khớp.';
-  if (Cloud.client) {
-    if (!isEmail) return err.textContent = 'Chế độ đám mây cần đăng ký bằng email.';
+  if (Cloud.on) {
+    if (pw.length < 8) return err.textContent = 'Mật khẩu tối thiểu 8 ký tự.';
     const btn = $('#btnRegister'); btn.disabled = true;
-    const opts = { data: { name, role, campus, department, title: ROLES[role].label } };
-    if (/^https?:/.test(location.protocol)) opts.emailRedirectTo = location.origin + location.pathname;
-    const { data, error } = await Cloud.client.auth.signUp({ email: contact, password: pw, options: opts });
-    if (error) { btn.disabled = false; return err.textContent = /registered/i.test(error.message) ? 'Email đã được đăng ký.' : error.message; }
-    if (!data.session) { state.authTab = 'login'; render(); return toast('Đã tạo tài khoản! Hãy mở email xác nhận, sau đó chờ BGH phê duyệt.', 'success'); }
-    try { await Cloud.afterLogin(data.user); await finishCloudSignIn('Đăng ký'); toast('Chào mừng ' + name + '! Bạn là Admin đầu tiên của trường.', 'success'); }
-    catch (e) { await Cloud.client.auth.signOut(); state.authTab = 'login'; render(); toast(e.pending ? 'Đăng ký thành công! Tài khoản đang chờ Ban Giám hiệu phê duyệt.' : e.message, e.pending ? 'success' : 'error'); }
+    try {
+      const j = await Cloud.req('auth/register', { method: 'POST', body: { name, login: contact, password: pw, role, campus, department } });
+      if (j.token) {
+        Cloud.token = j.token; localStorage.setItem(LS.token, j.token);
+        await Cloud.afterLogin(j.user); await finishCloudSignIn('Đăng ký');
+        toast('Chào mừng ' + name + '! Bạn là Admin đầu tiên của trường.', 'success');
+      } else { state.authTab = 'login'; render(); toast('Đăng ký thành công! Tài khoản đang chờ Ban Giám hiệu phê duyệt.', 'success'); }
+    } catch (e) { err.textContent = e.message; btn.disabled = false; }
     return;
   }
   const u = { id: uid('u'), name, contact, role, campus, department, title: ROLES[role].label, passwordHash: await hashPw(pw), status: role === 'admin' ? 'pending' : 'active', createdAt: nowISO(), lastLogin: null };
@@ -1109,7 +1000,7 @@ A.register = async () => {
 async function finishCloudSignIn(action) {
   const u = state.user; state.viewAs = null;
   u.lastLogin = nowISO(); await DB.put('users', u);
-  await audit(action, 'users', `${u.name} (${ROLES[u.role].label}) – đám mây`);
+  await audit(action, 'users', `${u.name} (${ROLES[u.role].label}) – máy chủ`);
   if (state.tab === 'admin' && u.role !== 'admin') state.tab = 'plan';
   ensureLesson(); render();
 }
@@ -1121,8 +1012,8 @@ async function signIn(u, action) {
   ensureLesson(); render();
 }
 A.quickSwitch = async role => {
-  if (Cloud.client) {
-    if (!state.user) return toast('Chế độ đám mây: hãy đăng nhập bằng tài khoản của bạn.', 'warn');
+  if (Cloud.on) {
+    if (!state.user) return toast('Chế độ máy chủ: hãy đăng nhập bằng tài khoản của bạn.', 'warn');
     if (state.user.role !== 'admin') return toast('Chỉ Ban Giám hiệu được xem giao diện theo vai trò khác.', 'warn');
     state.viewAs = role === 'admin' ? null : role; render();
     return toast(role === 'admin' ? 'Đã trở về giao diện Ban Giám hiệu.' : `Đang XEM giao diện của "${ROLES[role].label}" (danh tính vẫn là bạn).`, 'success');
@@ -1133,36 +1024,40 @@ A.quickSwitch = async role => {
   await signIn(cands[0], 'Chuyển vai trò');
   toast(`Đang dùng vai trò: ${ROLES[role].label} – ${cands[0].name}`, 'success');
 };
-A.logout = async () => {
-  if (state.user) await audit('Đăng xuất', 'users', state.user.name);
-  if (Cloud.client) {
-    await Cloud.stop(); try { await Cloud.client.auth.signOut(); } catch (e) {}
+A.logout = async expired => {
+  if (state.user && expired !== true) await audit('Đăng xuất', 'users', state.user.name);
+  if (Cloud.on) {
+    await Cloud.settle(); Cloud.stop();
+    if (expired !== true) { try { await Cloud.req('auth/logout', { method: 'POST', timeout: 5000 }); } catch (e) {} }
+    Cloud.clearToken();
     for (const st of STORES) await DB.clear(st); // không để lại dữ liệu trường trên máy dùng chung
     Cloud.setStatus('off');
   }
   state.user = null; state.viewAs = null; localStorage.removeItem(LS.session); render();
 };
-A.forgotPw = async () => {
-  const email = $('#lgContact').value.trim(); if (!email) return toast('Nhập email trước rồi bấm "Quên mật khẩu".', 'warn');
-  const opts = /^https?:/.test(location.protocol) ? { redirectTo: location.origin + location.pathname } : {};
-  const { error } = await Cloud.client.auth.resetPasswordForEmail(email, opts);
-  toast(error ? error.message : 'Đã gửi email đặt lại mật khẩu (nếu email tồn tại).', error ? 'error' : 'success');
-};
-A.recoverPassword = async () => {
-  const pw = prompt('Nhập mật khẩu mới (≥ 6 ký tự):'); if (!pw) return;
-  if (pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn');
-  const { error } = await Cloud.client.auth.updateUser({ password: pw });
-  toast(error ? error.message : 'Đã đổi mật khẩu. Hãy đăng nhập lại.', error ? 'error' : 'success');
+A.forgotPw = () => toast('Vì an toàn, hãy liên hệ Ban Giám hiệu để được đặt lại mật khẩu (Admin Dashboard → Quản trị người dùng).', 'info');
+A.changePw = () => openModal({ title: 'Đổi mật khẩu', icon: 'key-round', size: 'max-w-md', body: `<div class="space-y-3">
+    <div><label class="${LABEL}">Mật khẩu hiện tại</label><input id="cpOld" type="password" class="${INPUT}" autocomplete="current-password"></div>
+    <div><label class="${LABEL}">Mật khẩu mới (≥ 8 ký tự)</label><input id="cpNew" type="password" class="${INPUT}" autocomplete="new-password"></div>
+    <div><label class="${LABEL}">Nhập lại mật khẩu mới</label><input id="cpNew2" type="password" class="${INPUT}" autocomplete="new-password"></div>
+    <p class="text-xs text-slate-500">Các phiên đăng nhập trên máy khác sẽ bị đăng xuất.</p></div>`,
+  footer: `<button onclick="A.closeModal()" class="${B.secondary}">Hủy</button><button onclick="A.savePw()" class="${B.primary}">${ic('save')}Đổi mật khẩu</button>` });
+A.savePw = async () => {
+  const o = $('#cpOld').value, n = $('#cpNew').value;
+  if (n.length < 8) return toast('Mật khẩu mới tối thiểu 8 ký tự.', 'warn');
+  if (n !== $('#cpNew2').value) return toast('Mật khẩu nhập lại không khớp.', 'warn');
+  try { await Cloud.req('auth/password', { method: 'POST', body: { old_password: o, new_password: n } }); A.closeModal(); await audit('Đổi mật khẩu', 'users', state.user.name); toast('Đã đổi mật khẩu.', 'success'); }
+  catch (e) { toast(e.message, 'error'); }
 };
 A.syncNow = async () => {
   if (Cloud.pending) { Cloud.pending = false; ensureLesson(); render(); return toast('Đã cập nhật dữ liệu mới nhất.', 'success'); }
-  await Cloud.resync(); toast(Cloud.status === 'online' ? 'Đã đồng bộ với đám mây.' : 'Chưa đồng bộ được: ' + Cloud.error, Cloud.status === 'online' ? 'success' : 'warn');
+  await Cloud.resync(); toast(Cloud.status === 'online' ? 'Đã đồng bộ với máy chủ.' : 'Chưa đồng bộ được: ' + Cloud.error, Cloud.status === 'online' ? 'success' : 'warn');
 };
 
 /* ------------------------------ HEADER / FOOTER */
 function headerHTML() {
   const u = state.user; const r = ROLES[u.role];
-  const showSwitch = !Cloud.client || u.role === 'admin';
+  const showSwitch = !Cloud.on || u.role === 'admin';
   const roleBtns = cls => Object.entries(ROLES).map(([k, x]) => `<button onclick="A.quickSwitch('${k}')" title="${x.label}" class="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg ring-1 whitespace-nowrap transition ${effRole() === k ? x.active : 'bg-white text-slate-600 ring-slate-200 hover:bg-slate-50'} ${cls}">${ic(x.icon, 'w-3.5 h-3.5')}${x.short}</button>`).join('');
   return `
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
@@ -1172,7 +1067,7 @@ function headerHTML() {
         <div class="min-w-0"><div class="font-bold leading-tight truncate">EduLesson Study CoPilot</div><div class="text-xs text-slate-500 truncate">${esc(Settings.get('schoolName'))}</div></div>
       </div>
       <div class="ml-auto flex items-center gap-2">
-        ${showSwitch ? `<div class="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-slate-100" title="${Cloud.client ? 'Xem giao diện theo vai trò (chỉ BGH)' : '1-Click Role Switcher'}"><span class="text-[10px] font-bold text-slate-400 px-1.5 uppercase tracking-wide">${Cloud.client ? 'Xem như' : 'Vai trò'}</span>${roleBtns('')}</div>` : ''}
+        ${showSwitch ? `<div class="hidden lg:flex items-center gap-1 p-1 rounded-xl bg-slate-100" title="${Cloud.on ? 'Xem giao diện theo vai trò (chỉ BGH)' : '1-Click Role Switcher'}"><span class="text-[10px] font-bold text-slate-400 px-1.5 uppercase tracking-wide">${Cloud.on ? 'Xem như' : 'Vai trò'}</span>${roleBtns('')}</div>` : ''}
         ${syncPillHTML()}
         <button onclick="A.openAI()" class="${B.secondary} !px-2.5" title="Cấu hình AI">${aiReady() ? `<span class="w-2 h-2 rounded-full bg-emerald-500"></span>${ic('sparkles', 'w-4 h-4 text-violet-600')}<span class="hidden sm:inline">Gemini</span>` : `<span class="w-2 h-2 rounded-full bg-amber-500"></span>${ic('bot', 'w-4 h-4 text-violet-600')}<span class="hidden sm:inline">Demo AI</span>`}</button>
         <details class="relative">
@@ -1193,12 +1088,13 @@ function headerHTML() {
           <div class="absolute right-0 mt-2 w-64 ${CARD} p-3 z-40 text-sm">
             <div class="font-semibold">${esc(u.name)}</div><div class="text-xs text-slate-500 mb-2">${esc(u.contact)}</div>
             <div class="flex flex-wrap gap-1 mb-3"><span class="text-[11px] px-2 py-0.5 rounded-full ring-1 ${r.pill}">${r.label}</span><span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100">${esc(u.department)}</span><span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100">${esc(u.campus)}</span></div>
+            ${Cloud.on ? `<button onclick="A.changePw()" class="${B.secondary} w-full mb-2">${ic('key-round')}Đổi mật khẩu</button>` : ''}
             <button onclick="A.logout()" class="${B.danger} w-full">${ic('log-out')}Đăng xuất</button>
           </div>
         </details>
       </div>
     </div>
-    ${showSwitch ? `<div class="lg:hidden max-w-7xl mx-auto px-4 pb-2 flex items-center gap-1 overflow-x-auto scroll-thin"><span class="text-[10px] font-bold text-slate-400 uppercase mr-1 shrink-0">${Cloud.client ? 'Xem như' : '1-Click'}</span>${roleBtns('shrink-0')}</div>` : ''}
+    ${showSwitch ? `<div class="lg:hidden max-w-7xl mx-auto px-4 pb-2 flex items-center gap-1 overflow-x-auto scroll-thin"><span class="text-[10px] font-bold text-slate-400 uppercase mr-1 shrink-0">${Cloud.on ? 'Xem như' : '1-Click'}</span>${roleBtns('shrink-0')}</div>` : ''}
     ${state.viewAs ? `<div class="bg-amber-100 text-amber-900 text-xs text-center py-1.5">Đang xem giao diện của <b>${ROLES[state.viewAs].label}</b> – mọi thao tác vẫn ghi dưới tên bạn. <button onclick="A.quickSwitch('admin')" class="underline font-semibold">Trở về BGH</button></div>` : ''}
     <nav class="max-w-7xl mx-auto px-4 flex gap-1 overflow-x-auto scroll-thin">
       ${MODULES.map((m, i) => `<button onclick="A.go('${m.id}')" class="shrink-0 flex items-center gap-2 px-3 py-2.5 text-sm font-medium border-b-2 transition ${state.tab === m.id ? 'border-indigo-600 text-indigo-700' : 'border-transparent text-slate-500 hover:text-slate-800'}">
@@ -1902,8 +1798,8 @@ function viewAdmin() {
         <div class="grid grid-cols-2 gap-2 text-xs mb-3"><div class="p-2.5 rounded-xl bg-slate-50"><div class="text-slate-500">Engine</div><b>${DB.mode}</b></div><div class="p-2.5 rounded-xl bg-slate-50"><div class="text-slate-500">Dung lượng dữ liệu</div><b>${fmtBytes(DB.sizeBytes())}</b></div><div class="p-2.5 rounded-xl bg-slate-50 col-span-2"><div class="text-slate-500">Hạn mức trình duyệt</div><b id="storageEst">Đang đo...</b></div></div>
         <table class="w-full text-xs mb-4"><tbody class="divide-y divide-slate-100">${STORES.map(s => `<tr><td class="py-1.5 font-mono text-slate-500">${s}</td><td class="py-1.5">${STORE_LABELS[s]}</td><td class="py-1.5 text-right font-bold">${DB.all(s).length}</td><td class="py-1.5 text-right text-slate-400">${fmtBytes(DB.sizeBytes(s))}</td></tr>`).join('')}</tbody></table>
         <div class="flex gap-2 mb-2"><select id="csvTable" class="${INPUT} !py-1.5 !text-xs">${STORES.map(s => `<option value="${s}">${STORE_LABELS[s]}</option>`).join('')}</select><button onclick="A.exportCSV($('#csvTable').value)" class="${B.secondary} !py-1.5 !text-xs shrink-0">${ic('file-spreadsheet', 'w-3.5 h-3.5')}CSV</button></div>
-        <div class="grid grid-cols-2 gap-2"><button onclick="A.exportJSON()" class="${B.primary} !text-xs">${ic('download', 'w-3.5 h-3.5')}Xuất JSON</button><label class="${B.secondary} !text-xs cursor-pointer">${ic('upload', 'w-3.5 h-3.5')}${Cloud.client ? 'Gộp JSON lên mây' : 'Khôi phục JSON'}<input type="file" accept=".json" class="hidden" onchange="A.importJSON(this)"></label>
-          ${Cloud.client ? '' : `<button onclick="A.resetDemo()" class="${B.danger} !text-xs col-span-2">${ic('refresh-cw', 'w-3.5 h-3.5')}Khôi phục dữ liệu mẫu ban đầu</button>`}</div>
+        <div class="grid grid-cols-2 gap-2"><button onclick="A.exportJSON()" class="${B.primary} !text-xs">${ic('download', 'w-3.5 h-3.5')}Xuất JSON</button><label class="${B.secondary} !text-xs cursor-pointer">${ic('upload', 'w-3.5 h-3.5')}${Cloud.on ? 'Gộp JSON lên máy chủ' : 'Khôi phục JSON'}<input type="file" accept=".json" class="hidden" onchange="A.importJSON(this)"></label>
+          ${Cloud.on ? '' : `<button onclick="A.resetDemo()" class="${B.danger} !text-xs col-span-2">${ic('refresh-cw', 'w-3.5 h-3.5')}Khôi phục dữ liệu mẫu ban đầu</button>`}</div>
         <div class="text-[11px] text-slate-400 mt-3">Ghi gần nhất: ${fmtDT(localStorage.getItem(LS.lastWrite))}. CSV người dùng không chứa mã băm mật khẩu.</div></div>
       <div class="lg:col-span-2 ${CARD} p-5"><div class="flex flex-wrap items-center justify-between gap-2 mb-3"><h3 class="font-bold flex items-center gap-2">${ic('scroll', 'w-4 h-4 text-indigo-600')}Audit Logs – nhật ký thao tác thời gian thực <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span></h3>
         <div class="flex gap-2"><input id="aq" value="${esc(state.auditQ)}" oninput="state.auditQ=this.value;$('#auditBody').innerHTML=auditRows()" class="${INPUT} !py-1.5 !text-xs !w-44" placeholder="Tìm..."><select onchange="state.auditAction=this.value;$('#auditBody').innerHTML=auditRows()" class="${INPUT} !py-1.5 !text-xs !w-40"><option value="">Mọi thao tác</option>${actions.map(a => `<option ${a === state.auditAction ? 'selected' : ''}>${esc(a)}</option>`).join('')}</select><button onclick="A.exportCSV('audit_logs')" class="${B.secondary} !py-1.5 !px-2" title="Xuất CSV">${ic('download', 'w-3.5 h-3.5')}</button></div></div>
@@ -1915,18 +1811,21 @@ async function updateStorageEstimate() {
   try { const e = await navigator.storage.estimate(); el.textContent = `${fmtBytes(e.usage || 0)} / ${fmtBytes(e.quota || 0)} (${((e.usage || 0) / (e.quota || 1) * 100).toFixed(2)}%)`; } catch (er) { el.textContent = 'Không hỗ trợ'; }
 }
 A.openUserForm = id => {
-  const u = id ? userById(id) : { role: 'observer', campus: CAMPUSES[0], department: DEPARTMENTS[0], status: Cloud.client ? 'profile' : 'active' };
-  const statuses = [['active', 'Hoạt động'], ['locked', 'Đã khóa'], ['pending', 'Chờ duyệt'], ...(Cloud.client ? [['profile', 'Hồ sơ (chưa có TK)']] : [])];
+  const u = id ? userById(id) : { role: 'observer', campus: CAMPUSES[0], department: DEPARTMENTS[0], status: Cloud.on ? 'profile' : 'active' };
+  const statuses = [['active', 'Hoạt động'], ['locked', 'Đã khóa'], ['pending', 'Chờ duyệt'], ...(Cloud.on ? [['profile', 'Hồ sơ (chưa có TK)']] : [])];
+  const lockContact = Cloud.on && u.hasLogin;
   const opt = (arr, v) => arr.map(x => `<option ${x === v ? 'selected' : ''}>${esc(x)}</option>`).join('');
   openModal({ title: id ? 'Sửa tài khoản' : 'Thêm tài khoản', icon: 'user-cog', body: `<div class="grid md:grid-cols-2 gap-3">
     <div><label class="${LABEL}">Họ tên *</label><input id="ufName" class="${INPUT}" value="${esc(u.name || '')}"></div>
-    <div><label class="${LABEL}">Email / SĐT *</label><input id="ufContact" class="${INPUT}" value="${esc(u.contact || '')}"></div>
+    <div><label class="${LABEL}">Email / SĐT *${lockContact ? ' (tên đăng nhập)' : ''}</label><input id="ufContact" class="${INPUT} ${lockContact ? 'bg-slate-50' : ''}" value="${esc(u.contact || '')}" ${lockContact ? 'readonly' : ''}></div>
     <div><label class="${LABEL}">Vai trò</label><select id="ufRole" class="${INPUT}">${Object.entries(ROLES).map(([k, r]) => `<option value="${k}" ${k === u.role ? 'selected' : ''}>${r.label}</option>`).join('')}</select></div>
     <div><label class="${LABEL}">Chức danh</label><input id="ufTitle" class="${INPUT}" value="${esc(u.title || '')}"></div>
     <div><label class="${LABEL}">Tổ chuyên môn</label><select id="ufDept" class="${INPUT}">${opt(DEPARTMENTS, u.department)}</select></div>
     <div><label class="${LABEL}">Điểm trường</label><select id="ufCampus" class="${INPUT}">${opt(CAMPUSES, u.campus)}</select></div>
     <div><label class="${LABEL}">Trạng thái</label><select id="ufStatus" class="${INPUT}" ${id === state.user.id ? 'disabled' : ''}>${statuses.map(([k, t]) => `<option value="${k}" ${k === u.status ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
-    ${Cloud.client ? `<div class="md:col-span-2 text-xs p-3 rounded-xl bg-sky-50 text-sky-800">${id ? 'Mật khẩu do người dùng tự quản lý qua "Quên mật khẩu".' : 'Chế độ đám mây: mục này tạo <b>hồ sơ GV</b> (để phân công dạy/dự giờ). GV tự đăng ký bằng email để có tài khoản, sau đó BGH duyệt.'}</div><input id="ufPw" type="hidden" value="">`
+    ${Cloud.on ? (id && !u.hasLogin ? `<div class="md:col-span-2 text-xs p-3 rounded-xl bg-sky-50 text-sky-800">Hồ sơ này chưa có tài khoản đăng nhập. GV có thể tự đăng ký bằng email/SĐT, sau đó BGH duyệt.</div><input id="ufPw" type="hidden" value="">`
+        : `<div><label class="${LABEL}">${id ? 'Đặt lại mật khẩu (≥ 8 ký tự, để trống nếu giữ)' : 'Mật khẩu (≥ 8 ký tự)'}</label><input id="ufPw" type="password" class="${INPUT}" autocomplete="new-password"></div>
+           ${id ? '' : `<div class="md:col-span-2 text-xs p-3 rounded-xl bg-sky-50 text-sky-800">Có mật khẩu → tạo <b>tài khoản đăng nhập</b> ngay cho GV. Để trống → chỉ tạo <b>hồ sơ</b> để phân công dạy/dự giờ.</div>`}`)
       : `<div><label class="${LABEL}">${id ? 'Đặt lại mật khẩu (để trống nếu giữ)' : 'Mật khẩu *'}</label><input id="ufPw" type="password" class="${INPUT}" autocomplete="new-password"></div>`}</div>`,
     footer: `<button onclick="A.closeModal()" class="${B.secondary}">Hủy</button><button onclick="A.saveUser('${id || ''}')" class="${B.primary}">${ic('save')}Lưu</button>` });
 };
@@ -1934,11 +1833,23 @@ A.saveUser = async id => {
   const v = k => $('#' + k).value.trim(); const name = v('ufName'), contact = v('ufContact'), pw = $('#ufPw').value;
   if (name.length < 3 || !contact) return toast('Nhập họ tên và email/SĐT.', 'warn');
   if (DB.all('users').some(u => u.id !== id && u.contact.toLowerCase() === contact.toLowerCase())) return toast('Email/SĐT đã tồn tại.', 'error');
-  if (!id && !Cloud.client && pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn');
+  if (!id && !Cloud.on && pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn');
+  if (Cloud.on && pw) {
+    if (pw.length < 8) return toast('Mật khẩu tối thiểu 8 ký tự.', 'warn');
+    try {
+      if (!id) {
+        await Cloud.req('admin/create_user', { method: 'POST', body: { name, login: contact, password: pw, role: v('ufRole'), title: v('ufTitle'), department: v('ufDept'), campus: v('ufCampus'), status: ['active', 'pending', 'locked'].includes(v('ufStatus')) ? v('ufStatus') : 'active' } });
+        await Cloud.pullDelta(); await audit('Quản trị người dùng', 'users', `Tạo tài khoản ${name} – ${ROLES[v('ufRole')].label}`);
+        A.closeModal(); render(); return toast('Đã tạo tài khoản đăng nhập cho ' + name + '.', 'success');
+      }
+      await Cloud.req('auth/password', { method: 'POST', body: { user_id: id, new_password: pw } });
+      await audit('Quản trị người dùng', 'users', `Đặt lại mật khẩu cho ${name}`);
+    } catch (e) { return toast(e.message, 'error'); }
+  }
   if (id === state.user.id && v('ufRole') !== 'admin' && DB.where('users', u => u.role === 'admin' && u.status === 'active').length < 2) return toast('Không thể hạ quyền Admin cuối cùng.', 'error');
   const u = id ? userById(id) : { id: uid('u'), createdAt: nowISO(), lastLogin: null };
   Object.assign(u, { name, contact, role: v('ufRole'), title: v('ufTitle'), department: v('ufDept'), campus: v('ufCampus'), status: id === state.user.id ? 'active' : v('ufStatus') });
-  if (pw) { if (pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn'); u.passwordHash = await hashPw(pw); }
+  if (pw && !Cloud.on) { if (pw.length < 6) return toast('Mật khẩu tối thiểu 6 ký tự.', 'warn'); u.passwordHash = await hashPw(pw); }
   await DB.put('users', u); await audit('Quản trị người dùng', 'users', `${id ? 'Sửa' : 'Thêm'} ${name} – ${ROLES[u.role].label}`);
   if (id === state.user.id) state.user = u; A.closeModal(); render(); toast('Đã lưu tài khoản.', 'success');
 };
@@ -1969,8 +1880,8 @@ A.importJSON = input => {
       const j = JSON.parse(rd.result); const data = j.data || j;
       if (!STORES.some(s => Array.isArray(data[s]))) throw new Error('Không đúng định dạng sao lưu EduLesson.');
       if (Cloud.active) {
-        if (!confirm(`Gộp dữ liệu từ "${f.name}" vào cơ sở dữ liệu đám mây của trường?\n(Không xóa dữ liệu đang có; bản ghi trùng mã sẽ được cập nhật.)`)) return;
-        const n = await cloudMerge(data); await audit('Khôi phục dữ liệu', 'database', `Gộp ${n} bản ghi từ ${f.name} lên đám mây`); ensureLesson(); render(); return toast(`Đã gộp ${n} bản ghi lên đám mây.`, 'success');
+        if (!confirm(`Gộp dữ liệu từ "${f.name}" vào cơ sở dữ liệu máy chủ của trường?\n(Không xóa dữ liệu đang có; bản ghi trùng mã sẽ được cập nhật.)`)) return;
+        const n = await cloudMerge(data); await audit('Khôi phục dữ liệu', 'database', `Gộp ${n} bản ghi từ ${f.name} lên máy chủ`); ensureLesson(); render(); return toast(`Đã gộp ${n} bản ghi lên máy chủ.`, 'success');
       }
       if (!confirm(`Khôi phục từ "${f.name}"?\n${STORES.map(s => `${STORE_LABELS[s]}: ${(data[s] || []).length}`).join('\n')}\n\nDữ liệu hiện tại sẽ bị THAY THẾ.`)) return;
       await DB.replaceAll(data);
@@ -1991,78 +1902,64 @@ async function cloudMerge(data) {
 }
 function cloudCard() {
   let stash = null; try { stash = JSON.parse(localStorage.getItem(LS.localStash) || 'null'); } catch (e) {}
-  if (!Cloud.client) return `<div class="${CARD} p-5 mb-6 flex flex-wrap items-center gap-4 bg-gradient-to-r from-sky-50 to-indigo-50">
-    <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-sky-600 shadow-sm">${ic('cloud-upload', 'w-6 h-6')}</div>
-    <div class="flex-1 min-w-[240px]"><div class="font-bold">Dữ liệu đang lưu CỤC BỘ trên trình duyệt này</div><div class="text-sm text-slate-600">Kết nối Supabase (miễn phí) để cả trường dùng chung, xem thời gian thực giữa trường chính và các phân hiệu.</div></div>
-    <button onclick="A.openCloud()" class="${B.primary}">${ic('cloud-cog')}Kết nối đám mây</button></div>`;
+  if (!Cloud.on) {
+    const notInstalled = Cloud.server && Cloud.server.installed === false;
+    return `<div class="${CARD} p-5 mb-6 flex flex-wrap items-center gap-4 bg-gradient-to-r from-sky-50 to-indigo-50">
+    <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-sky-600 shadow-sm">${ic('server', 'w-6 h-6')}</div>
+    <div class="flex-1 min-w-[240px]"><div class="font-bold">Dữ liệu đang lưu CỤC BỘ trên trình duyệt này</div><div class="text-sm text-slate-600">${notInstalled
+      ? `Đã thấy máy chủ nhưng <b>chưa cài đặt</b>. Mở <a class="text-indigo-600 underline" href="${esc(Cloud.base)}install.php" target="_blank" rel="noopener">trang cài đặt</a> để kết nối MySQL.`
+      : 'Bật máy chủ MySQL trên hosting để cả trường dùng chung, cập nhật tức thời giữa trường chính và các phân hiệu.'}</div></div>
+    <button onclick="A.openCloud()" class="${B.primary}">${ic('server-cog')}Hướng dẫn kết nối</button></div>`;
+  }
   const q = Cloud.queue().length;
   return `<div class="${CARD} p-5 mb-6"><div class="flex flex-wrap items-center justify-between gap-3">
-    <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">${ic('cloud', 'w-6 h-6')}</div>
-      <div><div class="font-bold">Đám mây Supabase · ${esc(Cloud.host())}</div><div class="text-xs text-slate-500">Trạng thái: <b>${esc(Cloud.status)}</b> · Đồng bộ lần cuối ${fmtDT(Cloud.lastSync)} · Hàng đợi ngoại tuyến: ${q} · Realtime: ${Cloud.channel ? 'bật' : 'tắt'}</div></div></div>
+    <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600">${ic('server', 'w-6 h-6')}</div>
+      <div><div class="font-bold">Máy chủ MySQL · ${esc(Cloud.host())}</div><div class="text-xs text-slate-500">Trạng thái: <b>${esc(Cloud.status)}</b> · Phiên bản dữ liệu #${Cloud.rev} · Đồng bộ lần cuối ${fmtDT(Cloud.lastSync)} · Hàng đợi ngoại tuyến: ${q} · Cập nhật 4 giây/lần</div></div></div>
     <div class="flex flex-wrap gap-2">
-      ${stash ? `<button onclick="A.pushStash()" class="${B.success}">${ic('cloud-upload')}Đẩy dữ liệu cục bộ cũ lên mây (${(stash.data.lesson_studies || []).length} chu trình)</button>` : ''}
-      <button onclick="A.syncNow()" class="${B.secondary}">${ic('refresh-cw')}Đồng bộ ngay</button><button onclick="A.openCloud()" class="${B.secondary}">${ic('cloud-cog')}Cấu hình</button></div></div></div>`;
+      ${stash ? `<button onclick="A.pushStash()" class="${B.success}">${ic('upload')}Đẩy dữ liệu cục bộ cũ lên máy chủ (${(stash.data.lesson_studies || []).length} chu trình)</button>` : ''}
+      <button onclick="A.syncNow()" class="${B.secondary}">${ic('refresh-cw')}Đồng bộ ngay</button><button onclick="A.openCloud()" class="${B.secondary}">${ic('server-cog')}Cấu hình</button></div></div></div>`;
 }
 A.pushStash = async () => {
   let stash; try { stash = JSON.parse(localStorage.getItem(LS.localStash)); } catch (e) {}
   if (!stash) return;
-  if (!confirm(`Đẩy dữ liệu cục bộ (lưu lúc ${fmtDT(stash.at)}) lên đám mây? GV mẫu sẽ được tạo dưới dạng "hồ sơ" (không có tài khoản).`)) return;
+  if (!confirm(`Đẩy dữ liệu cục bộ (lưu lúc ${fmtDT(stash.at)}) lên máy chủ? GV mẫu sẽ được tạo dưới dạng "hồ sơ" (không có tài khoản).`)) return;
   const n = await cloudMerge(stash.data); localStorage.removeItem(LS.localStash);
-  await audit('Khôi phục dữ liệu', 'database', `Đẩy ${n} bản ghi cục bộ lên đám mây`); ensureLesson(); render(); toast(`Đã đẩy ${n} bản ghi lên đám mây.`, 'success');
+  await audit('Khôi phục dữ liệu', 'database', `Đẩy ${n} bản ghi cục bộ lên máy chủ`); ensureLesson(); render(); toast(`Đã đẩy ${n} bản ghi lên máy chủ.`, 'success');
 };
 A.openCloud = () => {
   if (state.user && state.user.role !== 'admin') return toast('Chỉ Ban Giám hiệu được cấu hình máy chủ.', 'warn');
-  const sql = $('#sqlSchema').textContent.trim();
   const step = (n, t) => `<li class="flex gap-2"><span class="w-5 h-5 shrink-0 rounded-full bg-indigo-600 text-white text-[11px] font-bold flex items-center justify-center">${n}</span><span>${t}</span></li>`;
-  openModal({ title: 'Cơ sở dữ liệu đám mây – Supabase', icon: 'cloud-cog', size: 'max-w-3xl', body: `<div class="space-y-4">
+  const auto = /^https?:$/.test(location.protocol) ? new URL('api/', location.href).href : '';
+  openModal({ title: 'Máy chủ dữ liệu của trường – MySQL', icon: 'server-cog', size: 'max-w-2xl', body: `<div class="space-y-4">
     <ol class="space-y-1.5 text-sm text-slate-700">
-      ${step(1, 'Tạo dự án miễn phí tại <b>supabase.com</b> (chọn vùng <b>Singapore</b> cho nhanh).')}
-      ${step(2, 'Mở <b>SQL Editor</b> → dán đoạn SQL bên dưới → <b>Run</b> (chỉ 1 lần).')}
-      ${step(3, '<b>Authentication → Sign In / Providers → Email</b>: để trường nội bộ, có thể tắt <i>Confirm email</i>; nếu bật thì <b>URL Configuration → Site URL</b> = https://ncbh.thaykhoa-ai.tech')}
-      ${step(4, '<b>Project Settings → API</b>: sao chép <i>Project URL</i> và khóa <i>anon public</i> dán vào đây → <b>Lưu & kết nối</b>.')}
-      ${step(5, 'Đăng ký tài khoản đầu tiên → tự động là <b>Admin</b>. GV đăng ký sau sẽ chờ BGH duyệt ở Admin Dashboard.')}
+      ${step(1, '<b>hPanel → Databases → MySQL Databases</b>: tạo cơ sở dữ liệu + người dùng + mật khẩu (ghi lại 3 thông tin này).')}
+      ${step(2, 'Tải thư mục <b>api/</b> lên cùng chỗ với index.html (File Manager hoặc GitHub Actions tự tải).')}
+      ${step(3, `Mở <b>${esc(auto || 'https://ncbh.thaykhoa-ai.tech/api/')}install.php</b> → nhập 3 thông tin ở bước 1 → <b>Cài đặt máy chủ</b>.`)}
+      ${step(4, 'Tải lại ứng dụng: tự động chuyển sang chế độ máy chủ. <b>Đăng ký tài khoản đầu tiên</b> → tự động là Admin.')}
     </ol>
-    <div class="grid md:grid-cols-2 gap-3">
-      <div><label class="${LABEL}">Project URL</label><input id="cfUrl" class="${INPUT} font-mono !text-xs" placeholder="https://xxxx.supabase.co" value="${esc(Cloud.url())}"></div>
-      <div><label class="${LABEL}">Anon public key</label><input id="cfKey" class="${INPUT} font-mono !text-xs" placeholder="eyJhbGciOi..." value="${esc(Cloud.key())}"></div>
-    </div>
-    <label class="flex items-center gap-2 text-sm"><input id="cfOn" type="checkbox" class="accent-indigo-600" ${Cloud.enabled() || !Cloud.url() ? 'checked' : ''}>Bật chế độ đám mây trên trình duyệt này</label>
+    <div><label class="${LABEL}">Địa chỉ API (để trống = tự dò thư mục api/ cạnh ứng dụng)</label><input id="cfUrl" class="${INPUT} font-mono !text-xs" placeholder="${esc(auto || 'https://ncbh.thaykhoa-ai.tech/api/')}" value="${esc(Settings.get('apiUrl') || '')}"></div>
+    <label class="flex items-center gap-2 text-sm"><input id="cfOn" type="checkbox" class="accent-indigo-600" ${Settings.get('cloudOn') !== false ? 'checked' : ''}>Dùng máy chủ khi tìm thấy (bỏ chọn = chỉ lưu cục bộ trên trình duyệt này)</label>
     <div id="cfTest" class="text-sm"></div>
-    <div><div class="flex items-center justify-between mb-1"><label class="${LABEL} !mb-0">SQL khởi tạo (bảng, phân quyền RLS, realtime)</label><button type="button" onclick="A.copySQL()" class="${B.ghost} !py-1 !text-xs">${ic('copy', 'w-3.5 h-3.5')}Sao chép SQL</button></div>
-      <textarea readonly rows="7" class="${INPUT} font-mono !text-[11px] bg-slate-50">${esc(sql)}</textarea></div>
-    <div class="text-xs p-3 rounded-xl bg-amber-50 text-amber-800 flex gap-2">${ic('shield-alert', 'w-4 h-4 shrink-0')}<span>Chỉ dùng khóa <b>anon public</b>, tuyệt đối không dán khóa <b>service_role</b>. Để mọi GV tự kết nối, Admin điền URL + anon key vào hằng <code>CLOUD_PRESET</code> ở đầu tệp index.html trước khi tải lên hosting.</span></div>
-  </div>`, footer: `${Cloud.client ? `<button onclick="A.disableCloud()" class="${B.danger} mr-auto">${ic('cloud-off')}Tắt đám mây</button>` : ''}<button onclick="A.testCloud()" class="${B.secondary}">${ic('plug-zap')}Kiểm tra kết nối</button><button onclick="A.saveCloud()" class="${B.primary}">${ic('save')}Lưu & kết nối</button>` });
+    <div class="text-xs p-3 rounded-xl bg-emerald-50 text-emerald-800 flex gap-2">${ic('shield-check', 'w-4 h-4 shrink-0')}<span>Mật khẩu được băm bằng bcrypt trên máy chủ; tài khoản mới phải được BGH duyệt; chống dò mật khẩu; tệp cấu hình chứa mật khẩu CSDL được chặn truy cập từ web.</span></div>
+  </div>`, footer: `<button onclick="A.testCloud()" class="${B.secondary}">${ic('plug-zap')}Kiểm tra máy chủ</button><button onclick="A.saveCloud()" class="${B.primary}">${ic('save')}Lưu & tải lại</button>` });
 };
-A.copySQL = async () => { const t = $('#sqlSchema').textContent.trim(); try { await navigator.clipboard.writeText(t); } catch (e) { const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } toast('Đã sao chép SQL – dán vào Supabase SQL Editor rồi bấm Run.', 'success'); };
 A.testCloud = async () => {
-  const url = $('#cfUrl').value.trim().replace(/\/+$/, ''), key = $('#cfKey').value.trim(), out = $('#cfTest');
-  if (!/^https:\/\/.+/.test(url) || !key) { out.innerHTML = '<span class="text-rose-600">Nhập Project URL (https://…) và anon key.</span>'; return; }
-  if (!window.supabase) { out.innerHTML = '<span class="text-rose-600">Chưa tải được thư viện Supabase – kiểm tra Internet.</span>'; return; }
+  const out = $('#cfTest'); const custom = $('#cfUrl').value.trim();
+  const base = custom ? custom.replace(/\/?$/, '/') : (/^https?:$/.test(location.protocol) ? new URL('api/', location.href).href : '');
+  if (!base) { out.innerHTML = '<span class="text-rose-600">Đang mở tệp trực tiếp trên máy – hãy nhập địa chỉ API.</span>'; return; }
   out.innerHTML = '<span class="text-slate-500">Đang kiểm tra...</span>';
   try {
-    const c = window.supabase.createClient(url, key, { auth: { persistSession: false } });
-    const { error } = await c.from('lesson_studies').select('id', { count: 'exact', head: true });
-    if (error && /does not exist|42P01|schema cache/i.test(error.message + error.code)) throw new Error('Kết nối được nhưng CHƯA chạy SQL khởi tạo (bước 2).');
-    if (error && !isPermErr(error)) throw error;
-    let confirmInfo = '';
-    try { const r = await fetch(url + '/auth/v1/settings', { headers: { apikey: key } }); const j = await r.json(); confirmInfo = j.mailer_autoconfirm ? ' · Không yêu cầu xác nhận email' : ' · Có yêu cầu xác nhận email'; } catch (e) {}
-    out.innerHTML = `<span class="text-emerald-600">✓ Kết nối thành công, đã có bảng dữ liệu${esc(confirmInfo)}.</span>`;
-  } catch (e) { out.innerHTML = `<span class="text-rose-600">✗ ${esc(e.message || String(e))}</span>`; }
+    const res = await fetch(base + 'index.php?r=ping', { cache: 'no-store' }); const j = await res.json();
+    out.innerHTML = j.installed ? `<span class="text-emerald-600">✓ Máy chủ hoạt động (phiên bản ${esc(j.version)}, dữ liệu #${j.rev}).</span>`
+      : `<span class="text-amber-600">Máy chủ có nhưng chưa cài đặt – mở <a class="underline" target="_blank" rel="noopener" href="${esc(base)}install.php">${esc(base)}install.php</a></span>`;
+  } catch (e) { out.innerHTML = `<span class="text-rose-600">✗ Không tìm thấy API tại ${esc(base)} – kiểm tra đã tải thư mục api/ lên chưa.</span>`; }
 };
 A.saveCloud = async () => {
-  const url = $('#cfUrl').value.trim(), key = $('#cfKey').value.trim(), on = $('#cfOn').checked;
-  if (on && (!/^https:\/\/.+/.test(url) || !key)) return toast('Nhập đủ Project URL và anon key.', 'warn');
-  if (/service_role/.test(key) || (() => { try { return JSON.parse(atob(key.split('.')[1])).role === 'service_role'; } catch (e) { return false; } })()) return toast('Đây là khóa service_role – KHÔNG được dùng trên web. Hãy dùng khóa anon public.', 'error');
-  if (state.user) await audit('Cấu hình hệ thống', 'settings', on ? 'Bật đám mây ' + url : 'Tắt đám mây');
-  Settings.set('cloudUrl', url); Settings.set('cloudKey', key); Settings.set('cloudOn', on);
-  if (Cloud.client) { await Cloud.stop(); try { await Cloud.client.auth.signOut(); } catch (e) {} }
-  toast('Đã lưu. Đang khởi động lại...', 'success'); setTimeout(() => location.reload(), 600);
-};
-A.disableCloud = async () => {
-  if (!confirm('Tắt đám mây trên trình duyệt này? Dữ liệu trên Supabase vẫn được giữ nguyên.')) return;
-  Settings.set('cloudOn', false); await Cloud.stop(); try { await Cloud.client.auth.signOut(); } catch (e) {}
-  for (const st of STORES) await DB.clear(st);
-  location.reload();
+  const url = $('#cfUrl').value.trim(), on = $('#cfOn').checked;
+  if (state.user) await audit('Cấu hình hệ thống', 'settings', on ? 'Bật máy chủ ' + (url || '(tự dò)') : 'Tắt máy chủ trên trình duyệt này');
+  await Cloud.settle();
+  Settings.set('apiUrl', url); Settings.set('cloudOn', on);
+  toast('Đã lưu. Đang tải lại...', 'success'); setTimeout(() => location.reload(), 500);
 };
 A.resetDemo = async () => {
   if (!confirm('Xóa TOÀN BỘ dữ liệu hiện tại và nạp lại dữ liệu mẫu? (Nên sao lưu JSON trước)')) return;
@@ -2107,14 +2004,9 @@ document.addEventListener('click', e => { $$('details[open]').forEach(d => { if 
 async function boot() {
   Settings.load();
   await DB.init();
-  if (Cloud.init()) {
-    DB.mode = 'Supabase Cloud ⇄ IndexedDB';
-    try {
-      const { data } = await Cloud.client.auth.getSession();
-      if (data && data.session) {
-        try { await Cloud.afterLogin(data.session.user); } catch (e) { await Cloud.client.auth.signOut(); toast(e.message, 'warn'); Cloud.setStatus('off'); }
-      }
-    } catch (e) { Cloud.setStatus('error', e.message); }
+  if (await Cloud.detect()) {
+    DB.mode = 'MySQL (máy chủ trường) ⇄ IndexedDB';
+    await Cloud.resume();
   } else {
     if (!DB.all('users').length) await seedDemo();
     const sid = localStorage.getItem(LS.session); const u = sid && userById(sid);

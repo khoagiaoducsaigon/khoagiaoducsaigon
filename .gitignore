@@ -39,3 +39,6 @@ coverage
 .env
 .env.local
 .env.*.local
+
+# EduLesson: cấu hình máy chủ chứa mật khẩu CSDL – không đưa lên Git
+edulesson-copilot/api/config.php
