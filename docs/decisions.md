@@ -17,3 +17,6 @@
 | 28/10/2026 | Cập nhật theo chu kỳ 4 giây (30 giây khi ẩn tab) thay cho WebSocket | Hosting chia sẻ không hỗ trợ WebSocket; 4 giây đủ nhanh cho SHCM; mỗi lần hỏi rất nhẹ (chỉ lấy thay đổi mới theo số rev) |
 | 28/10/2026 | Trình cài đặt chỉ nhận CSDL `localhost`, tự khóa sau khi cài | Ngăn người lạ chiếm trang cài đặt trỏ ứng dụng sang CSDL của họ |
 | 28/10/2026 | Ứng dụng tự dò `api/` cạnh index.html | Giáo viên không phải cấu hình gì; BGH chỉ cài 1 lần |
+| 10/11/2026 | Bản VPS dùng tên miền `edulesson.thaykhoa-ai.tech`, không dùng `ncbh` | `ncbh` đã tạo trên hosting chia sẻ, có thể đang trỏ IP khác – quy trình cấm sửa bản ghi đang chạy |
+| 10/11/2026 | Chỉ đưa `index.html` lên VPS (chế độ cục bộ), không đưa `api/` | Caddy trên VPS chỉ phục vụ tĩnh – chép `api/` sẽ lộ mã PHP; bản dùng chung dữ liệu chạy trên hosting PHP/MySQL |
+| 10/11/2026 | Bộ triển khai tự chứa (app nhúng base64 + sha256), chạy bằng 1 tệp .bat | Phiên cloud không SSH được tới VPS; chỉ cần anh/chị bấm đúp, script tự làm 6 bước + curl kiểm tra |

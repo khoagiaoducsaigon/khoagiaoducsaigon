@@ -26,5 +26,11 @@
 - Test thật PHP 8.3 + MariaDB 10.11: API bảo mật 24/24; đầu-cuối 2 trình duyệt 24/24; chế độ cục bộ không hồi quy.
 - Việc của chủ tài khoản: tạo MySQL DB trên hPanel → upload api/ → mở api/install.php (DEPLOY.md mục C).
 
+## Đưa lên VPS (10/11/2026) – chờ chạy .bat
+- Bộ triển khai: `deploy/vps-edulesson/` (build-deploy.sh → deploy-edulesson.sh tự chứa; trien-khai-edulesson.bat).
+- Đích: https://edulesson.thaykhoa-ai.tech (Caddy tĩnh, thư mục /opt/eduscience/portal/edulesson).
+- Đã chạy thử trên VPS mô phỏng: IP xung đột → dừng; validate lỗi → khôi phục; lần đầu đủ 6 bước; chạy lại không trùng.
+- Còn lại: anh/chị chạy .bat từ Windows + thêm bản ghi A `edulesson` → 72.62.72.204 trong hPanel khi script nhắc.
+
 ## Việc có thể làm tiếp
 - Xuất .docx chuẩn; nhập KHBD .docx để AI đọc; lưu tệp KHBD trên Supabase Storage; gọi Gemini qua Edge Function để giấu API key.
