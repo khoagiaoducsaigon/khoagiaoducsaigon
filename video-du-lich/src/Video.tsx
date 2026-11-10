@@ -354,6 +354,8 @@ const TIMELINE: {from: number; dur: number; C: React.FC; bg: [string, string]}[]
   {from: 1710, dur: 90, C: S9Outro, bg: ['#FF5F6D', '#FFC371']},
 ];
 
+const VOICE_DELAY = 10; // lời dẫn bắt đầu ~0,33 giây sau khi vào cảnh
+
 const ProgressBar: React.FC = () => {
   const f = useCurrentFrame();
   return (
@@ -365,7 +367,13 @@ const ProgressBar: React.FC = () => {
 
 export const Video: React.FC = () => (
   <AbsoluteFill style={{background: '#000'}}>
-    <Audio src={staticFile('nhac-nen.mp3')} volume={(f) => interpolate(f, [0, 15, 1740, 1800], [0, 0.9, 0.9, 0], {extrapolateRight: 'clamp'})} />
+    {/* Nhạc nền được hạ nhỏ để nhường chỗ cho lồng tiếng */}
+    <Audio src={staticFile('nhac-nen.mp3')} volume={(f) => interpolate(f, [0, 15, 1740, 1800], [0, 0.28, 0.28, 0], {extrapolateRight: 'clamp'})} />
+    {TIMELINE.map(({from}, i) => (
+      <Sequence key={`v${i}`} from={from + VOICE_DELAY} layout="none">
+        <Audio src={staticFile(`voice/s${i + 1}.mp3`)} volume={1} />
+      </Sequence>
+    ))}
     {TIMELINE.map(({from, dur, C, bg}, i) => (
       <Sequence key={i} from={from} durationInFrames={dur}>
         <Scene dur={dur} from={bg[0]} to={bg[1]}><C /></Scene>
