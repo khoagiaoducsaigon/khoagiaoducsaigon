@@ -35,5 +35,8 @@
 ## Kịch bản review 25 giây (Reels/Shorts) – 10/11/2026
 - 6 phân cảnh: Hook → Smart Logger → Bản đồ nhiệt + AI → Biên bản CV 1315 → Admin CV 5555 → CTA. Lời đọc khoảng 105 âm tiết, khung 9:16.
 
+## Lời giới thiệu cho người mới – 10/11/2026
+- Đã soạn trong chat: app là gì, dành cho ai, bắt đầu trong 3 phút, 4 vai trò, 5 phân hệ, mẹo, an toàn dữ liệu.
+
 ## Việc có thể làm tiếp
 - Xuất .docx chuẩn; nhập KHBD .docx để AI đọc; lưu tệp KHBD trên Supabase Storage; gọi Gemini qua Edge Function để giấu API key.
