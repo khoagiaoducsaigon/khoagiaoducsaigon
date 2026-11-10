@@ -6,3 +6,6 @@
 - Render: chromium tại /opt/pw-browsers/chromium (remotion.config.ts).
 - Kết quả: out/du-lich-chuong-2.mp4.
 - Việc có thể làm tiếp: thêm lồng tiếng TTS, phụ đề, bản dọc 9:16 cho TikTok/Reels.
+- Lồng tiếng: scripts/make_voice.py (Edge TTS vi-VN-HoaiMyNeural) → public/voice/s1..s9.mp3; nhạc hạ còn 0,28 khi có lời.
+- Mạng: đã tạo môi trường cá nhân "khoagiaoducsaigon" mở host speech.platform.bing.com (dịch vụ hay lỗi NoAudioReceived → script tự thử lại).
+- Master prompt làm video Remotion: đã soạn trong chat (khung TASK-7).
