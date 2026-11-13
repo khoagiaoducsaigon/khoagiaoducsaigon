@@ -1,0 +1,184 @@
+{
+ "nguon": "Phụ lục V – Mẫu phiếu đánh giá bài dạy (kèm CV 05/SGDĐT-GDPT ngày 04/01/2021 của Sở GDĐT)",
+ "tong_diem": 20,
+ "buoc_diem": 0.25,
+ "muc_ty_le": [
+  [
+   0.5,
+   0.65
+  ],
+  [
+   0.65,
+   0.8
+  ],
+  [
+   0.8,
+   1.0
+  ]
+ ],
+ "duoi_muc_1": "dưới 50% điểm tối đa",
+ "xep_loai": [
+  {
+   "ten": "Giỏi",
+   "tu": 18
+  },
+  {
+   "ten": "Khá",
+   "tu": 13.5
+  },
+  {
+   "ten": "Trung bình",
+   "tu": 10
+  },
+  {
+   "ten": "Không đạt",
+   "tu": 0
+  }
+ ],
+ "tieu_chi": [
+  {
+   "ma": "I.1",
+   "nhom": "Kế hoạch bài dạy",
+   "noi_dung": "Mức độ phù hợp của các hoạt động học với mục tiêu, nội dung và phương pháp dạy học được sử dụng",
+   "diem_toi_da": 1.0,
+   "huong_dan": "Các hoạt động học được thiết kế trong Kế hoạch bài dạy",
+   "muc": [
+    "Tình huống/câu hỏi/nhiệm vụ mở đầu nhằm huy động kiến thức/kĩ năng đã có của học sinh để chuẩn bị học kiến thức/kĩ năng mới nhưng chưa tạo được mâu thuẫn nhận thức để đặt ra vấn đề/câu hỏi chính của bài học. Kiến thức mới được trình bày rõ ràng, tường minh bằng kênh chữ/kênh hình/kênh tiếng; có câu hỏi/lệnh cụ thể cho học sinh hoạt động để tiếp thu kiến thức mới. Có câu hỏi/bài tập vận dụng trực tiếp những kiến thức mới học nhưng chưa nêu rõ lí do, mục đích của mỗi câu hỏi/bài tập. Có yêu cầu học sinh liên hệ thực tế/bổ sung thông tin liên quan nhưng chưa mô tả rõ sản phẩm vận dụng mà học sinh phải thực hiện.",
+    "Tình huống/câu hỏi/nhiệm vụ mở đầu chỉ có thể được giải quyết một phần hoặc phỏng đoán được kết quả nhưng chưa lí giải được đầy đủ bằng kiến thức/kĩ năng đã có của học sinh; tạo được mâu thuẫn nhận thức. Kiến thức mới được thể hiện trong kênh chữ/kênh hình/kênh tiếng; có câu hỏi/lệnh cụ thể cho học sinh hoạt động để tiếp thu kiến thức mới và giải quyết được đầy đủ tình huống/câu hỏi/nhiệm vụ mở đầu. Hệ thống câu hỏi/bài tập được lựa chọn thành hệ thống; mỗi câu hỏi/bài tập có mục đích cụ thể, nhằm rèn luyện các kiến thức/kĩ năng cụ thể. Nêu rõ yêu cầu và mô tả rõ sản phẩm vận dụng mà học sinh phải thực hiện.",
+    "Tình huống/câu hỏi/nhiệm vụ mở đầu gần gũi với kinh nghiệm sống của học sinh và chỉ có thể được giải quyết một phần hoặc phỏng đoán được kết quả nhưng chưa lí giải được đầy đủ bằng kiến thức/kĩ năng đã có; đặt ra được vấn đề/câu hỏi chính của bài học. Kiến thức mới được thể hiện bằng kênh chữ/kênh hình/kênh tiếng gắn với vấn đề cần giải quyết; tiếp nối với vấn đề/câu hỏi chính của bài học để học sinh tiếp thu và giải quyết được vấn đề/câu hỏi chính của bài học. Hệ thống câu hỏi/bài tập được lựa chọn thành hệ thống, gắn với tình huống thực tiễn; mỗi câu hỏi/bài tập có mục đích cụ thể, nhằm rèn luyện các kiến thức/kĩ năng cụ thể. Hướng dẫn để học sinh tự xác định vấn đề, nội dung, hình thức thể hiện của sản phẩm vận dụng."
+   ]
+  },
+  {
+   "ma": "I.2",
+   "nhom": "Kế hoạch bài dạy",
+   "noi_dung": "Mức độ rõ ràng, chính xác của mục tiêu, nội dung, sản phẩm, cách thức tổ chức thực hiện mỗi hoạt động học của học sinh",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Mục tiêu, nội dung, sản phẩm, cách thức tổ chức thực hiện các hoạt động được thiết kế trong Kế hoạch bài dạy",
+   "muc": [
+    "Mục tiêu của mỗi hoạt động và sản phẩm học tập mà học sinh phải hoàn thành trong mỗi hoạt động đó được mô tả rõ ràng nhưng chưa nêu rõ phương thức hoạt động của học sinh/nhóm học sinh nhằm hoàn thành sản phẩm học tập.",
+    "Mục tiêu và sản phẩm học tập mà học sinh phải hoàn thành trong mỗi hoạt động được mô tả rõ ràng; phương thức tổ chức hoạt động cho học sinh được trình bày cụ thể, thể hiện được sự phù hợp với sản phẩm học tập cần hoàn thành.",
+    "Mục tiêu, cách thức hoạt động và sản phẩm học tập mà học sinh phải hoàn thành trong mỗi hoạt động được mô tả rõ ràng; cách thức tổ chức hoạt động học cho học sinh thể hiện được sự phù hợp với sản phẩm học tập và đối tượng học sinh."
+   ]
+  },
+  {
+   "ma": "I.3",
+   "nhom": "Kế hoạch bài dạy",
+   "noi_dung": "Mức độ phù hợp của thiết bị dạy học và học liệu được sử dụng để tổ chức các hoạt động học của học sinh",
+   "diem_toi_da": 1.0,
+   "huong_dan": "Thiết bị dạy học và học liệu được lựa chọn để sử dụng trong Kế hoạch bài dạy",
+   "muc": [
+    "Thiết bị dạy học và học liệu thể hiện được sự phù hợp với sản phẩm học tập mà học sinh phải hoàn thành nhưng chưa mô tả rõ cách thức mà học sinh hoạt động với thiết bị dạy học và học liệu đó.",
+    "Thiết bị dạy học và học liệu thể hiện được sự phù hợp với sản phẩm học tập mà học sinh phải hoàn thành; cách thức mà học sinh hành động (đọc/viết/nghe/nhìn/thực hành) với thiết bị dạy học và học liệu đó được mô tả cụ thể, rõ ràng.",
+    "Thiết bị dạy học và học liệu thể hiện được sự phù hợp với sản phẩm học tập mà học sinh phải hoàn thành; cách thức mà học sinh hoạt động (đọc/viết/nghe/nhìn/thực hành) với thiết bị dạy học và học liệu đó được mô tả cụ thể, rõ ràng, phù hợp với kĩ thuật dạy học tích cực được sử dụng."
+   ]
+  },
+  {
+   "ma": "I.4",
+   "nhom": "Kế hoạch bài dạy",
+   "noi_dung": "Mức độ phù hợp của phương án kiểm tra, đánh giá trong quá trình tổ chức hoạt động học của học sinh",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Phương án kiểm tra, đánh giá trong quá trình tổ chức hoạt động học của học sinh được thiết kế trong Kế hoạch bài dạy",
+   "muc": [
+    "Phương án kiểm tra, đánh giá sản phẩm học tập mà học sinh phải hoàn thành trong mỗi hoạt động học được mô tả nhưng chưa rõ phương án kiểm tra trong quá trình hoạt động học của học sinh.",
+    "Phương án kiểm tra, đánh giá quá trình hoạt động học và sản phẩm học tập của học sinh được mô tả rõ, trong đó thể hiện rõ các tiêu chí cần đạt của các sản phẩm học tập trong các hoạt động học.",
+    "Phương án kiểm tra, đánh giá quá trình hoạt động học và sản phẩm học tập của học sinh được mô tả rõ, trong đó thể hiện rõ các tiêu chí cần đạt của các sản phẩm học tập trung gian và sản phẩm học tập cuối cùng của các hoạt động học."
+   ]
+  },
+  {
+   "ma": "II.1",
+   "nhom": "Hoạt động của giáo viên",
+   "noi_dung": "Mức độ chính xác, phù hợp, sinh động, hấp dẫn của nội dung, phương pháp và hình thức giao nhiệm vụ học tập cho học sinh",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Phương pháp và hình thức chuyển giao nhiệm vụ học tập cho học sinh",
+   "muc": [
+    "Câu hỏi/lệnh rõ ràng về mục tiêu, nội dung, sản phẩm học tập phải hoàn thành, đảm bảo cho phần lớn học sinh nhận thức đúng nhiệm vụ phải thực hiện.",
+    "Câu hỏi/lệnh rõ ràng về mục tiêu, nội dung, sản phẩm học tập, phương thức hoạt động gắn với thiết bị dạy học và học liệu được sử dụng; đảm bảo cho hầu hết học sinh nhận thức đúng nhiệm vụ và hăng hái thực hiện.",
+    "Câu hỏi/lệnh rõ ràng về mục tiêu, nội dung, sản phẩm học tập, phương thức hoạt động gắn với thiết bị dạy học và học liệu được sử dụng; đảm bảo cho 100% học sinh nhận thức đúng nhiệm vụ và hăng hái thực hiện."
+   ]
+  },
+  {
+   "ma": "II.2",
+   "nhom": "Hoạt động của giáo viên",
+   "noi_dung": "Khả năng theo dõi, quan sát, phát hiện kịp thời những khó khăn của học sinh",
+   "diem_toi_da": 1.0,
+   "huong_dan": "Khả năng theo dõi, quan sát, phát hiện kịp thời những khó khăn của học sinh",
+   "muc": [
+    "Theo dõi, bao quát được quá trình hoạt động của học sinh/nhóm học sinh; phát hiện được những học sinh/nhóm học sinh có yêu cầu được giúp đỡ hoặc có biểu hiện đang gặp khó khăn.",
+    "Quan sát được cụ thể quá trình hoạt động trong từng học sinh/nhóm học sinh; phát hiện được khó khăn cụ thể mà học sinh/nhóm học sinh gặp phải trong quá trình thực hiện nhiệm vụ.",
+    "Quan sát được một cách chi tiết quá trình thực hiện nhiệm vụ đến từng học sinh/nhóm học sinh; chủ động phát hiện được khó khăn cụ thể và nguyên nhân mà từng học sinh/nhóm học sinh đang gặp phải trong quá trình thực hiện nhiệm vụ."
+   ]
+  },
+  {
+   "ma": "II.3",
+   "nhom": "Hoạt động của giáo viên",
+   "noi_dung": "Mức độ phù hợp, hiệu quả của các biện pháp hỗ trợ và khuyến khích học sinh hợp tác, giúp đỡ nhau khi thực hiện nhiệm vụ học tập",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Các biện pháp hỗ trợ và khuyến khích học sinh hợp tác, giúp đỡ nhau khi thực hiện nhiệm vụ học tập:",
+   "muc": [
+    "Đưa ra được những gợi ý, hướng dẫn cụ thể cho học sinh/nhóm học sinh vượt qua khó khăn và hoàn thành được nhiệm vụ học tập được giao.",
+    "Chỉ ra cho học sinh/nhóm học sinh những sai lầm có thể đã mắc phải dẫn đến khó khăn; đưa ra được những định hướng khái quát để học sinh/nhóm học sinh tiếp tục hoạt động và hoàn thành nhiệm vụ học tập được giao.",
+    "Chỉ ra cho học sinh/nhóm học sinh những sai lầm có thể đã mắc phải dẫn đến khó khăn; đưa ra được những định hướng khái quát; khuyến khích được học sinh hợp tác, hỗ trợ lẫn nhau để hoàn thành nhiệm vụ học tập được giao."
+   ]
+  },
+  {
+   "ma": "II.4",
+   "nhom": "Hoạt động của giáo viên",
+   "noi_dung": "Mức độ chính xác, hiệu quả trong việc tổng hợp, phân tích, đánh giá quá trình và kết quả học tập của học sinh",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Tổng hợp, phân tích, đánh giá kết quả hoạt động và quá trình thảo luận của học sinh",
+   "muc": [
+    "Có câu hỏi định hướng để học sinh/nhóm học sinh tích cực tham gia nhận xét, đánh giá, bổ sung, hoàn thiện sản phẩm học tập lẫn nhau trong nhóm hoặc toàn lớp; nhận xét, đánh giá về sản phẩm học tập được đông đảo học sinh tiếp thu, ghi nhận.",
+    "Lựa chọn được một số sản phẩm học tập của học sinh/nhóm học sinh để tổ chức cho học sinh trình bày, báo cáo, nhận xét, đánh giá, bổ sung, hoàn thiện lẫn nhau; câu hỏi định hướng của giáo viên giúp hầu hết học sinh tích cực tham gia thảo luận; nhận xét, đánh giá về sản phẩm học tập được đông đảo học sinh tiếp thu, ghi nhận.",
+    "Lựa chọn được một số sản phẩm học tập điển hình của học sinh/nhóm học sinh để tổ chức cho học sinh trình bày, báo cáo nhận xét, đánh giá, bổ sung, hoàn thiện lẫn nhau; câu hỏi định hướng của giáo viên giúp hầu hết học sinh tích cực tham gia thảo luận, tự đánh giá và hoàn thiện được sản phẩm học tập của mình và của bạn."
+   ]
+  },
+  {
+   "ma": "III.1",
+   "nhom": "Hoạt động của học sinh",
+   "noi_dung": "Khả năng tiếp nhận và sẵn sàng thực hiện nhiệm vụ học tập của học sinh trong lớp",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Khả năng tiếp nhận và sẵn sàng thực hiện nhiệm vụ học tập của học sinh",
+   "muc": [
+    "Phần lớn học sinh tiếp nhận đúng nhiệm vụ và sẵn sàng bắt tay vào thực hiện nhiệm vụ được giao, tuy nhiên vẫn còn một số học sinh bộc lộ chưa hiểu rõ nhiệm vụ học tập được giao.",
+    "Hầu hết học sinh tiếp nhận đúng và sẵn sàng thực hiện nhiệm vụ, tuy nhiên còn một vài học sinh bộc lộ thái độ chưa tự tin trong việc thực hiện nhiệm vụ học tập được giao.",
+    "Tất cả học sinh tiếp nhận đúng và hăng hái, tự tin trong việc thực hiện nhiệm vụ học tập được giao."
+   ]
+  },
+  {
+   "ma": "III.2",
+   "nhom": "Hoạt động của học sinh",
+   "noi_dung": "Mức độ tích cực, chủ động, sáng tạo, hợp tác của học sinh trong việc thực hiện các nhiệm vụ học tập",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Mức độ tích cực, chủ động, sáng tạo, hợp tác của học sinh trong việc thực hiện các nhiệm vụ học tập",
+   "muc": [
+    "Nhiều học sinh tỏ ra tích cực, chủ động hợp tác với nhau để thực hiện các nhiệm vụ học tập; tuy nhiên, một số học sinh có biểu hiện dựa dẫm, chờ đợi.",
+    "Hầu hết học sinh tỏ ra tích cực, chủ động, hợp tác với nhau để thực hiện các nhiệm vụ học tập; còn một vài học sinh lúng túng hoặc chưa thực sự tham gia vào hoạt động nhóm.",
+    "Tất cả học sinh tích cực, chủ động, hợp tác với nhau để thực hiện nhiệm vụ học tập; nhiều học sinh/nhóm học sinh có sáng tạo trong cách thức thực hiện nhiệm vụ."
+   ]
+  },
+  {
+   "ma": "III.3",
+   "nhom": "Hoạt động của học sinh",
+   "noi_dung": "Mức độ tham gia tích cực của học sinh trong trình bày, thảo luận về kết quả thực hiện nhiệm vụ học tập",
+   "diem_toi_da": 2.0,
+   "huong_dan": "Mức độ tham gia tích cực của học sinh trong trình bày, thảo luận về kết quả thực hiện nhiệm vụ học tập",
+   "muc": [
+    "Nhiều học sinh hăng hái, tự tin trình bày, trao đổi ý kiến/quan điểm của cá nhân; tuy nhiên, nhiều học sinh/nhóm học sinh thảo luận chưa sôi nổi; vai trò của nhóm trưởng (đối với hoạt động nhóm) chưa thật nổi bật; vẫn còn một số học sinh không trình bày được quan điểm của mình hoặc tỏ ra không hợp tác trong quá trình làm việc nhóm để thực hiện nhiệm vụ học tập.",
+    "Hầu hết học sinh hăng hái, tự tin trình bày, trao đổi ý kiến/quan điểm của cá nhân; đa số học sinh/nhóm học sinh thảo luận sôi nổi, tự tin; đa số nhóm trưởng (đối với hoạt động nhóm) đã biết cách điều hành thảo luận nhóm; nhưng vẫn còn một vài học sinh không tích cực trong quá trình làm việc cá nhân/nhóm để thực hiện nhiệm vụ học tập.",
+    "Tất cả học sinh tích cực, hăng hái, tự tin trong việc trình bày, trao đổi ý kiến, quan điểm của cá nhân; các học sinh/nhóm học sinh thảo luận sôi nổi, tự tin; các nhóm trưởng (đối với hoạt động nhóm) đều tỏ ra biết cách điều hành và khái quát nội dung trao đổi, thảo luận của nhóm để thực hiện nhiệm vụ học tập."
+   ]
+  },
+  {
+   "ma": "III.4",
+   "nhom": "Hoạt động của học sinh",
+   "noi_dung": "Mức độ đúng đắn, chính xác, phù hợp của các kết quả thực hiện nhiệm vụ học tập của học sinh",
+   "diem_toi_da": 1.0,
+   "huong_dan": "Mức độ đúng đắn, chính xác, phù hợp của các kết quả thực hiện nhiệm vụ học tập của học sinh",
+   "muc": [
+    "Nhiều học sinh trả lời câu hỏi/làm bài tập đúng với yêu cầu của giáo viên về thời gian, nội dung và cách thức trình bày; tuy nhiên, vẫn còn một số học sinh chưa hoàn thành hoặc không hoàn thành hết nhiệm vụ, kết quả thực hiện nhiệm vụ còn chưa chính xác, phù hợp với yêu cầu.",
+    "Đa số học sinh trả lời câu hỏi/làm bài tập đúng với yêu cầu của giáo viên về thời gian, nội dung và cách thức trình bày; song vẫn còn một vài học sinh trình bày/diễn đạt kết quả chưa rõ ràng do chưa nắm vững yêu cầu.",
+    "Tất cả học sinh đều trả lời câu hỏi/làm bài tập đúng với yêu cầu của giáo viên về thời gian, nội dung và cách thức trình bày; nhiều câu trả lời/đáp án mà học sinh đưa ra thể hiện sự sáng tạo trong suy nghĩ và cách thể hiện./."
+   ]
+  }
+ ]
+}

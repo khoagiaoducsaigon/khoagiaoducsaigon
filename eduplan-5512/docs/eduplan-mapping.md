@@ -10,14 +10,14 @@
 | `nguon_du_lieu` | `eduplan_cu` |
 | `ngay_di_tru` | thời điểm chạy di trú (ISO) |
 
-**Dữ liệu mẫu cũ** (id `u1–u6`, `lp1–lp3`, `a1–a5`, `r1–r5`, `log001–log015`, hoặc KHBD có `sampleKey`): **không di trú** vào dữ liệu thật. Ghi số lượng vào `migration_logs.bo_qua` với lý do "dữ liệu mẫu".
+**Dữ liệu mẫu cũ** (id `u1–u6`, `lp1–lp3`, `a1–a5`, `r1–r5`, `log001–log015`): **không di trú**, ghi số lượng vào `bo_qua_mau`. **Ngoại lệ (không làm mất dữ liệu thật):** KHBD mẫu đã bị sửa (đổi trạng thái/số phiên bản) hoặc được phiếu/kết quả AI thật tham chiếu thì được giữ; tài khoản mẫu được giữ nếu dữ liệu thật tham chiếu (trường đã dùng tài khoản mẫu để làm việc thật). Chữ ký tổ/BGH trên KHBD cũ không kèm phiếu → sinh lượt duyệt `legacy.nguon = chu_ky_cu`.
 
 ## users → users (?)
 | Cũ | Mới | Ghi chú |
 |---|---|---|
 | id | legacy_id | id mới sinh lại |
 | name, email, code | ho_ten (?), email, ma_gv (?) | |
-| role | vai_tro | admin→`bgh`(?), leader→`to_truong`(?), teacher→`giao_vien`(?) |
+| role | vai_tro | admin→`admin` (BGH kiêm quản trị, đủ quyền bgh), leader→`to_truong`, teacher→`giao_vien` |
 | dept, grades, title | to_chuyen_mon (?), khoi_phu_trach (?), chuc_danh (?) | |
 | password | mat_khau_bam | `sha256:` giữ nguyên, băm lại khi đăng nhập lần đầu · `djb2:` gắn cờ `phai_doi_mat_khau=true` |
 | status | trang_thai | active / pending / locked giữ nguyên |

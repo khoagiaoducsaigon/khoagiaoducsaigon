@@ -18,3 +18,7 @@
 | 13/11/2026 | Nhận PL V (phiếu đánh giá bài dạy, CV 05/SGDĐT-GDPT 04/01/2021 — văn bản cấp Sở) làm chuẩn cho P10; bổ sung vào v1.0 mục 2A, 3B, 4, 9, 11, 12 | P10 hết bị chặn |
 | 13/11/2026 | Duyệt v1.0 + audit + ánh xạ (TS. Khoa: "duyệt cả ba"); áp dụng đề xuất: bỏ qua dữ liệu mẫu cũ khi di trú, băm lại mật khẩu khi đăng nhập lần đầu; giai đoạn 2 sẽ hỏi sau giai đoạn 1 theo mục 11 | Phê duyệt |
 | 13/11/2026 | YCCĐ dùng khóa nội bộ Y00001…; năng lực AI dùng mã chính thức QĐ 2422 | QĐ 2422 có quy ước mã; CT 2018 không có |
+| 13/11/2026 | Vai trò cũ `admin` → `admin` (BGH kiêm quản trị) thay vì `bgh` | Giữ quyền Admin Dashboard người dùng cũ đang có |
+| 13/11/2026 | Giữ bản ghi mẫu cũ khi đã bị sửa hoặc được dữ liệu thật tham chiếu | Nguyên tắc "không làm mất dữ liệu" mạnh hơn "bỏ dữ liệu mẫu" |
+| 13/11/2026 | KHBD nhập từ EduPlan / chế độ rà soát nhanh: luật MT-01, NQ-01 hạ từ 🔴 xuống 🟡 | Không hồi quy luồng cũ (nộp KHBD văn bản → duyệt), mục 9 v1.1 |
+| 13/11/2026 | Điểm PL V gợi ý khi chọn mức = cận trên của khoảng mức (bội 0,25); người dự giờ sửa được | Phụ lục V chỉ quy định khoảng % |

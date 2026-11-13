@@ -1,0 +1,976 @@
+{
+ "app": "EduPlan 5512 CoPilot",
+ "schema": 1,
+ "tables": {
+  "users": [
+   {
+    "id": "u1",
+    "name": "TS. Nguyễn Minh Quang",
+    "email": "hieutruong@eduplan.edu.vn",
+    "code": "BGH01",
+    "role": "admin",
+    "dept": "Ban Giám hiệu",
+    "grades": "6–12",
+    "title": "Hiệu trưởng",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": true,
+    "createdAt": "2026-08-15T08:00:00.000Z"
+   },
+   {
+    "id": "u2",
+    "name": "ThS. Lê Văn Hùng",
+    "email": "tt.toan@eduplan.edu.vn",
+    "code": "GV-T01",
+    "role": "leader",
+    "dept": "Toán",
+    "grades": "8, 9",
+    "title": "Tổ trưởng tổ Toán",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": true,
+    "createdAt": "2026-08-16T08:00:00.000Z"
+   },
+   {
+    "id": "u3",
+    "name": "ThS. Phạm Thị Lan",
+    "email": "tt.nguvan@eduplan.edu.vn",
+    "code": "GV-V01",
+    "role": "leader",
+    "dept": "Ngữ văn",
+    "grades": "10, 11",
+    "title": "Tổ trưởng tổ Ngữ văn",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": true,
+    "createdAt": "2026-08-16T08:30:00.000Z"
+   },
+   {
+    "id": "u4",
+    "name": "Võ Thị Mai",
+    "email": "mai.vt@eduplan.edu.vn",
+    "code": "GV-T07",
+    "role": "teacher",
+    "dept": "Toán",
+    "grades": "8",
+    "title": "Giáo viên Toán",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": false,
+    "createdAt": "2026-08-20T09:00:00.000Z"
+   },
+   {
+    "id": "u5",
+    "name": "Đặng Quốc Bảo",
+    "email": "bao.dq@eduplan.edu.vn",
+    "code": "GV-V05",
+    "role": "teacher",
+    "dept": "Ngữ văn",
+    "grades": "10",
+    "title": "Giáo viên Ngữ văn",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": false,
+    "createdAt": "2026-08-20T09:15:00.000Z"
+   },
+   {
+    "id": "u6",
+    "name": "Ngô Thanh Tâm",
+    "email": "tam.nt@eduplan.edu.vn",
+    "code": "GV-K03",
+    "role": "teacher",
+    "dept": "KHTN",
+    "grades": "6",
+    "title": "Giáo viên KHTN",
+    "password": "sha256:47340cf347e479163c2d75fe954fc3a15b6d454748b3c15e3e418010f851b5f5",
+    "status": "active",
+    "canApprove": false,
+    "createdAt": "2026-08-21T10:00:00.000Z"
+   },
+   {
+    "id": "u_real1",
+    "name": "Trần Văn Hòa",
+    "email": "hoa.tv@truong.edu.vn",
+    "code": "GV-T22",
+    "role": "teacher",
+    "dept": "Toán",
+    "grades": "9",
+    "title": "Giáo viên Toán",
+    "password": "sha256:094215eb266470973e56b5c0b661d6a0f876072e238b99365df595e3a0418ce4",
+    "status": "active",
+    "canApprove": false,
+    "createdAt": "2026-11-02T08:00:00.000Z",
+    "soDienThoai": "0900000000"
+   },
+   {
+    "id": "u_real2",
+    "name": "Lý Thị Ngọc",
+    "email": "ngoc.lt@truong.edu.vn",
+    "code": "GV-V09",
+    "role": "teacher",
+    "dept": "Ngữ văn",
+    "grades": "11",
+    "title": "Giáo viên Ngữ văn",
+    "password": "djb2:1a2b3c4d",
+    "status": "active",
+    "canApprove": false,
+    "createdAt": "2026-11-03T08:00:00.000Z"
+   }
+  ],
+  "lesson_plans": [
+   {
+    "id": "lp1",
+    "title": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "subject": "Ngữ văn",
+    "grade": "10",
+    "book": "Chân trời sáng tạo",
+    "term": "Học kỳ I",
+    "dept": "Ngữ văn",
+    "schoolYear": "2026 – 2027",
+    "teacherId": "u5",
+    "teacherName": "Đặng Quốc Bảo",
+    "content": "KẾ HOẠCH BÀI DẠY\nTổ: Ngữ văn — Giáo viên: Đặng Quốc Bảo\nMôn: Ngữ văn — Lớp 10 — Bộ sách: Chân trời sáng tạo — Thời lượng: 2 tiết\nTÊN BÀI DẠY: NGHỆ THUẬT XÂY DỰNG HÌNH TƯỢNG NHÂN VẬT\n(Ngữ liệu: đoạn trích \"Chiến thắng Mtao Mxây\" — sử thi Đăm Săn)\n\nI. MỤC TIÊU\n1. Về năng lực\n- Năng lực đặc thù: Nhận biết và phân tích được các phương diện xây dựng nhân vật người anh hùng sử thi (ngoại hình, hành động, lời nói, quan hệ với cộng đồng); phân tích được tác dụng của các thủ pháp so sánh, phóng đại, trùng điệp.\n- Năng lực chung: Tự chủ và tự học; giao tiếp và hợp tác; giải quyết vấn đề và sáng tạo.\n2. Về phẩm chất\n- Trân trọng vẻ đẹp của người anh hùng và giá trị văn hóa Tây Nguyên; có ý thức trách nhiệm với cộng đồng.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Máy chiếu, video \"Không gian văn hóa cồng chiêng Tây Nguyên\" (2 phút).\n- Phiếu học tập số 1, số 2; giấy A0, bút lông, giấy ghi chú; bảng tiêu chí đánh giá sản phẩm nhóm.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (7 phút)\na) Mục tiêu: Tạo tâm thế, kết nối trải nghiệm của HS về hình mẫu người anh hùng.\nb) Nội dung: HS xem video và chia sẻ \"Người anh hùng trong tâm trí em\".\nc) Sản phẩm: Từ khóa cá nhân trên giấy ghi chú, dán lên \"Bức tường anh hùng\".\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu video, nêu nhiệm vụ: \"Trong 2 phút, mỗi em viết 3 từ khóa mô tả một người anh hùng em ngưỡng mộ và dán lên Bức tường anh hùng.\"\n- Bước 2. Thực hiện nhiệm vụ: HS làm việc cá nhân, viết và dán giấy ghi chú.\n- Bước 3. Báo cáo, thảo luận: 2–3 HS đọc to từ khóa, cả lớp nhận xét điểm chung.\n- Bước 4. Kết luận, nhận định: GV tổng hợp từ khóa, dẫn dắt vào bài học.\n\nHoạt động 2: Hình thành kiến thức (45 phút)\na) Mục tiêu: Phân tích được nghệ thuật xây dựng hình tượng Đăm Săn qua ngoại hình, hành động, lời nói và thái độ cộng đồng.\nb) Nội dung: HS làm việc nhóm theo kĩ thuật mảnh ghép với phiếu học tập số 1.\nc) Sản phẩm: Sơ đồ tư duy trên giấy A0 của từng nhóm.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 4 nhóm chuyên gia, mỗi nhóm phân tích một phương diện (ngoại hình; hành động qua các hiệp đấu; lời nói; thái độ của cộng đồng) trong 10 phút; sau đó lập nhóm mảnh ghép tổng hợp thành sơ đồ tư duy trong 10 phút.\n- Bước 2. Thực hiện nhiệm vụ: HS đọc văn bản, tìm chi tiết, thảo luận và ghi vào phiếu học tập; GV quan sát, hỗ trợ nhóm gặp khó khăn bằng câu hỏi gợi mở.\n- Bước 3. Báo cáo, thảo luận: Các nhóm treo sản phẩm theo hình thức phòng tranh; mỗi nhóm cử đại diện thuyết minh, các nhóm khác dùng giấy ghi chú đặt câu hỏi phản biện.\n- Bước 4. Kết luận, nhận định: GV nhận xét sản phẩm theo bảng tiêu chí, chuẩn hóa kiến thức về các thủ pháp so sánh, phóng đại, trùng điệp trong khắc họa người anh hùng.\n\nHoạt động 3: Luyện tập (15 phút)\na) Mục tiêu: Vận dụng kiến thức để so sánh hai hình tượng nhân vật.\nb) Nội dung: Hoàn thành phiếu học tập số 2 so sánh Đăm Săn và Mtao Mxây.\nc) Sản phẩm: Phiếu học tập số 2 của từng cặp.\nd) Tổ chức thực hiện:\n- Bước 1: GV phát phiếu học tập số 2, yêu cầu HS so sánh hình tượng Đăm Săn với Mtao Mxây trên 3 tiêu chí.\n- Bước 2: HS làm việc cặp đôi trong 8 phút.\n- Bước 3: Đại diện 2 cặp trình bày, các cặp khác bổ sung.\n- Bước 4: GV chốt kiến thức.\n\nHoạt động 4: Vận dụng (13 phút và ở nhà)\na) Mục tiêu: Viết đoạn văn phân tích một chi tiết nghệ thuật.\nb) Nội dung: Viết đoạn văn nghị luận văn học ngắn.\nc) Sản phẩm: Đoạn văn 150–200 chữ nộp trên Padlet lớp.\nd) Tổ chức thực hiện:\n- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.\n- Bước 2: HS thực hiện ở nhà.\n- Bước 3: HS nộp bài trên Padlet lớp.\n- Bước 4: GV nhận xét vào tiết sau.",
+    "status": "approved",
+    "submittedAt": "2026-09-21T21:05:00.000Z",
+    "createdAt": "2026-09-18T20:10:00.000Z",
+    "updatedAt": "2026-09-21T21:05:00.000Z",
+    "ttSignedBy": "ThS. Phạm Thị Lan",
+    "ttSignedAt": "2026-09-22T15:30:00.000Z",
+    "bghSignedBy": "TS. Nguyễn Minh Quang",
+    "bghSignedAt": "2026-09-25T10:00:00.000Z",
+    "onTime": true,
+    "sampleKey": "nv10",
+    "versions": [
+     {
+      "v": 1,
+      "at": "2026-09-18T20:10:00.000Z",
+      "by": "Đặng Quốc Bảo",
+      "note": "Bản nộp lần đầu",
+      "content": "KẾ HOẠCH BÀI DẠY\nTổ: Ngữ văn — Giáo viên: Đặng Quốc Bảo\nMôn: Ngữ văn — Lớp 10 — Bộ sách: Chân trời sáng tạo — Thời lượng: 2 tiết\nTÊN BÀI DẠY: NGHỆ THUẬT XÂY DỰNG HÌNH TƯỢNG NHÂN VẬT\n(Ngữ liệu: đoạn trích \"Chiến thắng Mtao Mxây\" — sử thi Đăm Săn)\n\nI. MỤC TIÊU\n1. Về năng lực\n- Năng lực đặc thù: Nhận biết và phân tích được các phương diện xây dựng nhân vật người anh hùng sử thi (ngoại hình, hành động, lời nói, quan hệ với cộng đồng); phân tích được tác dụng của các thủ pháp so sánh, phóng đại, trùng điệp.\n- Năng lực chung: Tự chủ và tự học; giao tiếp và hợp tác; giải quyết vấn đề và sáng tạo.\n2. Về phẩm chất\n- Trân trọng vẻ đẹp của người anh hùng và giá trị văn hóa Tây Nguyên; có ý thức trách nhiệm với cộng đồng.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Máy chiếu, video \"Không gian văn hóa cồng chiêng Tây Nguyên\" (2 phút).\n- Phiếu học tập số 1, số 2; giấy A0, bút lông, giấy ghi chú; bảng tiêu chí đánh giá sản phẩm nhóm.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (7 phút)\na) Mục tiêu: Tạo tâm thế, kết nối trải nghiệm của HS về hình mẫu người anh hùng.\nb) Nội dung: HS xem video và chia sẻ \"Người anh hùng trong tâm trí em\".\nc) Sản phẩm: Từ khóa cá nhân trên giấy ghi chú, dán lên \"Bức tường anh hùng\".\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu video, nêu nhiệm vụ: \"Trong 2 phút, mỗi em viết 3 từ khóa mô tả một người anh hùng em ngưỡng mộ và dán lên Bức tường anh hùng.\"\n- Bước 2. Thực hiện nhiệm vụ: HS làm việc cá nhân, viết và dán giấy ghi chú.\n- Bước 3. Báo cáo, thảo luận: 2–3 HS đọc to từ khóa, cả lớp nhận xét điểm chung.\n- Bước 4. Kết luận, nhận định: GV tổng hợp từ khóa, dẫn dắt vào bài học.\n\nHoạt động 2: Hình thành kiến thức (45 phút)\na) Mục tiêu: Phân tích được nghệ thuật xây dựng hình tượng Đăm Săn qua ngoại hình, hành động, lời nói và thái độ cộng đồng.\nb) Nội dung: HS làm việc nhóm theo kĩ thuật mảnh ghép với phiếu học tập số 1.\nc) Sản phẩm: Sơ đồ tư duy trên giấy A0 của từng nhóm.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 4 nhóm chuyên gia, mỗi nhóm phân tích một phương diện (ngoại hình; hành động qua các hiệp đấu; lời nói; thái độ của cộng đồng) trong 10 phút; sau đó lập nhóm mảnh ghép tổng hợp thành sơ đồ tư duy trong 10 phút.\n- Bước 2. Thực hiện nhiệm vụ: HS đọc văn bản, tìm chi tiết, thảo luận và ghi vào phiếu học tập; GV quan sát, hỗ trợ nhóm gặp khó khăn bằng câu hỏi gợi mở.\n- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trình bày sản phẩm, các nhóm khác nhận xét.\n- Bước 4. Kết luận, nhận định: GV nhận xét sản phẩm theo bảng tiêu chí, chuẩn hóa kiến thức về các thủ pháp so sánh, phóng đại, trùng điệp trong khắc họa người anh hùng.\n\nHoạt động 3: Luyện tập (15 phút)\na) Mục tiêu: Vận dụng kiến thức để so sánh hai hình tượng nhân vật.\nb) Nội dung: Hoàn thành phiếu học tập số 2 so sánh Đăm Săn và Mtao Mxây.\nc) Sản phẩm: Phiếu học tập số 2 của từng cặp.\nd) Tổ chức thực hiện:\n- Bước 1: GV phát phiếu học tập số 2, yêu cầu HS so sánh hình tượng Đăm Săn với Mtao Mxây trên 3 tiêu chí.\n- Bước 2: HS làm việc cặp đôi trong 8 phút.\n- Bước 3: Đại diện 2 cặp trình bày, các cặp khác bổ sung.\n- Bước 4: GV chốt kiến thức.\n\nHoạt động 4: Vận dụng (13 phút và ở nhà)\na) Mục tiêu: Viết đoạn văn phân tích một chi tiết nghệ thuật.\nb) Nội dung: Viết đoạn văn nghị luận văn học ngắn.\nc) Sản phẩm: Đoạn văn 150–200 chữ nộp trên Padlet lớp.\nd) Tổ chức thực hiện:\n- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.\n- Bước 2: HS thực hiện ở nhà.\n- Bước 3: HS nộp bài trên Padlet lớp.\n- Bước 4: GV nhận xét vào tiết sau.",
+      "score": 84
+     },
+     {
+      "v": 2,
+      "at": "2026-09-21T21:05:00.000Z",
+      "by": "Đặng Quốc Bảo",
+      "note": "Chỉnh sửa Bước 3 HĐ2 theo góp ý tổ: tổ chức phòng tranh + phản biện",
+      "content": "KẾ HOẠCH BÀI DẠY\nTổ: Ngữ văn — Giáo viên: Đặng Quốc Bảo\nMôn: Ngữ văn — Lớp 10 — Bộ sách: Chân trời sáng tạo — Thời lượng: 2 tiết\nTÊN BÀI DẠY: NGHỆ THUẬT XÂY DỰNG HÌNH TƯỢNG NHÂN VẬT\n(Ngữ liệu: đoạn trích \"Chiến thắng Mtao Mxây\" — sử thi Đăm Săn)\n\nI. MỤC TIÊU\n1. Về năng lực\n- Năng lực đặc thù: Nhận biết và phân tích được các phương diện xây dựng nhân vật người anh hùng sử thi (ngoại hình, hành động, lời nói, quan hệ với cộng đồng); phân tích được tác dụng của các thủ pháp so sánh, phóng đại, trùng điệp.\n- Năng lực chung: Tự chủ và tự học; giao tiếp và hợp tác; giải quyết vấn đề và sáng tạo.\n2. Về phẩm chất\n- Trân trọng vẻ đẹp của người anh hùng và giá trị văn hóa Tây Nguyên; có ý thức trách nhiệm với cộng đồng.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Máy chiếu, video \"Không gian văn hóa cồng chiêng Tây Nguyên\" (2 phút).\n- Phiếu học tập số 1, số 2; giấy A0, bút lông, giấy ghi chú; bảng tiêu chí đánh giá sản phẩm nhóm.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (7 phút)\na) Mục tiêu: Tạo tâm thế, kết nối trải nghiệm của HS về hình mẫu người anh hùng.\nb) Nội dung: HS xem video và chia sẻ \"Người anh hùng trong tâm trí em\".\nc) Sản phẩm: Từ khóa cá nhân trên giấy ghi chú, dán lên \"Bức tường anh hùng\".\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu video, nêu nhiệm vụ: \"Trong 2 phút, mỗi em viết 3 từ khóa mô tả một người anh hùng em ngưỡng mộ và dán lên Bức tường anh hùng.\"\n- Bước 2. Thực hiện nhiệm vụ: HS làm việc cá nhân, viết và dán giấy ghi chú.\n- Bước 3. Báo cáo, thảo luận: 2–3 HS đọc to từ khóa, cả lớp nhận xét điểm chung.\n- Bước 4. Kết luận, nhận định: GV tổng hợp từ khóa, dẫn dắt vào bài học.\n\nHoạt động 2: Hình thành kiến thức (45 phút)\na) Mục tiêu: Phân tích được nghệ thuật xây dựng hình tượng Đăm Săn qua ngoại hình, hành động, lời nói và thái độ cộng đồng.\nb) Nội dung: HS làm việc nhóm theo kĩ thuật mảnh ghép với phiếu học tập số 1.\nc) Sản phẩm: Sơ đồ tư duy trên giấy A0 của từng nhóm.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 4 nhóm chuyên gia, mỗi nhóm phân tích một phương diện (ngoại hình; hành động qua các hiệp đấu; lời nói; thái độ của cộng đồng) trong 10 phút; sau đó lập nhóm mảnh ghép tổng hợp thành sơ đồ tư duy trong 10 phút.\n- Bước 2. Thực hiện nhiệm vụ: HS đọc văn bản, tìm chi tiết, thảo luận và ghi vào phiếu học tập; GV quan sát, hỗ trợ nhóm gặp khó khăn bằng câu hỏi gợi mở.\n- Bước 3. Báo cáo, thảo luận: Các nhóm treo sản phẩm theo hình thức phòng tranh; mỗi nhóm cử đại diện thuyết minh, các nhóm khác dùng giấy ghi chú đặt câu hỏi phản biện.\n- Bước 4. Kết luận, nhận định: GV nhận xét sản phẩm theo bảng tiêu chí, chuẩn hóa kiến thức về các thủ pháp so sánh, phóng đại, trùng điệp trong khắc họa người anh hùng.\n\nHoạt động 3: Luyện tập (15 phút)\na) Mục tiêu: Vận dụng kiến thức để so sánh hai hình tượng nhân vật.\nb) Nội dung: Hoàn thành phiếu học tập số 2 so sánh Đăm Săn và Mtao Mxây.\nc) Sản phẩm: Phiếu học tập số 2 của từng cặp.\nd) Tổ chức thực hiện:\n- Bước 1: GV phát phiếu học tập số 2, yêu cầu HS so sánh hình tượng Đăm Săn với Mtao Mxây trên 3 tiêu chí.\n- Bước 2: HS làm việc cặp đôi trong 8 phút.\n- Bước 3: Đại diện 2 cặp trình bày, các cặp khác bổ sung.\n- Bước 4: GV chốt kiến thức.\n\nHoạt động 4: Vận dụng (13 phút và ở nhà)\na) Mục tiêu: Viết đoạn văn phân tích một chi tiết nghệ thuật.\nb) Nội dung: Viết đoạn văn nghị luận văn học ngắn.\nc) Sản phẩm: Đoạn văn 150–200 chữ nộp trên Padlet lớp.\nd) Tổ chức thực hiện:\n- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.\n- Bước 2: HS thực hiện ở nhà.\n- Bước 3: HS nộp bài trên Padlet lớp.\n- Bước 4: GV nhận xét vào tiết sau.",
+      "score": 92
+     }
+    ]
+   },
+   {
+    "id": "lp2",
+    "title": "Hình chóp tam giác đều và diện tích xung quanh",
+    "subject": "Toán",
+    "grade": "8",
+    "book": "Kết nối tri thức",
+    "term": "Học kỳ II",
+    "dept": "Toán",
+    "schoolYear": "2026 – 2027",
+    "teacherId": "u4",
+    "teacherName": "Võ Thị Mai",
+    "content": "KẾ HOẠCH BÀI DẠY\nTổ: Toán — Giáo viên: Võ Thị Mai\nMôn: Toán — Lớp 8 — Bộ sách: Kết nối tri thức với cuộc sống — Thời lượng: 2 tiết\nTÊN BÀI DẠY: HÌNH CHÓP TAM GIÁC ĐỀU VÀ DIỆN TÍCH XUNG QUANH\n\nI. MỤC TIÊU\n1. Về kiến thức: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao, trung đoạn của hình chóp tam giác đều; tính được diện tích xung quanh của hình chóp tam giác đều.\n2. Về năng lực\n- Năng lực toán học: Tư duy và lập luận toán học; mô hình hóa toán học; giải quyết vấn đề gắn với thực tiễn (tính diện tích vật liệu làm mái lều, kim tự tháp mô hình).\n- Năng lực chung: Giao tiếp và hợp tác; tự chủ và tự học.\n3. Về phẩm chất: Chăm chỉ, trung thực, có trách nhiệm trong hoạt động nhóm.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Mô hình hình chóp tam giác đều bằng bìa cứng (4 bộ), lưới hình chóp để cắt ghép, thước kẻ, kéo.\n- Phiếu học tập số 1, số 2; phần mềm GeoGebra 3D.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi mở nhu cầu nhận biết hình chóp tam giác đều trong thực tế.\nb) Nội dung: HS quan sát hình ảnh mái lều, hộp quà, kim tự tháp và trả lời câu hỏi.\nc) Sản phẩm: Câu trả lời của HS về điểm chung của các vật thể.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu 4 hình ảnh và nêu câu hỏi: \"Các vật thể này có điểm gì chung về hình dạng?\"\n- Bước 2. Thực hiện nhiệm vụ: HS làm việc nhóm 4, quan sát mô hình thật và hình ảnh trong 2 phút.\n- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trả lời.\n- Bước 4. Kết luận, nhận định: GV nhận xét và giới thiệu bài mới.\n\nHoạt động 2: Hình thành kiến thức (35 phút)\n2.1. Nhận biết hình chóp tam giác đều\na) Mục tiêu: Nhận biết các yếu tố của hình chóp tam giác đều.\nb) Nội dung: Quan sát mô hình, xác định các yếu tố.\nc) Sản phẩm: Vở ghi của HS.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV đưa mô hình và yêu cầu HS chú ý lên bảng.\n- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.\n- Bước 3. Báo cáo, thảo luận: GV hỏi lại một vài yếu tố, HS trả lời.\n- Bước 4. Kết luận, nhận định: GV chốt định nghĩa hình chóp tam giác đều.\n2.2. Diện tích xung quanh của hình chóp tam giác đều\na) Mục tiêu: Xây dựng và vận dụng công thức Sxq = p.d.\nb) Nội dung: Cắt ghép lưới hình chóp, tính tổng diện tích các mặt bên.\nc) Sản phẩm: Phiếu học tập số 1 và công thức Sxq = p.d.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.\n- Bước 2. Thực hiện nhiệm vụ: HS làm ví dụ 1 trong SGK theo cá nhân.\n- Bước 3. Báo cáo, thảo luận: 1 HS trình bày lời giải, HS khác nhận xét.\n- Bước 4. Kết luận, nhận định: GV chuẩn hóa công thức và lưu ý đơn vị đo.\n\nHoạt động 3: Luyện tập (25 phút)\na) Mục tiêu: Vận dụng công thức tính diện tích xung quanh.\nb) Nội dung: Bài tập 10.6, 10.7 SGK.\nc) Sản phẩm: Lời giải bài tập trong vở.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giao bài tập 10.6, 10.7.\n- Bước 2. Thực hiện nhiệm vụ: HS làm bài cá nhân.\n- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.\n- Bước 4. Kết luận, nhận định: GV chữa bài, chốt phương pháp.\n\nHoạt động 4: Vận dụng (ở nhà)\na) Mục tiêu: Giải quyết bài toán thực tiễn.\nb) Nội dung: Tính diện tích vải cần dùng để may mái một chiếc lều hình chóp tam giác đều.\nc) Sản phẩm: Bài làm nộp qua Google Classroom.\nd) Tổ chức thực hiện: HS đo đạc mô hình lều tự làm, tính diện tích vải và nộp bài; GV nhận xét trên Classroom.",
+    "status": "pending",
+    "submittedAt": "2026-10-14T20:20:00.000Z",
+    "createdAt": "2026-10-06T19:40:00.000Z",
+    "updatedAt": "2026-10-14T20:20:00.000Z",
+    "ttSignedBy": "ThS. Lê Văn Hùng",
+    "ttSignedAt": "2026-10-15T16:00:00.000Z",
+    "bghSignedBy": null,
+    "bghSignedAt": null,
+    "onTime": true,
+    "sampleKey": "toan8",
+    "versions": [
+     {
+      "v": 1,
+      "at": "2026-10-06T19:40:00.000Z",
+      "by": "Võ Thị Mai",
+      "note": "Bản nộp lần đầu",
+      "content": "KẾ HOẠCH BÀI DẠY\nTổ: Toán — Giáo viên: Võ Thị Mai\nMôn: Toán — Lớp 8 — Bộ sách: Kết nối tri thức với cuộc sống — Thời lượng: 2 tiết\nTÊN BÀI DẠY: HÌNH CHÓP TAM GIÁC ĐỀU VÀ DIỆN TÍCH XUNG QUANH\n\nI. MỤC TIÊU\n1. Về kiến thức: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao, trung đoạn của hình chóp tam giác đều; tính được diện tích xung quanh của hình chóp tam giác đều.\n2. Về năng lực\n- Năng lực toán học: Tư duy và lập luận toán học; mô hình hóa toán học; giải quyết vấn đề gắn với thực tiễn (tính diện tích vật liệu làm mái lều, kim tự tháp mô hình).\n- Năng lực chung: Giao tiếp và hợp tác; tự chủ và tự học.\n3. Về phẩm chất: Chăm chỉ, trung thực, có trách nhiệm trong hoạt động nhóm.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Mô hình hình chóp tam giác đều bằng bìa cứng (4 bộ), lưới hình chóp để cắt ghép, thước kẻ, kéo.\n- Phiếu học tập số 1, số 2; phần mềm GeoGebra 3D.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi mở nhu cầu nhận biết hình chóp tam giác đều trong thực tế.\nb) Nội dung: HS quan sát hình ảnh mái lều, hộp quà, kim tự tháp và trả lời câu hỏi.\nc) Sản phẩm: Câu trả lời của HS về điểm chung của các vật thể.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu 4 hình ảnh và nêu câu hỏi: \"Các vật thể này có điểm gì chung về hình dạng?\"\n- Bước 2. Thực hiện nhiệm vụ: HS nghe GV giới thiệu các hình ảnh.\n- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trả lời.\n- Bước 4. Kết luận, nhận định: GV nhận xét và giới thiệu bài mới.\n\nHoạt động 2: Hình thành kiến thức (35 phút)\n2.1. Nhận biết hình chóp tam giác đều\na) Mục tiêu: Nhận biết các yếu tố của hình chóp tam giác đều.\nb) Nội dung: Quan sát mô hình, xác định các yếu tố.\nc) Sản phẩm: Vở ghi của HS.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV đưa mô hình và yêu cầu HS chú ý lên bảng.\n- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.\n- Bước 3. Báo cáo, thảo luận: GV hỏi lại một vài yếu tố, HS trả lời.\n- Bước 4. Kết luận, nhận định: GV chốt định nghĩa hình chóp tam giác đều.\n2.2. Diện tích xung quanh của hình chóp tam giác đều\na) Mục tiêu: Xây dựng và vận dụng công thức Sxq = p.d.\nb) Nội dung: Cắt ghép lưới hình chóp, tính tổng diện tích các mặt bên.\nc) Sản phẩm: Phiếu học tập số 1 và công thức Sxq = p.d.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.\n- Bước 2. Thực hiện nhiệm vụ: HS làm ví dụ 1 trong SGK theo cá nhân.\n- Bước 3. Báo cáo, thảo luận: 1 HS trình bày lời giải, HS khác nhận xét.\n- Bước 4. Kết luận, nhận định: GV chuẩn hóa công thức và lưu ý đơn vị đo.\n\nHoạt động 3: Luyện tập (25 phút)\na) Mục tiêu: Vận dụng công thức tính diện tích xung quanh.\nb) Nội dung: Bài tập 10.6, 10.7 SGK.\nc) Sản phẩm: Lời giải bài tập trong vở.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giao bài tập 10.6, 10.7.\n- Bước 2. Thực hiện nhiệm vụ: HS làm bài cá nhân.\n- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.\n- Bước 4. Kết luận, nhận định: GV chữa bài, chốt phương pháp.\n\nHoạt động 4: Vận dụng (ở nhà)\na) Mục tiêu: Giải quyết bài toán thực tiễn.\nb) Nội dung: Tính diện tích vải cần dùng để may mái một chiếc lều hình chóp tam giác đều.\nc) Sản phẩm: Bài làm nộp qua Google Classroom.\nd) Tổ chức thực hiện: HS đo đạc mô hình lều tự làm, tính diện tích vải và nộp bài; GV nhận xét trên Classroom.",
+      "score": 66
+     },
+     {
+      "v": 2,
+      "at": "2026-10-14T20:20:00.000Z",
+      "by": "Võ Thị Mai",
+      "note": "Bổ sung hoạt động nhóm ở HĐ Mở đầu theo góp ý tổ trưởng",
+      "content": "KẾ HOẠCH BÀI DẠY\nTổ: Toán — Giáo viên: Võ Thị Mai\nMôn: Toán — Lớp 8 — Bộ sách: Kết nối tri thức với cuộc sống — Thời lượng: 2 tiết\nTÊN BÀI DẠY: HÌNH CHÓP TAM GIÁC ĐỀU VÀ DIỆN TÍCH XUNG QUANH\n\nI. MỤC TIÊU\n1. Về kiến thức: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao, trung đoạn của hình chóp tam giác đều; tính được diện tích xung quanh của hình chóp tam giác đều.\n2. Về năng lực\n- Năng lực toán học: Tư duy và lập luận toán học; mô hình hóa toán học; giải quyết vấn đề gắn với thực tiễn (tính diện tích vật liệu làm mái lều, kim tự tháp mô hình).\n- Năng lực chung: Giao tiếp và hợp tác; tự chủ và tự học.\n3. Về phẩm chất: Chăm chỉ, trung thực, có trách nhiệm trong hoạt động nhóm.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Mô hình hình chóp tam giác đều bằng bìa cứng (4 bộ), lưới hình chóp để cắt ghép, thước kẻ, kéo.\n- Phiếu học tập số 1, số 2; phần mềm GeoGebra 3D.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi mở nhu cầu nhận biết hình chóp tam giác đều trong thực tế.\nb) Nội dung: HS quan sát hình ảnh mái lều, hộp quà, kim tự tháp và trả lời câu hỏi.\nc) Sản phẩm: Câu trả lời của HS về điểm chung của các vật thể.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu 4 hình ảnh và nêu câu hỏi: \"Các vật thể này có điểm gì chung về hình dạng?\"\n- Bước 2. Thực hiện nhiệm vụ: HS làm việc nhóm 4, quan sát mô hình thật và hình ảnh trong 2 phút.\n- Bước 3. Báo cáo, thảo luận: Đại diện 2 nhóm trả lời.\n- Bước 4. Kết luận, nhận định: GV nhận xét và giới thiệu bài mới.\n\nHoạt động 2: Hình thành kiến thức (35 phút)\n2.1. Nhận biết hình chóp tam giác đều\na) Mục tiêu: Nhận biết các yếu tố của hình chóp tam giác đều.\nb) Nội dung: Quan sát mô hình, xác định các yếu tố.\nc) Sản phẩm: Vở ghi của HS.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV đưa mô hình và yêu cầu HS chú ý lên bảng.\n- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.\n- Bước 3. Báo cáo, thảo luận: GV hỏi lại một vài yếu tố, HS trả lời.\n- Bước 4. Kết luận, nhận định: GV chốt định nghĩa hình chóp tam giác đều.\n2.2. Diện tích xung quanh của hình chóp tam giác đều\na) Mục tiêu: Xây dựng và vận dụng công thức Sxq = p.d.\nb) Nội dung: Cắt ghép lưới hình chóp, tính tổng diện tích các mặt bên.\nc) Sản phẩm: Phiếu học tập số 1 và công thức Sxq = p.d.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.\n- Bước 2. Thực hiện nhiệm vụ: HS làm ví dụ 1 trong SGK theo cá nhân.\n- Bước 3. Báo cáo, thảo luận: 1 HS trình bày lời giải, HS khác nhận xét.\n- Bước 4. Kết luận, nhận định: GV chuẩn hóa công thức và lưu ý đơn vị đo.\n\nHoạt động 3: Luyện tập (25 phút)\na) Mục tiêu: Vận dụng công thức tính diện tích xung quanh.\nb) Nội dung: Bài tập 10.6, 10.7 SGK.\nc) Sản phẩm: Lời giải bài tập trong vở.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV giao bài tập 10.6, 10.7.\n- Bước 2. Thực hiện nhiệm vụ: HS làm bài cá nhân.\n- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.\n- Bước 4. Kết luận, nhận định: GV chữa bài, chốt phương pháp.\n\nHoạt động 4: Vận dụng (ở nhà)\na) Mục tiêu: Giải quyết bài toán thực tiễn.\nb) Nội dung: Tính diện tích vải cần dùng để may mái một chiếc lều hình chóp tam giác đều.\nc) Sản phẩm: Bài làm nộp qua Google Classroom.\nd) Tổ chức thực hiện: HS đo đạc mô hình lều tự làm, tính diện tích vải và nộp bài; GV nhận xét trên Classroom.",
+      "score": 78
+     }
+    ]
+   },
+   {
+    "id": "lp3",
+    "title": "Lực tiếp xúc và lực không tiếp xúc",
+    "subject": "KHTN",
+    "grade": "6",
+    "book": "Cánh diều",
+    "term": "Học kỳ II",
+    "dept": "KHTN",
+    "schoolYear": "2026 – 2027",
+    "teacherId": "u6",
+    "teacherName": "Ngô Thanh Tâm",
+    "content": "KẾ HOẠCH BÀI DẠY\nTổ: KHTN — Giáo viên: Ngô Thanh Tâm\nMôn: Khoa học tự nhiên — Lớp 6 — Bộ sách: Cánh diều — Thời lượng: 2 tiết\nTÊN BÀI DẠY: LỰC TIẾP XÚC VÀ LỰC KHÔNG TIẾP XÚC\n\nI. MỤC TIÊU\n1. Về kiến thức: Nêu được lực tiếp xúc xuất hiện khi vật gây ra lực có sự tiếp xúc với vật chịu tác dụng của lực; lực không tiếp xúc xuất hiện khi vật gây ra lực không tiếp xúc với vật chịu tác dụng; lấy được ví dụ minh họa.\n2. Về năng lực: Năng lực nhận thức khoa học tự nhiên; tìm hiểu tự nhiên; vận dụng kiến thức, kĩ năng đã học.\n3. Về phẩm chất: Trung thực, chăm chỉ.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Nam châm, kẹp giấy, xe lăn, quả bóng, lò xo; máy chiếu.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Tạo hứng thú cho HS.\nb) Nội dung: GV đặt câu hỏi vì sao quả táo rơi xuống đất.\nc) Sản phẩm: Câu trả lời của HS.\nd) Tổ chức thực hiện: GV đặt câu hỏi, HS suy nghĩ trả lời, GV dẫn vào bài.\n\nHoạt động 2: Hình thành kiến thức (50 phút)\n2.1. Lực tiếp xúc\na) Mục tiêu: Nêu được thế nào là lực tiếp xúc.\nb) Nội dung: Đọc SGK, quan sát thí nghiệm.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV yêu cầu HS đọc SGK mục I và cho biết thế nào là lực tiếp xúc.\n- Bước 2. Thực hiện nhiệm vụ: GV làm thí nghiệm biểu diễn dùng nam châm hút kẹp giấy và dùng tay đẩy xe lăn; HS quan sát.\n- Bước 3. Báo cáo, thảo luận: GV gọi 1–2 HS trả lời, GV nhận xét.\n- Bước 4. Kết luận, nhận định: GV kết luận: lực tiếp xúc xuất hiện khi vật gây ra lực tiếp xúc với vật chịu tác dụng của lực.\n2.2. Lực không tiếp xúc\na) Mục tiêu: Nêu được thế nào là lực không tiếp xúc.\nb) Nội dung: GV giảng giải về lực hấp dẫn, lực từ.\nd) Tổ chức thực hiện: GV thuyết trình kết hợp trình chiếu hình ảnh Trái Đất hút các vật, nam châm hút sắt; HS lắng nghe và ghi bài.\n- Bước 4. Kết luận, nhận định: GV chốt kiến thức và cho HS ghi bài.\n\nHoạt động 3: Luyện tập (20 phút)\na) Mục tiêu: Củng cố kiến thức.\nb) Nội dung: Bài tập 1, 2 SGK.\nc) Sản phẩm: Đáp án bài tập.\nd) Tổ chức thực hiện: GV đọc đề, HS làm bài, GV chữa bài.\n\nHoạt động 4: Vận dụng (ở nhà)\n- HS tìm 3 ví dụ về lực tiếp xúc và lực không tiếp xúc trong đời sống.",
+    "status": "revise",
+    "submittedAt": "2026-10-19T21:00:00.000Z",
+    "createdAt": "2026-10-19T21:00:00.000Z",
+    "updatedAt": "2026-10-19T21:00:00.000Z",
+    "ttSignedBy": null,
+    "ttSignedAt": null,
+    "bghSignedBy": null,
+    "bghSignedAt": null,
+    "onTime": false,
+    "sampleKey": "khtn6",
+    "versions": [
+     {
+      "v": 1,
+      "at": "2026-10-19T21:00:00.000Z",
+      "by": "Ngô Thanh Tâm",
+      "note": "Bản nộp lần đầu",
+      "content": "KẾ HOẠCH BÀI DẠY\nTổ: KHTN — Giáo viên: Ngô Thanh Tâm\nMôn: Khoa học tự nhiên — Lớp 6 — Bộ sách: Cánh diều — Thời lượng: 2 tiết\nTÊN BÀI DẠY: LỰC TIẾP XÚC VÀ LỰC KHÔNG TIẾP XÚC\n\nI. MỤC TIÊU\n1. Về kiến thức: Nêu được lực tiếp xúc xuất hiện khi vật gây ra lực có sự tiếp xúc với vật chịu tác dụng của lực; lực không tiếp xúc xuất hiện khi vật gây ra lực không tiếp xúc với vật chịu tác dụng; lấy được ví dụ minh họa.\n2. Về năng lực: Năng lực nhận thức khoa học tự nhiên; tìm hiểu tự nhiên; vận dụng kiến thức, kĩ năng đã học.\n3. Về phẩm chất: Trung thực, chăm chỉ.\n\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Nam châm, kẹp giấy, xe lăn, quả bóng, lò xo; máy chiếu.\n\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Tạo hứng thú cho HS.\nb) Nội dung: GV đặt câu hỏi vì sao quả táo rơi xuống đất.\nc) Sản phẩm: Câu trả lời của HS.\nd) Tổ chức thực hiện: GV đặt câu hỏi, HS suy nghĩ trả lời, GV dẫn vào bài.\n\nHoạt động 2: Hình thành kiến thức (50 phút)\n2.1. Lực tiếp xúc\na) Mục tiêu: Nêu được thế nào là lực tiếp xúc.\nb) Nội dung: Đọc SGK, quan sát thí nghiệm.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV yêu cầu HS đọc SGK mục I và cho biết thế nào là lực tiếp xúc.\n- Bước 2. Thực hiện nhiệm vụ: GV làm thí nghiệm biểu diễn dùng nam châm hút kẹp giấy và dùng tay đẩy xe lăn; HS quan sát.\n- Bước 3. Báo cáo, thảo luận: GV gọi 1–2 HS trả lời, GV nhận xét.\n- Bước 4. Kết luận, nhận định: GV kết luận: lực tiếp xúc xuất hiện khi vật gây ra lực tiếp xúc với vật chịu tác dụng của lực.\n2.2. Lực không tiếp xúc\na) Mục tiêu: Nêu được thế nào là lực không tiếp xúc.\nb) Nội dung: GV giảng giải về lực hấp dẫn, lực từ.\nd) Tổ chức thực hiện: GV thuyết trình kết hợp trình chiếu hình ảnh Trái Đất hút các vật, nam châm hút sắt; HS lắng nghe và ghi bài.\n- Bước 4. Kết luận, nhận định: GV chốt kiến thức và cho HS ghi bài.\n\nHoạt động 3: Luyện tập (20 phút)\na) Mục tiêu: Củng cố kiến thức.\nb) Nội dung: Bài tập 1, 2 SGK.\nc) Sản phẩm: Đáp án bài tập.\nd) Tổ chức thực hiện: GV đọc đề, HS làm bài, GV chữa bài.\n\nHoạt động 4: Vận dụng (ở nhà)\n- HS tìm 3 ví dụ về lực tiếp xúc và lực không tiếp xúc trong đời sống.",
+      "score": 61
+     }
+    ]
+   },
+   {
+    "id": "lp_real1",
+    "title": "Phương trình bậc nhất một ẩn",
+    "subject": "Toán",
+    "grade": "8",
+    "book": "Kết nối tri thức",
+    "term": "Học kỳ II",
+    "dept": "Toán",
+    "schoolYear": "2026 – 2027",
+    "teacherId": "u_real1",
+    "teacherName": "Trần Văn Hòa",
+    "content": "KẾ HOẠCH BÀI DẠY\nThời lượng: 1 tiết\nI. MỤC TIÊU\n1. Về kiến thức: Giải được phương trình bậc nhất một ẩn.\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Phiếu học tập\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi vấn đề.\nb) Nội dung: Bài toán cân thăng bằng.\nc) Sản phẩm: Câu trả lời.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu hình cân.\n- Bước 2. Thực hiện nhiệm vụ: HS thảo luận nhóm đôi.\n- Bước 3. Báo cáo, thảo luận: 2 nhóm trình bày.\n- Bước 4. Kết luận, nhận định: GV chốt.",
+    "status": "pending",
+    "createdAt": "2026-11-05T19:00:00.000Z",
+    "updatedAt": "2026-11-06T19:00:00.000Z",
+    "submittedAt": "2026-11-06T19:00:00.000Z",
+    "ttSignedBy": "ThS. Lê Văn Hùng",
+    "ttSignedAt": "2026-11-07T10:00:00.000Z",
+    "bghSignedBy": null,
+    "bghSignedAt": null,
+    "onTime": true,
+    "ghiChuRieng": "trường lạ cần vào legacy",
+    "versions": [
+     {
+      "v": 1,
+      "at": "2026-11-05T19:00:00.000Z",
+      "by": "Trần Văn Hòa",
+      "note": "Tạo mới",
+      "content": "KẾ HOẠCH BÀI DẠY\nThời lượng: 1 tiết\nI. MỤC TIÊU\n1. Về kiến thức: Giải được phương trình bậc nhất một ẩn.\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Phiếu học tập\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi vấn đề.\nb) Nội dung: Bài toán cân thăng bằng.\nc) Sản phẩm: Câu trả lời.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu hình cân.\n- Bước 2. Thực hiện nhiệm vụ: HS thảo luận nhóm đôi.\n- Bước 3. Báo cáo, thảo luận: 2 nhóm trình bày.\n- Bước 4. Kết luận, nhận định: GV chốt.",
+      "score": 70
+     },
+     {
+      "v": 2,
+      "at": "2026-11-06T19:00:00.000Z",
+      "by": "Trần Văn Hòa",
+      "note": "Sửa",
+      "content": "KẾ HOẠCH BÀI DẠY\nThời lượng: 1 tiết\nI. MỤC TIÊU\n1. Về kiến thức: Giải được phương trình bậc nhất một ẩn.\nII. THIẾT BỊ DẠY HỌC VÀ HỌC LIỆU\n- Phiếu học tập\nIII. TIẾN TRÌNH DẠY HỌC\nHoạt động 1: Mở đầu (5 phút)\na) Mục tiêu: Gợi vấn đề.\nb) Nội dung: Bài toán cân thăng bằng.\nc) Sản phẩm: Câu trả lời.\nd) Tổ chức thực hiện:\n- Bước 1. Chuyển giao nhiệm vụ: GV chiếu hình cân.\n- Bước 2. Thực hiện nhiệm vụ: HS thảo luận nhóm đôi.\n- Bước 3. Báo cáo, thảo luận: 2 nhóm trình bày.\n- Bước 4. Kết luận, nhận định: GV chốt.",
+      "score": 74
+     }
+    ]
+   },
+   {
+    "id": "lp_real2",
+    "title": "Bản nháp chưa nộp",
+    "subject": "Ngữ văn",
+    "grade": "11",
+    "book": "Cánh diều",
+    "term": "Học kỳ I",
+    "dept": "Ngữ văn",
+    "schoolYear": "2026 – 2027",
+    "teacherId": "u_real2",
+    "teacherName": "Lý Thị Ngọc",
+    "content": "Nội dung nháp",
+    "status": "draft",
+    "createdAt": "2026-11-08T19:00:00.000Z",
+    "updatedAt": "2026-11-08T19:00:00.000Z",
+    "submittedAt": null,
+    "ttSignedBy": null,
+    "ttSignedAt": null,
+    "bghSignedBy": null,
+    "bghSignedAt": null,
+    "onTime": true,
+    "versions": [
+     {
+      "v": 1,
+      "at": "2026-11-08T19:00:00.000Z",
+      "by": "Lý Thị Ngọc",
+      "note": "Tạo mới",
+      "content": "Nội dung nháp",
+      "score": null
+     }
+    ]
+   }
+  ],
+  "ai_audits": [
+   {
+    "id": "a1",
+    "planId": "lp1",
+    "version": 1,
+    "at": "2026-09-18T20:15:00.000Z",
+    "by": "Đặng Quốc Bảo",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 84,
+    "activeness": 80,
+    "summary": "KHBD có cấu trúc đầy đủ theo Phụ lục IV CV 5512; các hoạt động có đủ 4 thành phần (Mục tiêu – Nội dung – Sản phẩm – Tổ chức thực hiện). Kĩ thuật mảnh ghép, phòng tranh giúp HS thực sự là chủ thể. Cần chuẩn hóa thêm Bước 4 của Hoạt động Luyện tập và tiêu chí sản phẩm của Hoạt động Vận dụng.",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Đạt",
+      "analysis": "Lệnh chuyển giao rõ mục tiêu, thời gian (2 phút, 10 phút), phương tiện (phiếu học tập số 1, giấy A0) và sản phẩm (sơ đồ tư duy). Riêng HĐ Vận dụng chưa nêu tiêu chí đánh giá đoạn văn."
+     },
+     {
+      "step": 2,
+      "status": "Đạt",
+      "analysis": "HS chủ động làm việc cá nhân → nhóm chuyên gia → nhóm mảnh ghép; GV đóng vai trò quan sát, hỗ trợ bằng câu hỏi gợi mở, không làm thay."
+     },
+     {
+      "step": 3,
+      "status": "Cần điều chỉnh",
+      "analysis": "Chỉ 2 nhóm trình bày; chưa có cơ chế để các nhóm còn lại phản biện."
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "HĐ2 có kết luận theo bảng tiêu chí và chuẩn hóa kiến thức. HĐ3 chỉ ghi \"GV chốt kiến thức\" — nên mô tả cụ thể nội dung chuẩn hóa và cách nhận xét quá trình."
+     }
+    ],
+    "strengths": [
+     "Mục tiêu bám sát yêu cầu cần đạt của Chương trình GDPT 2018, phân tách rõ năng lực đặc thù – năng lực chung – phẩm chất.",
+     "Vận dụng hiệu quả kĩ thuật mảnh ghép, phòng tranh; sản phẩm học tập được mô tả cụ thể.",
+     "Có công cụ đánh giá (bảng tiêu chí) và học liệu số (video, Padlet)."
+    ],
+    "weaknesses": [
+     "Bước 4 của Hoạt động Luyện tập mô tả chung chung (\"GV chốt kiến thức\").",
+     "Hoạt động Vận dụng chưa có tiêu chí đánh giá đoạn văn và cơ chế phản hồi đồng đẳng."
+    ],
+    "solutions": [
+     "Bổ sung nội dung chuẩn hóa cụ thể (bảng so sánh 3 tiêu chí) ở Bước 4 HĐ3.",
+     "Xây dựng rubric 4 mức cho đoạn văn, tổ chức đánh giá chéo trên Padlet trước khi GV nhận xét."
+    ],
+    "suggestions": [
+     {
+      "activity": "Hoạt động 4: Vận dụng — Bước 1",
+      "original": "- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.",
+      "revised": "- Bước 1. Chuyển giao nhiệm vụ: GV giao nhiệm vụ: \"Mỗi em chọn MỘT chi tiết nghệ thuật ấn tượng nhất trong đoạn trích, viết đoạn văn 150–200 chữ phân tích tác dụng của chi tiết đó trong việc khắc họa người anh hùng Đăm Săn. Sản phẩm nộp trên Padlet lớp trước 20 giờ thứ Năm; tự đối chiếu với rubric 4 tiêu chí (nêu chi tiết – phân tích thủ pháp – đánh giá tác dụng – diễn đạt) và nhận xét 1 bài của bạn bằng 1 khen + 1 góp ý.\"",
+      "rationale": "Làm rõ sản phẩm, thời hạn và tiêu chí; bổ sung đánh giá đồng đẳng giúp HS tự điều chỉnh trước khi GV nhận xét."
+     },
+     {
+      "activity": "Hoạt động 3: Luyện tập — Bước 4",
+      "original": "- Bước 4: GV chốt kiến thức.",
+      "revised": "- Bước 4. Kết luận, nhận định: GV mời 1 HS tự rút ra 2 điểm khác biệt cốt lõi giữa Đăm Săn và Mtao Mxây; GV chuẩn hóa bằng bảng so sánh 3 tiêu chí (ngoại hình – hành động – thái độ cộng đồng), nhận xét tinh thần hợp tác của các cặp và ghi nhận cặp có lập luận thuyết phục.",
+      "rationale": "Bước 4 cần thể hiện cả đánh giá quá trình lẫn chuẩn hóa kiến thức, để HS tự khái quát trước."
+     }
+    ]
+   },
+   {
+    "id": "a2",
+    "planId": "lp1",
+    "version": 2,
+    "at": "2026-09-21T21:10:00.000Z",
+    "by": "Đặng Quốc Bảo",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 92,
+    "activeness": 88,
+    "summary": "KHBD có cấu trúc đầy đủ theo Phụ lục IV CV 5512; các hoạt động có đủ 4 thành phần (Mục tiêu – Nội dung – Sản phẩm – Tổ chức thực hiện). Kĩ thuật mảnh ghép, phòng tranh giúp HS thực sự là chủ thể. Cần chuẩn hóa thêm Bước 4 của Hoạt động Luyện tập và tiêu chí sản phẩm của Hoạt động Vận dụng.",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Đạt",
+      "analysis": "Lệnh chuyển giao rõ mục tiêu, thời gian (2 phút, 10 phút), phương tiện (phiếu học tập số 1, giấy A0) và sản phẩm (sơ đồ tư duy). Riêng HĐ Vận dụng chưa nêu tiêu chí đánh giá đoạn văn."
+     },
+     {
+      "step": 2,
+      "status": "Đạt",
+      "analysis": "HS chủ động làm việc cá nhân → nhóm chuyên gia → nhóm mảnh ghép; GV đóng vai trò quan sát, hỗ trợ bằng câu hỏi gợi mở, không làm thay."
+     },
+     {
+      "step": 3,
+      "status": "Đạt",
+      "analysis": "Hình thức phòng tranh kết hợp câu hỏi phản biện bằng giấy ghi chú tạo cơ hội cho toàn bộ HS tham gia báo cáo, thảo luận."
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "HĐ2 có kết luận theo bảng tiêu chí và chuẩn hóa kiến thức. HĐ3 chỉ ghi \"GV chốt kiến thức\" — nên mô tả cụ thể nội dung chuẩn hóa và cách nhận xét quá trình."
+     }
+    ],
+    "strengths": [
+     "Mục tiêu bám sát yêu cầu cần đạt của Chương trình GDPT 2018, phân tách rõ năng lực đặc thù – năng lực chung – phẩm chất.",
+     "Vận dụng hiệu quả kĩ thuật mảnh ghép, phòng tranh; sản phẩm học tập được mô tả cụ thể.",
+     "Có công cụ đánh giá (bảng tiêu chí) và học liệu số (video, Padlet)."
+    ],
+    "weaknesses": [
+     "Bước 4 của Hoạt động Luyện tập mô tả chung chung (\"GV chốt kiến thức\").",
+     "Hoạt động Vận dụng chưa có tiêu chí đánh giá đoạn văn và cơ chế phản hồi đồng đẳng."
+    ],
+    "solutions": [
+     "Bổ sung nội dung chuẩn hóa cụ thể (bảng so sánh 3 tiêu chí) ở Bước 4 HĐ3.",
+     "Xây dựng rubric 4 mức cho đoạn văn, tổ chức đánh giá chéo trên Padlet trước khi GV nhận xét."
+    ],
+    "suggestions": [
+     {
+      "activity": "Hoạt động 4: Vận dụng — Bước 1",
+      "original": "- Bước 1: GV giao nhiệm vụ: Viết đoạn văn (150–200 chữ) phân tích một chi tiết nghệ thuật em ấn tượng nhất.",
+      "revised": "- Bước 1. Chuyển giao nhiệm vụ: GV giao nhiệm vụ: \"Mỗi em chọn MỘT chi tiết nghệ thuật ấn tượng nhất trong đoạn trích, viết đoạn văn 150–200 chữ phân tích tác dụng của chi tiết đó trong việc khắc họa người anh hùng Đăm Săn. Sản phẩm nộp trên Padlet lớp trước 20 giờ thứ Năm; tự đối chiếu với rubric 4 tiêu chí (nêu chi tiết – phân tích thủ pháp – đánh giá tác dụng – diễn đạt) và nhận xét 1 bài của bạn bằng 1 khen + 1 góp ý.\"",
+      "rationale": "Làm rõ sản phẩm, thời hạn và tiêu chí; bổ sung đánh giá đồng đẳng giúp HS tự điều chỉnh trước khi GV nhận xét."
+     },
+     {
+      "activity": "Hoạt động 3: Luyện tập — Bước 4",
+      "original": "- Bước 4: GV chốt kiến thức.",
+      "revised": "- Bước 4. Kết luận, nhận định: GV mời 1 HS tự rút ra 2 điểm khác biệt cốt lõi giữa Đăm Săn và Mtao Mxây; GV chuẩn hóa bằng bảng so sánh 3 tiêu chí (ngoại hình – hành động – thái độ cộng đồng), nhận xét tinh thần hợp tác của các cặp và ghi nhận cặp có lập luận thuyết phục.",
+      "rationale": "Bước 4 cần thể hiện cả đánh giá quá trình lẫn chuẩn hóa kiến thức, để HS tự khái quát trước."
+     }
+    ]
+   },
+   {
+    "id": "a3",
+    "planId": "lp2",
+    "version": 1,
+    "at": "2026-10-06T19:45:00.000Z",
+    "by": "Võ Thị Mai",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 66,
+    "activeness": 52,
+    "summary": "KHBD đảm bảo khung cấu trúc 5512 và có học liệu trực quan tốt (mô hình, lưới hình chóp, GeoGebra). Tuy nhiên ở HĐ 2.1 và 2.2, GV vẫn là người giới thiệu và cung cấp công thức; HS chủ yếu quan sát, ghi chép. Cần chuyển sang hoạt động cắt ghép – khám phá để HS tự xây dựng công thức Sxq = p.d.",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Cần điều chỉnh",
+      "analysis": "HĐ Mở đầu: HS chỉ nghe GV giới thiệu, chưa có nhiệm vụ cụ thể."
+     },
+     {
+      "step": 2,
+      "status": "Cần điều chỉnh",
+      "analysis": "HĐ 2.1: GV vẽ hình và giới thiệu các yếu tố, HS chỉ quan sát và ghi chép — HS chưa được thao tác trên mô hình dù đã chuẩn bị 4 bộ mô hình."
+     },
+     {
+      "step": 3,
+      "status": "Cần điều chỉnh",
+      "analysis": "HĐ3 chỉ gọi 1 HS lên bảng, cả lớp theo dõi — tỉ lệ HS được báo cáo thấp; nên dùng đổi chéo vở, bảng nhóm."
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "Có chuẩn hóa công thức và lưu ý đơn vị đo; kết luận định nghĩa rõ ràng."
+     }
+    ],
+    "strengths": [
+     "Mục tiêu rõ ràng, gắn với năng lực mô hình hóa và giải quyết vấn đề thực tiễn.",
+     "Chuẩn bị học liệu trực quan phong phú (mô hình bìa, lưới hình chóp, GeoGebra 3D).",
+     "Hoạt động Vận dụng gắn với thực tiễn (may mái lều)."
+    ],
+    "weaknesses": [
+     "HĐ 2.1 và 2.2 còn nặng thuyết trình, HS thụ động quan sát – ghi chép.",
+     "Công thức Sxq = p.d được GV cung cấp sẵn, chưa tổ chức cho HS tự phát hiện.",
+     "Báo cáo, thảo luận ở HĐ3 chỉ có 1 HS tham gia."
+    ],
+    "solutions": [
+     "Tổ chức HS thao tác trên mô hình theo nhóm 4 để tự xác định các yếu tố.",
+     "Thiết kế phiếu học tập cắt ghép lưới hình chóp để HS tự rút ra công thức.",
+     "Dùng kĩ thuật \"đổi chéo – chấm chéo\" và bảng nhóm ở HĐ Luyện tập."
+    ],
+    "suggestions": [
+     {
+      "activity": "HĐ 2.1 — Bước 2: Thực hiện nhiệm vụ",
+      "original": "- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.",
+      "revised": "- Bước 2. Thực hiện nhiệm vụ: Mỗi nhóm 4 HS nhận 1 mô hình hình chóp tam giác đều bằng bìa; trong 5 phút, nhóm dán nhãn giấy ghi chú lên đỉnh, cạnh bên, mặt bên, mặt đáy và dùng que tre mô tả đường cao, trung đoạn; ghi kết quả vào phiếu học tập số 1. GV quan sát, hỏi gợi mở: \"Trung đoạn khác đường cao ở điểm nào?\"",
+      "rationale": "Chuyển HS từ quan sát thụ động sang thao tác trực tiếp với mô hình đã chuẩn bị; sản phẩm học tập hữu hình."
+     },
+     {
+      "activity": "HĐ 2.2 — Bước 1: Chuyển giao nhiệm vụ",
+      "original": "- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.",
+      "revised": "- Bước 1. Chuyển giao nhiệm vụ: GV phát lưới hình chóp tam giác đều (cạnh đáy 6 cm, trung đoạn 5 cm) và giao lệnh: \"Trong 7 phút, nhóm cắt rời các mặt bên, tính diện tích từng mặt rồi tìm cách tính nhanh tổng diện tích các mặt bên theo nửa chu vi đáy và trung đoạn. Sản phẩm: công thức nhóm tự phát hiện, trình bày trên bảng nhóm.\"",
+      "rationale": "HS tự phát hiện công thức Sxq = p.d qua hoạt động khám phá, thay vì ghi nhớ máy móc."
+     },
+     {
+      "activity": "HĐ 3: Luyện tập — Bước 3",
+      "original": "- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.",
+      "revised": "- Bước 3. Báo cáo, thảo luận: HS đổi chéo vở theo cặp, chấm theo đáp án GV chiếu (thang 10 điểm); 2 nhóm có cách giải khác nhau trình bày trên bảng nhóm, cả lớp so sánh và chọn cách giải tối ưu.",
+      "rationale": "Tăng tỉ lệ HS tham gia báo cáo, hình thành năng lực tự đánh giá và đánh giá đồng đẳng."
+     }
+    ]
+   },
+   {
+    "id": "a4",
+    "planId": "lp2",
+    "version": 2,
+    "at": "2026-10-14T20:25:00.000Z",
+    "by": "Võ Thị Mai",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 78,
+    "activeness": 65,
+    "summary": "KHBD đảm bảo khung cấu trúc 5512 và có học liệu trực quan tốt (mô hình, lưới hình chóp, GeoGebra). Tuy nhiên ở HĐ 2.1 và 2.2, GV vẫn là người giới thiệu và cung cấp công thức; HS chủ yếu quan sát, ghi chép. Cần chuyển sang hoạt động cắt ghép – khám phá để HS tự xây dựng công thức Sxq = p.d.",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Cần điều chỉnh",
+      "analysis": "Ở HĐ 2.2, lệnh \"GV giảng công thức... yêu cầu HS ghi nhớ\" là áp đặt kiến thức, chưa nêu nhiệm vụ khám phá, phương tiện và sản phẩm học tập."
+     },
+     {
+      "step": 2,
+      "status": "Cần điều chỉnh",
+      "analysis": "HĐ 2.1: GV vẽ hình và giới thiệu các yếu tố, HS chỉ quan sát và ghi chép — HS chưa được thao tác trên mô hình dù đã chuẩn bị 4 bộ mô hình."
+     },
+     {
+      "step": 3,
+      "status": "Cần điều chỉnh",
+      "analysis": "HĐ3 chỉ gọi 1 HS lên bảng, cả lớp theo dõi — tỉ lệ HS được báo cáo thấp; nên dùng đổi chéo vở, bảng nhóm."
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "Có chuẩn hóa công thức và lưu ý đơn vị đo; kết luận định nghĩa rõ ràng."
+     }
+    ],
+    "strengths": [
+     "Mục tiêu rõ ràng, gắn với năng lực mô hình hóa và giải quyết vấn đề thực tiễn.",
+     "Chuẩn bị học liệu trực quan phong phú (mô hình bìa, lưới hình chóp, GeoGebra 3D).",
+     "Hoạt động Vận dụng gắn với thực tiễn (may mái lều)."
+    ],
+    "weaknesses": [
+     "HĐ 2.1 và 2.2 còn nặng thuyết trình, HS thụ động quan sát – ghi chép.",
+     "Công thức Sxq = p.d được GV cung cấp sẵn, chưa tổ chức cho HS tự phát hiện.",
+     "Báo cáo, thảo luận ở HĐ3 chỉ có 1 HS tham gia."
+    ],
+    "solutions": [
+     "Tổ chức HS thao tác trên mô hình theo nhóm 4 để tự xác định các yếu tố.",
+     "Thiết kế phiếu học tập cắt ghép lưới hình chóp để HS tự rút ra công thức.",
+     "Dùng kĩ thuật \"đổi chéo – chấm chéo\" và bảng nhóm ở HĐ Luyện tập."
+    ],
+    "suggestions": [
+     {
+      "activity": "HĐ 2.1 — Bước 2: Thực hiện nhiệm vụ",
+      "original": "- Bước 2. Thực hiện nhiệm vụ: GV vẽ hình chóp tam giác đều S.ABC lên bảng, giới thiệu đỉnh, cạnh bên, mặt bên, mặt đáy, đường cao, trung đoạn; HS quan sát và ghi chép vào vở.",
+      "revised": "- Bước 2. Thực hiện nhiệm vụ: Mỗi nhóm 4 HS nhận 1 mô hình hình chóp tam giác đều bằng bìa; trong 5 phút, nhóm dán nhãn giấy ghi chú lên đỉnh, cạnh bên, mặt bên, mặt đáy và dùng que tre mô tả đường cao, trung đoạn; ghi kết quả vào phiếu học tập số 1. GV quan sát, hỏi gợi mở: \"Trung đoạn khác đường cao ở điểm nào?\"",
+      "rationale": "Chuyển HS từ quan sát thụ động sang thao tác trực tiếp với mô hình đã chuẩn bị; sản phẩm học tập hữu hình."
+     },
+     {
+      "activity": "HĐ 2.2 — Bước 1: Chuyển giao nhiệm vụ",
+      "original": "- Bước 1. Chuyển giao nhiệm vụ: GV giảng công thức tính diện tích xung quanh Sxq = p.d và yêu cầu HS ghi nhớ.",
+      "revised": "- Bước 1. Chuyển giao nhiệm vụ: GV phát lưới hình chóp tam giác đều (cạnh đáy 6 cm, trung đoạn 5 cm) và giao lệnh: \"Trong 7 phút, nhóm cắt rời các mặt bên, tính diện tích từng mặt rồi tìm cách tính nhanh tổng diện tích các mặt bên theo nửa chu vi đáy và trung đoạn. Sản phẩm: công thức nhóm tự phát hiện, trình bày trên bảng nhóm.\"",
+      "rationale": "HS tự phát hiện công thức Sxq = p.d qua hoạt động khám phá, thay vì ghi nhớ máy móc."
+     },
+     {
+      "activity": "HĐ 3: Luyện tập — Bước 3",
+      "original": "- Bước 3. Báo cáo, thảo luận: GV gọi 1 HS lên bảng làm bài, cả lớp theo dõi.",
+      "revised": "- Bước 3. Báo cáo, thảo luận: HS đổi chéo vở theo cặp, chấm theo đáp án GV chiếu (thang 10 điểm); 2 nhóm có cách giải khác nhau trình bày trên bảng nhóm, cả lớp so sánh và chọn cách giải tối ưu.",
+      "rationale": "Tăng tỉ lệ HS tham gia báo cáo, hình thành năng lực tự đánh giá và đánh giá đồng đẳng."
+     }
+    ]
+   },
+   {
+    "id": "a5",
+    "planId": "lp3",
+    "version": 1,
+    "at": "2026-10-19T21:05:00.000Z",
+    "by": "Ngô Thanh Tâm",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 61,
+    "activeness": 48,
+    "summary": "KHBD có khung tiến trình 4 hoạt động nhưng nhiều hoạt động thiếu thành phần \"Sản phẩm\" và chưa tổ chức đủ 4 bước. Hình thức chủ đạo vẫn là GV thí nghiệm biểu diễn, thuyết trình; HS quan sát, lắng nghe và ghi bài. Đây là bài học rất thuận lợi để HS tự làm thí nghiệm theo nhóm — cần thiết kế lại theo hướng học sinh khám phá.",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Cần điều chỉnh",
+      "analysis": "Lệnh \"đọc SGK mục I và cho biết...\" chưa nêu rõ hình thức, thời gian, phương tiện và sản phẩm; HĐ 2.2 không có bước chuyển giao."
+     },
+     {
+      "step": 2,
+      "status": "Cần điều chỉnh",
+      "analysis": "GV tự làm thí nghiệm biểu diễn và thuyết trình; HS chỉ quan sát, lắng nghe — chưa được tự tiến hành thí nghiệm dù đã có đủ dụng cụ (nam châm, kẹp giấy, xe lăn, lò xo)."
+     },
+     {
+      "step": 3,
+      "status": "Cần điều chỉnh",
+      "analysis": "Chỉ gọi 1–2 HS trả lời; chưa có sản phẩm nhóm để báo cáo, thảo luận."
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "GV có kết luận kiến thức chính xác, ngắn gọn; nên bổ sung nhận xét quá trình hoạt động của HS."
+     }
+    ],
+    "strengths": [
+     "Mục tiêu bám sát yêu cầu cần đạt của Chương trình môn KHTN 6.",
+     "Chuẩn bị dụng cụ thí nghiệm đơn giản, dễ tổ chức theo nhóm."
+    ],
+    "weaknesses": [
+     "Thiếu thành phần \"c) Sản phẩm\" ở HĐ 2.1 và 2.2.",
+     "GV làm thí nghiệm biểu diễn, thuyết trình; HS thụ động lắng nghe, ghi bài.",
+     "HĐ 2.2 và HĐ3 chưa tổ chức theo 4 bước."
+    ],
+    "solutions": [
+     "Bổ sung sản phẩm học tập (phiếu học tập, bảng phân loại lực).",
+     "Tổ chức học theo trạm: mỗi nhóm luân phiên tự làm 3 thí nghiệm nhỏ.",
+     "Chuẩn hóa 4 bước cho từng hoạt động, ưu tiên báo cáo bằng sản phẩm nhóm."
+    ],
+    "suggestions": [
+     {
+      "activity": "HĐ 2.1 — Bước 1: Chuyển giao nhiệm vụ",
+      "original": "- Bước 1. Chuyển giao nhiệm vụ: GV yêu cầu HS đọc SGK mục I và cho biết thế nào là lực tiếp xúc.",
+      "revised": "- Bước 1. Chuyển giao nhiệm vụ: GV chia lớp thành 6 nhóm, phát bộ dụng cụ (nam châm, kẹp giấy, xe lăn, quả bóng, lò xo) và phiếu học tập số 1, giao lệnh: \"Trong 8 phút, nhóm thực hiện 3 thí nghiệm theo hướng dẫn, quan sát vật gây lực và vật chịu lực có chạm vào nhau không, rồi xếp mỗi lực vào cột Lực tiếp xúc / Lực không tiếp xúc. Sản phẩm: phiếu học tập số 1 hoàn chỉnh.\"",
+      "rationale": "Lệnh chuyển giao nêu rõ hình thức, thời gian, phương tiện và sản phẩm theo đúng yêu cầu 5512."
+     },
+     {
+      "activity": "HĐ 2.1 — Bước 2: Thực hiện nhiệm vụ",
+      "original": "- Bước 2. Thực hiện nhiệm vụ: GV làm thí nghiệm biểu diễn dùng nam châm hút kẹp giấy và dùng tay đẩy xe lăn; HS quan sát.",
+      "revised": "- Bước 2. Thực hiện nhiệm vụ: Các nhóm tự tiến hành thí nghiệm theo trạm (Trạm 1: đẩy xe lăn; Trạm 2: nam châm hút kẹp giấy từ xa; Trạm 3: thả rơi quả bóng), mỗi trạm 2 phút; thư kí nhóm ghi kết quả. GV đi đến các nhóm, hỏi gợi mở: \"Nam châm có chạm vào kẹp giấy không mà kẹp vẫn chuyển động?\"",
+      "rationale": "HS trực tiếp làm thí nghiệm, phát triển năng lực tìm hiểu tự nhiên; GV chuyển vai trò sang người hỗ trợ."
+     },
+     {
+      "activity": "HĐ 2.1 — Bước 3: Báo cáo, thảo luận",
+      "original": "- Bước 3. Báo cáo, thảo luận: GV gọi 1–2 HS trả lời, GV nhận xét.",
+      "revised": "- Bước 3. Báo cáo, thảo luận: Các nhóm dán phiếu học tập lên bảng; GV mời 2 nhóm có kết quả phân loại khác nhau trình bày và tranh luận; các nhóm khác bổ sung ví dụ trong đời sống và giơ thẻ Đúng/Sai cho từng phân loại.",
+      "rationale": "Tạo cơ hội để toàn lớp tham gia thảo luận dựa trên sản phẩm thực tế của nhóm."
+     }
+    ]
+   },
+   {
+    "id": "a_real1",
+    "planId": "lp_real1",
+    "version": 2,
+    "at": "2026-11-06T19:05:00.000Z",
+    "by": "Trần Văn Hòa",
+    "engine": "Mock AI Sư phạm",
+    "compliance": 74,
+    "activeness": 60,
+    "summary": "x",
+    "steps": [
+     {
+      "step": 1,
+      "status": "Đạt",
+      "analysis": "ok"
+     },
+     {
+      "step": 2,
+      "status": "Cần điều chỉnh",
+      "analysis": "HS còn thụ động"
+     },
+     {
+      "step": 3,
+      "status": "Đạt",
+      "analysis": "ok"
+     },
+     {
+      "step": 4,
+      "status": "Đạt",
+      "analysis": "ok"
+     }
+    ],
+    "strengths": [],
+    "weaknesses": [],
+    "solutions": [],
+    "suggestions": [
+     {
+      "activity": "HĐ1",
+      "original": "a",
+      "revised": "b",
+      "rationale": "c"
+     }
+    ]
+   }
+  ],
+  "review_notes": [
+   {
+    "id": "r1",
+    "planId": "lp1",
+    "version": 2,
+    "reviewerId": "u3",
+    "reviewerName": "ThS. Phạm Thị Lan",
+    "level": "Tổ chuyên môn",
+    "verdict": "Đạt",
+    "at": "2026-09-22T15:30:00.000Z",
+    "strengths": "Mục tiêu rõ ràng; vận dụng tốt kĩ thuật mảnh ghép, phòng tranh; sản phẩm học tập cụ thể.",
+    "weaknesses": "Bước 4 HĐ Luyện tập còn chung chung.",
+    "solutions": "Mô tả cụ thể nội dung chuẩn hóa kiến thức ở HĐ3.",
+    "stepNotes": [
+     "Lệnh chuyển giao rõ ràng.",
+     "HS chủ động làm việc nhóm.",
+     "Báo cáo bằng phòng tranh hiệu quả.",
+     "Cần cụ thể hóa ở HĐ3."
+    ],
+    "general": "Kế hoạch bài dạy đạt yêu cầu theo Công văn 5512/BGDĐT-GDTrH."
+   },
+   {
+    "id": "r2",
+    "planId": "lp1",
+    "version": 2,
+    "reviewerId": "u1",
+    "reviewerName": "TS. Nguyễn Minh Quang",
+    "level": "Ban Giám hiệu",
+    "verdict": "Đạt",
+    "at": "2026-09-25T10:00:00.000Z",
+    "strengths": "KHBD tiêu biểu của tổ Ngữ văn, thể hiện rõ HS là trung tâm; có ứng dụng học liệu số.",
+    "weaknesses": "Hoạt động Vận dụng chưa có rubric đánh giá.",
+    "solutions": "Bổ sung rubric 4 mức, tổ chức đánh giá chéo trên Padlet; đề nghị chia sẻ trong sinh hoạt chuyên môn theo nghiên cứu bài học.",
+    "stepNotes": [
+     "Đạt.",
+     "Đạt.",
+     "Đạt.",
+     "Đạt — cần chi tiết hóa HĐ3."
+    ],
+    "general": "Kế hoạch bài dạy đạt yêu cầu theo Công văn 5512/BGDĐT-GDTrH."
+   },
+   {
+    "id": "r3",
+    "planId": "lp2",
+    "version": 1,
+    "reviewerId": "u2",
+    "reviewerName": "ThS. Lê Văn Hùng",
+    "level": "Tổ chuyên môn",
+    "verdict": "Chưa đạt",
+    "at": "2026-10-08T16:20:00.000Z",
+    "strengths": "Học liệu trực quan phong phú; hoạt động vận dụng gắn thực tiễn.",
+    "weaknesses": "HĐ Mở đầu và HĐ 2.1 HS thụ động; công thức do GV cung cấp sẵn.",
+    "solutions": "Tổ chức nhóm thao tác mô hình; thiết kế phiếu học tập cắt ghép lưới hình chóp.",
+    "stepNotes": [
+     "Cần nêu rõ sản phẩm.",
+     "HS chỉ quan sát, ghi chép.",
+     "Chỉ 1 HS báo cáo.",
+     "Đạt."
+    ],
+    "general": "Kế hoạch bài dạy chưa đạt yêu cầu, đề nghị giáo viên điều chỉnh và nộp lại."
+   },
+   {
+    "id": "r4",
+    "planId": "lp2",
+    "version": 2,
+    "reviewerId": "u2",
+    "reviewerName": "ThS. Lê Văn Hùng",
+    "level": "Tổ chuyên môn",
+    "verdict": "Đạt",
+    "at": "2026-10-15T16:00:00.000Z",
+    "strengths": "Đã điều chỉnh HĐ Mở đầu theo hướng hoạt động nhóm; tiến trình mạch lạc.",
+    "weaknesses": "HĐ 2.1 vẫn còn GV giới thiệu các yếu tố.",
+    "solutions": "Tiếp tục tinh chỉnh HĐ 2.1 theo đề xuất của AI trước khi lên lớp. Tổ ký duyệt, chuyển BGH.",
+    "stepNotes": [
+     "Đạt.",
+     "Cần tiếp tục cải thiện HĐ 2.1.",
+     "Đạt.",
+     "Đạt."
+    ],
+    "general": "Kế hoạch bài dạy đạt yêu cầu theo Công văn 5512/BGDĐT-GDTrH."
+   },
+   {
+    "id": "r5",
+    "planId": "lp3",
+    "version": 1,
+    "reviewerId": "u1",
+    "reviewerName": "TS. Nguyễn Minh Quang",
+    "level": "Ban Giám hiệu",
+    "verdict": "Chưa đạt",
+    "at": "2026-10-21T09:30:00.000Z",
+    "strengths": "Mục tiêu bám sát yêu cầu cần đạt; dụng cụ thí nghiệm đơn giản, dễ tổ chức.",
+    "weaknesses": "Thiếu thành phần Sản phẩm ở HĐ2; GV thí nghiệm biểu diễn, thuyết trình; HS thụ động.",
+    "solutions": "Tổ chức học theo trạm, HS tự làm thí nghiệm theo nhóm; chuẩn hóa 4 bước cho mọi hoạt động; tham khảo đề xuất tinh chỉnh của EduPlan CoPilot.",
+    "stepNotes": [
+     "Lệnh chưa rõ sản phẩm.",
+     "HS chưa được làm thí nghiệm.",
+     "Chỉ 1–2 HS trả lời.",
+     "Đạt."
+    ],
+    "general": "Kế hoạch bài dạy chưa đạt yêu cầu, đề nghị giáo viên điều chỉnh và nộp lại."
+   },
+   {
+    "id": "r_real1",
+    "planId": "lp2",
+    "version": 2,
+    "reviewerId": "u1",
+    "reviewerName": "TS. Nguyễn Minh Quang",
+    "level": "Ban Giám hiệu",
+    "verdict": "Chưa đạt",
+    "at": "2026-11-09T09:00:00.000Z",
+    "strengths": "Học liệu tốt",
+    "weaknesses": "HĐ 2.1 thụ động",
+    "solutions": "Theo đề xuất AI",
+    "stepNotes": [
+     "",
+     "",
+     "",
+     ""
+    ],
+    "general": "Đề nghị sửa",
+    "compliance": 78,
+    "activeness": 65
+   }
+  ],
+  "audit_logs": [
+   {
+    "id": "log001",
+    "at": "2026-09-18T20:10:00.000Z",
+    "userId": "u5",
+    "userName": "Đặng Quốc Bảo",
+    "role": "teacher",
+    "action": "Nộp bài",
+    "target": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "detail": "Nộp phiên bản 1"
+   },
+   {
+    "id": "log002",
+    "at": "2026-09-18T20:15:00.000Z",
+    "userId": "u5",
+    "userName": "Đặng Quốc Bảo",
+    "role": "teacher",
+    "action": "Chạy phân tích AI",
+    "target": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "detail": "Chuẩn 5512: 84% · Tích cực: 80%"
+   },
+   {
+    "id": "log003",
+    "at": "2026-09-21T21:10:00.000Z",
+    "userId": "u5",
+    "userName": "Đặng Quốc Bảo",
+    "role": "teacher",
+    "action": "Chạy phân tích AI",
+    "target": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "detail": "Phiên bản 2 · Chuẩn 5512: 92%"
+   },
+   {
+    "id": "log004",
+    "at": "2026-09-22T15:30:00.000Z",
+    "userId": "u3",
+    "userName": "ThS. Phạm Thị Lan",
+    "role": "leader",
+    "action": "Ký duyệt cấp tổ",
+    "target": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "detail": "Đánh giá: Đạt"
+   },
+   {
+    "id": "log005",
+    "at": "2026-09-25T10:00:00.000Z",
+    "userId": "u1",
+    "userName": "TS. Nguyễn Minh Quang",
+    "role": "admin",
+    "action": "Phê duyệt",
+    "target": "Nghệ thuật xây dựng hình tượng nhân vật",
+    "detail": "Đã duyệt đạt chuẩn"
+   },
+   {
+    "id": "log006",
+    "at": "2026-10-06T19:40:00.000Z",
+    "userId": "u4",
+    "userName": "Võ Thị Mai",
+    "role": "teacher",
+    "action": "Nộp bài",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "Nộp phiên bản 1"
+   },
+   {
+    "id": "log007",
+    "at": "2026-10-06T19:45:00.000Z",
+    "userId": "u4",
+    "userName": "Võ Thị Mai",
+    "role": "teacher",
+    "action": "Chạy phân tích AI",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "Chuẩn 5512: 66% · Tích cực: 52%"
+   },
+   {
+    "id": "log008",
+    "at": "2026-10-08T16:20:00.000Z",
+    "userId": "u2",
+    "userName": "ThS. Lê Văn Hùng",
+    "role": "leader",
+    "action": "Yêu cầu chỉnh sửa",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "Đánh giá cấp tổ: Chưa đạt"
+   },
+   {
+    "id": "log009",
+    "at": "2026-10-14T20:25:00.000Z",
+    "userId": "u4",
+    "userName": "Võ Thị Mai",
+    "role": "teacher",
+    "action": "Chạy phân tích AI",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "Phiên bản 2 · Chuẩn 5512: 78%"
+   },
+   {
+    "id": "log010",
+    "at": "2026-10-15T16:00:00.000Z",
+    "userId": "u2",
+    "userName": "ThS. Lê Văn Hùng",
+    "role": "leader",
+    "action": "Ký duyệt cấp tổ",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "Đánh giá: Đạt · Chuyển BGH"
+   },
+   {
+    "id": "log011",
+    "at": "2026-10-19T21:00:00.000Z",
+    "userId": "u6",
+    "userName": "Ngô Thanh Tâm",
+    "role": "teacher",
+    "action": "Nộp bài",
+    "target": "Lực tiếp xúc và lực không tiếp xúc",
+    "detail": "Nộp phiên bản 1 (quá hạn 2 ngày)"
+   },
+   {
+    "id": "log012",
+    "at": "2026-10-19T21:05:00.000Z",
+    "userId": "u6",
+    "userName": "Ngô Thanh Tâm",
+    "role": "teacher",
+    "action": "Chạy phân tích AI",
+    "target": "Lực tiếp xúc và lực không tiếp xúc",
+    "detail": "Chuẩn 5512: 61% · Tích cực: 48%"
+   },
+   {
+    "id": "log013",
+    "at": "2026-10-21T09:30:00.000Z",
+    "userId": "u1",
+    "userName": "TS. Nguyễn Minh Quang",
+    "role": "admin",
+    "action": "Yêu cầu chỉnh sửa",
+    "target": "Lực tiếp xúc và lực không tiếp xúc",
+    "detail": "Đánh giá BGH: Chưa đạt"
+   },
+   {
+    "id": "log014",
+    "at": "2026-10-22T14:00:00.000Z",
+    "userId": "u1",
+    "userName": "TS. Nguyễn Minh Quang",
+    "role": "admin",
+    "action": "Xuất báo cáo",
+    "target": "Toàn bộ CSDL",
+    "detail": "Xuất JSON báo cáo Sở GD&ĐT"
+   },
+   {
+    "id": "log015",
+    "at": "2026-10-26T07:45:00.000Z",
+    "userId": "u3",
+    "userName": "ThS. Phạm Thị Lan",
+    "role": "leader",
+    "action": "Xuất báo cáo",
+    "target": "Phiếu nhận xét",
+    "detail": "In phiếu A4 — Nghệ thuật xây dựng hình tượng nhân vật"
+   },
+   {
+    "id": "log_real1",
+    "at": "2026-11-06T19:00:00.000Z",
+    "userId": "u_real1",
+    "userName": "Trần Văn Hòa",
+    "role": "teacher",
+    "action": "Nộp bài",
+    "target": "Phương trình bậc nhất một ẩn",
+    "detail": "v2"
+   },
+   {
+    "id": "log_real2",
+    "at": "2026-11-09T09:00:00.000Z",
+    "userId": "u1",
+    "userName": "TS. Nguyễn Minh Quang",
+    "role": "admin",
+    "action": "Yêu cầu chỉnh sửa",
+    "target": "Hình chóp tam giác đều và diện tích xung quanh",
+    "detail": "BGH: Chưa đạt"
+   }
+  ]
+ }
+}
