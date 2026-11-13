@@ -1,0 +1,783 @@
+﻿CHƯƠNG TRÌNH GIÁO DỤC PHỔ THÔNG
+MÔN VẬT LÍ
+(Ban hành kèm theo Thông tư số 32/2018/TT-BGDĐT ngày 26 tháng 12 năm 2018 của Bộ trưởng Bộ Giáo dục và Đào tạo)
+MỤC LỤC
+I. ĐẶC ĐIỂM MÔN HỌC
+II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH
+III. MỤC TIÊU CHƯƠNG TRÌNH 
+IV. YÊU CẦU CẦN ĐẠT 
+V. NỘI DUNG GIÁO DỤC 
+LỚP 10 
+CÁC CHUYÊN ĐỀ LỚP 10 
+LỚP 11 
+CÁC CHUYÊN ĐỀ LỚP 11 
+LỚP 12 
+CÁC CHUYÊN ĐỀ LỚP 12 
+VI. PHƯƠNG PHÁP GIÁO DỤC 
+VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH 
+
+I. ĐẶC ĐIỂM MÔN HỌC
+Vật lí học là ngành khoa học nghiên cứu các dạng vận động đơn giản, tổng quát nhất của vật chất và tương tác giữa chúng. 
+Trong nhà trường phổ thông, giáo dục vật lí được thực hiện ở cả ba cấp học với các mức độ khác nhau.
+Ở giai đoạn giáo dục cơ bản (cấp tiểu học và cấp trung học cơ sở), nội dung giáo dục vật lí được đề cập trong các môn học: Tự nhiên và Xã hội (lớp 1, lớp 2, lớp 3); Khoa học (lớp 4, lớp 5); Khoa học tự nhiên (từ lớp 6 đến lớp 9).
+Ở giai đoạn giáo dục định hướng nghề nghiệp (cấp trung học phổ thông), Vật lí là môn học thuộc nhóm môn Khoa học tự nhiên, được lựa chọn theo nguyện vọng và định hướng nghề nghiệp của học sinh. Những học sinh có định hướng nghề nghiệp cần vận dụng nhiều kiến thức, kĩ năng vật lí được học thêm các chuyên đề học tập. Môn Vật lí giúp học sinh tiếp tục phát triển các phẩm chất, năng lực đã được định hình trong giai đoạn giáo dục cơ bản, tạo điều kiện để học sinh bước đầu nhận biết đúng năng lực, sở trường của bản thân, có thái độ tích cực đối với môn học. Trên cơ sở nội dung nền tảng đã trang bị cho học sinh ở giai đoạn giáo dục cơ bản, Chương trình môn Vật lí lựa chọn phát triển những vấn đề cốt lõi thiết thực nhất, đồng thời chú trọng đến các vấn đề mang tính ứng dụng cao là cơ sở của nhiều ngành kĩ thuật, khoa học và công nghệ.
+Thí nghiệm, thực hành đóng vai trò đặc biệt quan trọng trong việc hình thành khái niệm, quy luật, định luật vật lí. Vì vậy, Chương trình môn Vật lí chú trọng rèn luyện cho học sinh khả năng tìm hiểu các thuộc tính của đối tượng vật lí thông qua các nội dung thí nghiệm, thực hành dưới các góc độ khác nhau.
+Chương trình môn Vật lí coi trọng việc rèn luyện khả năng vận dụng kiến thức, kĩ năng đã học để tìm hiểu và giải quyết ở mức độ nhất định một số vấn đề của thực tiễn, đáp ứng đòi hỏi của cuộc sống; vừa bảo đảm phát triển năng lực vật lí - biểu hiện của năng lực khoa học tự nhiên, vừa đáp ứng yêu cầu định hướng nghề nghiệp của học sinh.
+Thông qua Chương trình môn Vật lí, học sinh hình thành và phát triển được thế giới quan khoa học; rèn luyện được sự tự tin, trung thực, khách quan; cảm nhận được vẻ đẹp của thiên nhiên; yêu thiên nhiên, tự hào về thiên nhiên của quê hương, đất nước; tôn trọng các quy luật của thiên nhiên, trân trọng, giữ gìn và bảo vệ thiên nhiên, ứng xử với thiên nhiên phù hợp với yêu cầu phát triển bền vững; đồng thời hình thành và phát triển được các năng lực tự chủ và tự học, giao tiếp và hợp tác, giải quyết vấn đề và sáng tạo.
+II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH
+Chương trình môn Vật lí quán triệt đầy đủ các quy định cơ bản được nêu trong Chương trình tổng thể, về quan điểm, mục tiêu, yêu cầu cần đạt, kế hoạch giáo dục, nội dung giáo dục, phương pháp giáo dục và đánh giá kết quả, điều kiện thực hiện và phát triển chương trình; định hướng xây dựng chương trình các môn học và hoạt động giáo dục; đồng thời nhấn mạnh một số quan điểm sau:
+1. Chương trình môn Vật lí một mặt kế thừa và phát huy ưu điểm của chương trình hiện hành và mặt khác, tiếp thu kinh nghiệm xây dựng chương trình môn học của các nước có nền giáo dục tiên tiến trên thế giới, đồng thời tiếp cận những thành tựu của khoa học giáo dục và khoa học vật lí phù hợp với trình độ nhận thức và tâm, sinh lí lứa tuổi của học sinh, có tính đến điều kiện kinh tế và xã hội Việt Nam.
+2. Chương trình môn Vật lí chú trọng bản chất, ý nghĩa vật lí của các đối tượng, đề cao tính thực tiễn; tránh khuynh hướng thiên về toán học; tạo điều kiện để giáo viên giúp học sinh phát triển tư duy khoa học dưới góc độ vật lí, khơi gợi sự ham thích ở học sinh, tăng cường khả năng vận dụng kiến thức, kĩ năng vật lí trong thực tiễn. Các chủ đề được thiết kế, sắp xếp từ trực quan đến trừu tượng, từ đơn giản đến phức tạp, từ hệ được xem như một hạt đến nhiều hạt; bước đầu tiếp cận với một số nội dung hiện đại mang tính thiết thực, cốt lõi.
+3. Chương trình môn Vật lí được xây dựng theo hướng mở, thể hiện ở việc không quy định chi tiết về nội dung dạy học mà chỉ quy định những yêu cầu học sinh cần đạt; chỉ đưa ra các định nghĩa cụ thể cho các khái niệm trong trường hợp có những cách hiểu khác nhau. Căn cứ vào các yêu cầu cần đạt, các tác giả sách giáo khoa chủ động, sáng tạo trong việc triển khai các nội dung dạy học cụ thể theo yêu cầu phát triển chương trình. Trên cơ sở bám sát mục tiêu và đáp ứng yêu cầu cần đạt của Chương trình môn Vật lí, giáo viên có thể lựa chọn, sử dụng một hay kết hợp nhiều sách giáo khoa, nhiều nguồn tư liệu khác nhau để dạy học. Trong một lớp, thứ tự dạy học các chủ đề (bao gồm các chủ đề bắt buộc và các chuyên đề tự chọn) là không cố định “cứng”, các tác giả sách giáo khoa, giáo viên có thể sáng tạo một cách hợp lí, sao cho không làm mất logic hình thành kiến thức, kĩ năng và không hạn chế cơ hội hình thành và phát triển phẩm chất, năng lực của học sinh. Thứ tự dạy học các chủ đề được thực hiện sao cho chủ đề mô tả hiện tượng vật lí được thực hiện trước để cung cấp bức tranh toàn cảnh về hiện tượng, sau đó đến chủ đề giải thích và nghiên cứu hiện tượng để cung cấp cơ sở vật lí sâu hơn, rồi đến chủ đề ứng dụng của hiện tượng đó trong khoa học hoặc thực tiễn.
+4. Các phương pháp giáo dục của môn Vật lí góp phần phát huy tính tích cực, chủ động và sáng tạo của người học, nhằm hình thành, phát triển năng lực vật lí cũng như góp phần hình thành, phát triển các phẩm chất và năng lực chung được quy định trong Chương trình tổng thể.
+III. MỤC TIÊU CHƯƠNG TRÌNH
+1. Cùng với các môn học và hoạt động giáo dục khác, giúp học sinh hình thành, phát triển các phẩm chất chủ yếu và năng lực chung được quy định trong Chương trình tổng thể.
+2. Giúp học sinh hình thành, phát triển năng lực vật lí, với các biểu hiện sau:
+a) Có được những kiến thức, kĩ năng phổ thông cốt lõi về: mô hình hệ vật lí; năng lượng và sóng; lực và trường;
+b) Vận dụng được một số kĩ năng tiến trình khoa học để khám phá, giải quyết vấn đề dưới góc độ vật lí;
+c) Vận dụng được một số kiến thức, kĩ năng trong thực tiễn, ứng xử với thiên nhiên phù hợp với yêu cầu phát triển bền vững xã hội và bảo vệ môi trường;
+d) Nhận biết được năng lực, sở trường của bản thân, định hướng được nghề nghiệp và có kế hoạch học tập, rèn luyện đáp ứng yêu cầu của định hướng nghề nghiệp.
+IV. YÊU CẦU CẦN ĐẠT
+1. Yêu cầu cần đạt về phẩm chất và năng lực chung
+Môn Vật lí góp phần thực hiện các yêu cầu cần đạt về phẩm chất chủ yếu và năng lực chung theo các mức độ phù hợp với môn học, cấp học đã được quy định trong Chương trình tổng thể.
+2. Yêu cầu cần đạt về năng lực đặc thù
+Môn Vật lí hình thành và phát triển ở học sinh năng lực vật lí, với những biểu hiện cụ thể sau đây:
+a) Nhận thức vật lí
+Nhận thức được kiến thức, kĩ năng phổ thông cốt lõi về: mô hình hệ vật lí; năng lượng và sóng; lực và trường; nhận biết được một số ngành, nghề liên quan đến vật lí; biểu hiện cụ thể là:
+- Nhận biết và nêu được các đối tượng, khái niệm, hiện tượng, quy luật, quá trình vật lí.
+- Trình bày được các hiện tượng, quá trình vật lí; đặc điểm, vai trò của các hiện tượng, quá trình vật lí bằng các hình thức biểu đạt: nói, viết, đo, tính, vẽ, lập sơ đồ, biểu đồ.
+- Tìm được từ khoá, sử dụng được thuật ngữ khoa học, kết nối được thông tin theo logic có ý nghĩa, lập được dàn ý khi đọc và trình bày các văn bản khoa học.
+- So sánh, lựa chọn, phân loại, phân tích được các hiện tượng, quá trình vật lí theo các tiêu chí khác nhau.
+- Giải thích được mối quan hệ giữa các sự vật, hiện tượng, quá trình.
+- Nhận ra điểm sai và chỉnh sửa được nhận thức hoặc lời giải thích; đưa ra được những nhận định phê phán có liên quan đến chủ đề thảo luận.
+- Nhận ra được một số ngành nghề phù hợp với thiên hướng của bản thân.
+b) Tìm hiểu thế giới tự nhiên dưới góc độ vật lí
+Tìm hiểu được một số hiện tượng, quá trình vật lí đơn giản, gần gũi trong đời sống và trong thế giới tự nhiên theo tiến trình; sử dụng được các chứng cứ khoa học để kiểm tra các dự đoán, lí giải các chứng cứ, rút ra các kết luận; biểu hiện cụ thể là:
+- Đề xuất vấn đề liên quan đến vật lí: Nhận ra và đặt được câu hỏi liên quan đến vấn đề; phân tích được bối cảnh để đề xuất được vấn đề nhờ kết nối tri thức, kinh nghiệm đã có và dùng ngôn ngữ của mình để biểu đạt vấn đề đã đề xuất.
+- Đưa ra phán đoán và xây dựng giả thuyết: Phân tích vấn đề để nêu được phán đoán; xây dựng và phát biểu được giả thuyết cần tìm hiểu.
+- Lập kế hoạch thực hiện: Xây dựng được khung logic nội dung tìm hiểu; lựa chọn được phương pháp thích hợp (quan sát, thực nghiệm, điều tra, phỏng vấn, tra cứu tư liệu); lập được kế hoạch triển khai tìm hiểu.
+- Thực hiện kế hoạch: Thu thập, lưu giữ được dữ liệu từ kết quả tổng quan, thực nghiệm, điều tra; đánh giá được kết quả dựa trên phân tích, xử lí các dữ liệu bằng các tham số thống kê đơn giản; so sánh được kết quả với giả thuyết; giải thích, rút ra được kết luận và điều chỉnh khi cần thiết.
+- Viết, trình bày báo cáo và thảo luận: Sử dụng ngôn ngữ, hình vẽ, sơ đồ, biểu bảng để biểu đạt được quá trình và kết quả tìm hiểu; viết được báo cáo sau quá trình tìm hiểu; hợp tác được với đối tác bằng thái độ tích cực và tôn trọng quan điểm, ý kiến đánh giá do người khác đưa ra để tiếp thu tích cực và giải trình, phản biện, bảo vệ được kết quả tìm hiểu một cách thuyết phục.
+- Ra quyết định và đề xuất ý kiến, giải pháp: Đưa ra được quyết định xử lí cho vấn đề đã tìm hiểu; đề xuất được ý kiến khuyến nghị vận dụng kết quả tìm hiểu, nghiên cứu, hoặc vấn đề nghiên cứu tiếp.
+c) Vận dụng kiến thức, kĩ năng đã học
+Vận dụng được kiến thức, kĩ năng đã học trong một số trường hợp đơn giản, bước đầu sử dụng toán học như một ngôn ngữ và công cụ để giải quyết được vấn đề; biểu hiện cụ thể là:
+- Giải thích, chứng minh được một vấn đề thực tiễn.
+- Đánh giá, phản biện được ảnh hưởng của một vấn đề thực tiễn.
+- Thiết kế được mô hình, lập được kế hoạch, đề xuất và thực hiện được một số phương pháp hay biện pháp mới.
+- Nêu được giải pháp và thực hiện được một số giải pháp để bảo vệ thiên nhiên, thích ứng với biến đổi khí hậu; có hành vi, thái độ hợp lí nhằm phát triển bền vững.
+Trong Chương trình môn Vật lí, mỗi thành tố của các năng lực chung cũng như năng lực đặc thù nói trên được đưa vào từng chủ đề, từng mạch nội dung dạy học, dưới dạng các yêu cầu cần đạt, với các mức độ khác nhau.
+V. NỘI DUNG GIÁO DỤC
+1. Nội dung khái quát
+Mạch nội dung
+Lớp 10
+Lớp 11
+Lớp 12
+Ghi chú
+Mở đầu
+x
+
+
+
+Vật lí trong một số ngành nghề
+x
+
+
+Chuyên đề 10.1
+Động học
+x
+
+
+
+Động lực học
+x
+
+
+
+Công, năng lượng, công suất
+x
+
+
+
+Động lượng
+x
+
+
+
+Chuyển động tròn
+x
+
+
+
+Biến dạng của vật rắn
+x
+
+
+
+Trái Đất và bầu trời
+x
+
+
+Chuyên đề 10.2
+Vật lí với giáo dục về bảo vệ môi trường
+x
+
+
+Chuyên đề 10.3
+Trường hấp dẫn
+
+x
+
+Chuyên đề 11.1
+Dao động
+
+x
+
+
+Sóng
+
+x
+
+
+Truyền thông tin bằng sóng vô tuyến
+
+x
+
+Chuyên đề 11.2
+Trường điện (Điện trường)
+
+x
+
+
+Dòng điện, mạch điện
+
+x
+
+
+Mở đầu về điện tử học
+
+x
+
+Chuyên đề 11.3
+Vật lí nhiệt
+
+
+x
+
+Khí lí tưởng
+
+
+x
+
+Trường từ (Từ trường)
+
+
+x
+
+Dòng điện xoay chiều
+
+
+x
+Chuyên đề 12.1
+Vật lí hạt nhân và phóng xạ
+
+
+x
+
+Một số ứng dụng vật lí trong chẩn đoán y học
+
+
+x
+Chuyên đề 12.2
+Vật lí lượng tử
+
+
+x
+Chuyên đề 12.3
+2. Nội dung và yêu cầu cần đạt ở từng lớp
+LỚP 10
+Nội dung
+Yêu cầu cần đạt
+Mở đầu
+
+Giới thiệu mục đích học tập môn Vật lí
+- Nêu được đối tượng nghiên cứu của Vật lí học và mục tiêu của môn Vật lí.
+- Phân tích được một số ảnh hưởng của vật lí đối với cuộc sống, đối với sự phát triển của khoa học, công nghệ và kĩ thuật.
+- Nêu được ví dụ chứng tỏ kiến thức, kĩ năng vật lí được sử dụng trong một số lĩnh vực khác nhau.
+- Nêu được một số ví dụ về phương pháp nghiên cứu vật lí (phương pháp thực nghiệm và phương pháp lí thuyết).
+- Mô tả được các bước trong tiến trình tìm hiểu thế giới tự nhiên dưới góc độ vật lí.
+- Thảo luận để nêu được:
++ Một số loại sai số đơn giản hay gặp khi đo các đại lượng vật lí và cách khắc phục chúng;
++ Các quy tắc an toàn trong nghiên cứu và học tập môn Vật lí.
+Động học
+
+Mô tả chuyển động
+- Lập luận để rút ra được công thức tính tốc độ trung bình, định nghĩa được tốc độ theo một phương.
+- Từ hình ảnh hoặc ví dụ thực tiễn, định nghĩa được độ dịch chuyển.
+- So sánh được quãng đường đi được và độ dịch chuyển.
+- Dựa vào định nghĩa tốc độ theo một phương và độ dịch chuyển, rút ra được công thức tính và định nghĩa được vận tốc.
+- Thực hiện thí nghiệm (hoặc dựa trên số liệu cho trước), vẽ được đồ thị độ dịch chuyển - thời gian trong chuyển động thẳng.
+- Tính được tốc độ từ độ dốc của đồ thị độ dịch chuyển - thời gian.
+- Xác định được độ dịch chuyển tổng hợp, vận tốc tổng hợp.
+- Vận dụng được công thức tính tốc độ, vận tốc.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được tốc độ bằng dụng cụ thực hành.
+- Mô tả được một vài phương pháp đo tốc độ thông dụng và đánh giá được ưu, nhược điểm của chúng.
+Chuyển động biến đổi
+- Thực hiện thí nghiệm và lập luận dựa vào sự biến đổi vận tốc trong chuyển động thẳng, rút ra được công thức tính gia tốc; nêu được ý nghĩa, đơn vị của gia tốc.
+- Thực hiện thí nghiệm (hoặc dựa trên số liệu cho trước), vẽ được đồ thị vận tốc - thời gian trong chuyển động thẳng.
+- Vận dụng đồ thị vận tốc - thời gian để tính được độ dịch chuyển và gia tốc trong một số trường hợp đơn giản.
+- Rút ra được các công thức của chuyển động thẳng biến đổi đều (không được dùng tích phân).
+- Vận dụng được các công thức của chuyển động thẳng biến đổi đều.
+- Mô tả và giải thích được chuyển động khi vật có vận tốc không đổi theo một phương và có gia tốc không đổi theo phương vuông góc với phương này.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được gia tốc rơi tự do bằng dụng cụ thực hành.
+- Thực hiện được dự án hay đề tài nghiên cứu tìm điều kiện ném vật trong không khí ở độ cao nào đó để đạt độ cao hoặc tầm xa lớn nhất.
+Động lực học
+
+Ba định luật Newton về chuyển động
+- Thực hiện thí nghiệm, hoặc sử dụng số liệu cho trước để rút ra được a ~ F, a ~ 1/m, từ đó rút ra được biểu thức a = F/m hoặc F = ma (định luật 2 Newton).
+- Từ kết quả đã có (lấy từ thí nghiệm hay sử dụng số liệu cho trước), hoặc lập luận dựa vào a = F/m, nêu được khối lượng là đại lượng đặc trưng cho mức quán tính của vật.
+- Phát biểu định luật 1 Newton và minh hoạ được bằng ví dụ cụ thể.
+- Vận dụng được mối liên hệ đơn vị dẫn xuất với 7 đơn vị cơ bản của hệ SI.
+- Nêu được: trọng lực tác dụng lên vật là lực hấp dẫn giữa Trái Đất và vật; trọng tâm của vật là điểm đặt của trọng lực tác dụng vào vật; trọng lượng của vật được tính bằng tích khối lượng của vật với gia tốc rơi tự do.
+- Mô tả được bằng ví dụ thực tế về lực bằng nhau, không bằng nhau.
+- Mô tả được một cách định tính chuyển động rơi trong trường trọng lực đều khi có sức cản của không khí.
+- Thực hiện được dự án hay đề tài nghiên cứu ứng dụng sự tăng hay giảm sức cản không khí theo hình dạng của vật.
+- Phát biểu được định luật 3 Newton, minh hoạ được bằng ví dụ cụ thể; vận dụng được định luật 3 Newton trong một số trường hợp đơn giản.
+Một số lực trong thực tiễn
+- Mô tả được bằng ví dụ thực tiễn và biểu diễn được bằng hình vẽ: Trọng lực; Lực ma sát; Lực cản khi một vật chuyển động trong nước (hoặc trong không khí); Lực nâng (đẩy lên trên) của nước; Lực căng dây.
+- Giải thích được lực nâng tác dụng lên một vật ở trong trong nước (hoặc trong không khí).
+Cân bằng lực, moment lực
+- Dùng hình vẽ, tổng hợp được các lực trên một mặt phẳng.
+- Dùng hình vẽ, phân tích được một lực thành các lực thành phần vuông góc.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, tổng hợp được hai lực đồng quy bằng dụng cụ thực hành.
+- Nêu được khái niệm moment lực, moment ngẫu lực; Nêu được tác dụng của ngẫu lực lên một vật chỉ làm quay vật.
+- Phát biểu và vận dụng được quy tắc moment cho một số trường hợp đơn giản trong thực tế.
+- Thảo luận để rút ra được điều kiện để vật cân bằng: lực tổng hợp tác dụng lên vật bằng không và tổng moment lực tác dụng lên vật (đối với một điểm bất kì) bằng không.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, tổng hợp được hai lực song song bằng dụng cụ thực hành.
+Khối lượng riêng, áp suất chất lỏng
+- Nêu được khối lượng riêng của một chất là khối lượng của một đơn vị thể tích của chất đó. 
+- Thành lập và vận dụng được phương trình Δp = ρgΔh trong một số trường hợp đơn giản; đề xuất thiết kế được mô hình minh hoạ.
+Công, năng lượng, công suất
+Công và năng lượng
+- Chế tạo mô hình đơn giản minh hoạ được định luật bảo toàn năng lượng, liên quan đến một số dạng năng lượng khác nhau.
+- Trình bày được ví dụ chứng tỏ có thể truyền năng lượng từ vật này sang vật khác bằng cách thực hiện công.
+- Nêu được biểu thức tính công bằng tích của lực tác dụng và độ dịch chuyển theo phương của lực, nêu được đơn vị đo công là đơn vị đo năng lượng (với 1 J = 1 Nm); Tính được công trong một số trường hợp đơn giản.
+Động năng và thế năng
+- Từ phương trình chuyển động thẳng biến đổi đều với vận tốc ban đầu bằng không, rút ra được động năng của vật có giá trị bằng công của lực tác dụng lên vật.
+- Nêu được công thức tính thế năng trong trường trọng lực đều, vận dụng được trong một số trường hợp đơn giản.
+- Phân tích được sự chuyển hoá động năng và thế năng của vật trong một số trường hợp đơn giản.
+- Nêu được khái niệm cơ năng; phát biểu được định luật bảo toàn cơ năng và vận dụng được định luật bảo toàn cơ năng trong một số trường hợp đơn giản.
+Công suất và hiệu suất
+- Từ một số tình huống thực tế, thảo luận để nêu được ý nghĩa vật lí và định nghĩa công suất.
+- Vận dụng được mối liên hệ công suất (hay tốc độ thực hiện công) với tích của lực và vận tốc trong một số tình huống thực tế.
+- Từ tình huống thực tế, thảo luận để nêu được định nghĩa hiệu suất, vận dụng được hiệu suất trong một số trường hợp thực tế.
+Động lượng
+
+Định nghĩa động lượng
+- Từ tình huống thực tế, thảo luận để nêu được ý nghĩa vật lí và định nghĩa động lượng.
+Bảo toàn động lượng
+- Thực hiện thí nghiệm và thảo luận, phát biểu được định luật bảo toàn động lượng trong hệ kín.
+- Vận dụng được định luật bảo toàn động lượng trong một số trường hợp đơn giản.
+Động lượng và va chạm
+- Rút ra được mối liên hệ giữa lực tổng hợp tác dụng lên vật và tốc độ thay đổi của động lượng (lực tổng hợp tác dụng lên vật là tốc độ thay đổi của động lượng của vật).
+- Thực hiện thí nghiệm và thảo luận được sự thay đổi năng lượng trong một số trường hợp va chạm đơn giản.
+- Thảo luận để giải thích được một số hiện tượng đơn giản.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án, thực hiện phương án, xác định được tốc độ và đánh giá được động lượng của vật trước và sau va chạm bằng dụng cụ thực hành.
+Chuyển động tròn
+Động học của chuyển động tròn đều
+- Từ tình huống thực tế, thảo luận để nêu được định nghĩa radian và biểu diễn được độ dịch chuyển góc theo radian.
+- Vận dụng được khái niệm tốc độ góc.
+Gia tốc hướng tâm và lực hướng tâm
+- Vận dụng được biểu thức gia tốc hướng tâm a = rω2, a = v2/r.
+- Vận dụng được biểu thức lực hướng tâm F = mrω2, F = mv2/r.
+- Thảo luận và đề xuất giải pháp an toàn cho một số tình huống chuyển động tròn trong thực tế.
+Biến dạng của vật rắn
+Biến dạng kéo và biến dạng nén;
+- Thực hiện thí nghiệm đơn giản (hoặc sử dụng tài liệu đa phương tiện), nêu được sự biến dạng kéo,
+Đặc tính của lò xo.
+biến dạng nén; mô tả được các đặc tính của lò xo: giới hạn đàn hồi, độ dãn, độ cứng.
+Định luật Hooke
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, tìm mối liên hệ giữa lực đàn hồi và độ biến dạng của lò xo, từ đó phát biểu được định luật Hooke.
+- Vận dụng được định luật Hooke trong một số trường hợp đơn giản.
+CÁC CHUYÊN ĐỀ LỚP 10
+Nội dung
+Yêu cầu cần đạt
+Chuyên đề 10.1. Vật lí trong một số ngành nghề
+Sơ lược về sự phát triển của vật lí học
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Nhiệm vụ học tập để:
++ Nêu được sơ lược sự ra đời và những thành tựu ban đầu của vật lí thực nghiệm.
++ Nêu được sơ lược vai trò của cơ học Newton đối với sự phát triển của Vật lí học.
++ Liệt kê được một số nhánh nghiên cứu chính của vật lí cổ điển.
++ Nêu được sự khủng hoảng của vật lí cuối thế kỉ XIX, tiền đề cho sự ra đời của vật lí hiện đại.
++ Liệt kê được một số lĩnh vực chính của vật lí hiện đại.
+Giới thiệu các lĩnh vực nghiên cứu trong vật lí học
+- Nêu được đối tượng nghiên cứu; liệt kê được một vài mô hình lí thuyết đơn giản, một số phương pháp thực nghiệm của một số lĩnh vực chính của vật lí hiện đại.
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Nhiệm vụ học tập tìm hiểu về các mô hình, lí thuyết khoa học đã phát triển và được áp dụng để cải thiện các công nghệ hiện tại cũng như phát triển các công nghệ mới.
+Giới thiệu các ứng dụng của vật lí trong một số ngành nghề
+- Mô tả được ví dụ thực tế về việc sử dụng kiến thức vật lí trong một số lĩnh vực (Quân sự; Công nghiệp hạt nhân; Khí tượng; Nông nghiệp, Lâm nghiệp; Tài chính; Điện tử; Cơ khí, tự động hoá; Thông tin, truyền thông; Nghiên cứu khoa học).
+Chuyên đề 10.2. Trái Đất và bầu trời
+Xác định phương hướng
+- Xác định được trên bản đồ sao (hoặc bằng dụng cụ thực hành) vị trí của các chòm sao: Gấu lớn, Gấu nhỏ, Thiên Hậu.
+- Xác định được vị trí sao Bắc Cực trên nền trời sao.
+Đặc điểm chuyển động nhìn thấy của một số thiên thể trên nền trời sao
+- Sử dụng mô hình hệ Mặt Trời, thảo luận để nêu được một số đặc điểm cơ bản của chuyển động nhìn thấy của Mặt Trời, Mặt Trăng, Kim Tinh và Thuỷ Tinh trên nền trời sao.
+- Dùng mô hình nhật tâm của Copernic giải thích được một số đặc điểm quan sát được của Mặt Trời, Mặt Trăng, Kim Tinh và Thuỷ Tinh trên nền trời sao.
+Một số hiện tượng thiên văn
+- Dùng ảnh (hoặc tài liệu đa phương tiện), thảo luận để giải thích được một cách sơ lược và định tính các hiện tượng: nhật thực, nguyệt thực, thuỷ triều.
+Chuyên đề 10.3. Vật lí với giáo dục về bảo vệ môi trường
+Sự cần thiết phải bảo vệ môi trường
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Nhiệm vụ học tập tìm hiểu:
++ Sự cần thiết bảo vệ môi trường trong chiến lược phát triển của các quốc gia.
++ Vai trò của cá nhân và cộng đồng trong bảo vệ môi trường.
+Vật lí với giáo dục bảo vệ môi trường
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Nhiệm vụ học tập tìm hiểu:
++ Tác động của việc sử dụng năng lượng hiện nay đối với môi trường, kinh tế và khí hậu Việt Nam.
++ Sơ lược về các chất ô nhiễm trong nhiên liệu hoá thạch, mưa axit, năng lượng hạt nhân, sự suy giảm tầng ozon, sự biến đổi khí hậu.
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Nhiệm vụ học tập tìm hiểu:
++ Phân loại năng lượng hoá thạch và năng lượng tái tạo.
++ Vai trò của năng lượng tái tạo.
++ Một số công nghệ cơ bản để thu được năng lượng tái tạo.
+LỚP 11
+Nội dung
+Yêu cầu cần đạt
+Dao động
+Dao động điều hoà
+- Thực hiện thí nghiệm đơn giản tạo ra được dao động và mô tả được một số ví dụ đơn giản về dao động tự do.
+- Dùng đồ thị li độ - thời gian có dạng hình sin (tạo ra bằng thí nghiệm, hoặc hình vẽ cho trước), nêu được định nghĩa: biên độ, chu kì, tần số, tần số góc, độ lệch pha.
+- Vận dụng được các khái niệm: biên độ, chu kì, tần số, tần số góc, độ lệch pha để mô tả dao động điều hoà.
+- Sử dụng đồ thị, phân tích và thực hiện phép tính cần thiết để xác định được: độ dịch chuyển, vận tốc và gia tốc trong dao động điều hoà.
+- Vận dụng được các phương trình về li độ và vận tốc, gia tốc của dao động điều hoà.
+- Vận dụng được phương trình a = - 2x của dao động điều hoà.
+- Sử dụng đồ thị, phân tích và thực hiện phép tính cần thiết để mô tả được sự chuyển hoá động năng và thế năng trong dao động điều hoà.
+Dao động tắt dần, hiện tượng cộng hưởng
+- Nêu được ví dụ thực tế về dao động tắt dần, dao động cưỡng bức và hiện tượng cộng hưởng.
+- Thảo luận, đánh giá được sự có lợi hay có hại của cộng hưởng trong một số trường hợp cụ thể.
+Sóng
+
+Mô tả sóng
+- Từ đồ thị độ dịch chuyển - khoảng cách (tạo ra bằng thí nghiệm, hoặc hình vẽ cho trước), mô tả được sóng qua các khái niệm bước sóng, biên độ, tần số, tốc độ và cường độ sóng.
+- Từ định nghĩa của vận tốc, tần số và bước sóng, rút ra được biểu thức v = f.
+- Vận dụng được biểu thức v = f.
+- Nêu được ví dụ chứng tỏ sóng truyền năng lượng.
+- Sử dụng mô hình sóng giải thích được một số tính chất đơn giản của âm thanh và ánh sáng.
+- Thực hiện thí nghiệm (hoặc sử dụng tài liệu đa phương tiện), thảo luận để nêu được mối liên hệ các đại lượng đặc trưng của sóng với các đại lượng đặc trưng cho dao động của phần tử môi trường.
+Sóng dọc và sóng ngang
+- Quan sát hình ảnh (hoặc tài liệu đa phương tiện) về chuyển động của phần tử môi trường, thảo luận để so sánh được sóng dọc và sóng ngang.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được tần số của sóng âm bằng dao động kí hoặc dụng cụ thực hành.
+Sóng điện từ
+- Nêu được trong chân không, tất cả các sóng điện từ đều truyền với cùng tốc độ.
+- Liệt kê được bậc độ lớn bước sóng của các bức xạ chủ yếu trong thang sóng điện từ.
+Giao thoa sóng kết hợp
+- Thực hiện (hoặc mô tả) được thí nghiệm chứng minh sự giao thoa hai sóng kết hợp bằng dụng cụ thực hành sử dụng sóng nước (hoặc sóng ánh sáng).
+- Phân tích, đánh giá kết quả thu được từ thí nghiệm, nêu được các điều kiện cần thiết để quan sát được hệ vân giao thoa.
+- Vận dụng được biểu thức i = D/a cho giao thoa ánh sáng qua hai khe hẹp.
+Sóng dừng
+- Thực hiện thí nghiệm tạo sóng dừng và giải thích được sự hình thành sóng dừng.
+- Sử dụng hình ảnh (tạo ra bằng thí nghiệm, hoặc hình vẽ cho trước), xác định được nút và bụng của sóng dừng.
+- Sử dụng các cách biểu diễn đại số và đồ thị để phân tích, xác định được vị trí nút và bụng của sóng dừng.
+Đo tốc độ truyền âm
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được tốc độ truyền âm bằng dụng cụ thực hành.
+Trường điện (Điện trường)
+Lực điện tương tác giữa các điện tích
+- Thực hiện thí nghiệm hoặc bằng ví dụ thực tế, mô tả được sự hút (hoặc đẩy) của một điện tích vào một điện tích khác.
+- Phát biểu được định luật Coulomb và nêu được đơn vị đo điện tích.
+- Sử dụng biểu thức F = q1q2/4πεor2, tính và mô tả được lực tương tác giữa hai điện tích điểm đặt trong chân không (hoặc trong không khí).
+Khái niệm điện trường
+- Nêu được khái niệm điện trường là trường lực được tạo ra bởi điện tích, là dạng vật chất tồn tại quanh điện tích và truyền tương tác giữa các điện tích.
+- Sử dụng biểu thức E = Q/4πεor2, tính và mô tả được cường độ điện trường do một điện tích điểm Q đặt trong chân không hoặc trong không khí gây ra tại một điểm cách nó một khoảng r.
+- Nêu được ý nghĩa của cường độ điện trường và định nghĩa được cường độ điện trường tại một điểm được đo bằng tỉ số giữa lực tác dụng lên một điện tích dương đặt tại điểm đó và độ lớn của điện tích đó.
+- Dùng dụng cụ tạo ra (hoặc vẽ) được điện phổ trong một số trường hợp đơn giản.
+- Vận dụng được biểu thức E = Q/4πεor2.
+Điện trường đều
+- Sử dụng biểu thức E = U/d, tính được cường độ của điện trường đều giữa hai bản phẳng nhiễm điện đặt song song, xác định được lực tác dụng lên điện tích đặt trong điện trường đều.
+- Thảo luận để mô tả được tác dụng của điện trường đều lên chuyển động của điện tích bay vào điện trường đều theo phương vuông góc với đường sức và nêu được ví dụ về ứng dụng của hiện tượng này.
+Điện thế và thế năng điện
+- Thảo luận qua quan sát hình ảnh (hoặc tài liệu đa phương tiện) nêu được điện thế tại một điểm trong điện trường đặc trưng cho điện trường tại điểm đó về thế năng, được xác định bằng công dịch chuyển một đơn vị điện tích dương từ vô cực về điểm đó; thế năng của một điện tích q trong điện trường đặc trưng cho khả năng sinh công của điện trường khi đặt điện tích q tại điểm đang xét.
+- Vận dụng được mối liên hệ thế năng điện với điện thế, V = A/q; mối liên hệ cường độ điện trường với điện thế.
+Tụ điện và điện dung
+- Định nghĩa được điện dung và đơn vị đo điện dung (fara).
+- Vận dụng được (không yêu cầu thiết lập) công thức điện dung của bộ tụ điện ghép nối tiếp, ghép song song.
+- Thảo luận để xây dựng được biểu thức tính năng lượng tụ điện.
+- Lựa chọn và sử dụng thông tin để xây dựng được báo cáo tìm hiểu một số ứng dụng của tụ điện trong cuộc sống.
+Dòng điện, mạch điện
+Cường độ dòng điện
+- Thực hiện thí nghiệm (hoặc dựa vào tài liệu đa phương tiện), nêu được cường độ dòng điện đặc trưng cho tác dụng mạnh yếu của dòng điện và được xác định bằng điện lượng chuyển qua tiết diện thẳng của vật dẫn trong một đơn vị thời gian.
+- Vận dụng được biểu thức I = Snve cho dây dẫn có dòng điện, với n là mật độ hạt mang điện, S là tiết diện thẳng của dây, v là tốc độ dịch chuyển của hạt mang điện tích e.
+- Định nghĩa được đơn vị đo điện lượng coulomb là lượng điện tích chuyển qua tiết diện thẳng của dây dẫn trong 1 s khi có cường độ dòng điện 1 A chạy qua dây dẫn.
+Mạch điện và điện trở
+- Định nghĩa được điện trở, đơn vị đo điện trở và nêu được các nguyên nhân chính gây ra điện trở.
+- Vẽ phác và thảo luận được về đường đặc trưng I - U của vật dẫn kim loại ở nhiệt độ xác định.
+- Mô tả được sơ lược ảnh hưởng của nhiệt độ lên điện trở của đèn sợi đốt, điện trở nhiệt (thermistor).
+- Phát biểu được định luật Ohm cho vật dẫn kim loại.
+- Định nghĩa được suất điện động qua năng lượng dịch chuyển một điện tích đơn vị theo vòng kín.
+- Mô tả được ảnh hưởng của điện trở trong của nguồn điện lên hiệu điện thế giữa hai cực của nguồn.
+- So sánh được suất điện động và hiệu điện thế.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được suất điện động và điện trở trong của pin hoặc acquy (battery hoặc accumulator) bằng dụng cụ thực hành.
+Năng lượng điện, công suất điện
+- Nêu được năng lượng điện tiêu thụ của đoạn mạch được đo bằng công của lực điện thực hiện khi dịch chuyển các điện tích; công suất tiêu thụ năng lượng điện của một đoạn mạch là năng lượng điện mà đoạn mạch tiêu thụ trong một đơn vị thời gian.
+- Tính được năng lượng điện và công suất tiêu thụ năng lượng điện của đoạn mạch.
+CÁC CHUYÊN ĐỀ LỚP 11
+Nội dung
+Yêu cầu cần đạt
+Chuyên đề 11.1. Trường hấp dẫn
+Khái niệm trường hấp dẫn
+- Nêu được ví dụ chứng tỏ tồn tại lực hấp dẫn của Trái Đất.
+- Thảo luận (qua hình vẽ, tài liệu đa phương tiện), nêu được: Mọi vật có khối lượng đều tạo ra một trường hấp dẫn xung quanh nó; Trường hấp dẫn là trường lực được tạo ra bởi vật có khối lượng, là dạng vật chất tồn tại quanh một vật có khối lượng và tác dụng lực hấp dẫn lên vật có khối lượng đặt trong nó.
+Lực hấp dẫn
+- Nêu được: Khi xét trường hấp dẫn ở một điểm ngoài quả cầu đồng nhất, khối lượng của quả cầu có thể xem như tập trung ở tâm của nó.
+- Vận dụng được định luật Newton về hấp dẫn F = Gm1m2/r2 cho một số trường hợp chuyển động đơn giản trong trường hấp dẫn.
+Cường độ trường hấp dẫn
+- Nêu được định nghĩa cường độ trường hấp dẫn.
+- Từ định luật hấp dẫn và định nghĩa cường độ trường hấp dẫn, rút ra được phương trình g = GM/r2 cho trường hợp đơn giản.
+- Vận dụng được phương trình g = GM/r2 để đánh giá một số hiện tượng đơn giản về trường hấp dẫn.
+- Nêu được tại mỗi vị trí ở gần bề mặt của Trái Đất, trong một phạm vi độ cao không lớn lắm, g là hằng số.
+Thế hấp dẫn và thế năng hấp dẫn
+- Thảo luận (qua hình ảnh, tài liệu đa phương tiện) để nêu được định nghĩa thế hấp dẫn tại một điểm trong trường hấp dẫn.
+- Vận dụng được phương trình  = - GM/r trong trường hợp đơn giản.
+- Giải thích được sơ lược chuyển động của vệ tinh địa tĩnh, rút ra được công thức tính tốc độ vũ trụ cấp 1.
+Chuyên đề 11.2. Truyền thông tin bằng sóng vô tuyến
+Biến điệu
+- So sánh được biến điệu biên độ (AM) và biến điệu tần số (FM).
+- Liệt kê được tần số và bước sóng được sử dụng trong các kênh truyền thông khác nhau.
+- Thảo luận để rút ra được ưu, nhược điểm tương đối của kênh AM và kênh FM.
+Tín hiệu tương tự và tín hiệu số
+- Mô tả được các ưu điểm của việc truyền dữ liệu dưới dạng số so với việc truyền dữ liệu dưới dạng tương tự.
+- Thảo luận để rút ra được: sự truyền giọng nói hoặc âm nhạc liên quan đến chuyển đổi tương tự - số (ADC) trước khi truyền và chuyển đổi số - tương tự (DAC) khi nhận.
+- Mô tả được sơ lược hệ thống truyền kĩ thuật số về chuyển đổi tương tự - số và số - tương tự.
+Suy giảm tín hiệu
+- Thảo luận được ảnh hưởng của sự suy giảm tín hiệu đến chất lượng tín hiệu được truyền; nêu được độ suy giảm tín hiệu tính theo dB và tính theo dB trên một đơn vị độ dài.
+Chuyên đề 11.3. Mở đầu về điện tử học
+Khuếch đại thuật toán
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Dự án tìm hiểu:
++ Phân loại cảm biến (sensor) theo: nguyên tắc hoạt động, phạm vi sử dụng, hiệu quả kinh tế.
++ Nguyên tắc hoạt động của: điện trở phụ thuộc ánh sáng (LDR), điện trở nhiệt.
++ Nguyên tắc hoạt động của sensor sử dụng: điện trở phụ thuộc ánh sáng (LDR), điện trở nhiệt.
++ Tính chất cơ bản của bộ khuếch đại thuật toán (op-amp) lí tưởng.
+Thiết bị đầu ra
+- Thảo luận, đề xuất, chọn phương án và thực hiện được Dự án tìm hiểu ba thiết bị đầu ra:
++ Nguyên tắc hoạt động của mạch op-amp - relays.
++ Nguyên tắc hoạt động của mạch op-amp - LEDs (light-emitting diode).
++ Nguyên tắc hoạt động của mạch op-amp - CMs (calibrated meter).
++ Thiết kế được một số mạch điện ứng dụng đơn giản có sử dụng thiết bị đầu ra.
+Thiết bị cảm biến
+(sensing devices)
+- Tham quan thực tế (hoặc qua tài liệu đa phương tiện), thảo luận để nêu được một số ứng dụng chính của thiết bị cảm biến và nguyên tắc hoạt động của thiết bị cảm biến.
+LỚP 12
+Nội dung
+Yêu cầu cần đạt
+Vật lí nhiệt
+Sự chuyển thể
+- Sử dụng mô hình động học phân tử, nêu được sơ lược cấu trúc của chất rắn, chất lỏng, chất khí.
+- Giải thích được sơ lược một số hiện tượng vật lí liên quan đến sự chuyển thể: sự nóng chảy, sự hoá hơi.
+Nội năng, định luật 1 của nhiệt động lực học
+- Thực hiện thí nghiệm, nêu được: mối liên hệ nội năng của vật với năng lượng của các phân tử tạo nên vật, định luật 1 của nhiệt động lực học.
+- Vận dụng được định luật 1 của nhiệt động lực học trong một số trường hợp đơn giản.
+Thang nhiệt độ, nhiệt kế
+- Thực hiện thí nghiệm đơn giản, thảo luận để nêu được sự chênh lệch nhiệt độ giữa hai vật tiếp xúc nhau có thể cho ta biết chiều truyền năng lượng nhiệt giữa chúng; từ đó nêu được khi hai vật tiếp xúc với nhau, ở cùng nhiệt độ, sẽ không có sự truyền năng lượng nhiệt giữa chúng.
+- Thảo luận để nêu được mỗi độ chia (1oC) trong thang Celsius bằng 1/100 của khoảng cách giữa nhiệt độ tan chảy của nước tinh khiết đóng băng và nhiệt độ sôi của nước tinh khiết (ở áp suất tiêu chuẩn), mỗi độ chia (1 K) trong thang Kelvin bằng 1/(273,16) của khoảng cách giữa nhiệt độ không tuyệt đối và nhiệt độ điểm mà nước tinh khiết tồn tại đồng thời ở thể rắn, lỏng và hơi (ở áp suất tiêu chuẩn).
+- Nêu được nhiệt độ không tuyệt đối là nhiệt độ mà tại đó tất cả các chất có động năng chuyển động nhiệt của các phân tử hoặc nguyên tử bằng không và thế năng của chúng là tối thiểu.
+- Chuyển đổi được nhiệt độ đo theo thang Celsius sang nhiệt độ đo theo thang Kelvin và ngược lại.
+Nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng
+- Nêu được định nghĩa nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, đo được nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi riêng bằng dụng cụ thực hành.
+Khí lí tưởng
+Mô hình động học phân tử chất khí
+- Phân tích mô hình chuyển động Brown, nêu được các phân tử trong chất khí chuyển động hỗn loạn.
+- Từ các kết quả thực nghiệm hoặc mô hình, thảo luận để nêu được các giả thuyết của thuyết động học phân tử chất khí.
+Phương trình trạng thái
+- Thực hiện thí nghiệm khảo sát được định luật Boyle: Khi giữ không đổi nhiệt độ của một khối lượng khí xác định thì áp suất gây ra bởi khí tỉ lệ nghịch với thể tích của nó.
+- Thực hiện thí nghiệm minh hoạ được định luật Charles: Khi giữ không đổi áp suất của một khối lượng khí xác định thì thể tích của khí tỉ lệ với nhiệt độ tuyệt đối của nó.
+- Sử dụng định luật Boyle và định luật Charles rút ra được phương trình trạng thái của khí lí tưởng.
+- Vận dụng được phương trình trạng thái của khí lí tưởng.
+Áp suất khí theo mô hình động học phân tử
+- Giải thích được chuyển động của các phân tử ảnh hưởng như thế nào đến áp suất tác dụng lên thành bình và từ đó rút ra được hệ thức p = ()nmv2 với n là số phân tử trong một đơn vị thể tích (dùng mô hình va chạm một chiều đơn giản, rồi mở rộng ra cho trường hợp ba chiều bằng cách sử dụng hệ thức , không yêu cầu chứng minh một cách chính xác và chi tiết).
+Động năng phân tử
+- Nêu được biểu thức hằng số Boltzmann, k = R/NA.
+- So sánh pV = ()Nm với pV = nRT, rút ra được động năng tịnh tiến trung bình của phân tử tỉ lệ với nhiệt độ T.
+Trường từ (Từ trường)
+Khái niệm từ trường
+- Thực hiện thí nghiệm tạo ra được các đường sức từ bằng các dụng cụ đơn giản.
+- Nêu được từ trường là trường lực gây ra bởi dòng điện hoặc nam châm, là một dạng của vật chất tồn tại xung quanh dòng điện hoặc nam châm mà biểu hiện cụ thể là sự xuất hiện của lực từ tác dụng lên một dòng điện hay một nam châm đặt trong đó.
+Lực từ tác dụng lên đoạn dây dẫn mang dòng điện; Cảm ứng từ
+- Thực hiện thí nghiệm để mô tả được hướng của lực từ tác dụng lên đoạn dây dẫn mang dòng điện đặt trong từ trường.
+- Xác định được độ lớn và hướng của lực từ tác dụng lên đoạn dây dẫn mang dòng điện đặt trong từ trường.
+- Định nghĩa được cảm ứng từ B và đơn vị tesla.
+- Nêu được đơn vị cơ bản và dẫn xuất để đo các đại lượng từ.
+- Thảo luận để thiết kế phương án, lựa chọn phương án, thực hiện phương án, đo được (hoặc mô tả được phương pháp đo) cảm ứng từ bằng cân “dòng điện”.
+- Vận dụng được biểu thức tính lực F = BILsinθ.
+Từ thông; 
+Cảm ứng điện từ
+- Định nghĩa được từ thông và đơn vị weber.
+- Tiến hành các thí nghiệm đơn giản minh hoạ được hiện tượng cảm ứng điện từ.
+- Vận dụng được định luật Faraday và định luật Lenz về cảm ứng điện từ.
+- Giải thích được một số ứng dụng đơn giản của hiện tượng cảm ứng điện từ.
+- Mô tả được mô hình sóng điện từ và ứng dụng để giải thích sự tạo thành và lan truyền của các sóng điện từ trong thang sóng điện từ.
+- Thảo luận để thiết kế phương án (hoặc mô tả được phương pháp) tạo ra dòng điện xoay chiều.
+- Nêu được: chu kì, tần số, giá trị cực đại, giá trị hiệu dụng của cường độ dòng điện và điện áp xoay chiều.
+- Thảo luận để nêu được một số ứng dụng của dòng điện xoay chiều trong cuộc sống, tầm quan trọng của việc tuân thủ quy tắc an toàn khi sử dụng dòng điện xoay chiều trong cuộc sống.
+Vật lí hạt nhân và phóng xạ
+Cấu trúc hạt nhân
+- Rút ra được sự tồn tại và đánh giá được kích thước của hạt nhân từ phân tích kết quả thí nghiệm tán xạ hạt α.
+- Biểu diễn được kí hiệu hạt nhân của nguyên tử bằng số nucleon và số proton.
+- Mô tả được mô hình đơn giản của nguyên tử gồm proton, neutron và electron.
+Độ hụt khối và năng lượng liên kết hạt nhân
+- Viết được đúng phương trình phân rã hạt nhân đơn giản.
+- Thảo luận hệ thức E = mc2, nêu được liên hệ giữa khối lượng và năng lượng.
+- Nêu được mối liên hệ giữa năng lượng liên kết riêng và độ bền vững của hạt nhân.
+- Nêu được sự phân hạch và sự tổng hợp hạt nhân.
+- Thảo luận để đánh giá được vai trò của một số ngành công nghiệp hạt nhân trong đời sống.
+Sự phóng xạ và chu kì bán rã
+- Nêu được bản chất tự phát và ngẫu nhiên của sự phân rã phóng xạ.
+- Định nghĩa được độ phóng xạ, hằng số phóng xạ và vận dụng được liên hệ H = N.
+- Vận dụng được công thức x = x0e-t, với x là độ phóng xạ, số hạt chưa phân rã hoặc tốc độ số hạt đếm được.
+- Định nghĩa được chu kì bán rã.
+- Mô tả được sơ lược một số tính chất của các phóng xạ α, β và γ.
+- Nhận biết được dấu hiệu vị trí có phóng xạ thông qua các biển báo.
+- Nêu được các nguyên tắc an toàn phóng xạ; tuân thủ quy tắc an toàn phóng xạ.
+CÁC CHUYÊN ĐỀ LỚP 12
+Nội dung
+Yêu cầu cần đạt
+Chuyên đề 12.1. Dòng điện xoay chiều
+Các đặc trưng của dòng điện xoay chiều
+- Thảo luận để thiết kế phương án, chọn phương án, thực hiện phương án, đo được (hoặc mô tả được phương pháp đo): tần số, điện áp xoay chiều bằng dụng cụ thực hành.
+- Nêu được: công suất toả nhiệt trung bình trên điện trở thuần bằng một nửa công suất cực đại của dòng điện xoay chiều hình sin (chạy qua điện trở thuần này).
+- Mô tả được bằng biểu thức đại số hoặc đồ thị: cường độ dòng điện, điện áp xoay chiều; so sánh được giá trị hiệu dụng và giá trị cực đại.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, khảo sát được đoạn mạch xoay chiều RLC mắc nối tiếp bằng dụng cụ thực hành.
+Máy biến áp
+- Nêu được nguyên tắc hoạt động của máy biến áp.
+- Nêu được ưu điểm của dòng điện và điện áp xoay chiều trong truyền tải năng lượng điện về phương diện khoa học và kinh tế.
+- Thảo luận để đánh giá được vai trò của máy biến áp trong việc giảm hao phí năng lượng điện khi truyền dòng điện đi xa.
+Chỉnh lưu dòng điện xoay chiều
+- Thực hiện thí nghiệm, vẽ được đồ thị biểu diễn quan hệ giữa dòng điện chạy qua diode bán dẫn và điện áp giữa hai cực của nó.
+- Vẽ được mạch chỉnh lưu nửa chu kì sử dụng diode.
+- Vẽ được mạch chỉnh lưu cả chu kì sử dụng cầu chỉnh lưu.
+- So sánh được đồ thị chỉnh lưu nửa chu kì và chỉnh lưu cả chu kì.
+Chuyên đề 12.2. Một số ứng dụng vật lí trong chẩn đoán y học
+Bản chất và cách tạo ra tia X
+- Nêu được cách tạo ra tia X, cách điều khiển tia X, sự suy giảm tia X.
+- Thảo luận để đánh giá được vai trò của tia X trong đời sống và trong khoa học.
+Chẩn đoán bằng tia X
+- Mô tả được sơ lược cách chụp ảnh bằng tia X.
+- Từ tranh ảnh (tài liệu đa phương tiện) thảo luận để rút ra được một số cách cải thiện ảnh chụp bằng tia X: giảm liều chiếu, cải thiện độ sắc nét, cải thiện độ tương phản.
+Chẩn đoán bằng siêu âm
+- Nêu được sơ lược cách tạo siêu âm.
+- Nêu được sơ lược cách tạo ra hình ảnh siêu âm các cấu trúc bên trong cơ thể.
+- Từ tranh ảnh (tài liệu đa phương tiện) thảo luận để đánh giá được vai trò của siêu âm trong đời sống và trong khoa học.
+Chụp cắt lớp, cộng hưởng từ
+- Mô tả được sơ lược cách chụp ảnh cắt lớp.
+- Thực hiện dự án hay đề tài nghiên cứu, thiết kế được một mô hình chụp cắt lớp đơn giản.
+- Nêu được sơ lược nguyên lí chụp cộng hưởng từ.
+Chuyên đề 12.3. Vật lí lượng tử
+Hiệu ứng quang điện và năng lượng của photon
+- Nêu được tính lượng tử của bức xạ điện từ, năng lượng photon.
+- Vận dụng được công thức tính năng lượng photon, E = hf.
+- Nêu được hiệu ứng quang điện là bằng chứng cho tính chất hạt của bức xạ điện từ, giao thoa và nhiễu xạ là bằng chứng cho tính chất sóng của bức xạ điện từ.
+- Mô tả được khái niệm giới hạn quang điện, công thoát.
+- Giải thích được hiệu ứng quang điện dựa trên năng lượng photon và công thoát.
+- Giải thích được: động năng ban đầu cực đại của quang điện tử không phụ thuộc cường độ chùm sáng, cường độ dòng quang điện bão hoà tỉ lệ với cường độ chùm sáng chiếu vào.
+- Vận dụng được phương trình Einstein để giải thích các định luật quang điện.
+- Ước lượng được năng lượng của các bức xạ điện từ cơ bản trong thang sóng điện từ.
+- Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án, khảo sát được dòng quang điện bằng dụng cụ thực hành.
+Lưỡng tính sóng hạt
+- Mô tả (hoặc giải thích) được tính chất sóng của electron bằng hiện tượng nhiễu xạ electron.
+- Vận dụng được công thức bước sóng de Broglie: λ = h/p với p là động lượng của hạt.
+Quang phổ vạch của nguyên tử
+- Mô tả được sự tồn tại của các mức năng lượng dừng của nguyên tử.
+- Giải thích được sự tạo thành vạch quang phổ.
+- So sánh được quang phổ phát xạ và quang phổ vạch hấp thụ.
+- Vận dụng được biểu thức chuyển mức năng lượng hf = E1 - E2.
+Vùng năng lượng
+- Nêu được các vùng năng lượng trong chất rắn theo mô hình vùng năng lượng đơn giản.
+- Sử dụng được lí thuyết vùng năng lượng đơn giản để giải thích được: Sự phụ thuộc vào nhiệt độ của điện trở kim loại và bán dẫn không pha tạp; Sự phụ thuộc của điện trở của các điện trở quang (LDR) vào cường độ sáng.
+VI. PHƯƠNG PHÁP GIÁO DỤC
+1. Định hướng chung
+Phương pháp giáo dục môn Vật lí được thực hiện theo những định hướng chung sau đây:
+a) Phát triển phẩm chất chủ yếu, năng lực chung và năng lực vật lí cho học sinh thông qua các hoạt động thực hành, trải nghiệm, tìm hiểu, khám phá hiện tượng, quá trình vật lí trong thế giới tự nhiên; vận dụng kiến thức, kĩ năng để phát hiện và giải quyết vấn đề trong thực tiễn. Chú trọng tổ chức cho học sinh được tự học theo kế hoạch và sự hướng dẫn của giáo viên, phù hợp với tâm sinh lí lứa tuổi và khả năng của mỗi học sinh.
+b) Vận dụng linh hoạt các phương pháp, kĩ thuật, hình thức tổ chức dạy học nhằm phát huy tính tích cực, chủ động, sáng tạo và vốn hiểu biết, kinh nghiệm sống của học sinh trong học tập; tránh áp đặt một chiều, ghi nhớ máy móc. Bên cạnh hình thức dạy học chủ yếu là học ở lớp học hoặc ở phòng thực hành, tổ chức cho học sinh một số hoạt động trải nghiệm ở ngoài lớp học như tại thực địa, trong cơ sở sản xuất kinh doanh, làng nghề theo quy mô lớp hoặc nhóm học sinh. Chú trọng vận dụng, khai thác lợi thế của công nghệ thông tin - truyền thông và các thiết bị thí nghiệm, thực hành trong tổ chức hoạt động học cho học sinh.
+c) Thực hiện giáo dục tích hợp, đặc biệt là giáo dục tích hợp khoa học, công nghệ, kĩ thuật và toán (giáo dục STEM); giáo dục tích hợp bảo vệ môi trường, sử dụng năng lượng tiết kiệm và hiệu quả, phòng chống thiên tai, thích ứng với biến đổi khí hậu, đáp ứng yêu cầu phát triển bền vững của xã hội.
+2. Định hướng về phương pháp hình thành, phát triển các phẩm chất chủ yếu và năng lực chung
+Môn Vật lí góp phần đắc lực vào việc hình thành và phát triển thế giới quan khoa học cho học sinh, tạo cơ hội để học sinh cảm nhận được vẻ đẹp của thiên nhiên qua hệ thống các quy luật vật lí, đồng thời giáo dục học sinh trách nhiệm công dân trong việc tôn trọng các quy luật của thiên nhiên, biết trân trọng, giữ gìn, bảo vệ và ứng xử với thiên nhiên phù hợp với yêu cầu phát triển bền vững.
+Trong hoạt động thực hành, thí nghiệm, tìm hiểu khoa học, cùng với cơ hội tiếp thu kiến thức, rèn luyện kĩ năng, học sinh cũng được rèn luyện và phát triển nhiều đức tính như cẩn thận, chăm chỉ, trung thực, trách nhiệm,…
+Năng lực tự chủ và tự học được hình thành và phát triển trong môn Vật lí thông qua các hoạt động thực hành, làm dự án, thiết kế và thực hiện các phép đo đại lượng vật lí; đặc biệt là trong việc thực hiện hoạt động tìm hiểu khoa học.
+Trong môn Vật lí, học sinh thường xuyên phải thực hiện các dự án học tập, các bài thực hành, thực tập theo nhóm. Khi thực hiện các nhiệm vụ học tập này, học sinh được trao đổi, trình bày, chia sẻ ý tưởng, nội dung học tập. Đó là những cơ hội tốt để học sinh có thể hình thành và phát triển năng lực giao tiếp và hợp tác.
+Giải quyết vấn đề và sáng tạo là một đặc thù của hoạt động tìm hiểu khoa học. Ở môn Vật lí, năng lực này được hình thành, phát triển trong đề xuất vấn đề, lập kế hoạch, thực hiện kế hoạch tìm hiểu thế giới tự nhiên dưới góc độ vật lí - những nội dung xuyên suốt từ cấp tiểu học đến cấp trung học phổ thông và được hiện thực hoá thông qua các mạch thực hành, trải nghiệm với các mức độ khác nhau. Năng lực này cũng được hình thành và phát triển thông qua việc vận dụng kiến thức, kĩ năng vật lí để giải quyết các vấn đề thực tiễn.
+3. Định hướng về phương pháp hình thành, phát triển năng lực vật lí
+Để phát triển năng lực nhận thức vật lí, giáo viên cần tạo cho học sinh cơ hội huy động những hiểu biết, kinh nghiệm sẵn có để tham gia hình thành kiến thức, kĩ năng mới. Chú ý tổ chức các hoạt động, trong đó học sinh có thể diễn đạt hoặc mô tả bằng cách riêng, phân tích, giải thích so sánh, hệ thống hoá, áp dụng trực tiếp kiến thức, kĩ năng đã được học để giải quyết thành công tình huống, vấn đề trong học tập; qua đó, kết nối được kiến thức, kĩ năng mới với vốn kiến thức, kĩ năng đã có.
+Để phát triển năng lực tìm hiểu thế giới tự nhiên dưới góc độ vật lí, giáo viên cần vận dụng một số phương pháp dạy học có ưu thế như: phương pháp trực quan (đặc biệt là thực hành, thí nghiệm,...), phương pháp dạy học nêu và giải quyết vấn đề, phương pháp dạy học theo dự án,... tạo điều kiện để học sinh đưa ra câu hỏi, xác định vấn đề cần tìm hiểu, tự tìm các bằng chứng để phân tích thông tin, kiểm tra các dự đoán, giả thuyết qua việc tiến hành thí nghiệm, hoặc tìm kiếm, thu thập thông tin qua sách, mạng Internet,...; đồng thời chú trọng các bài tập đòi hỏi tư duy phản biện, sáng tạo (bài tập mở, có nhiều cách giải,...), các bài tập có nội dung gắn với thực tiễn thể hiện bản chất vật lí, giảm các bài tập tính toán,...
+Để phát triển năng lực vận dụng kiến thức, kĩ năng đã học, giáo viên cần chú ý tạo cơ hội cho học sinh tương tác tích cực thông qua quá trình phát hiện, đề xuất ý tưởng, giải quyết vấn đề bằng cách: đưa ra phán đoán và xây dựng giả thuyết; lập kế hoạch thực hiện; tìm kiếm thông tin qua tài liệu in và tài liệu đa phương tiện; thu thập, lưu trữ dữ liệu từ các thí nghiệm trong phòng thực hành hoặc quan sát ở thiên nhiên; phân tích, xử lí, đánh giá các dữ liệu dựa trên các tham số thống kê đơn giản; so sánh kết quả với giả thuyết, giải thích, rút ra được kết luận; viết, trình bày báo cáo và thảo luận; vận dụng kiến thức, kĩ năng vật lí để đưa ra những phản hồi hợp lí hoặc giải quyết thành công tình huống, vấn đề mới trong học tập, trong cuộc sống.
+VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+1. Định hướng chung
+Mục tiêu đánh giá kết quả giáo dục là thu thập thông tin trung thực, kịp thời, có giá trị về mức độ đáp ứng yêu cầu cần đạt và sự tiến bộ của học sinh; qua đó, hướng dẫn hoạt động học tập và điều chỉnh hoạt động dạy học.
+Căn cứ đánh giá trong môn Vật lí là các yêu cầu cần đạt về năng lực chung và năng lực vật lí được quy định trong Chương trình tổng thể và Chương trình môn Vật lí. Đối tượng đánh giá là quá trình học tập, rèn luyện và sản phẩm của học sinh thông qua học tập môn Vật lí.
+Để đánh giá được năng lực của học sinh, cần thiết kế các tình huống xuất hiện vấn đề cần giải quyết, giúp học sinh bộc lộ năng lực của mình. Mặt khác, cần lưu ý xác định, lựa chọn các phương pháp, công cụ, tiêu chí đánh giá sao cho phù hợp.
+2. Trọng tâm và hình thức đánh giá
+Trọng tâm đánh giá kết quả học tập môn Vật lí là năng lực nhận thức vấn đề, giải quyết vấn đề và các kĩ năng thực hành, thí nghiệm, cụ thể là nhận thức cốt lõi về: mô hình hệ vật lí, năng lượng và sóng, lực và trường, ngành nghề liên quan đến vật lí; các kĩ năng thí nghiệm, thực hành, tìm hiểu khoa học, vận dụng những điều đã học để giải thích một số hiện tượng vật lí đơn giản, bước đầu giải quyết một số vấn đề thực tiễn và cách ứng xử thích hợp với môi trường thiên nhiên.
+Cần phối hợp một cách hợp lí việc đánh giá của giáo viên với đánh giá đồng đẳng và tự đánh giá của học sinh; đánh giá qua quan sát hoạt động nhóm ở trong và ngoài lớp học, quan sát thao thác thực hành, thí nghiệm vật lí, phân tích các bài thuyết trình; đánh giá qua vấn đáp và đánh giá qua bài tập, bài kiểm tra, vở ghi chép, bản báo cáo kết quả thực hành, kết quả dự án học tập, kết quả đề tài nghiên cứu khoa học và các hồ sơ học tập khác; đánh giá theo hình thức tự luận kết hợp trắc nghiệm khách quan; kết hợp đánh giá quá trình, đánh giá tổng kết; đánh giá thường xuyên và định kì.
+VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH
+1. Giải thích thuật ngữ
+a) Một số thuật ngữ chuyên môn
+Các thuật ngữ vật lí trong văn bản chương trình này được Việt hóa từ các thuật ngữ chuyên ngành tiếng Anh theo các từ điển chuyên ngành Việt Nam. Một số thuật ngữ có nguồn gốc tiếng nước ngoài được chuyển ngữ thống nhất, ví dụ: “gravitional field”: trường hấp dẫn; “electric field”: trường điện, hoặc theo thói quen: điện trường; “magnettic field”: trường từ, hoặc theo thói quen: từ trường. Khi dùng các thuật ngữ này, người thực hiện chương trình nên sử dụng cách chuyển ngữ thống nhất cho cả ba thuật ngữ.
+b) Từ ngữ thể hiện mức độ đáp ứng yêu cầu cần đạt
+Chương trình sử dụng một số động từ để thể hiện mức độ đáp ứng yêu cầu cần đạt về năng lực của người học, với nghĩa giới hạn như dưới đây. Trong quá trình dạy học, đặc biệt là khi đặt câu hỏi thảo luận, ra đề kiểm tra, đánh giá, giáo viên có thể dùng những động từ nêu ở đây hoặc thay thế bằng các động từ tương đương cho phù hợp với tình huống cụ thể.
+- Định nghĩa được: nhắc lại được các phát biểu chính thức hoặc tương đương, bao gồm cả biểu thức và các đại lượng trong đó, nếu có.
+- Liệt kê được: đưa ra được các điểm liên quan mà không cần sáng tạo và không yêu cầu liệt kê tất cả các điểm liên quan.
+- Nêu được: nhắc lại được định nghĩa, khái niệm, biểu thức, cùng với một số nhận xét liên quan đến ý nghĩa, phạm vi của đối tượng cần nêu, đặc biệt khi có hai hay nhiều đối tượng ở trong cùng một câu hỏi.
+- Phát biểu được: đưa ra được một nhận xét cụ thể, kèm theo hoặc không kèm theo lập luận về chủ đề, đối tượng được hỏi.
+- Mô tả được: đưa ra được phát biểu bằng lời (và công thức, đồ thị khi cần thiết) về các điểm chính của chủ đề hay đối tượng.
+- Ước lượng được: đưa ra được bậc độ lớn hoặc một giá trị định lượng lấy từ một mẫu thử.
+- Vẽ phác được: vẽ được hình dạng, vị trí một cách gần đúng, định tính.
+- Vẽ được: đưa ra được đồ thị hoặc hình vẽ với các thông tin đầy đủ, vẽ trên giấy hoặc máy in.
+- Giải thích được: đưa ra được các lí do, các căn cứ làm sáng tỏ được vấn đề đặt ra.
+- Phân tích được: phân chia được một đối tượng ra thành các thành phần hoặc các khía cạnh.
+- So sánh được: nêu được các đặc điểm giống nhau và khác nhau giữa các đối tượng.
+- Đo được: sử dụng các dụng cụ thông thường để đưa ra được giá trị của đại lượng cần xác định, ví dụ như đo độ dài bằng thước hay đo góc bằng thước đo độ.
+- Xác định được: tìm được vị trí của một đối tượng hoặc giá trị của một đại lượng bằng cách tính qua công thức.
+- Tính được: đưa ra được câu trả lời bằng số (thường bao gồm cả cách làm).
+- Rút ra được: từ các thông tin đã có, đưa ra được đặc điểm hoặc quy luật vận động của đối tượng.
+- Vận dụng được: sử dụng khái niệm, công thức vật lí để giải quyết được các vấn đề hoặc tình huống liên quan.
+- Thực hiện được: làm theo trình tự nhất định một việc nào đó.
+- Thực hiện thí nghiệm: làm được các bước thí nghiệm (theo phương án đã định hoặc đề xuất).
+- Thiết kế được: trình bày được tài liệu (hoặc phương án thí nghiệm, thực hành) có bản vẽ, phép tính, sản phẩm.
+2. Thời lượng thực hiện chương trình
+Thời lượng dành cho cho mỗi lớp là 105 tiết trong một năm học (trong đó có 35 tiết dành cho các chuyên đề học tập), dạy trong 35 tuần. Dự kiến phân bố thời lượng cho mỗi mạch nội dung được trình bày trong bảng sau.
+Mạch nội dung
+Lớp 10 (số tiết)
+Lớp 11 (số tiết)
+Lớp 12 (số tiết)
+Cả cấp học (tỷ lệ %)
+Mở đầu
+4
+
+
+1,3
+Động học
+16
+
+
+5,1
+Động lực học
+18
+
+
+5,7
+Công, năng lượng, công suất
+10
+
+
+3,2
+Động lượng
+6
+
+
+1,9
+Chuyển động tròn
+4
+
+
+1,3
+Biến dạng của vật rắn
+4
+
+
+1,3
+Dao động
+
+14
+
+4,4
+Sóng
+
+16
+
+5,1
+Trường điện (Điện trường)
+
+18
+
+5,7
+Dòng điện, mạch điện
+
+14
+
+4,4
+Vật lí nhiệt
+
+
+14
+4,4
+Khí lí tưởng
+
+
+12
+3,8
+Trường từ (Từ trường)
+
+
+18
+5,7
+Vật lí hạt nhân và phóng xạ
+
+
+16
+5,1
+Chuyên đề 10.1
+10
+
+
+11,1
+Chuyên đề 11.1
+
+15
+
+
+Chuyên đề 12.1
+
+
+10
+
+Chuyên đề 10.2
+10
+
+
+9,5
+Chuyên đề 11.2
+
+10
+
+
+Chuyên đề 12.2
+
+
+10
+
+Chuyên đề 10.3
+15
+
+
+12,7
+Chuyên đề 11.3
+
+10
+
+
+Chuyên đề 12.3
+
+
+15
+
+Đánh giá định kì
+8
+8
+10
+9,0
+3. Thiết bị dạy học
+Việc hình thành khái niệm, quy luật, định luật vật lí, không thể thiếu các nội dung thí nghiệm, thực hành. Một phần không nhỏ năng lực vật lí của học sinh được hình thành thông qua các nội dung thí nghiệm, thực hành. Chính vì thế để thực hiện hiệu quả Chương trình môn Vật lí, cần bảo đảm các yêu cầu tối thiểu về thiết bị thí nghiệm, thực hành như sau:
+a) Các thiết bị dùng để trình diễn, chứng minh
+- Tranh ảnh, hình vẽ, sơ đồ, biểu đồ, bản đồ sao; dụng cụ xác định vị trí sao Bắc cực; ảnh (hoặc hình vẽ, mô hình) mô tả: hệ Nhật tâm; hiện tượng nhật thực, nguyệt thực, thuỷ triều, các đại lượng sóng.
+- Tài liệu đa phương tiện về: chuyển động của vật bị ném; hiện tượng nhật thực, nguyệt thực, thuỷ triều; một số ứng dụng vật lí trong y học (chụp ảnh bằng tia X, chụp ảnh cắt lớp, chụp cộng hưởng từ).
+- Xe đo có tích hợp cảm biến vị trí, cảm biến lực để vẽ đồ thị độ dịch chuyển - thời gian, đồ thị vận tốc - thời gian; dụng cụ nghiệm lại định luật bảo toàn năng lượng; máy phát và hiển thị hình ảnh sóng âm; dụng cụ dùng để tổng hợp hai lực đồng quy, song song.
+b) Các thiết bị dùng để thực hành
+Xe đo có tích hợp cảm biến vị trí, cảm biến lực để đo tốc độ, đo gia tốc rơi tự do, xác định tốc độ và đánh giá động lượng của vật trước và sau va chạm đàn hồi; dụng cụ đo tần số của sóng âm, đo tốc độ truyền âm bằng phương pháp sóng dừng, xác định suất điện động và điện trở trong của pin hoặc acquy, khảo sát hiện tượng quang điện, đo nhiệt dung riêng, nhiệt nóng chảy riêng, nhiệt hoá hơi, đo cảm ứng từ.
+c) Phòng thực hành
+Ở những nơi có điều kiện thuận lợi, cần bố trí phòng thực hành vật lí. Phòng phải có đủ diện tích để sắp xếp thiết bị, mẫu vật và bàn ghế cho học sinh làm thực hành; có máy tính, máy chiếu (projector), màn hình, máy quay, máy ảnh, dụng cụ thực hành, tủ đựng dụng cụ, vật liệu tiêu hao, bảng viết, bàn ghế thực hành, tủ sấy, máy hút ẩm, quạt thông gió, dụng cụ bảo hộ, thiết bị phòng cháy và chữa cháy, vòi nước và bồn rửa; có nội quy phòng thực hành.
+Trong một số trường hợp, những vùng còn khó khăn, thiếu thốn về thiết bị dạy học có thể thực hiện một số yêu cầu cần đạt ở mức độ đơn giản hơn. Ví dụ, trong trường hợp nhất định, Chương trình môn Vật lí nêu ra 2 mức đáp ứng cho một yêu cầu cần đạt: thực hiện thí nghiệm hoặc dựa trên số liệu cho sẵn để rút ra kết luận. Học sinh ở những trường không đủ điều kiện về thiết bị dạy học có thể chỉ dựa trên số liệu cho trước (mức 2) mà không thực hiện thí nghiệm (mức 1). Tuy nhiên, để bảo đảm sự đồng bộ và thống nhất về kiến thức, kĩ năng đối với học sinh cả nước, trong Chương trình môn Vật lí cũng chỉ có một số trường hợp được lựa chọn hai mức yêu cầu cần đạt như vậy. Các địa phương cần bảo đảm yêu cầu tối thiểu về thiết bị dạy học được quy định trên đây để thực hiện được đầy đủ các mức độ yêu cầu cần đạt của Chương trình môn Vật lí.

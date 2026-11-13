@@ -11,3 +11,4 @@
 | 13/11/2026 | Nhận CV 5512 (thân văn bản), lưu data/raw/van-ban/, trích UTF-8 sang data/processed/ | Văn bản công khai, không thuộc raw/private |
 | 13/11/2026 | Nạp CV 3456 (+ phụ lục khung NLS), QĐ 2422, CV 3083 HCM vào data/raw/van-ban | Nguồn cho luật năng lực số/AI (P8) |
 | 13/11/2026 | Đề xuất mã năng lực số dạng `miền.năng-lực.bậc` (vd 1.1.L6-7) | Phụ lục 3456 không có ký hiệu mã sẵn — chờ TS. Khoa xác nhận |
+| 13/11/2026 | Nạp TT 32/2018 + 28 chương trình GDPT 2018 (tách từ ZIP nhúng), trích UTF-8 theo môn | Nguồn YCCĐ để rà soát mục tiêu KHBD bám chương trình |

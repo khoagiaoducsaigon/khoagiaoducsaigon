@@ -1,0 +1,949 @@
+                   BỘ GIÁO DỤC VÀ ĐÀO TẠO
+
+
+
+
+  CHƯƠNG TRÌNH GIÁO DỤC PHỔ THÔNG
+CHƯƠNG TRÌNH MÔN TIẾNG NHẬT
+          (Ban hành kèm theo Thông tư số 32/2018/TT-BGDĐT
+    ngày 26 tháng 12 năm 2018 của Bộ trưởng Bộ Giáo dục và Đào tạo)
+
+
+
+
+                            Hà Nội, 2018
+                                                                                    MỤC LỤC
+                                                                                                                                                                                   Trang
+
+I. ĐẶC ĐIỂM MÔN HỌC ........................................................................................................................................................... 3
+II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH .................................................................................................................... 3
+III. MỤC TIÊU CHƯƠNG TRÌNH ............................................................................................................................................. 5
+   1. Mục tiêu chung ..................................................................................................................................................................... 5
+   2. Mục tiêu cụ thể ..................................................................................................................................................................... 5
+IV. YÊU CẦU CẦN ĐẠT ........................................................................................................................................................... 6
+   1. Yêu cầu cần đạt về phẩm chất và năng lực chung ................................................................................................................ 6
+   2. Yêu cầu cần đạt về năng lực đặc thù .................................................................................................................................... 6
+V. NỘI DUNG GIÁO DỤC ....................................................................................................................................................... 15
+   1. Nội dung khái quát.............................................................................................................................................................. 15
+   2. Nội dung cụ thể ................................................................................................................................................................... 16
+VI. PHƯƠNG PHÁP GIÁO DỤC ............................................................................................................................................. 33
+VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC.................................................................................................................................. 34
+VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH............................................................................... 34
+
+
+
+
+                                                                                             2
+     I. ĐẶC ĐIỂM MÔN HỌC
+     1. Môn Tiếng Nhật – Ngoại ngữ 2 là môn học tự chọn, được tổ chức giảng dạy có thể từ lớp 6 đến hết lớp 12, giúp học
+sinh hình thành, phát triển năng lực ngoại ngữ để sử dụng một cách tự tin, hiệu quả, phục vụ cho việc học tập và giao tiếp,
+đáp ứng yêu cầu phát triển nguồn nhân lực trong sự nghiệp công nghiệp hoá, hiện đại hoá và hội nhập quốc tế của đất nước.
+Nội dung cốt lõi của môn học bao gồm các chủ đề và kiến thức ngôn ngữ (ngữ âm, từ vựng, ngữ pháp) được lựa chọn phù
+hợp với khả năng tiếp nhận của học sinh và được tích hợp trong quá trình rèn luyện, phát triển các kĩ năng ngôn ngữ nghe,
+nói, đọc, viết cơ bản.
+     2. Chương trình môn Tiếng Nhật – Ngoại ngữ 2 (sau đây gọi tắt là Chương trình ) được xây dựng theo Khung năng lực
+ngoại ngữ 6 bậc dùng cho Việt Nam với tổng thời lượng là 735 tiết (mỗi tiết là 45 phút) bao gồm cả các tiết ôn tập, kiểm tra
+và đánh giá. Chương trình được chia thành hai giai đoạn. Kết thúc giai đoạn 1, trình độ năng lực giao tiếp bằng tiếng Nhật
+của học sinh tương đương với Bậc 1; kết thúc giai đoạn 2, trình độ năng lực giao tiếp bằng tiếng Nhật của học sinh tương
+đương với Bậc 2 theo Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam. Thời lượng dành cho giai đoạn 1 là 420 tiết
+(trong 4 năm học), dành cho giai đoạn 2 là 315 tiết (trong 3 năm học). Nội dung chương trình được xây dựng theo hệ thống
+các chủ điểm, chủ đề về các lĩnh vực gần gũi trong cuộc sống hằng ngày, phù hợp với lứa tuổi học sinh trung học cơ sở và
+trung học phổ thông, về đất nước, con người, văn hoá Nhật Bản, Việt Nam và các nước khác trên thế giới nhằm cung cấp
+kiến thức ngôn ngữ, tri thức văn hoá – xã hội liên quan đến các chủ điểm, chủ đề và rèn luyện, phát triển kĩ năng giao tiếp
+tiếng Nhật cơ bản, bồi dưỡng khả năng vận dụng ngôn ngữ toàn diện cho học sinh.
+     II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH
+     1. Chương trình tuân thủ và chi tiết hóa các quy định cơ bản được nêu trong Chương trình giáo dục phổ thông tổng thể
+về định hướng chung cho tất cả các môn và định hướng xây dựng chương trình môn Ngoại ngữ.
+     2. Chương trình được thiết kế dựa trên các cơ sở lí luận và kết quả nghiên cứu mới nhất về khoa học giáo dục, tâm lí
+học, ngôn ngữ học và phương pháp dạy học ngoại ngữ; kinh nghiệm xây dựng chương trình môn Ngoại ngữ của Việt Nam
+và xu thế quốc tế trong phát triển chương trình giáo dục nói chung và chương trình môn Ngoại ngữ nói riêng những năm gần
+
+     
+         Bộ Giáo dục và Đào tạo, Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam, 2014.
+                                                                     3
+đây, nhất là của những quốc gia phát triển; thực tiễn xã hội, giáo dục, điều kiện kinh tế và truyền thống văn hoá Việt Nam,
+chú ý đến sự đa dạng của đối tượng học sinh xét về phương diện vùng miền, điều kiện và khả năng học tập.
+     3. Chương trình được biên soạn theo đường hướng giao tiếp, đảm bảo hình thành và phát triển năng lực giao tiếp bằng
+tiếng Nhật cho học sinh thông qua các hoạt động giao tiếp: nghe, nói, đọc, viết. Kiến thức về ngôn ngữ (từ vựng, ngữ pháp,
+ngữ âm, chính tả), văn hoá và xã hội là phương tiện để hình thành và phát triển các kĩ năng giao tiếp.
+     4. Chương trình được thiết kế theo cách tiếp cận chuẩn đầu ra thể hiện qua việc quy định các yêu cầu cần đạt về năng
+lực giao tiếp (nghe, nói, đọc, viết) cho mỗi bậc học và mỗi năm học, đảm bảo tính liên thông và tiếp nối giữa Bậc 1 và Bậc
+2, giữa các cấp học, năm học trong từng bậc của môn Tiếng Nhật; đảm bảo tích hợp giữa các chủ điểm và chủ đề, tích hợp 4
+kĩ năng giao tiếp, tích hợp giữa ngoại ngữ 1 và ngoại ngữ 2, tích hợp với nội dung có liên quan của các môn học khác trong
+chương trình Giáo dục phổ thông. Chương trình được cấu trúc xoay quanh hệ thống chủ điểm và chủ đề. Một chủ điểm bao
+gồm nhiều chủ đề. Các chủ điểm và chủ đề có mối liên quan chặt chẽ với nhau, phù hợp với đặc điểm lứa tuổi và môi trường
+sinh hoạt, học tập của học sinh. Hệ thống chủ điểm và chủ đề được lặp lại, mở rộng và phát triển theo từng cấp, từng năm
+học. Sau khi học xong Chương trình, học sinh đạt trình độ tiếng Nhật Bậc 2 theo Khung năng lực ngoại ngữ 6 bậc dùng cho Việt
+Nam.
+     5. Chương trình đảm bảo tính linh hoạt, mềm dẻo nhằm đáp ứng nhu cầu và phù hợp với từng điều kiện dạy học tiếng
+Nhật của các vùng miền, địa phương, không quy định bắt buộc mà chỉ đưa ra định hướng nội dung dạy học cụ thể, một mặt
+để chương trình mở, mềm dẻo và linh hoạt, mặt khác để tạo điều kiện cho tác giả sách giáo khoa và giáo viên phát huy tính
+chủ động, sáng tạo khi thực hiện chương trình.
+
+
+
+
+                                                             4
+    III. MỤC TIÊU CHƯƠNG TRÌNH
+    1. Mục tiêu chung
+     Sau khi kết thúc Chương trình tiếng Nhật, học sinh có kiến thức ngôn ngữ và kĩ năng ngôn ngữ cơ bản, có khả năng
+giao tiếp bằng tiếng Nhật trong những tình huống giao tiếp cơ bản của cuộc sống thường nhật ở trình độ Bậc 2 theo Khung
+năng lực ngoại ngữ 6 bậc dùng cho Việt Nam, có hứng thú và hình thành thói quen học tập ngoại ngữ suốt đời.
+    2. Mục tiêu cụ thể
+    2.1. Giai đoạn 1
+    Sau khi kết thúc giai đoạn 1, học sinh có thể:
+     a) Nắm được hệ thống kiến thức cơ sở về tiếng Nhật: chữ viết, ngữ âm, từ vựng – ngữ nghĩa và ngữ pháp cơ bản,
+ban đầu.
+    + Đọc và viết được chữ Hiragana, chữ Katakana và khoảng 100 chữ Hán.
+    + Sử dụng được khoảng 1000 ~ 1100 từ vựng cơ bản.
+    b) Có những hiểu biết cơ bản về xã hội, văn hoá Nhật Bản.
+    c) Bước đầu hình thành năng lực sử dụng tiếng Nhật như một công cụ giao tiếp ở các kĩ năng nghe, nói, đọc, viết.
+    d) Có cơ sở để tiếp tục học tiếng Nhật ở các trình độ cao hơn.
+
+
+    2.2. Giai đoạn 2
+    Sau khi kết thúc giai đoạn 2, học sinh có thể:
+     a) Củng cố và nâng cao kiến thức đã được học ở giai đoạn 1 về ngữ âm, từ vựng – ngữ nghĩa, ngữ pháp (từ pháp và
+cú pháp) của tiếng Nhật hiện đại.
+
+
+                                                             5
+     + Biết thêm khoảng 150 chữ Hán.
+     + Trên cơ sở vốn từ đã học ở giai đoạn 1, sử dụng thêm được khoảng 800 từ vựng thường dùng.
+     b) Thông qua việc học tiếng Nhật, hiểu thêm văn hoá Nhật Bản và mối quan hệ giữa văn hoá Nhật Bản với văn hoá
+Việt Nam làm cơ sở cho việc hình thành và phát triển năng lực ngôn ngữ, năng lực giao tiếp bằng tiếng Nhật.
+    c) Củng cố và nâng cao thêm một bước kĩ năng cơ bản về nghe, nói, đọc, viết tiếng Nhật, từ đó biết lựa chọn và vận
+dụng kiến thức tiếng Nhật vào các tình huống giao tiếp cụ thể gắn với nội dung ngày càng sâu hơn, phức tạp hơn của hệ
+thống chủ điểm đã được xác định trong chương trình.
+     d) Xây dựng niềm hứng thú học tiếng Nhật và tìm hiểu về đất nước, con người, nền văn hoá, ngôn ngữ của Nhật Bản;
+làm giàu thêm vốn kiến thức về văn hoá thế giới và khu vực.
+     IV. YÊU CẦU CẦN ĐẠT
+     1. Yêu cầu cần đạt về phẩm chất và năng lực chung
+     Chương trình môn Tiếng Nhật góp phần hình thành và phát triển các phẩm chất chủ yếu (yêu nước, nhân ái, chăm chỉ,
+trung thực, trách nhiệm) và các năng lực chung (tự chủ và tự học, giao tiếp và hợp tác, giải quyết vấn đề và sáng tạo).
+     2. Yêu cầu cần đạt về năng lực đặc thù
+     Giai đoạn 1
+    Sau khi kết thúc giai đoạn 1, học sinh cần đạt được trình độ tiếng Nhật Bậc 1 theo Khung năng lực ngoại ngữ 6 bậc
+dùng cho Việt Nam. Cụ thể là:
+     “Có thể hiểu, sử dụng các cấu trúc quen thuộc thường nhật, các từ ngữ cơ bản đáp ứng nhu cầu giao tiếp cụ thể. Có thể
+tự giới thiệu bản thân và người khác; có thể trả lời những thông tin về bản thân như nơi sinh sống, người thân/ bạn bè,... Có
+thể giao tiếp đơn giản nếu người đối thoại nói chậm, rõ ràng và sẵn sàng hợp tác giúp đỡ”.
+     Trình độ tiếng Nhật Bậc 1 được phân thành 4 bậc nhỏ, tương đương với 4 năm học:
+
+
+                                                             6
+    Bậc 1.1: Năm học thứ 1
+    Bậc 1.2: Năm học thứ 2
+    Bậc 1.3: Năm học thứ 3
+    Bậc 1.4: Năm học thứ 4
+    Giai đoạn 2
+     Sau khi kết thúc giai đoạn 2, học sinh cần đạt trình độ tiếng Nhật Bậc 2 theo Khung năng lực ngoại ngữ 6 bậc dùng cho
+Việt Nam. Cụ thể là:
+     “Có thể hiểu được các câu và cấu trúc được sử dụng thường xuyên liên quan đến nhu cầu giao tiếp cơ bản (như các
+thông tin về gia đình, bản thân, đi mua hàng, hỏi đường, việc làm…). Có thể trao đổi thông tin về những chủ đề đơn giản,
+quen thuộc hằng ngày. Có thể mô tả đơn giản về bản thân, môi trường xung quanh và những vấn đề thuộc nhu cầu thiết
+yếu”.
+    Trình độ tiếng Nhật Bậc 2 được phân thành 3 bậc nhỏ tương ứng với 3 năm học tiếp theo:
+    Bậc 2.1: Năm học thứ 5
+    Bậc 2.2: Năm học thứ 6
+    Bậc 2.3: Năm học thứ 7
+
+
+
+
+                                                            7
+   2.1. Yêu cầu cần đạt về kĩ năng ngôn ngữ
+   Bậc 1
+Kĩ năng
+ ngôn           Năm thứ 1                    Năm thứ 2                     Năm thứ 3                    Năm thứ 4
+ ngữ
+ Nghe      Nghe hiểu được các        Nghe hiểu được các hội         Nghe hiểu được các          Nghe hiểu được người bản
+           hội thoại rất đơn giản    thoại đơn giản với tốc độ      thông tin ngắn và đơn       ngữ, hỏi đáp và trình bày về
+           với tốc độ nói chậm, rõ   nói tương đối chậm trong       giản với tốc độ nói bình    các thông tin cơ bản liên
+           ràng về các chủ đề đã     giao tiếp hằng ngày về các     thường trong giao tiếp      quan đến các chủ đề đã học.
+           học.                      chủ đề đã học với số lượng     hằng ngày về các chủ đề
+                                     từ vựng và cấu trúc hạn chế.   đã học với ngữ cảnh cụ
+                                                                    thể.
+ Nói       Có thể nói được những     Có thể trình bày và trao đổi   Có thể trình bày và trao    Có thể hỏi đáp và trình bày
+           câu đơn giản và tham      ngắn gọn về các vấn đề liên    đổi về những vấn đề xã      ý kiến cá nhân về một vấn
+           gia các hội thoại đơn     quan tới bản thân và cuộc      hội cơ bản và đơn giản      đề có nội dung đơn giản liên
+           giản với nội dung chào    sống xung quanh.               liên quan tới bản thân và   quan đến các chủ đề đã học.
+           hỏi, cảm ơn, xin lỗi,                                    cuộc sống xung quanh.
+           giới thiệu bản thân
+           hoặc nói về thời gian,
+           sở thích...
+
+
+
+
+                                                            8
+Kĩ năng
+ ngôn           Năm thứ 1                    Năm thứ 2                    Năm thứ 3                      Năm thứ 4
+ ngữ
+ Đọc      Đọc hiểu được các          Đọc hiểu được nội dung        Đọc hiểu được đầy đủ nội      Đọc hiểu được các bài viết
+          đoạn văn ngắn, rất đơn     chính của các đoạn văn đơn    dung các đoạn văn đơn         ngắn đơn giản với ngữ cảnh
+          giản có thông tin cá       giản với nội dung liên quan   giản với nội dung liên        mở rộng và nội dung liên
+          nhân về bản thân, thời     đến các chủ đề đã học.        quan đến các chủ đề đã        quan đến các chủ đề trong
+          gian, sở thích...                                        học.                          chương trình.
+ Viết     – Có thể viết đúng các     Viết được đoạn văn ngắn rất   Viết được đoạn văn ngắn       Viết được thư cá nhân hoặc
+          từ được viết bằng chữ      đơn giản về một chủ đề đã     trình bày ý kiến cơ bản của   bài luận đơn giản có nội dung
+          Hiragana,      Katakana    học hoặc về ý kiến cá nhân    cá nhân về một chủ đề đã      liên quan đến các chủ đề đã
+          hoặc chữ Hán đã học        liên quan đến những vấn đề    học.                          học.
+          (ví dụ từ chỉ các đồ vật   đơn giản trong cuộc sống
+          gần gũi xung quanh,        hằng ngày.
+          tên người, tên trường,
+          tên phố...)
+          – Viết được các câu
+          đơn giản có nội dung
+          liên quan đến chủ đề đã
+          học.
+
+
+
+
+                                                            9
+   Bậc 2
+ Kĩ năng
+                   Năm thứ 5                          Năm thứ 6                                 Năm thứ 7
+ngôn ngữ
+ Nghe      Nghe hiểu được nội dung        Nghe hiểu và phân biệt được thái       Nghe hiểu và phân biệt được thái độ, tình
+           chính (thời gian, địa điểm,    độ, tình cảm khác nhau của người       cảm được biểu đạt, đồng thời ghi chép
+           nhân vật chính và tình tiết    nói được biểu đạt trong các tài liệu   được những thông tin chính của các tài
+           chủ yếu) trong các tài liệu    nghe tiếng Nhật hoặc trong các         liệu nghe tiếng Nhật hoặc trong tình
+           nghe tiếng Nhật.               tình huống giao tiếp thông thường.     huống giao tiếp thông thường.
+  Nói      Có thể hỏi đáp và trình bày    Có thể trình bày lại được nội dung     Có thể trình bày được các ý kiến, quan
+           được ý kiến cá nhân về một     chính của đoạn văn hoặc hội thoại      điểm và kiến nghị của bản thân với ngữ
+           vấn đề có nội dung đơn         cho trước bằng lời của mình với        âm, ngữ điệu chính xác, phù hợp với ngữ
+           giản, phù hợp với mục đích     ngữ âm, ngữ điệu cơ bản chính          cảnh, mục đích giao tiếp liên quan đến các
+           giao tiếp với độ chính xác     xác; biểu đạt một cách đơn giản        chủ đề trong chương trình hoặc trong ngữ
+           tương đối về ngữ âm, ngữ       thái độ, quan điểm chính của bản       cảnh giao tiếp thông thường.
+           điệu.                          thân khi thảo luận những vấn đề
+                                          liên quan đến các chủ đề trong
+                                          chương trình hoặc trong ngữ cảnh
+                                          giao tiếp thông thường.
+  Đọc      Đọc hiểu được các bài viết     Đọc hiểu được các bài viết có hình Đọc hiểu được các bài viết có nội dung
+           tương đối đơn giản liên quan   vẽ minh hoạ hoặc sơ đồ, biểu đồ liên quan đến các chủ đề trong chương
+           đến các chủ đề trong chương    liên quan đến các chủ để trong trình ở một số dạng văn phong khác nhau.
+           trình.                         chương trình.
+
+
+
+                                                          10
+ Kĩ năng
+                        Năm thứ 5                        Năm thứ 6                              Năm thứ 7
+ngôn ngữ
+   Viết       Viết được thư, bài luận hoặc   Viết được thư, bài luận tương đối   1. Viết được bài luận tương đối hoàn
+              bản kế hoạch đơn giản có       hoàn chỉnh về một vấn đề liên       chỉnh, thể hiện được thái độ, quan điểm
+              nội dung liên quan đến chủ     quan đến các chủ đề trong chương    của bản thân về một vấn đề thuộc các chủ
+              đề trong chương trình.         trình.                              đề trong chương trình.
+                                                                                 2. Viết được đơn, thư đơn giản đề biểu đạt
+                                                                                 nguyện vọng, yêu cầu của bản thân về các
+                                                                                 vấn đề gần gũi với bản thân và lứa tuổi
+                                                                                 thanh niên (ví dụ như đơn xin dự thi đại
+                                                                                 học, đơn xin học nghề, đơn xin việc...).
+
+    2.2. Yêu cầu cần đạt về kiến thức ngôn ngữ
+    Bậc 1
+            Năm thứ 1                        Năm thứ 2                  Năm thứ 3                      Năm thứ 4
+1. Đọc và viết được bảng chữ 1. Nhớ và sử dụng được 1. Nhớ và sử dụng được                    1. Nhớ và sử dụng thêm
+Hiragana và bảng chữ Katakana. thêm khoảng 250 từ mới và thêm khoảng 300 từ mới               được khoảng 350 từ mới và
+2. Nhớ và sử dụng được khoảng khoảng 25 chữ Hán mới.     và khoảng 25 chữ Hán                 khoảng 30 chữ Hán mới.
+150 từ, khoảng 20 chữ Hán.     2. Sử dụng thêm được mới.                                  2. Sử dụng thêm được
+3. Sử dụng được khoảng 20 – 25 khoảng 25 – 30 cách diễn 2. Sử dụng thêm được khoảng 25 – 30 cách diễn
+cách diễn đạt, cấu trúc ngữ pháp. đạt, cấu trúc ngữ pháp mới. khoảng 25 – 30 cách diễn đạt, cấu trúc ngữ pháp mới.
+                                                              đạt, cấu trúc ngữ pháp mới.
+
+
+
+                                                            11
+    Bậc 2
+               Năm thứ 5                                 Năm thứ 6                                Năm thứ 7
+1. Nhớ và sử dụng thêm được khoảng 1. Nhớ và sử dụng thêm được khoảng 1. Nhớ và sử dụng thêm được khoảng
+250 từ mới và khoảng 50 chữ Hán mới. 280 từ mới và khoảng 50 chữ Hán mới. 280 từ mới và khoảng 50 chữ Hán.
+2. Sử dụng thêm được khoảng 25 – 30 2. Sử dụng thêm được khoảng 25 – 30 2. Sử dụng thêm được khoảng 25 – 30
+cách diễn đạt, cấu trúc ngữ pháp mới. cách diễn đạt, cấu trúc ngữ pháp mới. cách diễn đạt, cấu trúc ngữ pháp mới.
+
+    2.3. Yêu cầu cần đạt về kiến thức văn hóa – xã hội
+     Khi kết thúc Chương trình, học sinh cần nắm được những kiến thức cơ bản về văn hóa Nhật Bản trên cơ sở liên hệ với
+văn hoá Việt Nam và văn hoá thế giới, lí giải được sự đa dạng của các nền văn hóa trên thế giới, từ đó xây dựng bản lĩnh và
+kĩ năng tiếp cận với các nền văn hóa khác nhau.
+    Dưới đây là một số gợi ý về các kiến thức văn hoá cần trang bị cho học sinh:
+    2.3.1. Cuộc sống sinh hoạt của người Nhật và một số vấn đề về giao tiếp liên văn hoá liên quan:
+    1. Các câu chào hỏi trong ngày; văn hoá chào hỏi, cảm ơn, xin lỗi ngay trong gia đình, người thân
+    2. Các câu nói trước khi ăn, uống
+    3. Hanami, hanabi
+    4. Onsen và cách tắm bồn của người Nhật
+    5. Văn hoá khi ăn món tự chọn (buffet): lấy vừa đủ lượng mình cần, không bỏ thừa
+    6. Văn hoá xếp hàng ở nơi công cộng và khi sử dụng dịch vụ công
+    7. Thói quen gửi bưu thiếp chúc mừng năm mới
+    8. Cơm hộp
+    9. Thói quen không vứt rác bừa bãi; phân loại rác
+                                                            12
+10. Thói quen trước khi vào nhà kiểu Nhật: cởi giày, xếp mũi giày quay ra ngoài
+11. Thói quen đúng giờ
+12. Thói quen gọi điện trước khi đến thăm người khác
+13. Thói quen gọi điện thông báo/ xin lỗi khi bị muộn giờ hẹn
+14. Văn hoá tặng quà
+15. Tiền mừng tuổi
+16.Văn hoá Senpai/Kohai (Tiền bối/ hậu bối)
+17. Văn hoá làm việc nhóm; chủ nghĩa tập thể
+18. Tên của người Nhật và cách xưng hô
+19. Nghi thức lời nói (một số vấn đề cần lưu ý khi nói với người trên, khái niệm kính ngữ...)
+20. Cử chỉ khi ăn uống, sinh hoạt
+21. Cử chỉ cúi chào của người Nhật
+22. Văn hoá sử dụng điện thoại nơi công cộng
+23. Thái độ, cách hành xử khi đi tàu, xe, phương tiện công cộng
+2.3.2. Văn hoá truyền thống và văn hoá hiện đại Nhật Bản
+1. Nghệ thuật Origami
+2. Trà đạo
+3. Các ngày lễ quan trọng ở Nhật Bản
+4. Áo Kimono/Yukata
+5. Kịch Noh, Kabuki, múa rối (Jyoriuri)
+
+                                                        13
+6. Manga/Anime
+7. Cosplay
+8. Búp bê Nhật
+9. Ngày Hinamatsuri
+10. Ngày lễ trẻ em ở Nhật Bản (Kodomo no hi)
+11. Ngày lễ thành niên ở Nhật Bản (Seijin no hi)
+12. Các lễ hội ở Nhật Bản
+13. Năm mới
+14. Múa Obon và Yosakoi
+2.3.3. Các kiến thức liên quan về đất nước Nhật Bản:
+1. Hình dáng, diện tích nước Nhật (so với Việt Nam)
+2. Đặc điểm địa lí của nước Nhật: núi, sông...
+3. Các tỉnh thành chính của Nhật Bản, thủ đô của nước Nhật
+4. Vùng Kansai và Kanto
+5. Múi giờ ở Nhật Bản và Việt Nam
+6. Hệ thống giao thông của Nhật Bản
+7. Đồng tiền của Nhật Bản
+8. Quốc kì, Quốc ca của Nhật Bản
+9. Hệ thống giáo dục, các môn học ở trường phổ thông của Nhật Bản.
+10. Tiếng Nhật và hệ thống chữ viết, nguồn gốc của Hiragana, Katakana, đặc điểm của chữ Hán...
+
+                                                       14
+    V. NỘI DUNG GIÁO DỤC
+    1. Nội dung khái quát
+    Chương trình môn Tiếng Nhật được xây dựng theo chủ điểm, lấy chủ điểm làm trục chính. Trong chương trình, nội
+dung chủ điểm được coi là cơ sở cho việc lựa chọn nội dung các bài học, bài tập và hoạt động trong mỗi bài học, do vậy chủ
+điểm sẽ chi phối việc lựa chọn và tổ chức nội dung ngữ liệu trong chương trình.
+     Chương trình được xây dựng theo 4 chủ điểm lớn dưới đây:
+    – Cuộc sống hằng ngày
+    – Nhà trường
+    – Thiên nhiên
+    – Xã hội
+      Bốn chủ điểm tương ứng đối với mỗi bậc được lặp lại có mở rộng qua các cấp lớp, từ đó học sinh có thể củng cố và
+phát triển năng lực giao tiếp trong khuôn khổ một chương trình thống nhất. Thông qua hệ thống chủ điểm nói trên, học sinh
+học cách sử dụng tiếng Nhật để giao tiếp về các lĩnh vực gần gũi trong cuộc sống hằng ngày, về đất nước, con người, văn
+hoá Nhật Bản, Việt Nam và các nước khác trên thế giới, về đời sống, tương lai của các em và xã hội. Thông qua các nội
+dung giao tiếp đó, học sinh có thêm hiểu biết về những vấn đề văn hoá, xã hội liên quan.
+     Hệ thống chủ điểm được cụ thể hoá thành các chủ đề. Chương trình đưa ra một danh mục các chủ đề gợi ý tương ứng
+với mỗi chủ điểm cho từng năm học. Người biên soạn sách giáo khoa và tài liệu tham khảo có thể sử dụng hệ thống chủ đề
+này, hoặc điều chỉnh, sửa đổi, bổ sung các chủ đề cho phù hợp với các chủ điểm tuỳ theo nhu cầu, hứng thú và khả năng học
+tập của học sinh.
+
+
+
+
+                                                           15
+   2. Nội dung cụ thể
+   Bậc 1.1: Năm thứ 1
+Chủ
+             Chủ đề                 Kĩ năng ngôn ngữ                            Kiến thức ngôn ngữ
+điểm
+Xã hội   Chào hỏi        – Có thể chào hỏi trong ngày.             A. Chữ viết và từ vựng:
+                         – Có thể cảm ơn, xin lỗi.                 1. Đọc và viết được bảng chữ Hiragana và bảng
+                         – Có thể mời khi ăn uống.                 chữ Katakana.
+         Tuổi tác, số    – Có thể nói về tuổi tác, số người.       2. Nhớ và sử dụng được khoảng 150 từ, khoảng
+         người                                                     20 chữ Hán.
+                                                              3. Sử dụng được khoảng 20 – 25 cách diễn đạt, cấu
+         Giới thiệu      – Có thể nói khi dùng ảnh giới thiệu
+                                                              trúc ngữ pháp.
+                         thành viên trong gia đình, lớp học.
+  Nhà    Tự giới thiệu   – Có thể chào hỏi khi lần đầu tiên gặp gỡ
+                                                                   B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa
+trường                   người khác và giới thiệu bản thân mình.
+                                                                   vào chương trình:
+                         – Có thể nói về quốc tịch và tên của bản
+                                                                   1. はじめまして
+                         thân.
+                         – Có thể nói về trường, lớp.                 ～です
+
+Cuộc     Thời gian       – Có thể nói về thời gian, về hoạt động     どうぞよろしく
+sống                     diễn ra trong ngày.                       どうぞよろしくおねがいします
+hằng     Những điều ưa   – Có thể nói về những thứ mà mình hoặc 2. おはようございます／おはよう／こんにち
+ngày     thích           người khác ưa thích.                   は／こんばんは／ おやすみなさい
+                                                                   3. せんせい、さようなら
+
+
+                                                         16
+Chủ
+            Chủ đề                 Kĩ năng ngôn ngữ                        Kiến thức ngôn ngữ
+điểm
+        Món ăn ưa       – Có thể nói về món ăn mình ưa thích.      さようなら
+        thích           – Có thể hỏi về sở thích của người khác.     またあした
+Thiên   Các loài thực   – Có thể nói về tên và số lượng động vật, 4. じゃあね――バイバイ
+nhiên   vật, động vật   thực vật gần gũi, thân quen trong cuộc 5.      いただきます
+        gần gũi         sống.
+                                                                  6.   おいしい
+                                                                   7.   ごちそうさまでした
+                                                                   8.   ありがとうございます
+                                                                   ―― どういたしまして
+                                                                   9. ありがとう――いいえ
+                                                                   10. すみません――いいえ
+                                                                   11. ごめんなさい
+                                                                   12. なんじですか
+                                                                        ～じです
+                                                                   13. ～は～じにおきます/ねます
+                                                                   14. ～はなんじにおきますか／ねますか
+                                                                       ～じにおきます／ねます
+                                                                   15. いってきます
+                                                                   ――いってらっしゃい
+                                                                   16. ただいま
+
+
+                                                      17
+Chủ
+       Chủ đề   Kĩ năng ngôn ngữ               Kiến thức ngôn ngữ
+điểm
+                                        ――おかえりなさい
+                                        17. どうぞ
+                                        ――おじゃまします
+                                        18. しつれいします
+                                        ～は～がすきです
+                                        19. ～は～がすきですか
+                                          はい、すきです
+                                        ／いいえ、すきではありません
+                                        20. ～はなにがすきですか
+                                          ～がすきです
+                                        21. ～も～
+                                        22. これは～です
+                                        23. ～と～
+                                        23. ～はなんさいですか
+                                           ～さいです
+                                        24. ～はなんにんですか
+                                          ～にんです
+
+
+
+
+                                   18
+   Bậc 1.2: Năm thứ 2
+Chủ
+           Chủ đề                  Kĩ năng ngôn ngữ                             Kiến thức ngôn ngữ
+điểm
+  Nhà Sách của tôi      – Có thể nói về sự sở hữu.               A. Chữ viết và từ vựng:
+trường                  – Có thể nói về thuộc tính, tính chất, đặc 1. Nhớ và sử dụng được thêm khoảng 250 từ mới và
+                        điểm của sự vật.                           khoảng 25 chữ Hán mới.
+       Lớp học          – Có thể miêu tả về sự tồn tại của người 2. Sử dụng thêm được khoảng 25 – 30 cách diễn đạt,
+                        (bạn bè, thầy cô...).                    cấu trúc ngữ pháp mới.
+       Trường học       – Có thể giới thiệu về trường học của B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa vào
+                        mình.                                      chương trình:
+
+Sinh   Mua hàng         – Có thể miêu tả về sự tồn tại của đồ vật. 1. これ／それ／あれ／どれ
+hoạt                    – Có thể nói về giá cả.                    2. わたしの本
+                                                                   3. N1 の N2 （ 例：日本ごのじしょ）
+       Đồ vật muốn      – Có thể nói về những thứ mình muốn có.
+       có                                                          4. この／その／あの／どの
+                                                                   5. ～は～にあります／います
+       Cửa hàng         – Có thể nói về sự lựa chọn cửa hàng để
+                        mua sắm.                                   6. ここ／そこ／あそこ／どこ
+                        – Có thể gọi đồ ăn, đồ uống trong nhà 7. ～に～があります／います
+                        hàng.                                      8. 何もありません／だれもいません
+       Một ngày của     – Có thể nói về thời gian biểu của mình 9. ～へ行きます／来ます／かえります
+       tôi              trong một ngày.                          10. いくらですか
+                                                                 11. ぜんぶで～ドンです
+
+
+                                                       19
+Chủ
+           Chủ đề                  Kĩ năng ngôn ngữ                 Kiến thức ngôn ngữ
+điểm
+        Ngày nghỉ      – Có thể nói về những việc mình đã làm 12. ～をたべます／のみます
+                       trong ngày nghỉ.                        13. ～をください
+        Một tuần của   – Có thể nói về thói quen sinh hoạt của 14. ～を～つですね
+        tôi            mình.                                 15. ～がほしいです
+Xã hội Gia đình tôi    – Có thể giới thiệu về gia đình.      16. A-いです／A (-い)くないです
+        Thư từ         – Có thể viết thư cho bạn kể về những 17. A-い N （例：あかいかばん）
+                       việc đã làm trong ngày nghỉ.          18. A-いのが～ （例: 小さいのが～）
+
+        Mời, rủ        – Có thể mời, rủ bạn bè làm một việc gì 19. A (-な)です／A (-な) ではありません
+                       đó.                                          例：しんせつです／しんせつではありません
+Thiên   Đi chơi công   – Có thể miêu tả về sự tồn tại của động vật, 20. A (-な)+N
+nhiên   viên           thực vật trong thiên nhiên.         例： しんせつな人
+                                                           21. ～はどうですか
+                                                           22. ～。でも、～／～
+                                                            そして、～
+                                                           23. ～時ごろ V-ます
+                                                           24. ～で V-ます
+                                                           25. ～から～まで
+                                                           26. ～時間 V-ます
+                                                           27. ～ぐらい
+
+
+                                                      20
+Chủ
+       Chủ đề   Kĩ năng ngôn ngữ                  Kiến thức ngôn ngữ
+điểm
+                                        28. あまり V-ません
+                                        29. いつも V／ときどき V
+                                        30. ～と～と～がいます
+                                        31. だれが V-ますか
+                                        32. ～が V-ます
+                                        33. V-ました
+                                        34. ～に V-ます
+                                        35. ～と V-ます
+                                        36. ～月～日です
+                                        37. A (-い)かったです／A (-な)でした／N でし
+                                        た （例：たのしかったです／しずかでした／
+                                        こどもの日でした）
+                                        38. N1 の N2 でした
+                                        例：こどもの日でした
+                                        39. ～で～があります
+                                        40. V-ませんか
+                                        41. V ましょう
+
+
+
+
+                                   21
+    Bậc 1.3: Năm thứ 3
+Chủ            Chủ đề                 Kĩ năng ngôn ngữ                           Kiến thức ngôn ngữ
+điểm
+  Nhà Giáo viên               – Có thể nói khi yêu cầu, đề nghị.   A. Chữ viết và từ vựng:
+trường                        – Có thể xin phép thực hiện một 1. Nhớ và sử dụng được thêm khoảng 300 từ mới và
+                              việc gì đó.                     khoảng 25 chữ Hán mới.
+        Đăng ký học ngoại     – Có thể hiểu được nội dung các tờ 2. Sử dụng thêm được khoảng 25 – 30 cách diễn đạt,
+        khoá                  hướng dẫn, quảng cáo về các lớp cấu trúc ngữ pháp mới.
+                              học ngoại khoá                     B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa vào
+        Lớp học               – Có thể nói về một việc đã hoặc chương trình:
+        ngoại khoá            chưa từng xảy ra.                 1. V-てください
+        Lớp học               – Có thể diễn đạt yêu cầu về cách 2. ～で（chỉ phương tiện, vật liệu）
+        thư pháp              thức hành động.                   3. もう、まだ
+        Học sinh THPT         – Có thể viết thư kể về cuộc sống 4. V-てもいいですか
+                              của mình.                            はい、いいです(よ)
+Xã hội Đi du lịch, dã ngoại   – Có thể nói về chuyến du lịch mà ／いいえ、だめです
+                              mình đã trải qua.                 ／はい、どうぞ
+        Viện bảo tàng         – Có thể hỏi về nội quy, quy định.   5. A (– い)く V－てください／
+
+Cuộc    Từ nhà đến trường     – Có thể nói về đường đi từ nhà   A (– い)く V-てもいいです
+sống                          đến trường.                     （例： 小さく V-てください／はやく V-て
+                                                              もいいです）
+
+
+                                                         22
+Chủ            Chủ đề               Kĩ năng ngôn ngữ                     Kiến thức ngôn ngữ
+điểm
+        Hỏi đường              – Có thể    hỏi   và   chỉ   dẫn 6. A (-な)に V-てください／A (-な)に V-ます
+                               đường đi.                              （例：きれいに V-てください／じょうずに
+        Giới thiệu tranh/ảnh   – Có thể giới thiệu một bức ảnh V-ます）
+                               hoặc bức tranh.                     7. ～に～かい V-ます
+        Gọi điện thoại         – Có thể nói chuyện qua điện thoại. 8. ～に～時間 V-ます
+Thiên   Sở thích               – Có thể nói về sự cảm nhận, yêu 9. V-たことがあります
+nhiên                          thích động – thực vật trong quan hệ 10. ～が、～
+                               so sánh.                            11.～V-たり～V-たりします／しました
+                                                                   12. どこかへ 行きましたか
+                                                                        いいえ、どこへも 行きませんでした
+                                                                   13. ～や～（など）
+                                                               14. （みち／はし）を わたります
+                                                               15. ～に つきます
+                                                               16. V-て、V
+                                                               17. ～め～ （例：二番目の交差点）
+                                                               18. ～でいちばん～
+                                                               19. ～がいいです
+                                                               20. V-ることです
+                                                               21. V-ることは ～です
+
+
+                                                      23
+Chủ            Chủ đề              Kĩ năng ngôn ngữ                         Kiến thức ngôn ngữ
+điểm
+                                                             22. V-ることが ～です
+                                                             23. V-ています(I): Dạng hiện tại tiếp diễn của động
+                                                             từ (mô tả hành động đang diễn ra ở thời điểm nói).
+                                                             24. N によって
+                                                             25. ～とき、～
+                                                             26.V-ています(II): Dạng hiện tại tiếp diễn của động
+                                                             từ (mô tả sự lưu giữ kết quả hành động).
+                                                             27. V-ています(III): Dạng hiện tại tiếp diễn của
+                                                             động từ (mô tả thói quen lặp đi lặp lại).
+                                                             28. N だけ
+                                                             29. ～から
+
+     Bậc 1.4: Năm thứ 4
+
+Chủ
+              Chủ đề             Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+Thiên   Vườn bách thú     – Có thể nói về đặc điểm bên A. Chữ viết và từ vựng:
+nhiên                     ngoài của động vật.              1. Nhớ và sử dụng thêm được khoảng 350 từ mới và
+Xã hội Người nổi tiếng    – Có thể giới thiệu về một người khoảng 30 chữ Hán mới.
+                          nào đó cùng với năng lực, sở 2. Sử dụng thêm được khoảng 25 – 30 cách diễn đạt,
+                          trường của họ.               cấu trúc ngữ pháp mới.
+                          – Có thể nói về đặc điểm bên
+                                                    24
+Chủ
+             Chủ đề             Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+                         ngoài của người nào đó.
+Cuộc   Bệnh tật          – Có thể nói về một số triệu chứng
+sống                     bệnh thông thường                  B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa vào
+       Thể lực,          – Có thể nói một cách đơn giản về chương trình:
+       sức khoẻ          thể lực và sức khoẻ.                1. ～は～が～です ( I) : Đặc điểm bên ngoài của
+                                                             người/ động vật
+       Trình tự          – Có thể diễn đạt trình tự của các
+                         hành động.                          2. どうしてですか
+                                                             ～から
+       Tập quán          – Có thể nói về thói quen sinh hoạt
+                         của mình và người khác.             3. ～は～が～です (II ): Năng lực/sở trường
+                                                             4. A (-い)くて～です／
+       Thời thơ ấu       – Có thể nói về thời thơ ấu của
+                                                             5. A（-な）で～です／N で～です
+                         một người nào đó.
+                                                             6.V-ないでください
+       Tương lai         – Có thể nói về một số việc muốn
+                         làm trong tương lai.                7. ～は～が～です (III): Bệnh tật/ sức khỏe
+                                                             8.V-ることができます
+  Nhà Nội quy lớp học,   – Có thể yêu cầu người khác
+                                                             ／N ができます
+trường câu lạc bộ        không làm một điều gì đó.
+                                                             9. N1 が A N2
+                                                             例：やねがあかい体いくかん
+                                                          10. V-てから、～
+                                                          11. といいます／～といいました
+                                                          12. V-て、～
+
+                                                   25
+Chủ
+                Chủ đề                 Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+                                                                  13. A (-い)くなる
+                                                                    A（-な）になる
+                                                                  N になる。
+                                                                    N になってから V-ています（V-ています: hành
+                                                                  động tiếp diễn）
+                                                                  14. いつから V ていますか
+                                                                  15. V-てからです
+                                                                  V１-てから V2 ています。
+                                                                       ～のときからです
+                                                                  16. V-たいです
+                                                                  17. A1 (-い)くて A2＋N
+                                                                       A1 (-な)で A2＋N
+                                                                  18. ～という N
+                                                                  19. V-ないで、～
+
+       Bậc 2: Năm thứ 5
+
+Chủ             Chủ đề                   Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+Sinh      Giới thiệu, làm       – Có thể tự giới thiệu và giới thiệu về A. Chữ viết và từ vựng:
+hoạt      quen (bản thân, gia   bạn cùng lớp, về gia đình.              1. Nhớ và sử dụng thêm được khoảng 250 từ mới
+
+                                                            26
+Chủ           Chủ đề                    Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+        đình và bạn bè)        – Có thể nói được tên mình, ý nghĩa và khoảng 50 chữ Hán mới.
+                               của tên mình và nơi mình đang sống. 2. Sử dụng thêm được khoảng 25 – 30 cách diễn
+                                                                   đạt, cấu trúc ngữ pháp mới.
+        Sở thích, thói quen,   – Có thể nghe và ghi chép lời tự giới B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa
+        khả năng đặc biệt      thiệu của người khác.                  vào chương trình:
+        của mình và người      – Có thể nghe và nói về thói quen hoặc 1. 知っていますか／知りません、
+        khác                   những khả năng đặc biệt của mình và どう書きますか／何と読みますか／何という
+                               người khác.                            意味ですか
+        Ngoại hình, tính       – Có thể tả cho người nghe về ngoại 2. V ている N（Mệnh đề định ngữ – I）
+        cách, năng lực.        hình, tính cách của mình và của người 3. ～V ながら～
+                               khác.                                  4. 疑問詞＋でも、～
+                                                                        5. V る前に、～
+         Mơ ước trong          – Có thể nói, viết về cảm tưởng của V た後で、～
+        tương lai.             mình và những điều mình đạt được sau 6. V なければなりません
+                               một năm học.
+                                                                        V なくてもいいです
+                               – Có thể nói về nghề nghiệp trong
+                                                                        7. A-い／A(-な)だ／N だと思います
+                               tương lai
+                                                                        8. V と思います
+  Nhà Cách sử dụng thư         – Có thể nghe được những lời giải thích,
+trường viện và giờ giấc.       nhắc nhở và hiểu được những việc phải 9. V れる/V られる（Động từ khả năng – 可能動
+                               làm.                                     詞）
+                               – Có thể xin lỗi khi muộn giờ.           10. N１か N２
+
+                                                           27
+Chủ           Chủ đề                  Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+        Nội quy, quy định.   – Có thể nói về nội quy của trường.  11. N が V（cách diễn đạt hiện tượng thiên nhiên –
+                             – Có thể gọi điện hoặc viết giấy xin 自然現象を表す言い方）
+                             phép nghỉ trong trường hợp đến muộn V（-ます）はじめる
+                             hay có việc phải vắng mặt.           12. ～でしょう
+        Sinh hoạt lớp        – Có thể viết đơn tiến cử bạn cùng lớp 13. V-ますように
+                             vào một tổ chức (ví dụ: Đoàn thanh 14. V（-ます）方
+                             niên, Hội học sinh, Câu lạc bộ năng
+                                                                      15. N1 は N2 に N3 をあげます
+                             khiếu...).
+                                                                      16. N1 は N2 に N3 をもらう
+        Thể thao             – Có thể khen và thể hiện sự khiêm
+                                                                      17. N1 はわたしに N2 をくれる
+                             tốn khi được khen.
+                                                                      18. V+N／S＋N（Mệnh đề định ngữ – II）
+Thiên   Thời tiết            – Có thể vừa xem bản đồ vừa nghe dự
+                                                                      19. ～かもしれません
+nhiên                        báo thời tiết và tiếp nhận được các
+                             thông tin cần thiết.                     20. V-るとき／V-たとき
+                             – Có thể nói về thời tiết                21. V（-ます）そうです／V-なさそうです
+Xã hội Các ngày lễ của       – Có thể viết thư và các loại thiếp chúc （Trạng thái/ dáng vẻ – 様態）
+       cộng đồng và ngày     mừng (thiếp chúc mừng sinh nhật, 22. ～て、すみません（でした）
+       đặc biệt của cá nhân chúc mừng năm mới, chúc mừng ngày 23. N1 も N2 も～
+                            nhà giáo Việt Nam...)                24. V ようになる
+                            – Có thể thảo luận cùng bạn và quyết
+                            định sẽ tặng ai đó cái gì.
+                             – Có thể truyền đạt lại bằng lời hay
+
+                                                         28
+Chủ          Chủ đề                Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+                          viết giấy để lại những lời nhắn cho bạn
+                          bè.
+       Giao tiếp xã hội   – Có thể nói lời cảm ơn khi nhận được
+                          thiếp chúc mừng.
+                          – Có thể nói về những thứ mình đã
+                          được nhận hay đã tặng người khác.
+                          – Có thể phát biểu cảm tưởng, khen
+                          ngợi người khác
+
+  Bậc 2: Năm thứ 6
+Chủ
+             Chủ đề                Kĩ năng ngôn ngữ                          Kiến thức ngôn ngữ
+điểm
+Sinh   Kì nghỉ hè         – Có thể chào hỏi bạn bè sau một thời A. Chữ viết và từ vựng:
+hoạt                      gian dài không gặp.                   1. Nhớ và sử dụng thêm được khoảng 280 từ mới
+                          – Có thể nói về kinh nghiệm, trải và khoảng 50 chữ Hán mới.
+                          nghiệm của bản thân.                  2. Sử dụng thêm được khoảng 25 – 30 cách diễn
+       Sức khoẻ và bệnh   – Có thể nói về triệu chứng bệnh lí và đạt, cấu trúc ngữ pháp mới.
+       tật                tình trạng sức khoẻ.                   B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa
+                          – Có thể khuyên nhủ, an ủi, động viên vào chương trình:
+                          bạn bè khi họ có chuyện buồn.             1. あの・その／それ・あれ／そこ・あそこ
+
+
+
+                                                       29
+Chủ
+            Chủ đề               Kĩ năng ngôn ngữ                      Kiến thức ngôn ngữ
+điểm
+       Máy móc,          – Có thể đọc và hiểu nội dung các bản 2. ～でしょう（Diễn đạt sự xác nhận）
+       thiết bị          hướng dẫn sử dụng máy móc, thiết bị, 3. ～し、～し
+                         đồ dùng.                              4. ～すぎる
+                         – Có thể viết các câu hướng dẫn đơn
+                                                               5. V-てはいけません
+                         giản về cách sử dụng máy móc, thiết
+                                                               6. ～とおりに
+                         bị, đồ dung...
+                                                               7. V てあります
+       Công việc trong   – Có thể nghe câu chuyện của người
+       tương lai         khác rồi đưa ra những lời khuyên hợp 8. V てくれます
+                         lí.                                       9. どうしたんですか／～んです
+  Nhà Du học, trường đại – Có thể tóm tắt những điều cần biết, 10. ～みたいです
+trường học                những điều muốn tìm hiểu, so sánh các 11. V た方がいいです／V ない方がいいです
+                          thông tin về trường học và khu vực mà 12. V てみます
+                          mình định đi du học.
+                                                                   13. ～かどうか～／疑問詞～か～
+                                                                   14. ～そうです（伝聞）
+       Học tập và         – Có thể nói về tiến trình thực hiện bài 15. ～と～とどちらが～／～より～の方が～
+       thi cử             tập hay bài báo cáo.
+                                                                   16. ～は～が、～は～
+                          – Có thể nói về kết quả của kì thi hoặc
+                                                                   17. V はじめます／V つづけます／V 終わりま
+                          bài báo cáo.
+                                                                   す
+Xã hội Văn học – tác phẩm – Có thể nói về đặc điểm của tác phẩm 18. 見えます／聞こえます
+       văn học yêu thích  văn học.
+                                                                   19. まだ V ています／まだ V ていません
+
+                                                    30
+Chủ
+              Chủ đề                  Kĩ năng ngôn ngữ                       Kiến thức ngôn ngữ
+điểm
+                             – Có thể tóm tắt ý chính của truyện cổ 20. V るところ／V ているところ／V たところ
+                             tích hoặc tác phẩm văn học thuộc thể 21. V てしまう
+                             loại khác.
+                                                                    22. V て／A (-い)くて／A(-な)で／N で、～
+        Lễ hội tiếng Nhật.   – Có thể bàn bạc và quyết định về
+                                                                    23. ～ようと思っています
+                             những việc sẽ làm.
+                                                                    24. ～なら、～
+                             – Có thể giải thích, hướng dẫn cách
+                             làm một việc gì đó.
+        Giao tiếp xã hội     – Có thể hỏi ý kiến người khác và diễn
+                             đạt quan điểm của mình
+                             – Có thể diễn đạt sự chia sẻ niềm vui
+                             cùng bạn.
+Thiên   Đặc điểm địa lí      – Có thể nói về đặc điểm địa lí của
+nhiên                        vùng/ khu vực
+
+   Bậc 2: Năm thứ 7
+Chủ
+              Chủ đề                  Kĩ năng ngôn ngữ                       Kiến thức ngôn ngữ
+điểm
+Sinh    Hoạt động tình       – Có thể nói về mục tiêu trong một A. Chữ viết và từ vựng:
+hoạt    nguyện và công tác   năm của mình.                       1. Nhớ và sử dụng thêm được khoảng 280 từ mới
+        từ thiện             – Có thể điền đơn xin tham gia hoạt và khoảng 50 chữ Hán.
+                             động.                               2. Sử dụng thêm được khoảng 25 – 30 cách diễn
+
+                                                         31
+Chủ
+              Chủ đề                 Kĩ năng ngôn ngữ                        Kiến thức ngôn ngữ
+điểm
+                             – Có thể thảo luận và quyết định sẽ đạt, cấu trúc ngữ pháp mới.
+                             tham gia vào hoạt động nào trong các B. Các cấu trúc ngữ pháp/ mẫu câu gợi ý đưa
+                             hoạt động của buổi dạ hội hoặc của vào chương trình:
+                             một phong trào tình nguyện.
+                                                                     1. ～ので、～
+Xã hội Cơ quan/tổ chức thế   – Có thể giới thiệu về các cơ quan, tổ 2. V-ることにする／N にする
+       giới                  chức thế giới như UNESCO, NGO...
+                                                                     3. V-ることになる／V-ないことになる／N に
+        Công ty, doanh       – Có thể viết một bản lí lịch, đơn xin なる
+        nghiệp               việc.                                   4. A-そうです
+                             – Có thể nhờ vả, đề nghị ai đó một
+                                                                     5. Ngoại động từ / Nội động từ
+                             cách lịch sự.
+                                                                     6. V-るために／N-ないために
+                             – Có thể đưa ra lời đề nghị về một
+                                                                     7. N1 は N2 に V-られる／N1 は V-られる（Cấu
+                             chuyến đi thực tế.
+                                                                     trúc bị động trực tiếp）
+        Vấn đề môi trường    – Có thể thuyết trình về các chủ đề
+                                                                     8. N1 は N2 に N3 を V-られる（Cấu trúc bị động
+                             năng lượng, rác thải, tái sử dụng...
+                                                                     gián tiếp）
+Thiên   Di sản thế giới và   – Có thể giới thiệu về các di sản thiên
+                                                                     9. ～のに～
+nhiên   Việt Nam             nhiên, văn hoá của Việt Nam và thế
+                             giới.                                   10. V-てほしい
+
+        Tài nguyên, năng     – Có thể tường thuật, miêu tả trực tiếp 11. ～たら
+        lượng                tình trạng thiên tai.                   12. ～ても～／～でも～
+
+  Nhà Định hướng trong       – Có thể thổ lộ những khó khan, 13. V-てきた
+trường tương lai             vướng mắc khi quyết định việc học 14. V-ていく
+                                                     32
+ Chủ
+                Chủ đề                    Kĩ năng ngôn ngữ                              Kiến thức ngôn ngữ
+ điểm
+                                tập và công việc trong tương lai.15. V-やすい／V-にくい
+                                – Có thể diễn đạt những điều băn 16. V-ておく
+                                khoăn của bản thân.              17. V-てもらう
+         Kĩ năng giao tiếp xã – Có thể báo cáo bằng lời hoặc viết 18. V-ていただけませんか/ V-てくださいませ
+         hội                  một bài báo cáo sau chuyến đi thực tế. んか
+                              – Có thể diễn tả lòng biết ơn của mình 19. Dạng kính ngữ đặc biệt (tôn kính ngữ và khiêm
+                              đối với thầy cô và nhà trường bằng nhường ngữ đặc biệt)
+                              các từ ngữ trang trọng.                20. お／ご V する
+                                                                         21. お／ご V(-ます)になります
+                                                                         22. お／ご V(-ます) いただく、 お／ご V(-ま
+                                                                         す)くださる
+                                                                         23. V(-ます)させる
+                                                                         24. V(-ます)させていただく
+
+
+
+     VI. PHƯƠNG PHÁP GIÁO DỤC
+     Phương pháp giáo dục môn Tiếng Nhật - Ngoại ngữ 2 phải phát huy được tính tích cực, chủ động, sáng tạo của học
+sinh, tạo hứng thú cho học sinh, phát triển năng lực giao tiếp của học sinh trong những ngữ cảnh giao tiếp thực liên quan tới
+các lĩnh vực khác nhau. Phương pháp giáo dục cũng cần giúp học sinh huy động kiến thức về ngôn ngữ, về văn hóa và xã
+
+
+
+                                                             33
+hội, các năng lực ngôn ngữ, các chiến lược học ngoại ngữ đã được lĩnh hội và hình thành từ việc học ngoại ngữ 1 để có
+phương pháp học hiệu quả môn Tiếng Nhật - Ngoại ngữ 2.
+     Căn cứ Chương trình môn Tiếng Nhật - Ngoại ngữ 2, giáo viên chủ động, linh hoạt xây dựng và tổ chức thực hiện các
+nội dung dạy học. Tuỳ vào đối tượng học sinh ở từng cấp, lớp và nội dung dạy học, giáo viên đa dạng hóa các hình thức,
+phương tiện dạy học và học liệu, đặc biệt sử dụng các tư liệu dạy học thực, đưa người học vào hoàn cảnh giao tiếp sát thực
+giúp học sinh hoàn thành các nhiệm vụ gần với các nhiệm vụ của cuộc sống. Giáo viên cần chú trọng việc rèn luyện cả bốn
+kĩ năng giao tiếp: nghe, nói, đọc, viết (tuy nhiên nghe, nói đi trước một bước), kết hợp đồng thời giữa rèn luyện và phát triển
+năng lực giao tiếp với dạy và phát triển năng lực ngôn ngữ, năng lực văn hoá và liên văn hoá trong đó mục tiêu cuối cùng là
+năng lực giao tiếp, bám sát các chủ điểm, chủ đề trong Chương trình nhằm giúp học sinh lĩnh hội giá trị văn hóa.
+     VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+      1. Mục tiêu đánh giá kết quả giáo dục là cung cấp thông tin kịp thời, có giá trị về mức độ đáp ứng yêu cầu cần đạt của
+chương trình và sự tiến bộ của học sinh để hướng dẫn hoạt động học tập, điều chỉnh các hoạt động dạy học, quản lí và phát
+triển chương trình, bảo đảm sự tiến bộ của từng học sinh và nâng cao chất lượng giáo dục nói chung và môn Tiếng Nhật nói
+riêng.
+      2. Đánh giá kết quả giáo dục môn Tiếng Nhật - Ngoại ngữ 2 phải:
+      - Bảo đảm độ tin cậy, tính hiệu lực, khách quan, phù hợp với từng lứa tuổi, từng cấp học, không gây áp lực lên học
+sinh, hạn chế những tốn kém không cần thiết cho gia đình học sinh và xã hội.
+      - Căn cứ vào các yêu cầu cần đạt về phẩm chất và năng lực được quy định trong chương trình tổng thể và chương trình
+môn học, hoạt động giáo dục ở thời điểm kiểm tra, đánh giá.
+      - Kết hợp giữa:
+      + Đánh giá thường xuyên và đánh giá định kì;
+      + Đánh giá chẩn đoán, đánh giá quá trình và đánh giá tổng kết (ưu tiên đánh giá quá trình);
+      + Đánh giá tham chiếu tiêu chí và đánh giá tham chiếu định chuẩn (ưu tiên đánh giá tham chiếu tiêu chí);
+      + Đánh giá tích hợp năng lực sử dụng ngôn ngữ và đánh giá riêng lẻ từng kĩ năng giao tiếp ngôn ngữ (nghe, nói, đọc,
+viết), ở giai đoạn đầu có thể đánh giá riêng lẻ kiến thức ngôn ngữ (ngữ pháp, từ vựng, ngữ âm).
+
+                                                              34
+    - Kết hợp các hình thức đánh giá định tính và định lượng. Khuyến khích và tạo điều kiện cho học sinh tự đánh giá và
+tham gia vào quá trình đánh giá.
+     VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH
+     1. Phân bố thời lượng dạy học
+     Chương trình tiếng Nhật được thực hiện với tổng thời lượng là 735 tiết (gồm cả số tiết ôn tập và kiểm tra, đánh giá),
+trong đó giai đoạn giảng dạy trình độ Bậc 1 có tổng số tiết là 420 tiết, giai đoạn giảng dạy trình độ Bậc 2 có tổng số tiết là
+315 tiết. Số tiết học trong một tuần thống nhất cả hai giai đoạn là 3 tiết/tuần. Cụ thể như sau:
+
+
+
+
+                       Bậc          Năm thứ        Số tiết / tuần      Số tuần          Tổng số tiết / năm
+                                        1                 3               35                    105
+                                        2                 3               35                    105
+               Bậc 1                    3                 3               35                    105
+                                        4                 3               35                    105
+               Tổng số tiết Bậc 1                                                               420
+                                        5                 3               35                    105
+               Bậc 2                    6                 3               35                    105
+                                        7                 3               35                    105
+               Tổng số tiết Bậc 2                                                               315
+               Tổng số tiết của toàn bộ Chương trình                                            735
+
+                                                              35
+     2. Biên soạn và sử dụng sách giáo khoa, tài liệu tham khảo
+    a) Chương trình tiếng Nhật là cơ sở để biên soạn, thẩm định sách giáo khoa giáo dục phổ thông môn Tiếng Nhật –
+Ngoại ngữ 2. Khi biên soạn sách giáo khoa và các tài liệu phục vụ dạy – học đi kèm, các tác giả cần bám sát mục tiêu của
+Chương trình (bao gồm mục tiêu tổng thể, mục tiêu của từng bậc và mục tiêu của từng năm học trong mỗi bậc).
+      b) Việc thiết kế cấu trúc của sách giáo khoa nói chung và cấu trúc của mỗi bài học trong sách giáo khoa nói riêng cần
+bám sát quan điểm xây dựng Chương trình tiếng Nhật là hình thành và phát triển các kĩ năng ngôn ngữ (nghe, nói, đọc, viết)
+trong khuôn khổ của các chủ đề giao tiếp phù hợp, lấy kĩ năng giao tiếp dựa theo chủ điểm làm trục chính. Trong Chương
+trình, nội dung giao tiếp và chủ đề được coi là cơ sở cho việc lựa chọn nội dung các bài học, bài tập và hoạt động trong mỗi
+bài học. Do vậy, kĩ năng giao tiếp và chủ đề sẽ chi phối việc lựa chọn và tổ chức nội dung ngữ liệu trong sách giáo khoa và
+các tài liệu dạy – học.
+     c) Khi biên soạn sách giáo khoa và các tài liệu dạy – học liên quan, cần áp dụng các thành tựu của giáo học pháp ngoại
+ngữ hiện đại dựa trên cơ sở phân tích các đặc điểm ngôn ngữ của tiếng Nhật. Nội dung của sách giáo khoa và các tài liệu
+dạy-học kèm theo cần phong phú, đa dạng, sát với thực tế cuộc sống, tạo hứng thú học tập cho học sinh và tính hiệu quả
+trong giao tiếp bằng tiếng Nhật, phát huy tính sáng tạo của học sinh.
+     d) Ngữ liệu được sử dụng để biên soạn sách giáo khoa Tiếng Nhật và các tài liệu dạy – học đi kèm cần được lựa chọn
+cho phù hợp với hệ thống chủ đề, chủ điểm và định hướng nội dung dạy – học được nêu trong Chương trình. Các tài liệu
+tham khảo phải có nguồn tin cậy, chính xác, phải sử dụng ngôn ngữ chuẩn mực, nội dung phù hợp với đối tượng dạy học và
+chính sách, quan điểm giáo dục của Đảng và Nhà nước Việt Nam.
+    đ) Hình thức sách giáo khoa cần thiết kế phù hợp với lứa tuổi học sinh, đẹp, sinh động và có hình ảnh, đĩa âm thanh đi
+kèm phù hợp với nội dung bài học.
+     3. Khai thác và sử dụng các nguồn tư liệu
+     Trong quá trình thực hiện Chương trình Tiếng Nhật, ngoài các tài liệu dạy – học chính thức như sách giáo khoa, giáo
+viên nên tham khảo thêm sách giáo khoa, giáo trình tiếng Nhật và các loại sách, tài liệu phục vụ dạy – học tiếng Nhật được
+
+                                                            36
+xuất bản tại Nhật Bản hoặc các nước khác ở trình độ tương đương, phù hợp với mục tiêu, nội dung của Chương trình Tiếng
+Nhật và lịch sử, chính trị, xã hội, luật pháp, quan điểm giáo dục... của Việt Nam.
+     4. Điều kiện thực hiện Chương trình
+     a) Để thực hiện được Chương trình, cần có đủ giáo viên dạy tiếng Nhật đạt chuẩn trình độ đào tạo chuyên môn nghiệp
+vụ theo quy định hiện hành. Giáo viên tham gia giảng dạy cần được tập huấn, quán triệt về toàn bộ nội dung của Chương
+trình tiếng Nhật. Hằng năm, nhà trường và các Sở Giáo dục và Đào tạo cần tạo điều kiện cho giáo viên tham gia bồi dưỡng
+chuyên môn nghiệp vụ để cập nhật các kiến thức ngôn ngữ, văn hoá mới và các phương pháp dạy học hiện đại.
+     b) Có đủ cơ sở vật chất (trường, lớp, bàn, ghế…), sách giáo khoa, thiết bị đồ dùng dạy học theo tiêu chuẩn quy định của
+Bộ Giáo dục và Đào tạo. Đối với những địa phương, trường, lớp có điều kiện, cần tổ chức cho học sinh được tiếp xúc với
+sách báo tiếng Nhật, được xem, nghe các chương trình phát thanh, truyền hình của Nhật Bản, cũng như được tiếp xúc, giao
+lưu với người Nhật để tăng thêm hứng thú học tập và rèn luyện kĩ năng sử dụng tiếng Nhật.
+     c) Các sở Giáo dục và Đào tạo cần xây dựng kế hoạch và hướng dẫn triển khai thực hiện Chương trình Tiếng Nhật tại
+các trường phổ thông phù hợp với đặc điểm, yêu cầu phát triển kinh tế, văn hoá của địa phương mình.
+
+
+
+
+                                                            37
+

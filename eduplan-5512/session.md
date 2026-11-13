@@ -31,3 +31,4 @@ u1 BGH hieutruong@ · u2 TT Toán tt.toan@ · u3 TT Ngữ văn tt.nguvan@ · u4 
 - ĐANG DỪNG (mục 11): thiếu master prompt v1.0; thiếu CV 5512 (PL IV, V), CV 2345, CV 3456, QĐ 2422, CT môn trong data/raw; chờ duyệt audit + ánh xạ.
 - 13/11: Đã nhận CV 5512 (.doc, chỉ thân văn bản, thiếu Phụ lục 1–4 và tiêu chí phân tích bài dạy). Xem data/raw/van-ban/README.md. Vẫn dừng: thiếu v1.0, phụ lục, CV 2345, 3456, QĐ 2422, CT môn.
 - 13/11 (lần 2): Đã nạp CV 3456 + PL khung NLS, QĐ 2422 (khung GD AI), CV 3083 HCM (HĐTN). CV 5512 gửi lại trùng bản cũ (vẫn thiếu phụ lục). Còn thiếu: PL CV 5512, CV 2345, CT môn, master prompt v1.0.
+- 13/11 (lần 3): Đã nạp TT 32/2018 + 28 CT môn (data/processed/ct-gdpt-2018/). Còn thiếu: PL CV 5512, CV 2345, master prompt v1.0; chờ duyệt audit + ánh xạ.

@@ -1,0 +1,1552 @@
+﻿CHƯƠNG TRÌNH GIÁO DỤC PHỔ THÔNG
+MÔN CÔNG NGHỆ
+(Ban hành kèm theo Thông tư số 32/2018/TT-BGDĐT ngày 26 tháng 12 năm 2018 của Bộ trưởng Bộ Giáo dục và Đào tạo)
+MỤC LỤC
+I. ĐẶC ĐIỂM MÔN HỌC
+II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH
+III. MỤC TIÊU CHƯƠNG TRÌNH
+IV. YÊU CẦU CẦN ĐẠT
+V. NỘI DUNG GIÁO DỤC
+TIỂU HỌC
+LỚP 3
+LỚP 4
+LỚP 5
+TRUNG HỌC CƠ SỞ
+LỚP 6
+LỚP 7
+LỚP 8
+LỚP 9
+TRUNG HỌC PHỔ THÔNG: ĐỊNH HƯỚNG CÔNG NGHIỆP
+LỚP 10
+LỚP 11
+LỚP 12
+TRUNG HỌC PHỔ THÔNG: ĐỊNH HƯỚNG NÔNG NGHIỆP
+LỚP 10
+LỚP 11
+LỚP 12
+VI. PHƯƠNG PHÁP GIÁO DỤC
+VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH
+I. ĐẶC ĐIỂM MÔN HỌC
+Công nghệ bao gồm kiến thức, thiết bị, phương pháp và các hệ thống dùng trong việc tạo ra hàng hoá và cung cấp dịch vụ. Trong mối quan hệ giữa khoa học và công nghệ thì khoa học hướng tới khám phá, tìm hiểu, giải thích thế giới; còn công nghệ, dựa trên những thành tựu của khoa học, tạo ra các sản phẩm, dịch vụ công nghệ để giải quyết các vấn đề đặt ra trong thực tiễn, cải tạo thế giới, định hình môi trường sống của con người.
+Trong Chương trình giáo dục phổ thông, giáo dục công nghệ được thực hiện từ lớp 3 đến lớp 12 thông qua môn Tin học và Công nghệ ở cấp tiểu học và môn Công nghệ ở cấp trung học cơ sở và cấp trung học phổ thông.
+Công nghệ là môn học bắt buộc trong giai đoạn giáo dục cơ bản; là môn học lựa chọn, thuộc nhóm môn Công nghệ và Nghệ thuật (Công nghệ, Tin học, Nghệ thuật) trong giai đoạn giáo dục định hướng nghề nghiệp.
+Nội dung giáo dục công nghệ rộng, đa dạng, thuộc nhiều lĩnh vực kĩ thuật, công nghệ khác nhau. Trong dạy học công nghệ, có những nội dung cơ bản, cốt lõi, phổ thông tất cả học sinh đều phải học. Bên cạnh đó, có những nội dung đặc thù, chuyên biệt nhằm đáp ứng nguyện vọng, sở thích của học sinh, phù hợp với yêu cầu của từng địa phương, vùng miền.
+Sự đa dạng về lĩnh vực kĩ thuật, công nghệ trong nội dung môn Công nghệ cũng mang lại ưu thế của môn học trong việc lồng ghép, tích hợp nội dung giáo dục hướng nghiệp trong môn học thông qua các chủ đề về lựa chọn nghề nghiệp; các nội dung giới thiệu về ngành nghề chủ yếu thuộc các lĩnh vực sản xuất môn Công nghệ đề cập; các hoạt động trải nghiệm nghề nghiệp qua các mô đun kĩ thuật, công nghệ tự chọn.
+Cũng như các lĩnh vực giáo dục khác, giáo dục công nghệ góp phần hình thành và phát triển các phẩm chất chủ yếu và năng lực chung được đề cập trong Chương trình tổng thể. Với việc coi trọng phát triển tư duy thiết kế, giáo dục công nghệ có ưu thế trong hình thành và phát triển năng lực giải quyết vấn đề và sáng tạo.
+Môn Công nghệ có mối quan hệ với nhiều lĩnh vực giáo dục khác, đặc biệt là với Toán học và Khoa học. Cùng với Toán học, Khoa học tự nhiên, môn Công nghệ góp phần thúc đẩy giáo dục STEM - một trong những xu hướng giáo dục đang được coi trọng ở nhiều quốc gia trên thế giới.
+II. QUAN ĐIỂM XÂY DỰNG CHƯƠNG TRÌNH
+Chương trình môn Công nghệ tuân thủ quy định trong Chương trình tổng thể, đồng thời xuất phát từ đặc điểm môn học, nhấn mạnh các quan điểm sau:
+1. Khoa học, thực tiễn: Chương trình dựa trên các thành tựu về lí luận dạy học kĩ thuật; tham chiếu các mô hình giáo dục kĩ thuật, công nghệ đang được sử dụng phổ biến trên thế giới như mô hình định hướng lao động thủ công, mô hình giáo dục kĩ thuật tổng hợp, mô hình công nghệ đại cương, mô hình thiết kế kĩ thuật và mô hình định hướng kĩ thuật tương lai; đồng thời, chương trình được xây dựng bám sát và phù hợp với thực tiễn Việt Nam.
+2. Kế thừa, phát triển: Chương trình kế thừa những ưu điểm của chương trình giáo dục phổ thông hiện hành trên các phương diện quan điểm xây dựng chương trình, mục tiêu, nội dung, chuẩn cần đạt, phương pháp và hình thức tổ chức dạy học; đồng thời phản ánh cách tiếp cận mới về vị trí, đặc điểm, mục tiêu, nội dung, phương pháp dạy học và kiểm tra, đánh giá của môn Công nghệ.
+3. Hội nhập, khả thi: Chương trình phản ánh xu hướng quốc tế, coi thiết kế kĩ thuật là một trong những tư tưởng chủ đạo của giáo dục công nghệ, đặc biệt là ở cấp trung học phổ thông; có tính đến những yếu tố đặc thù và điều kiện của Việt Nam để đảm bảo tính khả thi của chương trình.
+4. Hướng nghiệp: Chương trình thực hiện giáo dục hướng nghiệp trên cả hai phương diện định hướng và trải nghiệm nghề nghiệp. Nội dung hướng nghiệp trong môn Công nghệ đồng bộ, nhất quán với các hoạt động giáo dục hướng nghiệp khác trong Chương trình giáo dục phổ thông.
+5. Mở, linh hoạt: Chương trình phản ánh những tri thức phổ thông, thiết thực, cốt lõi mà tất cả học sinh cần phải có, đồng thời bảo đảm tính mở nhằm đáp ứng sự đa dạng, phong phú của công nghệ, nhu cầu, sở thích của học sinh, phù hợp với đặc điểm của từng địa phương; phản ánh được tinh thần cơ bản của cuộc cách mạng công nghiệp lần thứ tư.
+III. MỤC TIÊU CHƯƠNG TRÌNH
+1. Mục tiêu chung
+Chương trình môn Công nghệ hình thành, phát triển ở học sinh năng lực công nghệ và những phẩm chất đặc thù trong lĩnh vực kĩ thuật, công nghệ để học tập, làm việc hiệu quả trong môi trường công nghệ ở gia đình, nhà trường, xã hội và lựa chọn ngành nghề thuộc các lĩnh vực kĩ thuật, công nghệ; đồng thời cùng với các môn học và hoạt động giáo dục khác, góp phần hình thành, phát triển các phẩm chất chủ yếu, các năng lực chung; thực hiện các nội dung xuyên chương trình như phát triển bền vững, biến đổi khí hậu, sử dụng năng lượng tiết kiệm và hiệu quả, tài chính,...
+2. Mục tiêu cấp tiểu học
+Giáo dục công nghệ ở cấp tiểu học bước đầu hình thành và phát triển ở học sinh năng lực công nghệ trên cơ sở các mạch nội dung về công nghệ và đời sống, thủ công kĩ thuật; khơi dậy hứng thú học tập và tìm hiểu công nghệ. Kết thúc tiểu học, học sinh sử dụng được một số sản phẩm công nghệ thông dụng trong gia đình đúng cách, an toàn; thiết kế được sản phẩm thủ công kĩ thuật đơn giản; trao đổi được một số thông tin đơn giản về các sản phẩm công nghệ trong phạm vi gia đình, nhà trường; nhận xét được ở mức độ đơn giản về sản phẩm công nghệ thường gặp; nhận biết được vai trò của công nghệ đối với đời sống trong gia đình, ở nhà trường.
+3. Mục tiêu cấp trung học cơ sở
+Chương trình môn Công nghệ ở cấp trung học cơ sở tiếp tục phát triển năng lực công nghệ mà học sinh đã tích luỹ được ở cấp tiểu học. Kết thúc trung học cơ sở, học sinh đọc được thông số kĩ thuật, nhận biết và sử dụng đúng cách một số sản phẩm công nghệ trong gia đình; trao đổi được thông tin về sản phẩm, quy trình công nghệ thông qua lập và đọc bản vẽ kĩ thuật đơn giản; đánh giá và thiết kế được sản phẩm công nghệ đơn giản; có hiểu biết về những nguyên lí cơ bản, những kĩ năng ban đầu trong các lĩnh vực nông - lâm nghiệp, thuỷ sản và công nghiệp; có tri thức và trải nghiệm về lựa chọn nghề trong lĩnh vực công nghệ, góp phần lựa chọn hướng đi phù hợp sau trung học cơ sở; phát huy hứng thú học tập; rèn luyện được tính cẩn thận, kiên trì trong các hoạt động kĩ thuật, công nghệ.
+4. Mục tiêu cấp trung học phổ thông
+Giáo dục công nghệ ở cấp trung học phổ thông tiếp tục phát triển năng lực công nghệ mà học sinh đã tích luỹ được sau khi kết thúc trung học cơ sở; rèn luyện ý thức lao động, tác phong công nghiệp cho học sinh. Kết thúc trung học phổ thông, học sinh có hiểu biết đại cương và định hướng nghề về công nghệ thông qua các nội dung: thiết kế và công nghệ, công nghệ cơ khí, công nghệ điện - điện tử (đối với định hướng Công nghiệp); công nghệ trồng trọt, công nghệ chăn nuôi, lâm nghiệp và thuỷ sản (đối với định hướng Nông nghiệp); có năng lực công nghệ phù hợp với các ngành nghề kĩ thuật, công nghệ thuộc định hướng Công nghiệp hoặc định hướng Nông nghiệp.
+IV. YÊU CẦU CẦN ĐẠT
+1. Yêu cầu cần đạt về phẩm chất chủ yếu và năng lực chung
+Môn Công nghệ góp phần hình thành và phát triển ở học sinh các phẩm chất chủ yếu và năng lực chung theo các mức độ phù hợp với môn học, cấp học đã được quy định tại Chương trình tổng thể.
+2. Yêu cầu cần đạt về năng lực đặc thù
+Môn Công nghệ hình thành và phát triển ở học sinh năng lực công nghệ, bao gồm các thành phần: Nhận thức công nghệ, Giao tiếp công nghệ, Sử dụng công nghệ, Đánh giá công nghệ, Thiết kế kĩ thuật. Biểu hiện cụ thể của năng lực công nghệ ở từng cấp học được trình bày ở bảng sau:
+Thành phần năng lực
+Cấp tiểu học
+Cấp trung học cơ sở
+Cấp trung học phổ thông
+Nhận thức công nghệ [a]
+[a1.1]: Nhận ra được sự khác biệt của môi trường tự nhiên và môi trường sống do con người tạo ra.
+[a1.2]: Nêu được vai trò của các sản phẩm công nghệ trong đời sống gia đình, nhà trường.
+[a1.3]: Kể được về một số nhà sáng chế tiêu biểu cùng các sản phẩm sáng chế nổi tiếng có tác động lớn tới cuộc sống của con người.
+[a1.4]: Nhận biết được sở thích, khả năng của bản thân đối với các hoạt động kĩ thuật, công nghệ đơn giản.
+[a1.5]: Trình bày được quy trình làm một số sản phẩm thủ công kĩ thuật đơn giản.
+[a2.1]: Mô tả được một số sản phẩm công nghệ và tác động của nó trong đời sống gia đình.
+[a2.2]: Nhận thức được nội dung cơ bản về vai trò, các quá trình kĩ thuật và công nghệ, các nghề nghiệp có liên quan của một số lĩnh vực sản xuất chủ yếu trong nền kinh tế của Việt Nam như nông - lâm nghiệp, thuỷ sản, công nghiệp.
+[a2.3]: Nhận thức được một số nội dung cơ bản về nghề nghiệp và lựa chọn nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ.
+[a2.4]: Tóm tắt được các tri thức, kĩ năng cơ bản của một số quá trình kĩ thuật, công nghệ có tính nghề phù hợp với sở thích, năng lực của bản thân.
+[a3.1]: Làm rõ được một số vấn đề về bản chất kĩ thuật, công nghệ; mối quan hệ giữa công nghệ với con người, tự nhiên, xã hội; mối quan hệ giữa công nghệ với các lĩnh vực khoa học khác; đổi mới và phát triển công nghệ, phân loại, thiết kế và đánh giá công nghệ ở mức đại cương.
+[a3.2]: Hiểu biết được tổng quan, đại cương về những vấn đề nguyên lí, cốt lõi, nền tảng, có tính chất định hướng nghề cho học sinh của một số công nghệ phổ biến thuộc một trong hai định hướng công nghiệp và nông nghiệp.
+[a3.3]: Nhận thức được cá tính và giá trị sống của bản thân; tìm được những thông tin chính về thị trường lao động, yêu cầu và triển vọng của một số ngành nghề trong lĩnh vực kĩ thuật, công nghệ; đánh giá được sự phù hợp của bản thân trong mối quan hệ với những ngành nghề đó.
+Giao tiếp công nghệ [b]
+[b1.1]: Nói, vẽ hay viết để mô tả những thiết bị, sản phẩm công nghệ phổ biến trong gia đình.
+[b1.2]: Phác thảo bằng hình vẽ cho người khác hiểu được ý tưởng thiết kế một sản phẩm công nghệ đơn giản.
+[b2.1]: Biểu diễn được vật thể hay ý tưởng thiết kế bằng các hình biểu diễn cơ bản.
+[b2.2]: Đọc được các bản vẽ, kí hiệu, quy trình công nghệ thuộc một số lĩnh vực sản xuất chủ yếu.
+[b3.1]: Sử dụng được ngôn ngữ kĩ thuật trong giao tiếp về sản phẩm, dịch vụ kĩ thuật, công nghệ.
+[b3.2]: Lập được bản vẽ kĩ thuật đơn giản bằng tay hoặc với sự hỗ trợ của máy tính.
+Sử dụng công nghệ [c]
+[c1.1]: Thực hiện được một số thao tác kĩ thuật đơn giản với các dụng cụ kĩ thuật.
+[c1.2]: Sử dụng được một số sản phẩm công nghệ phổ biến trong gia đình.
+[c1.3]: Nhận biết và phòng tránh được những tình huống nguy hiểm trong môi trường công nghệ ở gia đình.
+[c1.4]: Thực hiện được một số công việc chăm sóc hoa và cây cảnh trong gia đình.
+[c2.1]: Đọc được tài liệu hướng dẫn sử dụng các thiết bị, sản phẩm công nghệ phổ biến trong gia đình.
+[c2.2]: Sử dụng đúng cách, hiệu quả một số sản phẩm công nghệ phổ biến trong gia đình.
+[c2.3]: Phát hiện, đề xuất được giải pháp xử lí các tình huống mất an toàn cho người và sản phẩm công nghệ trong gia đình.
+[c2.4]: Thực hiện được một số thao tác sơ cứu đơn giản cho người trong những tình huống khẩn cấp.
+[c2.5]: Thực hiện được một số kĩ thuật đơn giản trong sản xuất nông - lâm nghiệp và thuỷ sản.
+[c3.1]: Sử dụng một số sản phẩm công nghệ an toàn, hiệu quả.
+[c3.2]: Sử dụng được một số dịch vụ phổ biến, có ứng dụng công nghệ.
+[c3.3]: Thực hiện được một số quy trình kĩ thuật phổ biến trong lĩnh vực nông - lâm nghiệp và thuỷ sản.
+[c3.4]: Thực hiện được một số công đoạn trong quy trình công nghệ trồng trọt và chăn nuôi công nghệ cao.
+Đánh giá công nghệ [d]
+[d1.1]: Đưa ra được lí do thích hay không thích một sản phẩm công nghệ.
+[d1.2]: Bước đầu so sánh và nhận xét được về các sản phẩm công nghệ cùng chức năng.
+[d2.1]: Đưa ra được nhận xét cho một sản phẩm công nghệ về chức năng, độ bền, tính thẩm mĩ, tính hiệu quả và an toàn khi sử dụng.
+[d2.2]: Lựa chọn được sản phẩm công nghệ phù hợp trên cơ sở các tiêu chí đánh giá sản phẩm.
+[d3.1]: Nhận biết và đánh giá được một số xu hướng phát triển công nghệ.
+[d3.2]: Đề xuất được tiêu chí chính cho việc lựa chọn, sử dụng một sản phẩm công nghệ thông dụng.
+Thiết kế kĩ thuật [e]
+[e1.1]: Nhận thức được: muốn tạo ra sản phẩm công nghệ cần phải thiết kế; thiết kế là quá trình sáng tạo.
+[e1.2]: Kể tên được các công việc chính khi thiết kế.
+[e1.3]: Nêu được ý tưởng và làm được một số đồ vật đơn giản từ những vật liệu thông dụng theo gợi ý, hướng dẫn.
+[e2.1]: Phát hiện được nhu cầu, vấn đề cần giải quyết trong bối cảnh cụ thể.
+[e2.2]: Đề xuất được giải pháp và tạo được sản phẩm công nghệ đơn giản dựa trên quy trình thiết kế kĩ thuật và kiến thức, kĩ năng về công nghệ.
+[e3.1]: Xác định được các yếu tố ảnh hưởng tới hoạt động thiết kế kĩ thuật.
+[e3.2]: Sử dụng được một số phần mềm đơn giản hỗ trợ thiết kế. [e3.3]: Thiết kế được sản phẩm đơn giản đáp ứng yêu cầu cho trước.
+V. NỘI DUNG GIÁO DỤC
+1. Nội dung khái quát
+Nội dung
+Lớp
+
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+- Bản chất của công nghệ
+x
+
+
+
+
+
+
+x
+
+
+- Vai trò của công nghệ
+
+x
+x
+x
+
+
+
+x
+
+
+- Sản phẩm công nghệ
+x
+x
+x
+x
+
+
+
+
+
+
+- An toàn với công nghệ
+x
+x
+x
+x
+
+x
+x
+x
+x
+x
+LĨNH VỰC SẢN XUẤT CHỦ YẾU
+- Nông nghiệp
+
+
+
+
+x
+
+
+x
+x
+
+- Lâm nghiệp
+
+
+
+
+x
+
+
+
+
+x
+- Thuỷ sản
+
+
+
+
+x
+
+
+
+
+x
+- Công nghiệp
+
+
+
+
+
+x
+
+
+x
+x
+THIẾT KẾ VÀ ĐỔI MỚI CÔNG NGHỆ
+- Thủ công kĩ thuật
+x
+x
+x
+
+
+
+
+
+
+
+- Ngôn ngữ kĩ thuật
+
+
+
+
+
+x
+
+x
+
+
+- Thiết kế kĩ thuật
+
+
+x
+
+
+x
+
+x
+
+
+- Đổi mới công nghệ
+
+
+
+
+
+
+
+x
+x
+x
+CÔNG NGHỆ VÀ HƯỚNG NGHIỆP
+- Định hướng nghề nghiệp
+
+
+
+
+x
+x
+x
+x
+x
+x
+- Trải nghiệm nghề nghiệp
+
+
+
+
+
+
+x
+
+
+
+2. Nội dung cụ thể và yêu cầu cần đạt ở các lớp
+CẤP TIỂU HỌC
+LỚP 3
+TIN HỌC VÀ CÔNG NGHỆ (PHẦN CÔNG NGHỆ)
+Nội dung
+Yêu cầu cần đạt
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+Tự nhiên và Công nghệ
+- Phân biệt được đối tượng tự nhiên và sản phẩm công nghệ.
+- Nêu được tác dụng của một số sản phẩm công nghệ trong gia đình.
+- Có ý thức giữ gìn sản phẩm công nghệ trong gia đình.
+Sử dụng đèn học
+- Nêu được tác dụng và mô tả được các bộ phận chính của đèn học.
+- Nhận biết được một số loại đèn học thông dụng.
+- Xác định vị trí đặt đèn; bật, tắt, điều chỉnh được độ sáng của đèn học.
+- Nhận biết và phòng tránh được những tình huống mất an toàn khi sử dụng đèn học.
+Sử dụng quạt điện
+- Nêu được tác dụng và mô tả được các bộ phận chính của quạt điện.
+- Nhận biết được một số loại quạt điện thông dụng.
+- Xác định vị trí đặt quạt; bật, tắt, điều chỉnh được tốc độ quạt phù hợp với yêu cầu sử dụng.
+- Nhận biết và phòng tránh được những tình huống mất an toàn khi sử dụng quạt điện.
+Sử dụng máy thu thanh
+- Nêu được tác dụng của máy thu thanh.
+- Dựa vào sơ đồ khối, mô tả được mối quan hệ đơn giản giữa đài phát thanh và máy thu thanh.
+- Kể tên và nêu được nội dung phát thanh của một số chương trình phù hợp với lứa tuổi học sinh trên đài phát thanh.
+- Chọn được kênh phát thanh, thay đổi âm lượng theo ý muốn.
+Sử dụng máy thu hình
+- Trình bày được tác dụng của máy thu hình (ti vi) trong gia đình.
+- Dựa vào sơ đồ khối, mô tả được mối quan hệ đơn giản giữa đài truyền hình và ti vi.
+- Kể được tên và nêu được nội dung của một số kênh truyền hình phổ biến, phù hợp với học sinh.
+- Lựa chọn được vị trí ngồi đảm bảo góc nhìn và khoảng cách hợp lí khi xem ti vi.
+- Chọn được kênh, điều chỉnh được âm thanh của ti vi theo ý muốn.
+An toàn với môi trường công nghệ trong gia đình
+- Nhận biết và phòng tránh được một số tình huống không an toàn (Ví dụ: các tình huống liên quan đến điện, nhiệt, khói, khí ga, các đồ vật sắc, nhọn,…) cho người từ môi trường công nghệ trong gia đình.
+- Báo cho người lớn biết khi có sự cố, tình huống mất an toàn xảy ra.
+THỦ CÔNG KĨ THUẬT
+Làm đồ dùng học tập
+- Lựa chọn được vật liệu làm đồ dùng học tập đúng yêu cầu.
+- Sử dụng được các dụng cụ để làm đồ dùng học tập đúng cách, an toàn.
+- Làm được một đồ dùng học tập đơn giản theo các bước cho trước, đảm bảo yêu cầu về kĩ thuật, thẩm mĩ.
+Làm biển báo giao thông
+- Nêu được ý nghĩa của một số biển báo giao thông.
+- Lựa chọn được vật liệu phù hợp.
+- Lựa chọn và sử dụng được dụng cụ đúng cách, an toàn để làm được một số biển báo giao thông quen thuộc dưới dạng mô hình theo các bước cho trước.
+- Có ý thức tuân thủ các quy định khi tham gia giao thông.
+Làm đồ chơi
+- Nhận biết và sử dụng an toàn một số đồ chơi đơn giản phù hợp với lứa tuổi.
+- Làm được một đồ chơi đơn giản theo hướng dẫn.
+- Tính toán được chi phí cho một đồ chơi đơn giản.
+LỚP 4
+TIN HỌC VÀ CÔNG NGHỆ (PHẦN CÔNG NGHỆ)
+Nội dung
+Yêu cầu cần đạt
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+Hoa và cây cảnh trong đời sống
+- Nêu được lợi ích của hoa và cây cảnh đối với đời sống.
+- Nhận biết được một số loại hoa và cây cảnh phổ biến.
+- Có hứng thú với việc trồng, chăm sóc và bảo vệ hoa, cây cảnh.
+Trồng hoa và cây cảnh trong chậu
+- Trình bày được đặc điểm của một số loại chậu trồng hoa và cây cảnh.
+- Nêu được một số loại giá thể dùng để trồng hoa và cây cảnh trong chậu.
+- Tóm tắt được nội dung các bước gieo hạt, trồng cây con trong chậu.
+- Mô tả được các công việc chủ yếu để chăm sóc một số loại hoa và cây cảnh phổ biến.
+- Thực hiện được việc gieo hạt trong chậu.
+- Sử dụng được một số dụng cụ trồng hoa, cây cảnh đơn giản.
+- Trồng và chăm sóc được một số loại hoa và cây cảnh trong chậu.
+THỦ CÔNG KĨ THUẬT
+Lắp ghép mô hình kĩ thuật
+- Kể tên, nhận biết được các chi tiết của bộ lắp ghép mô hình kĩ thuật.
+- Lựa chọn và sử dụng được một số dụng cụ và chi tiết để lắp ghép được một số mô hình kĩ thuật đơn giản.
+Làm đồ chơi dân gian
+- Nhận biết và sử dụng được một số đồ chơi dân gian phù hợp với lứa tuổi.
+- Làm được đồ chơi dân gian phù hợp với lứa tuổi theo hướng dẫn.
+- Tính toán chi phí cho một đồ chơi dân gian tự làm.
+LỚP 5
+TIN HỌC VÀ CÔNG NGHỆ (PHẦN CÔNG NGHỆ)
+Nội dung
+Yêu cầu cần đạt
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+Vai trò của công nghệ
+- Trình bày được vai trò của sản phẩm công nghệ trong đời sống.
+- Nhận biết được những mặt trái khi sử dụng công nghệ.
+Nhà sáng chế
+- Nêu được vai trò của sáng chế trong đời sống và sự phát triển của công nghệ.
+- Tóm tắt được thông tin về một số nhà sáng chế nổi bật trong lịch sử loài người.
+- Nêu được lịch sử sáng chế ra sản phẩm công nghệ tiêu biểu.
+- Nêu được một số đức tính cần có để trở thành nhà sáng chế.
+Tìm hiểu thiết kế
+- Nhận thức được muốn tạo ra sản phẩm công nghệ cần phải thiết kế; thiết kế là một quá trình sáng tạo.
+- Kể được tên các công việc chính khi thiết kế.
+- Vẽ phác thảo, nêu được ý tưởng thiết kế một sản phẩm công nghệ đơn giản.
+- Thiết kế được một sản phẩm thủ công kĩ thuật đơn giản theo hướng dẫn.
+Sử dụng điện thoại
+- Trình bày được tác dụng của điện thoại; nhận biết được các bộ phận cơ bản của điện thoại; nhận biết được các biểu tượng thể hiện trạng thái và chức năng hoạt động của điện thoại.
+- Ghi nhớ, thực hiện được cuộc gọi tới các số điện thoại của người thân và các số điện thoại khẩn cấp khi cần thiết.
+- Sử dụng điện thoại an toàn, tiết kiệm, hiệu quả và phù hợp với quy tắc giao tiếp.
+Sử dụng tủ lạnh
+- Trình bày được tác dụng của tủ lạnh trong gia đình.
+- Nhận biết được vị trí, vai trò các khoang khác nhau trong tủ lạnh.
+- Thực hiện được việc sắp xếp, bảo quản thực phẩm trong tủ lạnh đúng cách, an toàn.
+- Nhận ra được một số biểu hiện bất thường của tủ lạnh trong quá trình sử dụng.
+THỦ CÔNG KĨ THUẬT
+Lắp ráp mô hình xe điện chạy bằng pin
+- Kể tên, nhận biết được các chi tiết của bộ lắp ghép mô hình xe điện chạy bằng pin.
+- Lắp ráp, vận hành được được mô hình xe điện chạy bằng pin.
+Lắp ráp mô hình máy phát điện gió
+- Mô tả được cách tạo ra điện từ gió.
+- Nhận biết và mô tả được các bộ phận chính của mô hình máy phát điện gió.
+- Lắp ráp được mô hình máy phát điện gió.
+- Kiểm tra được hoạt động của mô hình với các tốc độ gió khác nhau.
+Lắp ráp mô hình điện mặt trời
+- Mô tả được cách tạo ra điện từ ánh sáng mặt trời.
+- Nhận biết và mô tả được các bộ phận chính của mô hình điện dùng năng lượng mặt trời.
+- Lắp ráp được mô hình điện mặt trời.
+- Kiểm tra được hoạt động của mô hình với những độ sáng mặt trời khác nhau.
+
+CẤP TRUNG HỌC CƠ SỞ
+LỚP 6
+CÔNG NGHỆ TRONG GIA ĐÌNH
+Nội dung
+Yêu cầu cần đạt
+Nhà ở
+- Nêu được vai trò và đặc điểm chung của nhà ở; một số kiến trúc nhà ở đặc trưng ở Việt Nam.
+- Kể được tên một số vật liệu, mô tả các bước chính để xây dựng một ngôi nhà.
+- Mô tả, nhận diện được những đặc điểm của ngôi nhà thông minh.
+- Thực hiện được một số biện pháp sử dụng năng lượng trong gia đình tiết kiệm, hiệu quả.
+Bảo quản và chế biến thực phẩm
+- Nhận biết được một số nhóm thực phẩm chính, dinh dưỡng từng loại, ý nghĩa đối với sức khoẻ con người.
+- Nêu được vai trò, ý nghĩa của bảo quản và chế biến thực phẩm.
+- Trình bày được một số phương pháp bảo quản, chế biến thực phẩm phổ biến.
+- Lựa chọn và chế biến được món ăn đơn giản theo phương pháp không sử dụng nhiệt.
+- Hình thành thói quen ăn, uống khoa học; chế biến thực phẩm đảm bảo an toàn vệ sinh.
+- Tính toán sơ bộ được dinh dưỡng, chi phí tài chính cho một bữa ăn gia đình.
+Trang phục và thời trang
+- Nhận biết được vai trò, sự đa dạng của trang phục trong cuộc sống; các loại vải thông dụng được dùng để may trang phục.
+- Trình bày được những kiến thức cơ bản về thời trang, nhận ra và bước đầu hình thành xu hướng thời trang của bản thân.
+- Lựa chọn được trang phục phù hợp với đặc điểm và sở thích của bản thân, tính chất công việc và điều kiện tài chính của gia đình.
+- Sử dụng và bảo quản được một số loại hình trang phục thông dụng.
+Đồ dùng điện trong gia đình
+- Nhận biết và nêu được chức năng của các bộ phận chính, vẽ được sơ đồ khối, mô tả được nguyên lí làm việc và công dụng của một số đồ dùng điện trong gia đình (Ví dụ: nồi cơm điện, bếp điện, đèn điện, quạt điện, máy điều hoà,…).
+- Sử dụng được một số đồ dùng điện trong gia đình đúng cách, tiết kiệm và an toàn.
+- Lựa chọn được đồ dùng điện tiết kiệm năng lượng, phù hợp với điều kiện gia đình.
+LỚP 7
+NÔNG - LÂM NGHIỆP VÀ THUỶ SẢN
+Nội dung
+Yêu cầu cần đạt
+TRỒNG TRỌT
+Mở đầu về trồng trọt
+- Trình bày được vai trò, triển vọng của trồng trọt, kể tên được các nhóm cây trồng phổ biến ở Việt Nam.
+- Nêu được một số phương thức trồng trọt phổ biến ở Việt Nam.
+- Nhận biết được những đặc điểm cơ bản của trồng trọt công nghệ cao.
+- Trình bày được đặc điểm cơ bản của một số ngành nghề phổ biến trong trồng trọt.
+- Nhận thức được sở thích, sự phù hợp của bản thân với các ngành nghề trong trồng trọt.
+Quy trình trồng trọt
+- Nêu được các bước trong quy trình trồng trọt.
+- Trình bày được mục đích, yêu cầu kĩ thuật của các bước trong quy trình trồng trọt.
+- Thực hiện được việc nhân giống cây trồng bằng phương pháp giâm cành.
+- Lập được kế hoạch, tính toán được chi phí cho việc trồng và chăm sóc một loại cây trồng phổ biến trong gia đình.
+- Thực hiện được một số công việc trong quy trình trồng và chăm sóc một loại cây trồng phổ biến.
+- Tích cực vận dụng kiến thức vào thực tiễn, có ý thức về an toàn lao động và bảo vệ môi trường trong trồng trọt.
+Trồng, chăm sóc và bảo vệ rừng
+- Trình bày được vai trò của rừng, phân biệt được các loại rừng phổ biến ở nước ta.
+- Tóm tắt được quy trình trồng, chăm sóc cây rừng và các biện pháp bảo vệ rừng.
+- Có ý thức trồng, chăm sóc, bảo vệ rừng và môi trường sinh thái.
+CHĂN NUÔI
+Mở đầu về chăn nuôi
+- Trình bày được vai trò, triển vọng của chăn nuôi, nhận biết được một số vật nuôi được nuôi nhiều, các loại vật nuôi đặc trưng vùng miền ở nước ta.
+- Nêu được một số phương thức chăn nuôi phổ biến ở Việt Nam.
+- Trình bày được đặc điểm cơ bản của một số ngành nghề phổ biến trong chăn nuôi.
+- Nhận thức được sở thích, sự phù hợp của bản thân với các ngành nghề trong chăn nuôi.
+Nuôi dưỡng, chăm sóc và phòng, trị bệnh cho vật nuôi
+- Trình bày được vai trò của việc nuôi dưỡng, chăm sóc và phòng, trị bệnh cho vật nuôi.
+- Nêu được các công việc cơ bản trong nuôi dưỡng, chăm sóc vật nuôi non, vật nuôi đực giống, vật nuôi cái sinh sản.
+- Trình bày được kĩ thuật nuôi, chăm sóc và phòng, trị bệnh cho một loại vật nuôi phổ biến.
+- Lập được kế hoạch, tính toán được chi phí cho việc nuôi dưỡng và chăm sóc một loại vật nuôi trong gia đình.
+- Có ý thức vận dụng kiến thức vào thực tiễn và bảo vệ môi trường trong chăn nuôi.
+Nuôi thuỷ sản
+- Trình bày được vai trò của thuỷ sản; nhận biết được một số thuỷ sản có giá trị kinh tế cao ở nước ta.
+- Nêu được quy trình kĩ thuật nuôi, chăm sóc, phòng, trị bệnh, thu hoạch một loại thuỷ sản phổ biến.
+- Lập được kế hoạch, tính toán được chi phí cho việc nuôi và chăm sóc một loại thuỷ sản phù hợp.
+- Đo được nhiệt độ, độ trong của nước nuôi thuỷ sản bằng phương pháp đơn giản.
+- Có ý thức bảo vệ môi trường nuôi thuỷ sản và nguồn lợi thuỷ sản.
+LỚP 8
+CÔNG NGHIỆP VÀ THIẾT KẾ KĨ THUẬT
+Nội dung
+Yêu cầu cần đạt
+Vẽ kĩ thuật
+- Mô tả được tiêu chuẩn về khổ giấy, tỉ lệ, đường nét và ghi kích thước.
+- Vẽ được hình chiếu vuông góc của một số khối đa diện, khối tròn xoay thường gặp theo phương pháp chiếu góc thứ nhất.
+- Vẽ và ghi được kích thước các hình chiếu vuông góc của vật thể đơn giản.
+- Đọc được bản vẽ chi tiết, bản vẽ lắp đơn giản.
+- Đọc được bản vẽ nhà đơn giản.
+Cơ khí
+- Nhận biết được một số vật liệu thông dụng.
+- Trình bày được nội dung cơ bản của truyền và biến đổi chuyển động; cấu tạo, nguyên lí làm việc của một số cơ cấu truyền và biến đổi chuyển động.
+- Trình bày được một số phương pháp và quy trình gia công cơ khí bằng tay.
+- Tháo lắp và tính toán được tỉ số truyền của một số bộ truyền và biến đổi chuyển động.
+- Thực hiện được một số phương pháp gia công vật liệu bằng dụng cụ cầm tay.
+- Trình bày được đặc điểm cơ bản, nhận biết được sự phù hợp của bản thân đối với một số ngành nghề phổ biến trong lĩnh vực cơ khí.
+An toàn điện
+- Nhận biết được một số nguyên nhân gây tai nạn điện.
+- Trình bày được một số biện pháp an toàn điện.
+- Sử dụng được một số dụng cụ bảo vệ an toàn điện.
+- Thực hiện được một số động tác cơ bản sơ cứu người bị tai nạn điện.
+Kĩ thuật điện
+- Trình bày được cấu trúc chung của mạch điện, thành phần và chức năng của các bộ phận chính trên mạch điện (Ví dụ: các bộ phận: nguồn, tải, truyền dẫn, đóng cắt, điều khiển và bảo vệ mạch điện).
+- Vẽ và mô tả được sơ đồ khối của mạch điện điều khiển đơn giản; phân loại và nêu được vai trò của một số mô đun cảm biến trong mạch điện điều khiển đơn giản.
+- Lắp ráp được các mạch điện điều khiển đơn giản có sử dụng một mô đun cảm biến: mô đun cảm biến ánh sáng, mô đun cảm biến nhiệt độ và mô đun cảm biến độ ẩm.
+- Trình bày được đặc điểm cơ bản, nhận biết được sự phù hợp của bản thân đối với một số ngành nghề phổ biến trong lĩnh vực kĩ thuật điện.
+Thiết kế kĩ thuật
+- Trình bày được mục đích và vai trò của thiết kế kĩ thuật.
+- Kể tên được một số ngành nghề chính liên quan tới thiết kế.
+- Mô tả được các bước cơ bản trong thiết kế kĩ thuật.
+- Thiết kế được một sản phẩm đơn giản theo gợi ý, hướng dẫn.
+LỚP 9
+CÔNG NGHỆ VÀ HƯỚNG NGHIỆP
+Nội dung
+Yêu cầu cần đạt
+ĐỊNH HƯỚNG NGHỀ NGHIỆP
+Nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ
+- Trình bày được khái niệm nghề nghiệp, tầm quan trọng của nghề nghiệp đối với con người và xã hội, ý nghĩa của việc lựa chọn đúng đắn nghề nghiệp của mỗi người.
+- Kể tên và phân tích được đặc điểm, những yêu cầu chung của các ngành nghề trong lĩnh vực kĩ thuật, công nghệ.
+Giáo dục kĩ thuật, công nghệ trong hệ thống giáo dục quốc dân
+- Mô tả được cơ cấu hệ thống giáo dục tại Việt Nam.
+- Nhận ra và giải thích được các thời điểm có sự phân luồng và cơ hội lựa chọn nghề nghiệp kĩ thuật, công nghệ trong hệ thống giáo dục.
+- Hiểu được sau khi kết thúc trung học cơ sở có những hướng đi nào liên quan tới nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ.
+Thị trường lao động kĩ thuật, công nghệ tại Việt Nam
+- Trình bày được khái niệm về thị trường lao động, các yếu tố ảnh hưởng tới thị trường lao động, vai trò của thị trường lao động trong việc định hướng nghề nghiệp thuộc lĩnh vực kĩ thuật, công nghệ.
+- Mô tả được những vấn đề cơ bản của thị trường lao động tại Việt Nam hiện nay.
+- Tìm kiếm được các thông tin về thị trường lao động trong lĩnh vực kĩ thuật và công nghệ.
+Lựa chọn nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ
+- Tóm tắt được một số lí thuyết cơ bản về lựa chọn nghề nghiệp.
+- Giải thích được các bước trong quy trình lựa chọn nghề nghiệp.
+- Tự đánh giá được năng lực, sở thích, cá tính của bản thân, bối cảnh của gia đình về mức độ phù hợp với một số ngành nghề thuộc lĩnh vực kĩ thuật, công nghệ.
+- Nhận ra và giải thích được các yếu tố ảnh hưởng tới quyết định lựa chọn nghề nghiệp của bản thân trong lĩnh vực kĩ thuật, công nghệ.
+TRẢI NGHIỆM NGHỀ NGHIỆP
+Mô đun tự chọn
+(Học sinh lựa chọn học 1 trong 15 mô đun thuộc ba lĩnh vực công nghiệp; nông - lâm nghiệp và thủy sản; dịch vụ)
+Các mô đun công nghiệp
+Lắp đặt mạng điện trong nhà
+- Mô tả được chức năng, cấu tạo và thông số kĩ thuật của thiết bị đóng cắt, lấy điện trong gia đình.
+- Sử dụng được một số dụng cụ đo điện cơ bản.
+- Thiết kế được sơ đồ nguyên lí và sơ đồ lắp đặt mạng điện trong nhà.
+- Lựa chọn được thiết bị, dụng cụ, vật liệu phù hợp cho mạng điện trong nhà.
+- Lắp đặt được mạng điện trong nhà theo thiết kế.
+- Kiểm tra, thử nghiệm mạng điện hoạt động đúng yêu cầu, an toàn.
+- Tính toán được chi phí cho một mạng điện trong nhà đơn giản.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Lắp đặt mạch điện trang trí, báo hiệu
+- Mô tả cấu tạo, chức năng và kiểm tra được một số linh kiện thông dụng dùng trong mạch điện trang trí, báo hiệu.
+- Sử dụng được một số dụng cụ đo điện cơ bản.
+- Thiết kế được sơ đồ mạch điện trang trí, báo hiệu đơn giản.
+- Lựa chọn được linh kiện, dụng cụ, vật liệu cần thiết và phù hợp cho mạch điện trang trí, báo hiệu.
+- Lắp đặt được mạch điện theo thiết kế.
+- Kiểm tra, điều chỉnh thông số của mạch đúng yêu cầu, an toàn.
+- Tính toán được chi phí để lắp đặt một mạch điện trang trí, báo hiệu đơn giản.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Lắp đặt hệ thống điều khiển chiếu sáng cho ngôi nhà thông minh
+- Mô tả được đặc điểm cơ bản của một ngôi nhà thông minh.
+- Sử dụng được một số dụng cụ đo điện cơ bản.
+- Nhận biết được một số cảm biến ánh sáng, rơ le thời gian thông dụng.
+- Thiết kế được một hệ thống điều khiển chiếu sáng tự động cho ngôi nhà.
+- Lựa chọn được linh kiện, dụng cụ, vật liệu cần thiết và phù hợp cho hệ thống.
+- Lắp đặt, kiểm tra, điều chỉnh thông số của hệ thống đúng yêu cầu, an toàn.
+- Tính toán được chi phí để lắp đặt một hệ thống điều khiển chiếu sáng đơn giản cho ngôi nhà thông minh.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Lắp đặt mạng điện an ninh, bảo vệ trong ngôi nhà thông minh
+- Mô tả được đặc điểm cơ bản của một ngôi nhà thông minh.
+- Sử dụng được một số dụng cụ đo điện cơ bản.
+- Trình bày được khái niệm cảm biến, nguyên tắc hoạt động của một số loại cảm biến cơ bản: khí gas, khói, hồng ngoại, siêu âm.
+- Thiết kế được mạch điện báo rò khí gas, báo cháy, báo trộm.
+- Lựa chọn được linh kiện, dụng cụ, vật liệu cần thiết và phù hợp cho hệ thống.
+- Lắp đặt, kiểm tra, hiệu chỉnh sự hoạt động của mạch điện theo yêu cầu.
+- Tính toán được chi phí để lắp đặt hệ thống đảm bảo an ninh, an toàn cho ngôi nhà thông minh.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Lắp đặt mạch điện tiện ích trong gia đình sử dụng kit vi điều khiển ứng dụng
+- Sử dụng được một số dụng cụ đo điện cơ bản.
+- Trình bày được nguyên tắc hoạt động của một số thiết bị đóng cắt thông dụng: Rơle điện từ, công tắc tơ.
+- Mô tả được ba thành phần cơ bản của một hệ thống điều khiển (Tín hiệu vào - Bộ điều khiển
+- Tín hiệu ra).
+- Nhận biết được một số loại cảm biến thông dụng: cảm biến nhiệt độ, cảm biến độ ẩm, cảm biến ánh sáng, cảm biến siêu âm.
+- Mô tả được các chân chức năng cơ bản trên kit lập trình vi điều khiển.
+- Thiết kế được mạch điện tự động bơm nước, mạch điện tưới nước tự động, mạch điện điều khiển đèn chiếu sáng tự động có sử dụng kit vi điều khiển.
+- Vẽ được lưu đồ thuật toán, viết được chương trình điều khiển sử dụng các câu lệnh thông dụng của ngôn ngữ lập trình Pascal, C.
+- Nạp được chương trình (dạng file hex) vào kit lập trình tương ứng.
+- Lựa chọn được linh kiện, dụng cụ, vật liệu cần thiết và phù hợp cho hệ thống.
+- Lắp đặt, kiểm tra, hiệu chỉnh sự hoạt động của mạch điện theo yêu cầu.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Gia công gỗ
+- Nhận biết được một số loại gỗ thông dụng.
+- Lựa chọn và sử dụng được dụng cụ thông thường để gia công gỗ.
+- Đọc được bản vẽ lắp và chi tiết một số sản phẩm gỗ đơn giản.
+- Gia công, lắp ráp và hoàn thiện được một số sản phẩm gỗ đơn giản.
+- Thực hiện an toàn, vệ sinh lao động.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Các mô đun nông nghiệp, lâm nghiệp và thuỷ sản
+Trồng cây ăn quả
+- Trình bày được vai trò của cây ăn quả.
+- Phân tích được đặc điểm thực vật học, yêu cầu ngoại cảnh của một số loại cây ăn quả phổ biến ở địa phương.
+- Nêu được quy trình trồng, chăm sóc và kĩ thuật tỉa cành tạo tán, điều khiển ra hoa, đậu quả của một số loại cây ăn quả phổ biến.
+- Thực hiện được kĩ thuật nhân giống vô tính một số loại cây ăn quả phổ biến.
+- Trồng và chăm sóc một loại cây ăn quả.
+- Tính toán được chi phí và hiệu quả kinh tế khi trồng cây ăn quả.
+- Có ý thức bảo vệ môi trường và an toàn lao động.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Nuôi gà lấy thịt theo tiêu chuẩn VietGAP
+- Trình bày được ý nghĩa, các tiêu chí của việc chăn nuôi gà lấy thịt theo tiêu chuẩn VietGAP.
+- Giải thích được các điều kiện cần thiết để chăn nuôi gà theo tiêu chuẩn VietGAP.
+- Lựa chọn được mô hình chăn nuôi thích hợp.
+- Thực hiện được công việc nuôi dưỡng, chăm sóc gà và phòng, trị một số loại bệnh thường gặp.
+- Tính toán được chi phí và hiệu quả kinh tế khi nuôi gà lấy thịt theo tiêu chuẩn VietGAP.
+- Có ý thức về an toàn lao động và bảo vệ môi trường.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Nuôi cá nước ngọt
+- Trình bày được vai trò và triển vọng phát triển của nghề nuôi cá ở Việt Nam.
+- Phân tích đặc điểm sinh học và yêu cầu dinh dưỡng, ngoại cảnh của các loại cá nuôi phổ biến ở địa phương.
+- Thực hiện được công việc chuẩn bị ao/lồng nuôi cá.
+- Thực hiện được việc chăm sóc, phòng trừ dịch bệnh cho một loại cá nuôi phổ biến.
+- Tính toán được chi phí và hiệu quả kinh tế khi nuôi cá nước ngọt.
+- Có ý thức về an toàn lao động và bảo vệ môi trường.
+- Đánh giá được khả năng và sở thích của bản thân với một số ngành nghề liên quan.
+Trồng cây rừng
+- Trình bày được vai trò, ý nghĩa của rừng và việc trồng rừng; đặc điểm, yêu cầu của công việc trồng cây rừng.
+- Phân tích đặc điểm thực vật và yêu cầu ngoại cảnh của một số cây thường được dùng để trồng rừng.
+- Thực hiện được việc nhân giống vô tính một loại cây rừng.
+- Trồng và chăm sóc một loại cây rừng phổ biến.
+- Có ý thức bảo vệ rừng.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Nông nghiệp 4.0
+- Mô tả được các thành phần cơ bản của mô hình nông nghiệp công nghệ cao trong bối cảnh cuộc cách mạng công nghiệp lần thứ tư.
+- Trình bày được vai trò của khoa học, kĩ thuật và công nghệ đối với những thành tựu của nền nông nghiệp.
+- Nhận biết được một số loại cảm biến thông dụng: cảm biến nhiệt độ, cảm biến độ ẩm đất, cảm biến ánh sáng, cảm biến PH, thời gian thực.
+- Thiết kế được mạch điện ứng dụng công nghệ tưới tiêu tự động trong trồng trọt.
+- Lắp đặt, kiểm tra, hiệu chỉnh sự hoạt động của mạch điện theo yêu cầu.
+- Thực hiện an toàn, vệ sinh lao động, nghiêm túc, trách nhiệm trong công việc.
+- Đánh giá được xu thế phát triển của nền nông nghiệp công nghệ cao. Có ý thức vươn lên, tinh thần khởi nghiệp.
+Các mô đun dịch vụ
+Cắt may
+- Lựa chọn được kiểu dáng trang phục phù hợp với người mặc và xu hướng thời trang.
+- Lập được bản vẽ cắt may một số sản phẩm đơn giản theo mẫu thiết kế, đạt yêu cầu kĩ thuật.
+- May được một số sản phẩm đơn giản theo mẫu thiết kế.
+- Có ý thức thực hiện công việc theo quy trình công nghệ, ý thức thực hiện an toàn lao động.
+- Yêu thích lao động, tỉ mỉ, kiên nhẫn, sáng tạo trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Chế biến thực phẩm
+- Phân tích được vai trò của các chất dinh dưỡng và các biện pháp bảo quản chất dinh dưỡng có trong thực phẩm.
+- Lựa chọn được các loại thực phẩm thông dụng.
+- Chế biến được một số món ăn đặc trưng cho các phương pháp chế biến, đạt yêu cầu kĩ thuật.
+- Tính toán được chi phí cho một bữa ăn theo thực đơn cho trước .
+- Có ý thức thực hiện an toàn lao động và an toàn vệ sinh thực phẩm.
+- Yêu thích lao động, tỉ mỉ, kiên nhẫn, cẩn thận, sáng tạo trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Làm hoa giấy, hoa vải
+- Lựa chọn được dụng cụ, vật liệu cần thiết và phù hợp để làm sản phẩm hoa giấy, hoa vải.
+- Làm được một số loại hoa giấy, hoa vải đơn giản.
+- Có ý thức thực hiện công việc theo quy trình công nghệ, có ý thức về an toàn lao động và bảo vệ môi trường.
+- Tính toán được chi phí và hiệu quả kinh tế khi làm hoa giấy, hoa vải.
+- Yêu thích lao động, kiên nhẫn, tỉ mỉ, sáng tạo trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+Cắm hoa nghệ thuật
+- Lựa chọn được dụng cụ, vật liệu cần thiết và phù hợp với bình hoa hoặc bó hoa.
+- Thực hiện được một số bình hoa và bó hoa trang trí đơn giản.
+- Có ý thức thực hiện công việc theo quy trình công nghệ; có ý thức về an toàn lao động và bảo vệ môi trường.
+- Yêu thích công việc, thể hiện óc thẩm mĩ, kiên nhẫn, sáng tạo trong công việc.
+- Đánh giá được khả năng và sở thích của bản thân đối với một số ngành nghề liên quan.
+CẤP TRUNG HỌC PHỔ THÔNG: ĐỊNH HƯỚNG CÔNG NGHIỆP
+LỚP 10
+THIẾT KẾ VÀ CÔNG NGHỆ
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+Khái quát về công nghệ
+- Nêu được các khái niệm khoa học, kĩ thuật, công nghệ và mối liên hệ giữa chúng.
+- Mô tả được mối quan hệ giữa công nghệ với tự nhiên, con người và xã hội.
+- Trình bày được khái niệm, cấu trúc của hệ thống kĩ thuật.
+- Kể tên và tóm tắt được nội dung cơ bản của một số công nghệ phổ biến.
+- Trình bày được yêu cầu và triển vọng, những thông tin chính về thị trường lao động của một số ngành nghề trong lĩnh vực kĩ thuật, công nghệ; đánh giá được sự phù hợp của bản thân đối với những ngành nghề đó.
+Đổi mới công nghệ
+- Tóm tắt được nội dung cơ bản, vai trò, đặc điểm của các cuộc cách mạng công nghiệp.
+- Trình bày được bản chất và hướng ứng dụng của một số công nghệ mới.
+- Giải thích được các tiêu chí cơ bản trong đánh giá công nghệ.
+- Đánh giá được một số sản phẩm công nghệ phổ biến.
+Vẽ kĩ thuật
+- Trình bày được khái niệm, vai trò của bản vẽ kĩ thuật, mô tả các tiêu chuẩn trình bày bản vẽ kĩ thuật.
+- Vẽ được hình chiếu vuông góc; hình cắt, mặt cắt; hình chiếu trục đo; hình chiếu phối cảnh; hình biểu diễn quy ước ren của vật thể đơn giản.
+- Vẽ được một số hình biểu diễn của vật thể đơn giản với sự hỗ trợ của máy tính.
+- Lập và đọc được bản vẽ chi tiết đơn giản, đọc được bản vẽ lắp của vật thể đơn giản.
+- Lập và đọc được bản vẽ xây dựng đơn giản.
+Thiết kế kĩ thuật
+- Trình bày được vai trò, ý nghĩa của hoạt động thiết kế kĩ thuật.
+- Nêu được các nguyên tắc thiết kế kĩ thuật.
+- Giải thích được quy trình thiết kế kĩ thuật; trình bày được các công việc cụ thể, phương pháp thực hiện, phương tiện hỗ trợ trong từng bước của quá trình thiết kế.
+- Phân tích được các yếu tố ảnh hưởng trong quá trình thiết kế kĩ thuật.
+- Mô tả được đặc điểm, tính chất của một số nghề nghiệp liên quan tới thiết kế.
+- Thiết kế được sản phẩm đơn giản.
+CHUYÊN ĐỀ HỌC TẬP
+Tên chuyên đề
+Yêu cầu cần đạt
+Vẽ và thiết kế với sự hỗ trợ của máy tính
+- Trình bày được vai trò của công nghệ thông tin trong các hoạt động tạo lập bản vẽ và thiết kế kĩ thuật.
+- Sử dụng được phần mềm CAD để lập bản vẽ kĩ thuật của vật thể đơn giản.
+Thiết kế mạch điều khiển cho ngôi nhà thông minh
+- Trình bày được sơ đồ khối và nguyên tắc hoạt động của một hệ thống điều khiển cho ngôi nhà thông minh.
+- Kể tên, mô tả được cấu tạo, nguyên tắc hoạt động của một số cảm biến thông dụng.
+- Thiết kế được một hệ thống điều khiển đơn giản cho ngôi nhà thông minh.
+Nghề nghiệp STEM
+- Tóm tắt một được một số vấn đề cơ bản về STEM, nghề nghiệp STEM.
+- Tìm hiểu được các thông tin về nhu cầu nghề nghiệp STEM trong tương lai gần tại Việt Nam.
+- Lập và thực hiện được kế hoạch để thích ứng với nghề nghiệp STEM.
+LỚP 11
+CÔNG NGHỆ CƠ KHÍ
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+CƠ KHÍ CHẾ TẠO
+Giới thiệu chung về cơ khí chế tạo
+- Trình bày được khái niệm, vai trò và đặc điểm của cơ khí chế tạo.
+- Mô tả được các bước cơ bản trong quy trình chế tạo cơ khí.
+- Nhận biết được một số ngành nghề phổ biến thuộc lĩnh vực cơ khí chế tạo.
+Vật liệu cơ khí
+- Trình bày được khái niệm cơ bản và phân loại của vật liệu cơ khí.
+- Mô tả được công dụng, tính chất của một số vật liệu cơ khí thông dụng, vật liệu mới.
+- Nhận biết được tính chất cơ bản của một số vật liệu phổ biến bằng phương pháp đơn giản.
+Các phương pháp gia công cơ khí
+- Trình bày được khái niệm, phân loại phương pháp gia công cơ khí.
+- Tóm tắt được những nội dung cơ bản của một số phương pháp gia công cơ khí.
+- Lập được quy trình công nghệ gia công một chi tiết đơn giản.
+- Gia công được một chi tiết cơ khí đơn giản sử dụng phương pháp gia công cắt gọt.
+Sản xuất cơ khí
+- Phân tích được các bước của quá trình sản xuất cơ khí.
+- Mô tả được dây truyền sản xuất tự động hoá có sử dụng robot công nghiệp.
+- Nhận biết được tác động của cuộc cách mạng công nghiệp 4.0 trong tự động hoá quá trình sản xuất.
+- Nhận thức được tầm quan trọng của an toàn lao động và bảo vệ môi trường trong sản xuất cơ khí.
+CƠ KHÍ ĐỘNG LỰC
+Giới thiệu chung về cơ khí động lực
+- Trình bày được cấu tạo, vai trò của từng bộ phận trong hệ thống cơ khí động lực.
+- Kể tên được một số máy móc thường gặp thuộc lĩnh vực cơ khí động lực.
+- Nhận biết được một số ngành nghề phổ biến liên quan đến cơ khí động lực.
+Động cơ đốt trong
+- Trình bày được khái niệm, phân loại động cơ đốt trong.
+- Mô tả được cấu tạo, giải thích được nguyên lí làm việc của động cơ đốt trong.
+- Giải thích được ý nghĩa một số thông số kĩ thuật cơ bản của động cơ đốt trong.
+Ô tô
+- Trình bày được vai trò của ô tô trong đời sống và sản xuất.
+- Mô tả được cấu tạo chung của ô tô dưới dạng sơ đồ khối.
+- Trình bày được cấu tạo và nguyên lí làm việc của các bộ phận chính trên ô tô.
+- Nhận biết được những nội dung cơ bản về sử dụng, bảo dưỡng ô tô và an toàn khi tham gia giao thông.
+CHUYÊN ĐỀ HỌC TẬP
+Tên chuyên đề
+Yêu cầu cần đạt
+Dự án nghiên cứu lĩnh vực kĩ thuật cơ khí
+- Mô tả được đặc điểm của một dự án nghiên cứu thuộc lĩnh vực kĩ thuật cơ khí.
+- Liệt kê được một số nội dung kĩ thuật có liên quan trong thực hiện dự án nghiên cứu thuộc lĩnh vực kĩ thuật cơ khí.
+- Hình thành được ý tưởng, lập kế hoạch và triển khai nghiên cứu một dự án thuộc lĩnh vực kĩ thuật cơ khí.
+- Báo cáo được kết quả triển khai dự án nghiên cứu.
+Công nghệ CAD/CAM-CNC
+- Trình bày được vai trò và chức năng của CAD/CAM-CNC trong sản xuất cơ khí.
+- Nêu đặc điểm, mô tả cấu trúc chung, nhận biết được các bộ phận của máy CNC.
+- Tóm tắt được quy trình gia công với máy CNC tại một cơ sở sản xuất, giáo dục tại địa phương.
+Công nghệ in 3D
+- Trình bày được đặc điểm, ứng dụng của công nghệ in 3D và cấu trúc chung, nguyên lí làm việc của máy in 3D.
+- Mô tả được một số công nghệ in 3D.
+- Phân tích được triển vọng và xu hướng phát triển công nghệ in 3D.
+- Lập trình, kết nối và in được vật thể đơn giản bằng máy in 3D.
+LỚP 12
+CÔNG NGHỆ ĐIỆN - ĐIỆN TỬ
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+CÔNG NGHỆ ĐIỆN
+Giới thiệu chung về kĩ thuật điện
+- Trình bày được khái niệm kĩ thuật điện.
+- Tóm tắt được vị trí, vai trò và triển vọng phát triển của kĩ thuật điện trong sản xuất và đời sống.
+- Nhận biết được một số ngành nghề thuộc lĩnh vực kĩ thuật điện.
+Hệ thống điện quốc gia
+- Trình bày được khái niệm và nguyên lí tạo ra dòng điện xoay chiều ba pha; mô tả được cách nối nguồn, tải ba pha và xác định các thông số hiệu dụng của mạch điện ba pha đối xứng.
+- Vẽ và mô tả được cấu trúc chung và vai trò của từng thành phần trong hệ thống điện quốc gia.
+- Trình bày được nội dung cơ bản về một số phương pháp sản xuất điện năng chủ yếu (thuỷ điện, nhiệt điện, điện hạt nhân, điện gió, điện mặt trời), ưu điểm và hạn chế của mỗi phương pháp.
+- Mô tả được cấu trúc chung, các thiết bị và vai trò của chúng trong mạng điện sản xuất quy mô nhỏ.
+- Vẽ và trình bày được sơ đồ, các thông số kĩ thuật của mạng điện hạ áp dùng trong sinh hoạt.
+Hệ thống điện trong gia đình
+- Vẽ và mô tả được cấu trúc chung của hệ thống điện trong gia đình.
+- Trình bày được chức năng và thông số kĩ thuật của một số thiết bị điện phổ biến được sử dụng trong hệ thống điện trong gia đình.
+- Thiết kế và lắp đặt được một mạch điều khiển điện đơn giản trong gia đình.
+- Vẽ được sơ đồ nguyên lí và sơ đồ lắp đặt của hệ thống điện trong gia đình; xác định thông số kĩ thuật cho thiết bị đóng cắt, bảo vệ, truyền dẫn điện trong hệ thống điện.
+An toàn và tiết kiệm điện năng
+- Trình bày được khái niệm an toàn điện và tiết kiệm điện năng.
+- Tóm tắt được các biện pháp an toàn và tiết kiệm điện năng.
+- Thực hiện được một số biện pháp an toàn và tiết kiệm điện năng trong cuộc sống.
+CÔNG NGHỆ ĐIỆN TỬ
+Giới thiệu chung về kĩ thuật điện tử
+- Trình bày được khái niệm kĩ thuật điện tử.
+- Tóm tắt được vị trí, vai trò và triển vọng phát triển của kĩ thuật điện tử trong sản xuất và đời sống.
+- Nhận biết được một số ngành nghề thuộc lĩnh vực kĩ thuật điện tử.
+- Kể tên và mô tả được một số dịch vụ phổ biến trong xã hội có ứng dụng kĩ thuật điện tử.
+Linh kiện điện tử
+- Vẽ được kí hiệu, trình bày được công dụng và thông số kĩ thuật của một số linh kiện điện tử.
+- Nhận biết, đọc số liệu kĩ thuật, lựa chọn, kiểm tra được một số linh kiện điện tử phổ biến.
+- Lắp ráp, kiểm tra được một mạch điện tử đơn giản (Ví dụ: mạch điện tử ứng dụng, sử dụng ít nhất năm linh kiện).
+Điện tử tương tự
+- Trình bày được nội dung cơ bản về tín hiệu, một số mạch xử lí tín hiệu (mạch khuếch đại, mạch điều chế, mạch giải điều chế) của điện tử tương tự.
+- Trình bày được kí hiệu, nguyên lí làm việc và ứng dụng cơ bản của mạch khuếch đại thuật toán.
+- Lắp ráp và kiểm tra được một mạch điện tử ứng dụng khuếch đại thuật toán.
+Điện tử số
+- Trình bày được nội dung cơ bản về tín hiệu, một số mạch xử lí tín hiệu (thuộc mạch tổ hợp và mạch dãy) trong điện tử số.
+- Vẽ kí hiệu, trình bày được công dụng và nhận biết được một số cổng logic cơ bản.
+- Lắp ráp, kiểm tra được mạch điện tử số đơn giản dùng các cổng logic cơ bản.
+Vi điều khiển
+- Trình bày được khái niệm, phân loại và ứng dụng của vi điều khiển.
+- Vẽ và giải thích được sơ đồ chức năng của vi điều khiển.
+- Mô tả được cấu trúc, ứng dụng và công cụ lập trình của một bo mạch lập trình vi điều khiển.
+- Thiết kế, lắp ráp, kiểm tra được mạch điện tử ứng dụng dùng bo mạch lập trình vi điều khiển.
+CHUYÊN ĐỀ HỌC TẬP
+Chuyên đề
+Yêu cầu cần đạt
+Thiết kế hệ thống cảnh báo trong gia đình
+- Nhận biết được nhu cầu và các tình huống cần cảnh báo tự động trong gia đình.
+- Trình bày được cấu trúc, nguyên lí hoạt động của hệ thống cảnh báo sử dụng vi điều khiển.
+- Thiết kế, chế tạo được một hệ thống cảnh báo trong gia đình.
+Dự án nghiên cứu lĩnh vực hệ thống nhúng
+- Mô tả được đặc điểm của một dự án nghiên cứu thuộc lĩnh vực hệ thống nhúng.
+- Liệt kê được các nội dung liên quan trong một dự án cụ thể thuộc lĩnh vực hệ thống nhúng.
+- Hình thành được ý tưởng, lập kế hoạch và triển khai nghiên cứu một dự án thuộc lĩnh vực hệ thống nhúng.
+- Báo cáo được kết quả triển khai dự án nghiên cứu.
+Dự án nghiên cứu lĩnh vực robot và máy thông minh
+- Mô tả được đặc điểm của một dự án nghiên cứu thuộc lĩnh vực robot và máy thông minh.
+- Liệt kê được các nội dung liên quan trong một dự án cụ thể thuộc lĩnh vực robot và máy thông minh.
+- Hình thành được ý tưởng, lập kế hoạch và triển khai nghiên cứu một dự án thuộc lĩnh vực robot và máy thông minh.
+- Báo cáo được kết quả triển khai dự án nghiên cứu.
+CẤP TRUNG HỌC PHỔ THÔNG: ĐỊNH HƯỚNG NÔNG NGHIỆP
+LỚP 10
+CÔNG NGHỆ TRỒNG TRỌT
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+Giới thiệu chung về trồng trọt
+- Trình bày được vai trò và triển vọng của trồng trọt trong bối cảnh cuộc cách mạng công nghiệp 4.0.
+- Phân loại được các nhóm cây trồng theo nguồn gốc, đặc tính sinh vật học và mục đích sử dụng.
+- Phân tích được mối quan hệ giữa cây trồng với các yếu tố chính trong trồng trọt.
+- Nêu được một số thành tựu nổi bật của việc ứng dụng công nghệ cao trong trồng trọt.
+- Trình bày được những yêu cầu cơ bản với người lao động của một số ngành nghề phổ biến trong trồng trọt.
+Đất trồng
+- Trình bày được khái niệm, thành phần, tính chất của đất trồng.
+- Giải thích được cơ sở khoa học của các biện pháp sử dụng, cải tạo, bảo vệ đất trồng.
+- Nêu được một số ứng dụng công nghệ cao trong sản xuất đất/giá thể trồng cây (Ví dụ: Sản xuất đất/giá thể trồng cây từ xơ dừa, từ trấu, từ đất sét,...).
+- Xác định được độ mặn, độ chua của đất.
+- Vận dụng được kiến thức về sử dụng, cải tạo đất trồng vào thực tiễn.
+Phân bón
+- Trình bày được khái niệm về phân bón, vai trò của phân bón trong trồng trọt; đặc điểm của một số loại phân bón phổ biến.
+- So sánh được các biện pháp sử dụng và bảo quản phân bón phổ biến.
+- Trình bày được một số ứng dụng của công nghệ hiện đại trong sản xuất phân bón (Ví dụ: công nghệ vi sinh, công nghệ nano).
+- Nhận biết được một số loại phân bón thông thường.
+- Vận dụng được kiến thức về sử dụng và bảo quản phân bón vào thực tiễn.
+Công nghệ giống cây trồng
+- Trình bày được khái niệm, vai trò của giống cây trồng.
+- Mô tả được các phương pháp chọn, tạo và nhân giống cây trồng phổ biến.
+- Trình bày được ứng dụng của công nghệ sinh học trong chọn, tạo và nhân giống cây trồng
+(Ví dụ: tạo cây trồng biến đổi gen, nhân giống bằng nuôi cấy mô tế bào).
+- Thực hiện được việc nhân giống cây trồng bằng phương pháp nhân giống vô tính.
+Phòng, trừ sâu, bệnh hại cây trồng
+- Trình bày được tác hại của sâu, bệnh và ý nghĩa của việc phòng, trừ sâu, bệnh hại cây trồng.
+- Mô tả được đặc điểm nhận biết, nêu được nguyên nhân và biện pháp phòng, trừ một số loại sâu, bệnh hại cây trồng thường gặp.
+- Nêu được ứng dụng công nghệ vi sinh trong phòng, trừ sâu, bệnh hại cây trồng.
+- Lựa chọn được các biện pháp an toàn cho con người và môi trường trong phòng, trừ sâu, bệnh hại cây trồng.
+- Nhận biết được một số loại sâu, bệnh hại cây trồng thường gặp.
+Kĩ thuật trồng trọt
+- Mô tả được các bước trong quy trình trồng trọt.
+- Nêu được một số ứng dụng nổi bật của cơ giới hoá trồng trọt.
+- Nêu được một số ứng dụng công nghệ cao trong thu hoạch, bảo quản và chế biến sản phẩm trồng trọt.
+- Lập được kế hoạch, tính toán được chi phí cho việc trồng và chăm sóc một loại cây trồng.
+- Chế biến được một số sản phẩm trồng trọt bằng phương pháp đơn giản.
+- Tham gia trồng và chăm sóc một số loại cây trồng phổ biến ở địa phương.
+Trồng trọt công nghệ cao
+- Trình bày được những vấn đề cơ bản của trồng trọt công nghệ cao.
+- Mô tả được một số mô hình trồng trọt công nghệ cao. Giải thích được cơ sở khoa học của các hệ thống trồng cây không dùng đất (Ví dụ: trồng cây trong nhà có mái che, công nghệ tưới nhỏ giọt, hệ thống trồng cây thông minh; hệ thống trồng cây thuỷ canh, khí canh).
+- Thực hiện được việc trồng cây bằng phương pháp không dùng đất.
+Bảo vệ môi trường trong trồng trọt
+- Trình bày được sự cần thiết phải bảo vệ môi trường trong trồng trọt.
+- Nêu được ứng dụng của công nghệ vi sinh trong bảo vệ môi trường và xử lí chất thải trồng trọt.
+- Thực hiện được một số công việc đơn giản trong quy trình xử lí chất thải trồng trọt.
+CHUYÊN ĐỀ HỌC TẬP
+Tên chuyên đề
+Yêu cầu cần đạt
+Công nghệ sinh học trong trồng trọt
+- Trình bày được khái niệm, vai trò và một số thành tựu của công nghệ sinh học trong trồng trọt.
+- Phân tích được một số hướng ứng dụng phổ biến của công nghệ sinh học trong trồng trọt ở Việt Nam và trên thế giới.
+- Đánh giá được triển vọng của công nghệ sinh học trong trồng trọt.
+- Có ý thức về an toàn lao động và đạo đức nghề nghiệp.
+Trồng và chăm sóc hoa, cây cảnh
+- Trình bày được vai trò của hoa, cây cảnh đối với đời sống con người.
+- Nêu được đặc điểm thực vật học và yêu cầu ngoại cảnh của một số loại hoa, cây cảnh phổ biến.
+- Lựa chọn được quy trình nhân giống phù hợp cho một số loại hoa, cây cảnh phổ biến.
+- Mô tả được quy trình trồng, chăm sóc, phòng trừ sâu bệnh, thu hoạch, bảo quản một số loại hoa, cây cảnh phổ biến.
+- Trồng và chăm sóc được một loại hoa, cây cảnh.
+- Yêu thích công việc trồng và chăm sóc hoa, cây cảnh, có ý thức về an toàn lao động và bảo vệ môi trường.
+Trồng trọt theo tiêu chuẩn VietGAP
+- Trình bày được khái niệm, ý nghĩa, các tiêu chí của trồng trọt theo tiêu chuẩn VietGAP.
+- Tóm tắt được các yêu cầu về: chọn đất trồng, nguồn nước tưới, giống, phân bón, phòng, trừ sâu bệnh, thu hoạch, sơ chế và kiểm tra, vận chuyển, bảo quản và sử dụng sản phẩm trong trồng trọt theo tiêu chuẩn VietGAP.
+- Mô tả được các bước trong quy trình trồng trọt theo tiêu chuẩn VietGAP.
+- Lựa chọn được mô hình trồng trọt thích hợp cho một số loại cây trồng phổ biến.
+- Thực hiện được một số công việc trong quy trình trồng trọt theo tiêu chuẩn VietGAP.
+- Có ý thức về an toàn vệ sinh thực phẩm và bảo vệ môi trường trong trồng trọt.
+LỚP 11
+CÔNG NGHỆ CHĂN NUÔI
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+Giới thiệu chung về chăn nuôi
+- Trình bày được vai trò và triển vọng của chăn nuôi trong bối cảnh cuộc cách mạng công nghiệp 4.0.
+- Phân loại được vật nuôi theo nguồn gốc, đặc tính sinh vật học và mục đích sử dụng.
+- Nêu được một số thành tựu nổi bật của việc ứng dụng công nghệ cao trong chăn nuôi.
+- Nêu được các phương thức chăn nuôi chủ yếu ở nước ta; xu hướng phát triển của chăn nuôi ở Việt Nam và trên thế giới (Ví dụ: Các mô hình chăn nuôi gia súc, gia cầm sạch, mô hình chăn nuôi bền vững, phát triển chăn nuôi theo chuỗi khép kín).
+- Nêu được đặc điểm cơ bản của chăn nuôi bền vững, chăn nuôi thông minh.
+- Trình bày được những yêu cầu cơ bản với người lao động của một số ngành nghề phổ biến trong chăn nuôi.
+Công nghệ giống vật nuôi
+- Trình bày được khái niệm và vai trò của giống trong chăn nuôi.
+- Nêu được các chỉ tiêu cơ bản và phương pháp chọn giống vật nuôi.
+- Lựa chọn được phương pháp chọn, nhân giống phù hợp với mục đích.
+- Phân tích được ứng dụng của công nghệ sinh học trong chọn và nhân giống vật nuôi.
+Công nghệ thức ăn chăn nuôi
+- Trình bày được nhu cầu dinh dưỡng, tiêu chuẩn ăn và khẩu phần ăn của vật nuôi.
+- Giải thích được thành phần dinh dưỡng và vai trò của các nhóm thức ăn đối với vật nuôi.
+- Mô tả được các phương pháp sản xuất, bảo quản một số loại thức ăn chăn nuôi.
+- Trình bày được một số ứng dụng công nghệ cao trong chế biến và bảo quản thức ăn chăn nuôi.
+- Thực hiện được việc chế biến, bảo quản một số loại thức ăn chăn nuôi.
+Phòng, trị bệnh cho vật nuôi
+- Trình bày được vai trò của phòng, trị bệnh trong chăn nuôi.
+- Mô tả được đặc điểm, nêu được nguyên nhân và biện pháp phòng, trị một số bệnh phổ biến trong chăn nuôi.
+- Đề xuất được biện pháp an toàn cho người, vật nuôi và môi trường.
+- Trình bày được ứng dụng của công nghệ sinh học trong phòng, trị bệnh cho vật nuôi.
+- Vận dụng được kiến thức về phòng, trị bệnh cho vật nuôi vào thực tiễn.
+Công nghệ chăn nuôi
+- Mô tả được quy trình nuôi dưỡng và chăm sóc một số loại vật nuôi phổ biến.
+- Trình bày được những yêu cầu về chuồng nuôi của một số loại vật nuôi phổ biến.
+- Đề xuất được một số biện pháp đảm bảo vệ sinh chuồng nuôi và bảo vệ môi trường trong chăn nuôi.
+- Phân tích được quy trình chăn nuôi theo tiêu chuẩn VietGAP.
+- Mô tả được một số mô hình chăn nuôi công nghệ cao (Ví dụ: hệ thống chăn nuôi cung cấp khẩu phần ăn tự động; hệ thống chăn nuôi thu gom, phân loại trứng tự động; hệ thống chăn nuôi vắt sữa bò tự động).
+- Nêu được một số ứng dụng công nghệ cao trong bảo quản, chế biến sản phẩm chăn nuôi.
+- Chế biến được một số sản phẩm chăn nuôi bằng phương pháp đơn giản.
+- Thực hiện được một số công việc đơn giản trong quy trình kĩ thuật chăn nuôi.
+Bảo vệ môi trường trong chăn nuôi
+- Trình bày được sự cần thiết phải bảo vệ môi trường trong chăn nuôi.
+- Mô tả được một số biện pháp phổ biến trong xử lí chất thải chăn nuôi.
+- Nêu được ứng dụng của công nghệ sinh học trong bảo vệ môi trường chăn nuôi (Ví dụ: đệm lót sinh học, các chế phẩm và quy trình thu gom, xử lí chất thải chăn nuôi).
+- Có ý thức bảo vệ môi trường, vận dụng vào thực tiễn chăn nuôi ở gia đình và địa phương.
+CHUYÊN ĐỀ HỌC TẬP
+Tên chuyên đề
+Yêu cầu cần đạt
+Công nghệ sinh học trong chăn nuôi
+- Trình bày được khái niệm, vai trò và một số thành tựu của công nghệ sinh học trong chăn nuôi.
+- Phân tích được một số hướng ứng dụng phổ biến của công nghệ sinh học trong chăn nuôi (Ví dụ: chọn tạo giống, công nghệ sinh sản, sản xuất thức ăn, chẩn đoán bệnh, sản xuất vắc-xin, sản xuất đệm lót sinh học) ở Việt Nam và trên thế giới.
+- Đánh giá triển vọng của công nghệ sinh học trong chăn nuôi.
+- Có ý thức về an toàn lao động và đạo đức nghề nghiệp.
+Nuôi dưỡng và chăm sóc động vật cảnh
+- Trình bày được đặc điểm và yêu cầu điều kiện sống của một số động vật cảnh phổ biến.
+- Lựa chọn được thức ăn phù hợp cho một số động vật cảnh phổ biến.
+- Mô tả được quy trình nuôi dưỡng, chăm sóc, phòng, trị bệnh cho một số động vật cảnh phổ biến.
+- Thực hiện được một số công việc trong nuôi dưỡng và chăm sóc động vật cảnh.
+- Yêu thích công việc nuôi dưỡng và chăm sóc động vật cảnh; có ý thức về an toàn lao động và bảo vệ môi trường.
+Chăn nuôi theo tiêu chuẩn VietGAP
+- Trình bày được khái niệm, ý nghĩa, các tiêu chí của chăn nuôi theo tiêu chuẩn VietGAP.
+- Tóm tắt được các yêu cầu về: chọn vị trí, chuồng trại, con giống, thức ăn chăn nuôi, nước uống, vệ sinh thú y, quản lí chất thải trong chăn nuôi theo tiêu chuẩn VietGAP.
+- Nhận biết được các bước trong quy trình chăn nuôi theo tiêu chuẩn VietGAP.
+- Lựa chọn được mô hình chăn nuôi thích hợp cho một số đối tượng vật nuôi phổ biến.
+- Thực hiện được một số công việc đơn giản trong quy trình chăn nuôi theo tiêu chuẩn VietGAP.
+- Có ý thức về an toàn lao động và bảo vệ môi trường trong chăn nuôi.
+LỚP 12
+LÂM NGHIỆP - THUỶ SẢN
+NỘI DUNG CƠ BẢN
+Nội dung
+Yêu cầu cần đạt
+LÂM NGHIỆP
+Giới thiệu chung về lâm nghiệp
+- Trình bày được vai trò, triển vọng của lâm nghiệp đối với đời sống và môi trường.
+- Nêu được một số hoạt động lâm nghiệp cơ bản.
+- Phân tích được một số nguyên nhân chủ yếu làm suy thoái tài nguyên rừng và giải pháp khắc phục.
+- Nêu được các đặc trưng cơ bản của sản xuất lâm nghiệp; những yêu cầu cơ bản với người lao động của một số ngành nghề phổ biến trong lâm nghiệp.
+Trồng và chăm sóc rừng
+- Trình bày được vai trò, nhiệm vụ của việc trồng và chăm sóc rừng.
+- Phân tích được quy luật sinh trưởng, phát triển của cây rừng.
+- Giải thích được việc bố trí thời vụ và mô tả được kĩ thuật trồng, chăm sóc rừng.
+Bảo vệ và khai thác tài nguyên rừng bền vững
+- Trình bày được ý nghĩa, nhiệm vụ của việc bảo vệ và khai thác tài nguyên rừng bền vững.
+- Mô tả được một số biện pháp bảo vệ và khai thác tài nguyên rừng phổ biến.
+- Đánh giá được thực trạng trồng, chăm sóc, bảo vệ và khai thác rừng ở địa phương.
+- Đề xuất được biện pháp nâng cao ý thức bảo vệ tài nguyên rừng.
+THUỶ SẢN
+Giới thiệu chung về thuỷ sản
+- Trình bày được vai trò và triển vọng của thuỷ sản trong bối cảnh cuộc cách mạng công nghiệp 4.0.
+- Phân loại được các nhóm thuỷ sản theo nguồn gốc và đặc tính sinh vật học.
+- Nêu được một số phương thức nuôi thuỷ sản phổ biến ở nước ta, ưu và nhược điểm của từng phương thức.
+- Phân tích được xu hướng phát triển của thuỷ sản ở Việt Nam và trên thế giới.
+- Trình bày được những yêu cầu cơ bản với người lao động của một số ngành nghề phổ biến trong thuỷ sản.
+Môi trường nuôi thuỷ sản
+- Trình bày được các yêu cầu chính của môi trường nuôi thuỷ sản.
+- Phân tích được các yếu tố ảnh hưởng đến môi trường nuôi thuỷ sản.
+- Mô tả được một số biện pháp cơ bản xử lí môi trường trước và sau nuôi thuỷ sản; các biện pháp quản lí môi trường nuôi thuỷ sản.
+- Trình bày được ứng dụng công nghệ sinh học trong xử lí môi trường nuôi thuỷ sản.
+- Xác định được một số chỉ tiêu cơ bản của nước nuôi thuỷ sản.
+- Có ý thức vận dụng kiến thức về quản lí môi trường nuôi thuỷ sản vào thực tiễn.
+Công nghệ giống thuỷ sản
+- Trình bày được vai trò của giống trong nuôi thuỷ sản.
+- Phân tích được đặc điểm sinh sản của cá và tôm.
+- Mô tả được kĩ thuật ương, nuôi cá và tôm giống.
+- Phân tích được ứng dụng công nghệ sinh học trong chọn và nhân giống thuỷ sản.
+- Có ý thức vận dụng kiến thức về giống thuỷ sản vào thực tiễn.
+Công nghệ thức ăn thuỷ sản
+- Trình bày được thành phần dinh dưỡng và vai trò của các nhóm thức ăn thuỷ sản.
+- Mô tả được một số phương pháp bảo quản, chế biến thức ăn thuỷ sản.
+- Trình bày được ứng dụng công nghệ sinh học trong bảo quản, chế biến thức ăn thuỷ sản.
+- Thực hiện được một phương pháp bảo quản, chế biến thức ăn thuỷ sản ở quy mô nhỏ.
+Phòng, trị bệnh thuỷ sản
+- Trình bày được vai trò của việc phòng, trị bệnh thuỷ sản.
+- Mô tả được đặc điểm, nêu được nguyên nhân và biện pháp phòng, trị một số loại bệnh thuỷ sản phổ biến.
+- Trình bày được ứng dụng công nghệ sinh học trong phòng, trị bệnh thuỷ sản.
+- Vận dụng được kiến thức về phòng, trị bệnh thuỷ sản vào thực tiễn.
+Công nghệ nuôi thuỷ sản
+- Mô tả được quy trình nuôi, chăm sóc một số loại thuỷ sản phổ biến ở Việt Nam.
+- Đề xuất được biện pháp đảm bảo vệ sinh ao nuôi và bảo vệ môi trường trong nuôi thuỷ sản.
+- Phân tích được quy trình nuôi thuỷ sản theo tiêu chuẩn VietGAP.
+- Mô tả được một số ứng dụng công nghệ cao trong nuôi thuỷ sản (Ví dụ: Ứng dụng công nghệ Semi-biofloc, công nghệ Biofloc).
+- Trình bày được một số phương pháp thu hoạch, bảo quản và chế biến thuỷ sản phổ biến.
+- Nêu được một số ứng dụng công nghệ cao trong bảo quản, chế biến thuỷ sản.
+- Thực hiện được một số công việc đơn giản trong bảo quản, chế biến và nuôi thuỷ sản.
+Bảo vệ và khai thác nguồn lợi thuỷ sản
+- Trình bày được ý nghĩa, nhiệm vụ của việc bảo vệ, khai thác nguồn lợi thuỷ sản.
+- Mô tả được một số biện pháp phổ biến trong khai thác và bảo vệ nguồn lợi thuỷ sản.
+- Đề xuất được biện pháp nâng cao ý thức bảo vệ nguồn lợi thuỷ sản.
+CHUYÊN ĐỀ HỌC TẬP
+Tên chuyên đề
+Yêu cầu cần đạt
+Công nghệ sinh học trong lâm nghiệp
+- Trình bày được khái niệm, vai trò và một số thành tựu của công nghệ sinh học trong lâm nghiệp.
+- Phân tích được một số hướng ứng dụng phổ biến của công nghệ sinh học trong lâm nghiệp ở Việt Nam.
+- Đánh giá triển vọng của công nghệ sinh học trong lâm nghiệp.
+- Có ý thức về an toàn lao động và đạo đức nghề nghiệp.
+Công nghệ sinh học trong thuỷ sản
+- Trình bày được khái niệm, vai trò và một số thành tựu của công nghệ sinh học trong thuỷ sản.
+- Phân tích được một số hướng ứng dụng phổ biến của công nghệ sinh học trong thuỷ sản (chọn tạo giống, công nghệ sinh sản, sản xuất thức ăn, chẩn đoán bệnh, sản xuất vắc-xin, xử lí môi trường thuỷ sản) ở Việt Nam và trên thế giới.
+- Đánh giá được triển vọng của công nghệ sinh học trong thuỷ sản.
+- Có ý thức về an toàn lao động và đạo đức nghề nghiệp.
+Nuôi cá cảnh
+- Trình bày được đặc điểm động vật học và yêu cầu ngoại cảnh của một số loại cá cảnh phổ biến.
+- Lựa chọn được thức ăn phù hợp cho một số loại cá cảnh phổ biến.
+- Mô tả được quy trình nuôi dưỡng, chăm sóc, phòng trừ dịch bệnh cho một số loại cá cảnh phổ biến.
+- Thực hiện được một số công việc trong nuôi và chăm sóc cá cảnh.
+- Yêu thích công việc nuôi và chăm sóc cá cảnh, có ý thức về an toàn lao động và bảo vệ môi trường.
+VI. PHƯƠNG PHÁP GIÁO DỤC
+1. Định hướng chung
+Phương pháp giáo dục môn Công nghệ bám sát định hướng về phương pháp giáo dục được nêu trong Chương trình tổng thể, đồng thời bảo đảm các yêu cầu sau:
+a) Vận dụng linh hoạt các phương pháp, kĩ thuật dạy học phát huy tính chủ động, sáng tạo, tích cực và phù hợp với sự hình thành và phát triển năng lực, phẩm chất cho học sinh; coi trọng học tập dựa trên hành động, trải nghiệm; coi trọng thực hành, vận dụng kiến thức giải quyết các vấn đề thực tiễn nhằm nâng cao hứng thú học tập của học sinh.
+b) Khai thác có hiệu quả hệ thống các thiết bị dạy học tối thiểu theo nguyên lí thiết bị, phương tiện dạy học là nguồn tri thức về đối tượng công nghệ. Coi trọng các nguồn tư liệu ngoài sách giáo khoa; khai thác lợi thế của công nghệ thông tin và truyền thông trong dạy học trên các phương diện lưu trữ tri thức, đa phương tiện, mô phỏng, kết nối, môi trường học tập.
+c) Vận dụng sáng tạo quan điểm giáo dục tích hợp Khoa học, Công nghệ, Kĩ thuật và Toán học (STEM) góp phần hình thành, phát triển năng lực, phẩm chất gắn với giáo dục hướng nghiệp cho học sinh.
+2. Định hướng về phương pháp hình thành, phát triển các phẩm chất chủ yếu và năng lực chung
+2.1. Phương pháp hình thành, phát triển các phẩm chất chủ yếu
+Môn Công nghệ có lợi thế giúp học sinh phát triển các phẩm chất chủ yếu, đặc biệt là tính chăm chỉ, đức trung thực, tinh thần trách nhiệm thông qua những nội dung giáo dục liên quan tới môi trường công nghệ con người đang sống và những tác động của nó; thông qua các hoạt động thực hành, lao động, trải nghiệm nghề nghiệp; và môi trường giáo dục ở nhà trường trong mối quan hệ chặt chẽ với gia đình và xã hội.
+2.2. Phương pháp hình thành, phát triển các năng lực chung 
+a) Năng lực tự chủ và tự học
+Trong giáo dục công nghệ, năng lực tự chủ của học sinh được biểu hiện thông qua sự tự tin và sử dụng hiệu quả các sản phẩm công nghệ trong gia đình, cộng đồng, trong học tập, công việc; bình tĩnh, xử lí có hiệu quả những sự cố kĩ thuật, công nghệ; ý thức và tránh được những tác hại (nếu có) do công nghệ mang lại,... Năng lực tự chủ được hình thành và phát triển ở học sinh thông qua các hoạt động thực hành, làm dự án, thiết kế và chế tạo các sản phẩm công nghệ, sử dụng và đánh giá các sản phẩm công nghệ, bảo đảm an toàn trong thế giới công nghệ ở gia đình, cộng đồng và trong học tập, lao động.
+Để hình thành, phát triển năng lực tự học, giáo viên coi trọng việc phát huy tính tích cực, tự lực, chủ động của học sinh, đồng thời quan tâm tới nguồn học liệu hỗ trợ tự học (đặc biệt là học liệu số), phương pháp, tiến trình tự học và đánh giá kết quả học tập của học sinh.
+b) Năng lực giao tiếp và hợp tác
+Năng lực giao tiếp và hợp tác được thể hiện qua giao tiếp công nghệ, một thành phần cốt lõi của năng lực công nghệ. Việc hình thành và phát triển ở học sinh năng lực này được thực hiện thông qua dạy học hợp tác trong nhóm nhỏ, khuyến khích học sinh trao đổi, trình bày, chia sẻ ý tưởng,...khi thực hiện các dự án học tập và sử dụng, đánh giá các sản phẩm công nghệ được đề cập trong chương trình.
+c) Năng lực giải quyết vấn đề và sáng tạo
+Giáo dục công nghệ có nhiều ưu thế trong hình thành và phát triển ở học sinh năng lực giải quyết vấn đề và sáng tạo thông qua các hoạt động tìm tòi, sáng tạo sản phẩm mới; giải quyết các vấn đề về kĩ thuật, công nghệ trong thực tiễn. Trong Chương trình môn Công nghệ, tư tưởng thiết kế được nhấn mạnh và xuyên suốt từ cấp tiểu học đến cấp trung học phổ thông và được thực hiện thông qua các mạch nội dung, thực hành, trải nghiệm từ đơn giản đến phức tạp là điều kiện để hình thành, phát triển năng lực giải quyết vấn đề và sáng tạo.
+3. Định hướng về phương pháp hình thành, phát triển năng lực công nghệ
+Năng lực công nghệ và các mạch nội dung của môn Công nghệ là hai thành phần cốt lõi của chương trình môn học, có tác động hỗ trợ qua lại. Năng lực công nghệ góp phần định hướng lựa chọn mạch nội dung; ngược lại, mạch nội dung là chất liệu và môi trường góp phần hình thành phát triển năng lực, định hướng hoàn thiện khung năng lực công nghệ.
+Năng lực công nghệ được hình thành và phát triển thông qua các hoạt động dạy và học. Mỗi hoạt động dạy học cụ thể đều xác định rõ mục tiêu phát triển năng lực trên cơ sở phân tích đặc điểm nội dung dạy học và tham chiếu khung năng lực chung, năng lực công nghệ.
+VII. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+Chương trình môn Công nghệ thực hiện định hướng về đánh giá kết quả giáo dục trong Chương trình tổng thể, đồng thời nhấn mạnh các yêu cầu sau:
+a) Mục đích đánh giá là cung cấp thông tin chính xác, kịp thời, có giá trị về mức độ đáp ứng yêu cầu cần đạt về phẩm chất, năng lực và những tiến bộ của học sinh trong suốt quá trình học tập môn học, qua đó điều chỉnh hoạt động dạy và học;
+b) Căn cứ đánh giá, các tiêu chí đánh giá và hình thức đánh giá bảo đảm phù hợp với mục tiêu, yêu cầu cần đạt về phẩm chất chủ yếu, năng lực chung và năng lực công nghệ. Coi trọng đánh giá hoạt động thực hành; vận dụng kiến thức, kĩ năng làm ra sản phẩm của học sinh; vận dụng kiến thức vào thực tiễn;
+c) Sử dụng đa dạng các phương pháp, hình thức đánh giá khác nhau bảo đảm đánh giá toàn diện học sinh; chú trọng đánh giá bằng quan sát trong đánh giá theo tiến trình và đánh giá theo sản phẩm. Với mỗi nhiệm vụ học tập, tiêu chí đánh giá được thiết kế đầy đủ, dựa trên yêu cầu cần đạt và được công bố ngay từ đầu để định hướng cho học sinh trong quá trình thực hiện nhiệm vụ học tập; công cụ đánh giá phải phản ánh được yêu cầu cần đạt nêu trong mỗi chủ đề, mạch nội dung.
+d) Kết hợp giữa đánh giá quá trình và đánh giá tổng kết; trong đó, đánh giá quá trình phải được tiến hành thường xuyên, liên tục và tích hợp vào trong các hoạt động dạy học, đảm bảo mục tiêu đánh giá vì sự tiến bộ của học sinh; khuyến khích tự đánh giá và đánh giá đồng đẳng.
+VIII. GIẢI THÍCH VÀ HƯỚNG DẪN THỰC HIỆN CHƯƠNG TRÌNH
+1. Giải thích thuật ngữ
+1.1. Một số thuật ngữ chuyên môn 
+a) Thuật ngữ chung
+- Công nghệ: là quy trình chế biến vật liệu và thông tin, bao gồm hệ thống tri thức, thiết bị, phương pháp và các hệ thống khác để tạo ra hàng hóa và cung cấp dịch vụ.
+- Kĩ thuật: là ứng dụng khoa học để giải quyết các vấn đề thực tiễn, tạo ra sản phẩm, công nghệ đáp ứng nhu cầu của cuộc sống; là kinh nghiệm và thủ thuật của một dạng hoạt động nhất định.
+- Thiết kế: là toàn bộ các quá trình bao gồm xác định, điều tra, làm rõ vấn đề; khám phá các ý tưởng giải pháp đã có; đề xuất hình thành giải pháp mới; hiện thực hoá và đánh giá giải pháp mới để giải quyết vấn đề.
+- Công nghiệp: là ngành sản xuất vật chất bao gồm các hoạt động khai thác của cải có sẵn trong thiên nhiên mà lao động của con người chưa tác động vào; chế biến, chế tạo; sửa chữa máy móc và các vật phẩm tiêu dùng.
+- Nông nghiệp: là ngành sản xuất vật chất cơ bản của xã hội, sử dụng đất đai để trồng trọt và chăn nuôi, khai thác cây trồng và vật nuôi làm tư liệu và nguyên liệu lao động chủ yếu để tạo ra lương thực, thực phẩm và một số nguyên liệu cho công nghiệp. Nông nghiệp bao gồm các chuyên ngành: trồng trọt, chăn nuôi, sơ chế nông sản.
+- Lâm nghiệp: là ngành sản xuất vật chất có chức năng phát triển rừng, quản lí bảo vệ rừng, khai thác rừng, chế biến lâm sản và phát huy các chức năng phòng hộ văn hoá, xã hội của rừng.
+- Thuỷ sản: là ngành sản xuất vật chất liên quan đến những nguồn lợi, sản vật đem lại cho con người từ môi trường nước và được con người khai thác, nuôi trồng, thu hoạch sử dụng làm thực phẩm, nguyên liệu. Trong các hoạt động thuỷ sản, thông dụng nhất là hoạt động đánh bắt, nuôi trồng và khai thác các loại cá, tôm.
+- Sản phẩm công nghệ: là sản phẩm do con người tạo ra dựa trên công nghệ.
+- Môi trường công nghệ: là môi trường do con người tạo ra bao gồm sản phẩm, quá trình, dịch vụ công nghệ.
+- Thủ công kĩ thuật: là hoạt động bằng tay có tính chất kĩ thuật, với công cụ giản đơn, thô sơ để tạo ra các sản phẩm.
+- Nghề nghiệp STEM: là các nghề nghiệp thuộc vào hoặc liên quan tới các lĩnh vực khoa học, công nghệ, kĩ thuật, toán học. 
+b) Các năng lực thành phần của năng lực công nghệ
+- Nhận thức công nghệ: là năng lực làm chủ kiến thức phổ thông cốt lõi về công nghệ trên các phương diện bản chất của công nghệ; mối quan hệ giữa công nghệ, con người, xã hội; một số công nghệ phổ biến, các quá trình sản xuất chủ yếu có ảnh hưởng và tác động lớn tới kinh tế, xã hội trong hiện tại và tương lai; phát triển và đổi mới công nghệ; nghề nghiệp và định hướng nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ chủ yếu ở Việt Nam.
+- Giao tiếp công nghệ: là năng lực lập, đọc, trao đổi tài liệu kĩ thuật về các sản phẩm, quá trình, dịch vụ công nghệ trong sử dụng, đánh giá công nghệ và thiết kế kĩ thuật.
+- Sử dụng công nghệ: là năng lực khai thác sản phẩm, quá trình, dịch vụ công nghệ đúng chức năng, đúng kĩ thuật, an toàn và hiệu quả; tạo ra sản phẩm công nghệ.
+- Đánh giá công nghệ: là năng lực đưa ra những nhận định về một sản phẩm, quá trình, dịch vụ công nghệ với góc nhìn đa chiều về vai trò, chức năng, chất lượng, kinh tế - tài chính, tác động môi trường và những mặt trái của kĩ thuật, công nghệ.
+- Thiết kế kĩ thuật: là năng lực phát hiện nhu cầu, vấn đề cần giải quyết, cần đổi mới trong thực tiễn; đề xuất giải pháp kĩ thuật, công nghệ đáp ứng nhu cầu, giải quyết vấn đề đặt ra; hiện thực hoá giải pháp kĩ thuật, công nghệ; thử nghiệm và đánh giá mức độ đáp ứng nhu cầu, vấn đề đặt ra. Quá trình trên được thực hiện trên cơ sở xem xét đầy đủ các khía cạnh về tài nguyên, môi trường, kinh tế và nhân văn.
+1.2. Từ ngữ thể hiện mức độ yêu cầu cần đạt
+Chương trình môn Công nghệ sử dụng một số động từ để thể hiện mức độ đáp ứng yêu cầu cần đạt về năng lực của người học. Một số động từ được sử dụng ở các mức độ khác nhau nhưng trong mỗi trường hợp thể hiện một hành động có đối tượng và yêu cầu cụ thể. Trong bảng tổng hợp dưới đây, đối tượng, yêu cầu cụ thể của mỗi hành động được chỉ dẫn bằng các từ ngữ khác nhau đặt trong ngoặc đơn.
+Trong quá trình dạy học, đặc biệt là khi đặt câu hỏi thảo luận và thực hành, ra đề kiểm tra đánh giá, giáo viên có thể dùng những động từ nêu trong bảng tổng hợp hoặc thay thế bằng các động từ có nghĩa tương đương cho phù hợp với tình huống sư phạm và nhiệm vụ cụ thể giao cho học sinh.
+Mức độ
+Động từ mô tả mức độ
+Biết
+Kể tên, liệt kê, trình bày, nhận biết, nhận ra, phát hiện, tìm kiếm, nêu, mô tả, ghi nhớ.
+Hiểu
+Phân biệt, tính toán, vẽ, so sánh, phân tích, giải thích, đọc, tóm tắt, trao đổi, làm rõ, đánh giá, biểu diễn, thao tác, bảo quản, sử dụng, khắc phục, liên hệ, nhận định, lựa chọn, nhận thức, xác định.
+Vận dụng
+Khai thác, tạo lập, vận hành, xác định thông số, chăm sóc, bảo dưỡng, đề xuất, thử nghiệm, điều chỉnh, lập kế hoạch, chế tạo, kiểm tra, thử nghiệm, hoàn thiện, thiết kế, phác thảo, thực hiện, lắp ráp.
+2. Thời lượng thực hiện chương trình
+Thời lượng dành cho phân môn Công nghệ trong môn Tin học và Công nghệ ở cấp tiểu học và môn Công nghệ ở lớp 6, lớp 7 cấp trung học cơ sở là 35 tiết/lớp/năm học; ở lớp 8, lớp 9 là 52 tiết/lớp/năm học. Ở cấp trung học phổ thông, thời lượng dành cho môn Công nghệ là 70 tiết/lớp/năm học cho các nội dung cơ bản. Ngoài ra, còn có các cụm chuyên đề học tập môn Công nghệ theo hai định hướng Công nghiệp và Nông nghiệp, mỗi định hướng 35 tiết/lớp/năm học.
+Thời lượng dành cho các nội dung giáo dục do tác giả sách giáo khoa và giáo viên chủ động sắp xếp căn cứ vào yêu cầu cần đạt ở mỗi lớp và thực tế dạy học. Tỉ lệ % thời lượng dành cho các nội dung ở mỗi lớp theo hai định hướng Công nghiệp và Nông nghiệp như sau:
+a) Định hướng Công nghiệp
+Nội dung
+Thời lượng cho từng mạch nội dung theo lớp (%)
+Tổng % cả môn
+
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+
+- Bản chất của công nghệ
+8
+
+
+
+
+
+
+8
+
+
+1,7
+- Vai trò của công nghệ
+
+8
+8
+25
+
+
+
+8
+
+
+4,1
+- Sản phẩm công nghệ
+32
+35
+20
+58
+
+
+
+
+
+
+10,4
+- An toàn với công nghệ
+14
+10
+10
+5
+
+6
+10
+8
+8
+8
+7,9
+LĨNH VỰC SẢN XUẤT CHỦ YẾU
+
+- Nông nghiệp
+
+
+
+
+30
+
+
+
+
+
+2,1
+- Lâm nghiệp
+
+
+
+
+18
+
+
+
+
+
+1,3
+- Thuỷ sản
+
+
+
+
+26
+
+
+
+
+
+1,9
+- Công nghiệp
+
+
+
+
+
+24
+
+
+66
+66
+21,4
+THIẾT KẾ VÀ ĐỔI MỚI CÔNG NGHỆ
+
+- Thủ công kĩ thuật
+34
+35
+35
+
+
+
+
+
+
+
+7,4
+- Ngôn ngữ kĩ thuật
+
+
+
+
+
+24
+
+24
+
+
+6,0
+- Thiết kế kĩ thuật
+
+
+15
+
+
+24
+
+24
+
+
+7,1
+- Đổi mới công nghệ
+
+
+
+
+
+
+
+8
+4
+4
+2,3
+CÔNG NGHỆ VÀ HƯỚNG NGHIỆP
+
+- Định hướng nghề nghiệp
+
+
+
+
+14
+10
+30
+8
+10
+10
+9,3
+- Trải nghiệm nghề nghiệp
+
+
+
+
+
+
+48
+
+
+
+5,1
+ĐÁNH GIÁ ĐỊNH KÌ
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12,0
+b) Định hướng Nông nghiệp
+Nội dung
+Thời lượng cho từng mạch nội dung theo lớp (%)
+Tổng % cả môn
+
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+
+- Bản chất của công nghệ
+8
+
+
+
+
+
+
+
+
+
+0,6
+- Vai trò của công nghệ
+
+8
+8
+25
+
+
+
+
+
+
+2,9
+- Sản phẩm công nghệ
+32
+35
+20
+58
+
+
+
+
+
+
+10,4
+- An toàn với công nghệ
+14
+10
+10
+5
+
+6
+10
+8
+8
+8
+7,9
+LĨNH VỰC SẢN XUẤT CHỦ YẾU
+
+- Nông nghiệp
+
+
+
+
+30
+
+
+64
+66
+
+20,8
+- Lâm nghiệp
+
+
+
+
+18
+
+
+
+
+20
+4,2
+- Thuỷ sản
+
+
+
+
+26
+
+
+
+
+46
+8,4
+- Công nghiệp
+
+
+
+
+
+24
+
+
+
+
+2,6
+THIẾT KẾ VÀ ĐỔI MỚI CÔNG NGHỆ
+
+- Thủ công kĩ thuật
+34
+35
+35
+
+
+
+
+
+
+
+7,4
+- Ngôn ngữ kĩ thuật
+
+
+
+
+
+24
+
+
+
+
+2,6
+- Thiết kế kĩ thuật
+
+
+15
+
+
+24
+
+
+
+
+3,6
+- Đổi mới công nghệ
+
+
+
+
+
+
+
+8
+4
+4
+2,3
+CÔNG NGHỆ VÀ HƯỚNG NGHIỆP
+
+- Định hướng nghề nghiệp
+
+
+
+
+14
+10
+30
+8
+10
+10
+9,3
+- Trải nghiệm nghề nghiệp
+
+
+
+
+
+
+48
+
+
+
+5,1
+ĐÁNH GIÁ ĐỊNH KÌ
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12,0
+3. Thiết bị dạy học
+Để hình thành và phát triển năng lực công nghệ cho học sinh, giáo dục công nghệ tăng cường thực hành và hoạt động trải nghiệm. Cơ sở giáo dục phổ thông cần có đủ thiết bị dạy học tối thiểu theo quy định của Bộ Giáo dục và Đào tạo.
+Định hướng về thiết bị dạy học cho các mạch nội dung chủ yếu của môn Công nghệ được trình bày trong bảng sau:
+Nội dung
+Định hướng thiết bị dạy học
+CÔNG NGHỆ VÀ ĐỜI SỐNG
+- Bản chất của công nghệ
+Tranh vẽ, video về tự nhiên, công nghệ, vai trò của công nghệ; khai thác tối đa các ứng dụng công nghệ thông tin để làm rõ bản chất, vai trò của công nghệ…
+- Vai trò của công nghệ
+
+- Sản phẩm công nghệ
+Tranh vẽ về sản phẩm công nghệ, thể hiện cấu tạo, thể hiện nguyên lí, thể hiện các thao tác kĩ thuật; một số sản phẩm công nghệ có trong chương trình; các dụng cụ để thao tác với các sản phẩm công nghệ; video, mô phỏng về hình dạng, cấu tạo, cách sử dụng các sản phẩm công nghệ. Cùng với đó là các tranh vẽ, dụng cụ, video về các nội dung an toàn với công nghệ…
+- An toàn với công nghệ
+
+LĨNH VỰC SẢN XUẤT CHỦ YẾU
+- Nông nghiệp
+Các tranh vẽ, mô hình, đa phương tiện sử dụng trong giới thiệu chung về các lĩnh vực sản xuất, các ngành nghề chính trong mỗi lĩnh vực sản xuất, thể hiện một số quá trình kĩ thuật, công nghệ trong mỗi lĩnh vực sản xuất chủ yếu; các dụng cụ thí nghiệm, thực hành có tính chất minh hoạ, vận dụng quá trình kĩ thuật, công nghệ; chú trọng mô phỏng, ứng dụng công nghệ thông tin hỗ trợ hoạt động dạy học…
+- Lâm nghiệp
+
+- Thuỷ sản
+
+- Công nghiệp
+
+THIẾT KẾ VÀ ĐỔI MỚI CÔNG NGHỆ
+- Thủ công kĩ thuật
+Bộ tranh ảnh, video về sản phẩm, quy trình công nghệ, hướng dẫn thao tác trong các hoạt động thủ công kĩ thuật, thiết kế kĩ thuật; bộ dụng cụ vẽ kĩ thuật; các linh kiện, dụng cụ, máy in 3D để hỗ trợ hoạt động thủ công kĩ thuật và thiết kế kĩ thuật hiệu quả; phòng học thiết kế và công nghệ (Makerspaces); chú trọng khai thác ứng dụng các phần mềm mô phỏng, thiết kế…
+- Ngôn ngữ kĩ thuật
+
+- Thiết kế kĩ thuật
+
+- Đổi mới công nghệ
+
+CÔNG NGHỆ VÀ HƯỚNG NGHIỆP
+- Định hướng nghề nghiệp
+Tranh ảnh, video có liên quan tới các nội dung định hướng nghề; các dụng cụ, cơ sở vật chất cho hoạt động trải nghiệm nghề…
+- Trải nghiệm nghề nghiệp
+
+4. Thực hiện chương trình phù hợp với điều kiện thực tế và đối tượng học sinh
+a) Về thực hiện giáo dục hướng nghiệp và định hướng nghề nghiệp
+Trong chương trình giáo dục công nghệ, nội dung giáo dục hướng nghiệp được thể hiện ở các lớp cấp trung học cơ sở và các lớp trung học phổ thông.
+Ở lớp 7 và lớp 8, giáo dục hướng nghiệp được thể hiện thông qua các nội dung giới thiệu về những ngành nghề chính liên quan tới các lĩnh vực sản xuất chủ yếu là nông - lâm nghiệp, thuỷ sản và công nghiệp; ở lớp 9, học sinh được học những kiến thức cơ bản về phương pháp lựa chọn nghề nghiệp trong lĩnh vực kĩ thuật, công nghệ, trải nghiệm nghề nghiệp. Ngoài nội dung bắt buộc về giáo dục hướng nghiệp trong lĩnh vực kĩ thuật, công nghệ, học sinh được tự chọn học một trong các mô đun (35 tiết/mô đun) thuộc các lĩnh vực kĩ thuật, công nghệ khác nhau nhằm đáp ứng nhu cầu, sở thích của học sinh.
+Ở lớp 10, lớp 11 và lớp 12, học sinh được tiếp cận tổng quát về công nghệ, các lĩnh vực công nghệ và ngành nghề liên quan, được học tập để thích ứng các nghề liên quan tới kĩ thuật, công nghệ. Nội dung học tập cho cả hai định hướng Công nghiệp và Nông nghiệp đều mang tính đại cương, nguyên lí, cơ bản, cốt lõi và nền tảng cho mỗi lĩnh vực, giúp học sinh tự tin và thành công khi lựa chọn ngành nghề kĩ thuật, công nghệ sau khi kết thúc trung học phổ thông.
+b) Về thực hiện các nội dung giáo dục xuyên chương trình
+Cùng với các môn học và hoạt động giáo dục khác, môn Công nghệ thực hiện tích hợp, lồng ghép các nội dung ưu tiên, các vấn đề có tính chất toàn cầu như: phát triển bền vững, biến đổi khí hậu, bảo vệ môi trường, sử dụng năng lượng tiết kiệm và hiệu quả, giáo dục tài chính,...; đồng thời, thực hiện giáo dục tích hợp liên môn giữa Khoa học, Công nghệ, Kĩ thuật, Toán học để thúc đẩy giáo dục STEM.
+c) Về sử dụng sản phẩm công nghệ của địa phương
+Trường hợp những sản phẩm công nghệ được đề cập ở cấp tiểu học và các lớp đầu cấp trung học cơ sở không phổ biến hoặc chưa có ở địa phương thì sản phẩm công nghệ đó có thể được thay thế bằng các sản phẩm công nghệ khác gần gũi, phù hợp với học sinh ở địa phương.
+
