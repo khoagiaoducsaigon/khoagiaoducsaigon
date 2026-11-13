@@ -23,3 +23,9 @@ u1 BGH hieutruong@ · u2 TT Toán tt.toan@ · u3 TT Ngữ văn tt.nguvan@ · u4 
 - Đã soạn bộ triển khai: `eduplan-5512/deploy/deploy-windows.cmd` (scp + ssh) và `deploy-vps.sh` (chép file, thêm khối Caddy + validate/khôi phục, sửa apps.json + index.html cổng ứng dụng kèm sao lưu, reload, restart proxy khi DNS đúng, curl kiểm tra). Chạy lại nhiều lần không bị trùng.
 - Slug: `eduplan` → https://eduplan.thaykhoa-ai.tech
 - Còn lại: thêm bản ghi A `eduplan` → 72.62.72.204 trên hPanel; chạy deploy-windows.cmd; đối chiếu kết quả curl (200, đúng dung lượng, tls=0, title "EduPlan 5512 CoPilot").
+
+## 13/11/2026 — Master prompt v1.1 (bản gộp soạn KHBD + EduPlan)
+- Đã dựng khung 4+3 trong eduplan-5512/ (prompts, data/raw/private, agents, evals, outputs, docs, CLAUDE.md, .gitignore).
+- Đã làm 2B·B1 (khảo sát từ mã nguồn, CHƯA đối chiếu VPS): docs/eduplan-audit.md. 2B·B3 nháp: docs/eduplan-mapping.md.
+- Phát hiện then chốt: dữ liệu cũ chỉ ở IndexedDB từng trình duyệt → di trú trong trình duyệt, cùng origin eduplan.thaykhoa-ai.tech; eduplan-old không thấy dữ liệu.
+- ĐANG DỪNG (mục 11): thiếu master prompt v1.0; thiếu CV 5512 (PL IV, V), CV 2345, CV 3456, QĐ 2422, CT môn trong data/raw; chờ duyệt audit + ánh xạ.
