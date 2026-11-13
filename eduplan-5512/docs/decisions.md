@@ -9,3 +9,5 @@
 | 13/11/2026 | Dừng trước khi code bản gộp | Mục 11: thiếu master prompt v1.0 và văn bản pháp lý trong data/raw; cần duyệt audit + bảng ánh xạ |
 | 13/11/2026 | Đề xuất di trú bằng mô-đun JS trong trình duyệt, cùng origin; `migrate_eduplan.py` xử lý tệp JSON sao lưu | Dữ liệu cũ chỉ nằm trên IndexedDB của từng máy (xem eduplan-audit.md) |
 | 13/11/2026 | Nhận CV 5512 (thân văn bản), lưu data/raw/van-ban/, trích UTF-8 sang data/processed/ | Văn bản công khai, không thuộc raw/private |
+| 13/11/2026 | Nạp CV 3456 (+ phụ lục khung NLS), QĐ 2422, CV 3083 HCM vào data/raw/van-ban | Nguồn cho luật năng lực số/AI (P8) |
+| 13/11/2026 | Đề xuất mã năng lực số dạng `miền.năng-lực.bậc` (vd 1.1.L6-7) | Phụ lục 3456 không có ký hiệu mã sẵn — chờ TS. Khoa xác nhận |

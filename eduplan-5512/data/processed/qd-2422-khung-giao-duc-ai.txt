@@ -1,0 +1,1164 @@
+﻿BỘ GIÁO DỤC VÀ ĐÀO TẠO
+-------
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập - Tự do - Hạnh phúc 
+---------------
+Số: 2422/QĐ-BGDĐT
+Hà Nội, ngày 18 tháng 8 năm 2026
+ 
+QUYẾT ĐỊNH
+BAN HÀNH KHUNG NỘI DUNG GIÁO DỤC TRÍ TUỆ NHÂN TẠO CHO HỌC SINH PHỔ THÔNG
+BỘ TRƯỞNG BỘ GIÁO DỤC VÀ ĐÀO TẠO
+Căn cứ Luật Giáo dục số 43/2019/QH14 được sửa đổi, bổ sung bởi Luật số 123/2025/QH15;
+Căn cứ Nghị định số 279/2026/NĐ-CP ngày 12/7/2026 của Chính phủ quy định chức năng, nhiệm vụ, quyền hạn và cơ cấu tổ chức của Bộ Giáo dục và Đào tạo;
+Căn cứ Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị về đột phá phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số quốc gia;
+Căn cứ Nghị quyết số 71-NQ/TW ngày 22/8/2025 của Bộ Chính trị về đột phá phát triển giáo dục và đào tạo;
+Căn cứ Nghị quyết số 281/NQ-CP ngày 15/9/2025 của Chính phủ ban hành Chương trình hành động của Chính phủ thực hiện Nghị quyết số 71-NQ/TW ngày 22/8/2025 của Bộ Chính trị về đột phá phát triển giáo dục và đào tạo;
+Theo đề nghị của Vụ trưởng Vụ Giáo dục Phổ thông và Viện trưởng Viện Chiến lược và Chính sách Giáo dục.
+QUYẾT ĐỊNH:
+Điều 1. Ban hành Khung nội dung giáo dục trí tuệ nhân tạo cho học sinh phổ thông (Khung nội dung kèm theo).
+Điều 2. Giao Vụ Giáo dục Phổ thông chủ trì, phối hợp với Viện Chiến lược và Chính sách Giáo dục, các đơn vị liên quan hướng dẫn, tổ chức triển khai thực hiện; đề xuất điều chỉnh, cập nhật Khung nội dung phù hợp trong quá trình triển khai đảm bảo phù hợp, hiệu quả.
+Điều 3. Quyết định này có hiệu lực kể từ ngày ký.
+Các ông (bà) Chánh Văn phòng, Vụ trưởng Vụ Giáo dục Phổ thông, Viện Chiến lược và Chính sách Giáo dục, Giám đốc Sở Giáo dục và Đào tạo, Thủ trưởng các đơn vị có liên quan chịu trách nhiệm thi hành Quyết định này.
+ 
+
+Nơi nhận:
+- Như Điều 3;
+- Bộ trưởng (để báo cáo);
+- Các đơn vị thuộc Bộ GDĐT (để t/h);
+- Cổng TTĐT Bộ;
+- Lưu: VT, Vụ GDPT.
+KT. BỘ TRƯỞNG
+THỨ TRƯỞNG THƯỜNG TRỰC
+
+
+
+
+Phạm Ngọc Thưởng
+ 
+KHUNG NỘI DUNG 
+GIÁO DỤC TRÍ TUỆ NHÂN TẠO CHO HỌC SINH PHỔ THÔNG
+(Kèm theo Quyết định số 2422/QĐ-BGDĐT ngày 18 tháng 8 năm 2026 của Bộ Giáo dục và Đào tạo)
+I. QUAN ĐIỂM XÂY DỰNG KHUNG NỘI DUNG GIÁO DỤC TRÍ TUỆ NHÂN TẠO
+Trong bối cảnh cuộc Cách mạng công nghiệp lần thứ tư đang diễn ra với tốc độ chưa từng có, Trí tuệ nhân tạo (AI) đã và đang trở thành một lĩnh vực khoa học và công nghệ cốt lõi, có tính đột phá, tác động sâu rộng đến mọi mặt của đời sống kinh tế, xã hội và từng bước định hình lại cách con người sống, làm việc, học tập và tư duy. AI cũng ngày càng trở thành công cụ thiết yếu hỗ trợ học tập suốt đời, mở rộng tri thức, thúc đẩy sáng tạo và phát triển cá nhân.
+Giáo dục AI có vai trò quan trọng trong việc giúp học sinh thích ứng và hoà nhập với xã hội hiện đại; hình thành, phát triển năng lực AI để ứng dụng vào học tập và công việc; đồng thời phát huy khả năng tiếp nhận tri thức, sáng tạo và đóng góp vào sự phát triển của đất nước trong kỉ nguyên mới.
+Khung nội dung giáo dục AI cho học sinh được phát triển dựa trên bốn mạch kiến thức chính, tương ứng với bốn miền năng lực, hoà quyện và bổ trợ cho nhau:
+- Tư duy lấy con người làm trung tâm: Nhấn mạnh mục đích của AI là phục vụ con người, dạy học sinh cách xác định nhu cầu và đánh giá giải pháp AI.
+- Đạo đức AI: Trang bị khả năng nhận diện và phân tích các vấn đề đạo đức, pháp lý, hướng tới việc sử dụng AI một cách an toàn, có trách nhiệm.
+- Các kĩ thuật và ứng dụng AI: Cung cấp kiến thức cơ bản về cách AI hoạt động và kĩ năng sử dụng các công cụ AI trong thực tế.
+- Thiết kế hệ thống AI: Phát triển năng lực từ mức độ sử dụng đến hiểu và tự tạo ra các hệ thống AI đơn giản, tập trung vào kĩ năng giải quyết vấn đề.
+Khung nội dung được thiết kế tương ứng với hai giai đoạn giáo dục: Giai đoạn giáo dục cơ bản (bao gồm cấp tiểu học và cấp trung học cơ sở) và giai đoạn giáo dục định hướng nghề nghiệp (cấp trung học phổ thông), cụ thể như sau:
+- Ở cấp tiểu học: Học sinh chủ yếu trải nghiệm các ứng dụng AI đơn giản, trực quan để hình thành khái niệm ban đầu và nhận biết vai trò của AI trong cuộc sống. Các em được giáo dục về việc bảo vệ dữ liệu cá nhân và tôn trọng bản quyền.
+- Ở cấp trung học cơ sở: Học sinh học cách sử dụng các công cụ AI để tạo ra sản phẩm số, giải quyết các vấn đề học tập. Các em được trang bị kiến thức nền tảng về nguyên lý hoạt động của AI và bắt đầu hình thành ý thức về đạo đức và trách nhiệm công dân trong xã hội số.
+- Ở cấp trung học phổ thông: Học sinh được khuyến khích khám phá, thiết kế và cải tiến các công cụ AI đơn giản thông qua các dự án khoa học. Chương trình tập trung vào việc phát triển tư duy giải quyết vấn đề, khả năng sáng tạo và làm chủ công cụ AI, giúp học sinh vận dụng AI để tạo ra các sản phẩm phục vụ cộng đồng và định hướng nghề nghiệp tương lai.
+Bên cạnh nội dung giáo dục cốt lõi, cơ sở giáo dục có thể tổ chức nội dung mở rộng phù hợp với nhu cầu, năng lực của học sinh và điều kiện thực hiện, nhằm tạo cơ hội cho học sinh tăng cường thực hành, tìm hiểu sâu hơn về các lĩnh vực ứng dụng của AI, kĩ thuật lập trình và phát triển hệ thống AI.
+Khung nội dung giáo dục AI được xây dựng trên cơ sở quan điểm, định hướng và cách tiếp cận phát triển phẩm chất, năng lực của Chương trình Giáo dục phổ thông tổng thể 2018; đồng thời quán triệt, kế thừa các chủ trương, chính sách và quy định có liên quan của Đảng, Nhà nước, gồm: Nghị quyết số 52-NQ/TW ngày 27/9/2019 của Bộ Chính trị về một số chủ trương, chính sách chủ động tham gia cuộc Cách mạng công nghiệp lần thứ tư; Nghị quyết số 71-NQ/TW ngày 22/8/2025 của Bộ Chính trị về đột phá phát triển giáo dục và đào tạo; Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị về đột phá phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số quốc gia; Quyết định số 131/QĐ-TTg ngày 25/01/2022 của Thủ tướng Chính phủ phê duyệt Đề án “Tăng cường ứng dụng công nghệ thông tin và chuyển đổi số trong giáo dục và đào tạo giai đoạn 2022 - 2025, định hướng đến năm 2030”; Thông tư 02/2025/TT-BGDĐT ngày 24/01/2025 của Bộ Giáo dục và Đào tạo quy định Khung năng lực số cho người học; Luật Trí tuệ nhân tạo; Luật Dữ liệu; Luật Bảo vệ dữ liệu cá nhân; Luật An ninh mạng; các quy định hiện hành khác có liên quan đến giáo dục, dữ liệu, bảo vệ dữ liệu cá nhân, an toàn, an ninh mạng và quyền trẻ em.
+Trên cơ sở đó, Khung đặc biệt chú trọng các quan điểm sau:
+1. Góp phần hình thành và phát triển năm phẩm chất chủ yếu và ba năng lực chung
+Khung nội dung giáo dục AI có nhiều cơ hội kết hợp việc hình thành và phát triển năng lực AI với việc hình thành và phát triển cho học sinh năm phẩm chất chủ yếu và ba năng lực chung đã được quy định trong Chương trình giáo dục phổ thông tổng thể 2018.
+2. Nhất quán với Chương trình giáo dục phổ thông môn Tin học
+Ở giáo dục phổ thông, nền tảng kiến thức, kĩ năng của AI là khoa học máy tính và đó cũng là nền tảng của Tin học. Tư duy AI dựa trên nền tảng tư duy của khoa học máy tính là tư duy giải quyết vấn đề với sự trợ giúp của máy tính (phân rã bài toán và dữ liệu, trừu tượng hoá, khái quát hoá, nhận diện mẫu, phát triển thuật toán, phê phán đánh giá) và phát triển yếu tố đặc biệt là hợp tác và sáng tạo cùng với AI, giải quyết vấn đề bằng mô hình học máy, học sâu, AI tạo sinh, khai thác dữ liệu và sáng tạo giải pháp thông minh.
+Do đó, Khung nội dung giáo dục AI được thiết kế liên thông chặt chẽ với Chương trình giáo dục phổ thông môn Tin học, kế thừa các kiến thức, kĩ năng có liên quan và hạn chế sự trùng lặp không cần thiết.
+3. Khai thác chương trình giáo dục AI của các nước tiên tiến
+Chủ động tham khảo, chắt lọc và vận dụng các mô hình giáo dục AI thành công của thế giới, tham khảo Khung năng lực trí tuệ nhân tạo cho học sinh phổ thông của UNESCO nhằm bảo đảm nội dung vừa hiện đại, bắt kịp xu thế, vừa phù hợp với bối cảnh Việt Nam, hướng tới góp phần hình thành và phát triển năng lực của công dân toàn cầu.
+4. Tính khoa học, hiện đại và sư phạm
+Chọn lọc các nội dung cơ bản, hiện đại của lĩnh vực AI, đồng thời đặc biệt quan tâm đến nội dung về đạo đức, pháp luật, văn hoá và tác động xã hội của AI. Nguyên tắc “vừa dạy chữ, vừa dạy người” được đề cao, nhấn mạnh tính nhân văn trong thời đại số.
+Nội dung được thiết kế với các nguyên tắc sư phạm rõ ràng: bảo đảm tính vừa sức, phát triển kiến thức theo lộ trình từ đơn giản đến phức tạp, từ trực quan đến trừu tượng. Các khái niệm cốt lõi được hình thành ở cấp tiểu học và hoàn thiện dần ở các cấp học cao hơn.
+5. Tính mở, linh hoạt và cập nhật định kì
+Khung nội dung được thiết kế theo hướng mở, gồm nội dung cốt lõi và nội dung mở rộng, nhằm vừa bảo đảm thống nhất về chuẩn năng lực, vừa tạo điều kiện để các cơ sở giáo dục chủ động tổ chức thực hiện phù hợp với điều kiện thực tiễn và nhu cầu phát triển của học sinh.
+Nội dung cốt lõi bảo đảm những năng lực AI thiết yếu đối với mọi học sinh, được tổ chức thành các chuyên đề giáo dục AI bắt buộc với thời lượng 12 tiết/lớp/năm học. Các môn học và hoạt động giáo dục tạo cơ hội để học sinh củng cố, vận dụng và phát triển những kiến thức, kĩ năng AI đã được hình thành qua các chuyên đề.
+Nội dung mở rộng do cơ sở giáo dục chủ động lựa chọn và tổ chức phù hợp với nhu cầu, năng lực của học sinh, định hướng giáo dục và điều kiện thực hiện.
+Khung không phụ thuộc vào phần cứng, phần mềm hoặc nền tảng công nghệ cụ thể và được rà soát, cập nhật định kì theo sự phát triển của khoa học, công nghệ và yêu cầu của thực tiễn.
+6. Lấy con người làm trung tâm, đề cao yếu tố đạo đức và trách nhiệm
+Quan điểm xuyên suốt của khung nội dung là công nghệ phục vụ con người. Do đó, bên cạnh kiến thức kĩ thuật, khung nội dung đặc biệt chú trọng giáo dục về đạo đức trong AI. Các vấn đề như quyền riêng tư, tính công bằng, định kiến của thuật toán và tác động xã hội của AI được lồng ghép trong toàn bộ nội dung, nhằm hình thành cho học sinh ý thức và trách nhiệm của một công dân số, một người sử dụng và kiến tạo công nghệ nhân văn.
+II. MỤC TIÊU
+1. Mục tiêu chung
+Khung nội dung giáo dục AI định hướng hình thành và phát triển năng lực AI cho học sinh trên cơ sở kế thừa năng lực tin học và nền tảng khoa học máy tính trong chương trình môn Tin học hiện hành; góp phần phát triển các phẩm chất chủ yếu và năng lực chung theo Chương trình giáo dục phổ thông 2018; đồng thời bồi dưỡng cho học sinh tư duy, phẩm chất và thái độ cần thiết để trở thành công dân số chủ động, có khả năng tương tác, ứng dụng và tham gia kiến tạo các sản phẩm, giải pháp có ứng dụng AI một cách hiệu quả, sáng tạo và có trách nhiệm trong xã hội tương lai.
+Mục tiêu giáo dục AI được cụ thể hoá theo bốn thành phần năng lực, tương ứng với bốn mạch nội dung sau:
+- Tư duy lấy con người làm trung tâm: Giúp học sinh hiểu rằng công nghệ AI được tạo ra để phục vụ và nâng cao chất lượng cuộc sống con người. Học sinh học cách xác định các nhu cầu thực tế của con người, xem xét mức độ phù hợp của các giải pháp AI và đánh giá lợi ích, tác động của chúng đối với cá nhân và cộng đồng. Mạch kiến thức này nhấn mạnh vai trò của con người trong việc định hướng và kiểm soát sự phát triển của AI, nhận diện và hạn chế những tác động tiêu cực không mong muốn.
+- Đạo đức AI: Trang bị cho học sinh kiến thức, khả năng nhận diện, phân tích và phản biện các vấn đề đạo đức, xã hội và pháp lý liên quan đến AI. Qua đó, học sinh hiểu các vấn đề như thiên vị trong thuật toán, quyền riêng tư và bảo vệ dữ liệu cá nhân, trách nhiệm giải trình của các hệ thống AI, tác động của AI đến việc làm và xã hội; đồng thời hình thành thái độ, hành vi có trách nhiệm khi sử dụng, phát triển AI, góp phần bảo đảm công nghệ này được áp dụng một cách công bằng, có đạo đức.
+- Các kĩ thuật và ứng dụng AI: Cung cấp cho học sinh những kiến thức cơ bản về cách thức hoạt động của AI, bao gồm các khái niệm về dữ liệu, thuật toán và mô hình. Học sinh sẽ được tìm hiểu về các loại AI khác nhau, các ứng dụng phổ biến của AI trong đời sống và các công cụ AI mà các em có thể sử dụng. Đồng thời, trang bị cho học sinh những kĩ năng cần thiết để sử dụng các công cụ và ứng dụng AI một cách hiệu quả để giải quyết các nhiệm vụ học tập và các vấn đề trong cuộc sống hằng ngày.
+- Thiết kế hệ thống AI: Giúp học sinh từng bước phát triển năng lực từ việc sử dụng và hiểu biết về AI đến việc có thể tự mình kiến tạo và điều chỉnh các hệ thống AI đơn giản. Mạch nội dung này tập trung, nhấn mạnh vào tư duy giải quyết vấn đề và các kĩ năng kĩ thuật cần thiết để xây dựng các công cụ AI; khuyến khích sự sáng tạo và khả năng làm chủ công nghệ của học sinh, giúp các em không chỉ là người dùng AI mà còn là người tạo ra các giải pháp AI.
+2. Mục tiêu cấp tiểu học
+Khung nội dung giáo dục AI cấp tiểu học hướng đến giúp học sinh bước đầu làm quen với công nghệ AI, hình thành nhận thức cơ bản và năng lực ban đầu về AI, đồng thời chuẩn bị cho học sinh tiếp tục học AI ở cấp trung học cơ sở, cụ thể là:
+- Giúp học sinh bước đầu nhận biết và trải nghiệm một số công cụ hoặc tính năng AI đơn giản, phù hợp lứa tuổi, dưới sự hướng dẫn và giám sát cần thiết; bước đầu hình thành tư duy lấy con người làm trung tâm khi quan sát và sử dụng các công cụ AI trong đời sống hằng ngày.
+- Giúp học sinh hình thành ý thức đạo đức và an toàn khi sử dụng AI: bảo vệ dữ liệu cá nhân, tôn trọng bản quyền, có hành vi đúng mực khi sử dụng thiết bị thông minh và Internet.
+- Giúp học sinh bước đầu nhận biết và sử dụng được một số công cụ AI đơn giản (như nhận diện hình ảnh, giọng nói, trợ lí ảo) phục vụ học tập và vui chơi; biết mô tả một quy trình hoạt động bằng các bước có thứ tự.
+- Giúp học sinh phát triển hứng thú và tư duy sáng tạo, bước đầu làm quen với tư duy thiết kế và điều khiển đơn giản các mô hình hoặc sản phẩm có ứng dụng AI.
+3. Mục tiêu cấp trung học cơ sở
+Khung nội dung giáo dục AI cấp trung học cơ sở hướng đến giúp học sinh tiếp tục phát triển năng lực AI đã hình thành ở cấp tiểu học và đạt được những yêu cầu cơ bản phù hợp với cấp trung học cơ sở, cụ thể là:
+- Giúp học sinh hiểu và thực hành đạo đức AI: nhận diện lợi ích, rủi ro, thiên vị dữ liệu, quyền riêng tư và trách nhiệm cá nhân khi sử dụng công nghệ; có thái độ ứng xử đúng đắn, tôn trọng pháp luật và văn hoá số.
+- Giúp học sinh hiểu được nguyên lý hoạt động cơ bản của AI gồm dữ liệu, thuật toán và mô hình; biết ứng dụng kiến thức này để giải quyết một số vấn đề thực tiễn trong học tập và đời sống.
+- Giúp học sinh biết lựa chọn và sử dụng một số công cụ, mô hình hoặc tài nguyên AI trực quan, phù hợp để tạo sản phẩm số đơn giản; biết kiểm tra, đánh giá và điều chỉnh sản phẩm dựa trên phản hồi.
+- Giúp học sinh bước đầu hình thành tư duy thiết kế và phát triển sản phẩm có ứng dụng AI hoặc hệ thống AI; biết hợp tác, chia sẻ, giải thích sản phẩm và bước đầu tìm hiểu một số lĩnh vực nghề nghiệp có liên quan đến AI.
+4. Mục tiêu cấp trung học phổ thông
+Khung nội dung giáo dục AI cấp trung học phổ thông hướng đến giúp học sinh củng cố và nâng cao năng lực AI đã được hình thành, đồng thời tạo cơ sở cho việc định hướng nghề nghiệp trong lĩnh vực AI hoặc các lĩnh vực có ứng dụng AI, cụ thể là:
+- Giúp học sinh có thái độ cầu thị, trách nhiệm và tuân thủ các nguyên tắc đạo đức AI, biết sử dụng và phát triển AI một cách an toàn, minh bạch và vì lợi ích cộng đồng.
+- Giúp học sinh củng cố và mở rộng kiến thức nền tảng về dữ liệu, thuật toán, mô hình và hệ thống AI; phát triển tư duy giải quyết vấn đề, phản biện, sáng tạo và khả năng làm chủ công nghệ.
+- Giúp học sinh có khả năng đề xuất, thiết kế, thử nghiệm và cải tiến các sản phẩm hoặc giải pháp AI ở mức độ phù hợp; biết đánh giá tính phù hợp, độ tin cậy và tác động của các công cụ AI đối với con người và xã hội.
+- Giúp học sinh vận dụng AI trong học tập, nghiên cứu và sáng tạo sản phẩm số phục vụ cộng đồng, có năng lực tự học, tự nghiên cứu, làm cơ sở cho định hướng nghề nghiệp trong xã hội số.
+III. YÊU CẦU CẦN ĐẠT
+1. Yêu cầu cần đạt về phẩm chất chủ yếu và năng lực chung
+Hoạt động giáo dục AI góp phần hình thành và phát triển các phẩm chất chủ yếu và năng lực chung theo các mức độ phù hợp với môn học, cấp học đã được quy định trong Chương trình giáo dục phổ thông 2018, cụ thể như sau:
+Đối với năm phẩm chất chủ yếu:
+Yêu nước. Giáo dục AI giúp học sinh hiểu vai trò của khoa học - công nghệ trong phát triển đất nước, khơi dậy tinh thần đổi mới sáng tạo và ý thức cống hiến cho cộng đồng.
+Nhân ái. Giáo dục AI đề cao tư duy lấy con người làm trung tâm và đạo đức công nghệ, giúp học sinh biết tôn trọng, đồng cảm và hành xử công bằng. Học sinh học cách sử dụng AI vì lợi ích chung, hướng tới phát triển nhân văn và bao dung trong xã hội số.
+Chăm chỉ. Việc học và thực hành AI rèn cho học sinh tinh thần kiên trì, tự học và sáng tạo. Các hoạt động trải nghiệm, dự án và thử nghiệm công nghệ giúp hình thành thói quen làm việc nghiêm túc, bền bỉ và hiệu quả.
+Trung thực. Khung nội dung giáo dục AI khuyến khích minh bạch, liêm chính và kiểm chứng thông tin. Học sinh được giáo dục không gian lận, sử dụng AI đúng mục đích, biết phân biệt thật - giả và chịu trách nhiệm với kết quả học tập, qua đó phát triển phẩm chất trung thực trong tư duy và hành động.
+Trách nhiệm. Giáo dục AI giúp học sinh nhận thức vai trò của con người trong kiểm soát và phát triển công nghệ. Học sinh được rèn ý thức bảo vệ dữ liệu, tuân thủ đạo đức và có trách nhiệm với cộng đồng, trở thành công dân số chủ động, sáng tạo và có trách nhiệm xã hội.
+Đối với ba năng lực chung:
+Tự chủ và tự học. Giáo dục AI khuyến khích học sinh chủ động khám phá, tự nghiên cứu và làm chủ công nghệ. Qua quá trình trải nghiệm, thử nghiệm và sáng tạo với các công cụ AI, học sinh hình thành năng lực tự định hướng học tập, biết đánh giá và điều chỉnh quá trình học của bản thân trong môi trường số.
+Giao tiếp và hợp tác. Các hoạt động học nhóm, dự án thiết kế và đánh giá sản phẩm AI tạo cơ hội để học sinh rèn luyện kĩ năng lắng nghe, thảo luận và chia sẻ ý tưởng. Học sinh học cách hợp tác với con người và hệ thống thông minh, qua đó phát triển năng lực giao tiếp đa dạng, hiệu quả và có trách nhiệm.
+Giải quyết vấn đề và sáng tạo. Giáo dục AI đặt học sinh vào tình huống thực tiễn, yêu cầu vận dụng tư duy logic, dữ liệu và công cụ số để tìm ra giải pháp mới. Quá trình thiết kế, kiểm chứng và cải tiến mô hình giúp học sinh phát triển tư duy phản biện, năng lực đổi mới và khả năng sáng tạo trong học tập cũng như đời sống.
+2. Yêu cầu cần đạt về năng lực đặc thù
+Học sinh hình thành, phát triển được năng lực AI với bốn thành phần năng lực sau đây:
+- NLa: Tư duy lấy con người làm trung tâm;
+- NLb: Đạo đức AI;
+- NLc: Các kĩ thuật và ứng dụng AI;
+- NLd: Thiết kế hệ thống AI.
+Bảng dưới đây quy định yêu cầu cần đạt đối với mỗi thành phần nêu trên của năng lực AI ở mỗi cấp học.
+Thành phần năng lực/ mạch nội dung tương ứng
+Tiểu học
+Trung học cơ sở
+Trung học phổ thông
+NLa/A – Tư duy lấy con người làm trung tâm
+Nhận biết được AI do con người tạo ra, không có cảm xúc thật; nêu được ví dụ AI giúp ích cho con người; bước đầu hiểu các nguyên tắc sử dụng AI an toàn, có sự kiểm soát của con người; hiểu rằng AI hỗ trợ chứ không thay thế con người.
+Hiểu vai trò quyết định và trách nhiệm của con người khi sử dụng AI; biết kiểm chứng thông tin, kết quả do AI cung cấp; biết bảo vệ quyền riêng tư, dữ liệu cá nhân; nhận biết được tác động của AI đến xã hội, nghề nghiệp và định hướng học tập của bản thân.
+Phân tích được vai trò, quyền kiểm soát của con người trong vòng đời hệ thống AI; phân tích được tác động, rủi ro của AI đối với con người, xã hội; nêu được quy định pháp luật liên quan; biết bảo đảm yếu tố nhân văn, công bằng, bền vững khi thiết kế, sử dụng AI.
+NLb/B – Đạo đức AI
+Hiểu rằng AI cần được dùng đúng cách, không gây hại; biết bảo vệ thông tin cá nhân; nhận biết được AI có thể thiên vị hoặc đưa ra thông tin sai; biết tôn trọng sản phẩm của người khác.
+Nêu và áp dụng được các nguyên tắc đạo đức cơ bản khi dùng AI (trung thực, không gian lận, tôn trọng bản quyền); nhận diện được rủi ro, nội dung giả mạo do AI tạo ra và cách ứng phó; đánh giá được mức độ an toàn của công cụ, sản phẩm AI.
+Đánh giá được các vấn đề đạo đức, mức độ rủi ro và hành vi vi phạm pháp luật khi dùng AI; trình bày được quyền, trách nhiệm của người phát triển và người sử dụng; đề xuất được quy tắc ứng xử về AI cho trường học, cộng đồng.
+NLc/C – Các kĩ thuật và ứng dụng AI
+Bước đầu làm quen với một số khả năng ứng dụng AI hỗ trợ học tập; nêu được ở mức đơn giản việc AI học từ dữ liệu, có thể phân loại, dự đoán và có thể sai; thực hiện được thao tác cơ bản với công cụ trải nghiệm AI trực quan.
+Hiểu được các khái niệm cơ bản: dữ liệu, thuật toán, mô hình AI; mô tả được ở mức đơn giản cách AI học và hoạt động; biết dùng một số công cụ AI phục vụ học tập; đề xuất được ý tưởng giải quyết vấn đề bằng AI.
+Trình bày được quy trình phát triển AI; phân biệt được AI tạo sinh với AI phân loại, dự đoán và biết sử dụng hiệu quả qua prompt; mô tả được một số công nghệ, kĩ thuật AI cơ bản; phân tích được vai trò của chất lượng dữ liệu; nêu được cách đánh giá hiệu quả của hệ thống AI.
+NLd/D – Thiết kế hệ thống AI
+Nhận biết được AI học từ ví dụ, dữ liệu; nêu được ý tưởng dùng AI giải quyết vấn đề gần gũi; hiểu rằng dữ liệu tốt giúp AI hoạt động đúng và AI có thể được cải thiện bằng bổ sung dữ liệu.
+Xác định được tình huống nên ứng dụng AI và giới hạn của AI; lập được kế hoạch thiết kế sản phẩm AI đơn giản theo nhóm; đánh giá được kết quả và đề xuất cách cải thiện.
+Mô tả được cấu trúc, các thành phần chính của hệ thống AI và mối liên hệ giữa chúng; nhận biết được phương án thiết kế, vận hành phù hợp với mục tiêu; trình bày được vấn đề phát sinh và cách khắc phục; hiểu được sự hợp tác nhiều vai trò trong phát triển sản phẩm AI.
+3. Quan hệ giữa các thành phần năng lực
+Bốn thành phần năng lực không được hình thành và phát triển một cách tách biệt mà được huy động đồng thời trong quá trình học tập và giải quyết vấn đề. Trong mỗi nhiệm vụ, học sinh có thể đồng thời xác định mục đích và vai trò của con người (NLa), tuân thủ các yêu cầu về đạo đức và an toàn (NLb), lựa chọn, sử dụng và kiểm chứng AI (NLc), đồng thời thiết kế, thử nghiệm hoặc cải tiến giải pháp (NLd). Trong đó:
+- NLa và NLb giữ vai trò định hướng và kiểm soát, bảo đảm việc sử dụng AI luôn lấy con người làm trung tâm, tôn trọng quyền con người, quyền trẻ em, đạo đức và pháp luật.
+- NLc cung cấp nền tảng về hiểu biết và phương pháp để lựa chọn, sử dụng, kiểm chứng và đánh giá AI.
+- NLd thể hiện sự vận dụng tổng hợp các thành phần năng lực khác nhằm giải quyết các vấn đề trong học tập và thực tiễn; đồng thời là bối cảnh quan trọng để đánh giá năng lực của học sinh.
+Việc đánh giá kết quả học tập cần xem xét các thành phần năng lực phù hợp với mục tiêu và yêu cầu cần đạt của từng nhiệm vụ. Khi nhiệm vụ có sử dụng hoặc thiết kế sản phẩm, giải pháp AI, cần chú trọng các yêu cầu về vai trò của con người, an toàn, đạo đức, pháp luật, kiểm chứng và trách nhiệm. Kết luận về năng lực AI của học sinh phải dựa trên việc tổng hợp nhiều minh chứng trong quá trình học tập.
+4. Các phương diện phát triển năng lực AI
+Các biểu hiện trong bảng mô tả xu hướng phát triển của năng lực AI từ mức khởi đầu đến mức cao hơn, không phải là thang điểm hoặc các mức xếp loại bắt buộc. Theo đó, năng lực AI không được xác định bởi mức độ thành thạo một công cụ cụ thể mà bởi khả năng vận dụng kiến thức, kĩ năng, thái độ và giá trị trong các bối cảnh ngày càng phức hợp.
+Phương diện phát triển
+Biểu hiện ở mức khởi đầu
+Biểu hiện ở mức phát triển cao hơn
+Hiểu biết
+Nhận biết được biểu hiện, ích lợi và giới hạn của AI qua các ví dụ trực quan.
+Mô tả được các mối quan hệ; giải thích được cơ chế khái quát; phân tích được điều kiện, độ tin cậy, giới hạn và tác động của AI.
+Nhiệm vụ và bối cảnh
+Thực hiện được nhiệm vụ ngắn, quen thuộc, có một mục đích và ít ràng buộc.
+Thực hiện được nhiệm vụ gồm nhiều bước, gắn với vấn đề mở, có tính đa môn, nhiều bên liên quan và nhiều ràng buộc về hiệu quả.
+Mức độ tự chủ
+Thực hiện nhiệm vụ theo hướng dẫn, có sự giám sát trực tiếp và sử dụng phương án được lựa chọn sẵn.
+Tự lựa chọn phương án trong phạm vi cho phép; lập kế hoạch, chủ động ra quyết định, giải thích lựa chọn và chịu trách nhiệm về quyết định của mình.
+Kiểm chứng và chứng cứ
+Đối chiếu thông tin với điều đã biết, dựa trên quan sát hoặc nguồn do giáo viên cung cấp.
+Kiểm tra nguồn và dùng tiêu chí đa nguồn; phân tích độ tin cậy, sai số, thiên lệch và giới hạn của thông tin, kết quả do AI cung cấp.
+An toàn và trách nhiệm
+Tuân thủ các quy tắc sử dụng AI; không chia sẻ dữ liệu cá nhân và biết tìm kiếm sự hỗ trợ của người lớn.
+Nhận diện được rủi ro; đề xuất cách ứng phó; phân tích các khía cạnh đạo đức, pháp lý và tác động của AI; đề xuất biện pháp quản trị phù hợp.
+Thiết kế và cải tiến
+Tham gia lựa chọn cách thực hiện, thử nghiệm và chỉnh sửa một số chi tiết theo hướng dẫn.
+Xác định được nhu cầu; tạo mẫu và thử nghiệm; điều chỉnh thiết kế dựa trên bằng chứng; thực hiện các vòng cải tiến và xem xét khả năng triển khai.
+Sự phát triển năng lực được xem xét đồng thời theo mức độ tự chủ, độ phức tạp của nhiệm vụ, phạm vi hiểu biết, chất lượng kiểm chứng, mức độ thiết kế – cải tiến và trách nhiệm trong sử dụng AI. Công cụ chỉ là phương tiện hỗ trợ hoạt động học tập và tạo minh chứng cho năng lực; Khung không đồng nhất năng lực AI với kĩ năng viết câu lệnh, thao tác công cụ hoặc lập trình.
+IV. KHUNG NỘI DUNG GIÁO DỤC AI
+1. Nội dung khái quát
+Nội dung giáo dục AI ở các lớp được xây dựng xuyên suốt theo bốn mạch nội dung chính tương ứng với bốn năng lực đặc thù.
+1.1. Nội dung giáo dục cấp tiểu học
+Chủ đề
+Lớp 1
+Lớp 2
+Lớp 3
+Lớp 4
+Lớp 5
+A. Tư duy lấy con người làm trung tâm
+- Con người có cảm xúc, AI thì không
+- AI thể hiện cảm xúc do con người lập trình
+- Ý nghĩa cảm xúc mà AI thể hiện
+- Nhận diện AI trong cuộc sống
+- Khi nào nên và không nên dùng AI
+- AI làm việc, con người kiểm soát
+- AI trong gia đình
+- AI hỗ trợ mọi người
+- Con người dạy AI qua tương tác
+- Cách sử dụng AI trong học tập
+- Không phụ thuộc hoàn toàn vào AI
+- Suy nghĩ kĩ trước khi dùng AI
+- AI trong trường học
+- AI hỗ trợ mọi người
+- Kiểm tra và phản biện kết quả của AI
+- AI trong công việc hằng ngày
+- AI hỗ trợ, con người suy nghĩ
+- AI vì cuộc sống tốt đẹp hơn
+- AI trong xã hội
+- Con người quyết định khi dùng AI
+- Con người chịu trách nhiệm
+- AI không thay thế con người
+- AI phục vụ lợi ích chung
+- Con người trong kỉ nguyên AI
+B. Đạo đức AI
+- Việc làm tốt và việc làm xấu
+- Máy thông minh làm việc tốt
+- Sự đối xử không công bằng
+- Của bạn và của tớ
+- Phân biệt thật và giả
+- Cùng máy thông minh làm việc tốt
+- Bảo vệ thông tin cá nhân
+- Hệ thống AI công bằng
+- Giúp AI công bằng
+- Cần hiểu cách AI suy nghĩ
+C. Các kĩ thuật và ứng dụng AI
+- Nhận biết AI và ứng dụng AI
+- Chức năng và công cụ AI
+- Cách AI học và học liệu của AI
+- Sơ lược cách AI phân loại đồ vật
+- Dữ liệu học máy
+- Kĩ thuật AI dựa trên luật
+- Kĩ thuật học máy
+- Một số ứng dụng AI quen thuộc
+- Làm quen với một số công cụ trải nghiệm kĩ thuật học máy
+- Thuật toán AI dựa trên luật
+- Làm quen với một số ứng dụng học máy trực quan
+D. Thiết kế hệ thống AI
+- Máy thông minh học từ ví dụ
+- Nhiều loại máy thông minh
+- Máy thông minh giúp giải quyết vấn đề quanh em
+- Ý tưởng máy thông minh
+- Vai trò của dữ liệu
+- Quá trình huấn luyện máy thông minh
+- Dữ liệu tốt cho máy thông minh
+- Máy thông minh có thể học sai
+- Từ vấn đề đến ý tưởng AI
+- Liên tục cải tiến AI
+- Quy trình huấn luyện AI
+- Cải tiến hệ thống AI bằng dữ liệu
+1.2. Nội dung giáo dục cấp trung học cơ sở
+Chủ đề
+Lớp 6
+Lớp 7
+Lớp 8
+Lớp 9
+A. Tư duy lấy con người làm trung tâm
+- Con người tạo và điều khiển AI
+- AI hoạt động theo lập trình
+- Con người ra quyết định với AI
+- Học hỏi và phát triển với AI
+- Quyền riêng tư và bảo vệ dữ liệu cá nhân trong thời đại AI
+- Quyền ra quyết định
+- Xác thực kết quả
+- Hậu quả khi AI quyết định
+- Ngăn chặn công cụ AI có hại
+- Quyền tự chủ của con người và AI
+- Bảo vệ quyền tự chủ của con người
+- AI không thay thế con người
+- Rủi ro khi lạm dụng AI
+- Nguy cơ bị hệ thống AI theo dõi, thao túng
+- Người dùng và người tạo AI
+- Trách nhiệm pháp lý
+- Trách nhiệm giải trình
+- Thách thức xã hội trong kỉ nguyên AI
+- AI tác động đến xã hội
+- Thiên vị và thành kiến trong AI
+- Định hướng học tập trong kỉ nguyên AI
+- AI giúp thể hiện bản thân
+- Nghề nghiệp tương lai
+B. Đạo đức AI
+- Mặt tốt và mặt xấu
+- An toàn khi sử dụng AI
+- Đánh giá và hành động vì môi trường AI an toàn, có đạo đức
+- Trách nhiệm khi sử dụng AI
+- Rủi ro với AI
+- Phòng tránh rủi ro dữ liệu
+- Trách nhiệm phát triển AI
+- Trách nhiệm khi sử dụng AI
+- Kiến tạo AI công bằng
+C. Các kĩ thuật và ứng dụng AI
+- Các thành phần cơ bản trong kiến trúc AI và cách hoạt động cơ bản của AI
+- Tác động tích cực và tiêu cực của AI
+- Làm quen với ứng dụng AI
+- Một số công nghệ AI quen thuộc và đơn giản
+- Các khía cạnh đạo đức liên quan đến dữ liệu huấn luyện AI
+- Tìm hiểu một số cách học của AI
+- Cách AI thực hiện một số chức năng cơ bản.
+- Cách AI nhận diện cảm xúc
+- Thực hành vận dụng AI giải quyết vấn đề, tạo ra sản phẩm đơn giản
+- Cách cải thiện dữ liệu, nâng cao chất lượng của sản phẩm AI.
+D. Thiết kế hệ thống AI
+- Lựa chọn sử dụng AI phù hợp
+- Giới hạn của AI so với con người
+- Ý tưởng dự án AI từ thực tiễn
+- Dự án tạo sản phẩm từ AI
+- Kế hoạch dự án AI
+- Dự án AI đơn giản của em
+- Con người dẫn dắt AI
+- Đánh giá và cải tiến sản phẩm AI
+1.3. Nội dung giáo dục cấp trung học phổ thông
+Chủ đề
+Lớp 10
+Lớp 11
+Lớp 12
+A. Tư duy lấy con người làm trung tâm
+- Con người trong hệ thống AI
+- Con người cần kiểm soát AI
+- Rủi ro đối với con người và dự án AI
+- Luật pháp với AI
+- Quy trình sử dụng AI an toàn
+- AI để nâng cao năng lực
+- Bền vững và công bằng
+- Quyền của người và dự án AI
+- Quyền kiểm soát của con người trong dự án AI
+- Con người trong hệ thống AI
+- Nguyên tắc đạo đức khi thiết kế AI
+- Trách nhiệm công dân trong xã hội có AI
+B. Đạo đức AI
+- Tuân thủ quy định và pháp luật khi sử dụng AI
+- Đạo đức trong vận hành và sáng tạo AI
+- Phòng tránh rủi ro khi sử dụng AI
+- Đạo đức trong thiết kế AI
+- Vấn đề đạo đức của AI
+- Mức độ rủi ro với AI
+- Trách nhiệm trong hệ sinh thái AI
+C. Các kĩ thuật và ứng dụng AI
+- Liên hệ các ứng dụng AI và vấn đề trong thực tế
+- Một số ứng dụng AI trong học tập
+- Cách đặt prompt phù hợp với mục tiêu cụ thể
+- Một số công nghệ trong AI
+- Các dạng dữ liệu huấn luyện và ảnh hưởng đến chất lượng AI
+- Một số ứng dụng AI trong học tập
+- Cách đặt prompt phù hợp với mục tiêu cụ thể
+- Khám phá cách thức vận hành một số hệ thống AI
+- Một số phương pháp, nhiệm vụ tùy chỉnh hệ thống AI
+- Kiến thức cơ bản về mạng nơ-ron nhân tạo
+- Kiến thức cơ bản về các thuật toán phân cụm và phân lớp
+- Các yêu cầu dành cho công cụ AI hỗ trợ các hoạt động học tập và xã hội
+- Một số công cụ thiết kế và phát triển hệ thống AI
+- Tùy chỉnh và tối ưu hệ thống AI
+- Thu thập, cải thiện dữ liệu và các công cụ, nền tảng phát triển hệ thống AI
+D. Thiết kế hệ thống AI
+- Ý tưởng hệ thống AI
+- Hệ thống AI
+- Thiết kế hệ thống AI
+- Vận hành và tối ưu hoá hệ thống AI
+- Giải pháp hệ thống AI
+- Phát triển hệ thống AI
+2. Nội dung cụ thể và yêu cầu cần đạt ở các lớp
+Nội dung giáo dục AI ở các lớp được xây dựng xuyên suốt theo các chủ đề tương ứng với bốn mạch nội dung chính, cụ thể như sau:
+A. Tư duy lấy con người làm trung tâm
+Chủ đề A1. Tính chủ động của con người 
+Chủ đề A2. AI vì sự tiến bộ của con người 
+Chủ đề A3. Công dân trong kỉ nguyên AI
+B. Đạo đức AI
+Chủ đề B1. Các khía cạnh đạo đức của AI
+Chủ đề B2. Sử dụng AI an toàn và có trách nhiệm
+Chủ đề B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+C. Các kĩ thuật và ứng dụng AI
+Chủ đề C1. Đặc điểm chính của AI
+Chủ đề C2. Ứng dụng AI trong học tập và cuộc sống
+Chủ đề C3. Công nghệ AI 
+Chủ đề C4. Dữ liệu trong AI
+Chủ đề C5. Kĩ thuật và thuật toán AI
+D. Thiết kế hệ thống AI
+Chủ đề D1. Nhận diện và hình thành giải pháp
+Chủ đề D2. Cấu trúc và tương tác, cải tiến hệ thống
+* Quy ước mã hoá Yêu cầu cần đạt:
+Mỗi yêu cầu cần đạt được kí hiệu bằng một chuỗi kí tự theo cấu trúc:
+[Lớp].[Mã chủ đề].[Số thứ tự]
+Trong đó:
+- [Lớp]: Kí hiệu bằng các số (từ 1 đến 12);
+- [Mã chủ đề]: Gồm chữ in hoa (A, B, C, D) chỉ mạch nội dung chính, kèm chữ số chỉ chủ đề thành phần;
+- [Số thứ tự]:
++ Đối với nội dung cốt lõi: Kí hiệu bằng các số tự nhiên (1, 2, 3,...);
++ Đối với nội dung mở rộng: Thêm tiền tố “MR” trước số thứ tự.
+Số thứ tự trong mỗi nhóm yêu cầu cần đạt (cốt lõi và mở rộng) được đánh độc lập theo thứ tự xuất hiện trong từng chủ đề, chỉ dùng để định danh và không thể hiện mức độ ưu tiên hay độ khó tương ứng.
+Ví dụ:
+- 6.A1.2: Yêu cầu cần đạt cốt lõi thứ hai, thuộc chủ đề A1 (Tính chủ động của con người), lớp 6.
+- 6.A1.MR1: Yêu cầu cần đạt mở rộng thứ nhất, thuộc chủ đề A1 (Tính chủ động của con người), lớp 6.
+LỚP 1
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Con người có cảm xúc, AI thì không
+1.A1.1. Nêu được ví dụ về một số cảm xúc quen thuộc của con người (vui, buồn, giận dữ, sợ hãi, ngạc nhiên,…) qua các tình huống gần gũi trong cuộc sống và bước đầu nhận ra rằng con người có cảm xúc còn AI thì không.
+1.A1.2. Nêu được rằng AI có thể mô phỏng hoặc nhận diện cảm xúc của con người, chứ không trải nghiệm cảm xúc như con người.
+
+AI thể hiện cảm xúc do con người lập trình
+1.A1.3. Nêu được rằng việc AI thể hiện cảm xúc (ví dụ: cười, buồn, ngạc nhiên, tức giận trên màn hình hoặc qua giọng nói) là do con người lập trình hoặc thiết kế trước.
+1.A1.4. Nêu được một số ví dụ minh họa (như robot cười khi người dùng kể chuyện vui, hoặc trợ lí ảo nói “Tôi rất vui được giúp bạn”), và giải thích được rằng những biểu hiện này chỉ là phản ứng được lập trình sẵn.
+A2. AI vì sự tiến bộ của con người
+Ý nghĩa cảm xúc mà AI thể hiện
+1.A2.1. Nêu được các cách mà AI thể hiện cảm xúc qua hình ảnh, giọng nói hoặc hành vi (ví dụ: biểu tượng khuôn mặt vui, giọng nói thân thiện, hoặc lời chào dễ thương).
+1.A2.MR1. Nêu được rằng những biểu hiện này giúp AI giao tiếp tự nhiên hơn với con người, khiến người dùng cảm thấy thoải mái, gần gũi và dễ hợp tác hơn.
+
+Nhận diện AI trong cuộc sống
+1.A2.2. Nhận biết và kể tên được một số sản phẩm hoặc thiết bị có sử dụng trí tuệ nhân tạo (ví dụ: loa thông minh, điện thoại có trợ lí ảo, robot hút bụi, xe tự lái, camera nhận diện khuôn mặt, ứng dụng dịch ngôn ngữ…).
+1.A2.3. Mô tả được công dụng chính của từng sản phẩm và cách AI giúp sản phẩm hoạt động thông minh hơn (ví dụ: loa thông minh hiểu lệnh bằng giọng nói; robot hút bụi tự tìm đường và tránh chướng ngại vật).
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Việc làm tốt và việc làm xấu
+1.B1.1. Nêu được một số hành vi sử dụng AI có thể gây hại cho người khác.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Máy thông minh làm việc tốt
+1.B3.1. Nhận biết được rằng không được phép sử dụng AI với mục đích làm hại người khác.
+1.B3.2. Nêu được ví dụ về việc con người sử dụng AI đúng cách, vì mục đích tốt đẹp.
+C. Các kĩ thuật và ứng dụng AI
+C1. Đặc điểm chính của AI
+Nhận biết AI và ứng dụng AI
+1.C1.1. Nhận biết được AI trong một số ví dụ cụ thể và đơn giản về AI.
+1.C1.2. Nhận diện được một số công cụ AI quen thuộc và phổ biến trên điện thoại hoặc máy tính bảng (ví dụ: trợ lí ảo, nhận diện khuôn mặt, …).
+
+Chức năng và công cụ AI
+1.C1.3. Nhận biết được các thiết bị thông minh có các bộ phận giống với bộ phận của con người (ví dụ: camera là “mắt” và micro là “tai” của các thiết bị đó).
+1.C1.4. Nhận biết được AI có khả năng hiểu các mệnh lệnh đơn giản của con người, trò chuyện theo kịch bản định sẵn.
+1.C1.MR1. Nhận biết được AI có khả năng xử lí hình ảnh nhận được để nhận diện các đồ vật.
+1.C1.MR2. Nhận biết được AI có khả năng xử lí âm thanh để phân biệt các loại âm thanh khác nhau.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Máy thông minh học từ ví dụ
+1.D1.1. Nêu được ví dụ về một tình huống mà AI “học” từ hình ảnh hoặc thông tin do con người cung cấp (ví dụ: AI học nhận biết con mèo, quả táo…).
+1.D1.MR1. Biết được rằng để AI trả lời đúng cần có nhiều ví dụ đúng và khác nhau để AI học.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Nhiều loại máy thông minh
+1.D2.1. Nhận biết được rằng có loại máy thông minh chỉ làm được một việc (như nhận biết hình ảnh), có loại có thể làm nhiều việc khác nhau (như lắng nghe - trả lời, thực hiện theo lệnh…).
+1.D2.2. Xếp được một số máy thông minh vào hai nhóm: nhóm chỉ làm được một việc và nhóm làm được nhiều việc khác nhau.
+LỚP 2
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Khi nào nên và không nên dùng AI
+2.A1.1. Trình bày được một số tình huống trong cuộc sống mà AI có thể hỗ trợ con người hiệu quả, chẳng hạn như: sử dụng AI để dịch ngôn ngữ, tìm kiếm thông tin nhanh, phát hiện lỗi chính tả, hoặc điều khiển thiết bị thông minh trong nhà, …
+2.A1.2. Trình bày được một số tình huống trong cuộc sống mà không nên hoặc cần thận trọng khi sử dụng AI, ví dụ: khi AI có thể làm lộ thông tin cá nhân (như khuôn mặt, địa chỉ, dữ liệu giọng nói); khi AI thay thế hoàn toàn con người, dẫn đến sự thiếu trách nhiệm.
+
+AI làm việc, con người kiểm soát
+2.A1.3. Nêu được ví dụ cụ thể về tình huống cần con người giám sát AI (ví dụ: người lái xe vẫn cần quan sát khi xe tự lái hoạt động; bác sĩ cần kiểm tra lại kết quả do AI gợi ý).
+2.A1.4. Nêu được ví dụ cụ thể về thái độ đúng đắn khi sử dụng AI: biết tin tưởng vào công nghệ ở mức hợp lý, nhưng vẫn có trách nhiệm và sự kiểm soát của con người.
+A2. AI vì sự tiến bộ của con người
+AI trong gia đình
+2.A2.1. Nêu được một số thiết bị hoặc ứng dụng trong gia đình có sử dụng AI, chẳng hạn như loa thông minh, robot hút bụi, máy điều hoà tự động điều chỉnh nhiệt độ, camera nhận diện người trong nhà, hoặc tivi thông minh gợi ý chương trình yêu thích.
+2.A2.MR1. Thực hành sử dụng một số thiết bị hoặc ứng dụng có sử dụng AI với sự giám sát, hỗ trợ của giáo viên.
+2.A2.MR2. Nêu được rằng không được sử dụng thiết bị hoặc ứng dụng có sử dụng AI mà không có sự giám sát của người lớn.
+
+AI hỗ trợ mọi người
+2.A2.2. Nhận biết và kể tên được các thành viên trong gia đình mà AI có thể hỗ trợ.
+2.A2.MR3. Nêu được rằng mục tiêu của AI trong bối cảnh gia đình là giúp ích cho cuộc sống của các thành viên tiện nghi hơn, an toàn hơn và có nhiều thời gian cho nhau hơn.
+A3. Công dân trong kỉ nguyên AI
+Con người dạy AI qua tương tác
+2.A3.1. Nhận biết được rằng mỗi lần con người nói chuyện, đặt câu hỏi, tìm kiếm, hoặc đưa ra lựa chọn với các hệ thống AI (như trợ lí ảo, chatbot, ứng dụng gợi ý video hoặc nhạc) thì AI có thể ghi nhận dữ liệu để học hỏi cách con người suy nghĩ và phản hồi.
+2.A3.MR1. Nêu được rằng con người có vai trò quan trọng trong việc “dạy” AI thông qua cách tương tác: khi con người đưa ra phản hồi đúng, lịch sự, và có trách nhiệm, AI có thể học được các mẫu thông tin tích cực; ngược lại, nếu dữ liệu sai lệch hoặc thiếu chính xác, AI có thể học sai.
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Sự đối xử không công bằng
+2.B1.1. Nhận biết được rằng AI đôi khi có thể thiên kiến, tức là đối xử không công bằng với một số nhóm người.
+2.B1.MR1. Nêu được ví dụ về các tình huống thể hiện sự thiên kiến của AI.
+2.B1.MR2. Giải thích được rằng nếu dữ liệu chưa đa dạng hoặc chưa công bằng thì AI có thể học theo cách thiên vị.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Của bạn và của tớ
+2.B3.1. Kể được tên một số thứ là của riêng em và một số thứ là của người khác.
+2.B3.2. Nêu được ví dụ về quyền sở hữu đối với sản phẩm do con người hoặc AI tạo ra.
+2.B3.MR1. Phân biệt được thứ của mình với thứ của người khác trong một vài tình huống đơn giản.
+2.B3.MR2. Nêu được rằng muốn dùng thứ của người khác thì phải hỏi và được người đó đồng ý.
+C. Các kĩ thuật và ứng dụng AI
+C1. Đặc điểm chính của AI
+Cách AI học và học liệu của AI
+2.C1.1. Giải thích được “dữ liệu” là những ví dụ (hình ảnh, âm thanh) mà con người dùng để dạy cho AI.
+2.C1.MR1. So sánh được ở mức độ cơ bản giữa cách học của con người và AI.
+C3. Công nghệ AI
+Sơ lược cách AI phân loại đồ vật
+2.C3.1. Nhận biết được rằng AI có thể phân loại.
+2.C3.2. Nêu được rằng AI có thể phân loại sai.
+2.C3.MR1. Quan sát được thao tác phân loại đồ vật do giáo viên thực hiện trên thiết bị điện tử hoặc mô phỏng; từ kết quả quan sát đó, so sánh được cách AI phân loại với cách con người phân loại.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Máy thông minh giúp giải quyết vấn đề quanh em
+2.D1.1. Nêu được một số vấn đề đơn giản, gần gũi trong đời sống có thể áp dụng AI để giải quyết.
+
+Ý tưởng máy thông minh
+2.D1.2. Nêu được một số ý tưởng máy thông minh.
+2.D1.MR1. Nêu một số ví dụ phù hợp để “dạy” AI trong một tình huống cụ thể.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Vai trò của dữ liệu
+2.D2.1. Giải thích được ở mức độ cơ bản về vai trò của dữ liệu trong việc “dạy” AI trong một tình huống cụ thể.
+2.D2.2. Giải thích được ở mức độ cơ bản rằng cần cung cấp cho AI dữ liệu chính xác, rõ ràng để AI đưa ra kết quả đúng.
+2.D2.MR1. Thực hành thu thập một số dữ liệu để “dạy” AI trong một tình huống cụ thể.
+LỚP 3
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Cách sử dụng AI trong học tập
+3.A1.1. Nhận biết được một số tình huống sử dụng AI hỗ trợ học sinh trong quá trình học tập.
+3.A1.2. Nêu được cách sử dụng trợ lí học tập thông minh, ứng dụng học ngôn ngữ để hỗ trợ quá trình học tập.
+3.A1.MR1. Thực hành sử dụng trợ lí học tập thông minh, ứng dụng học ngôn ngữ.
+
+Không phụ thuộc hoàn toàn vào AI
+3.A1.3. Phân biệt được giữa việc sử dụng AI như công cụ hỗ trợ (đúng đắn, chủ động, có kiểm soát) và việc để AI làm thay toàn bộ (thụ động, thiếu tự lập).
+3.A1.MR2. Nêu được hậu quả của việc phụ thuộc quá mức vào AI, như: giảm khả năng tư duy độc lập và sáng tạo; mất dần kĩ năng giải quyết vấn đề; ảnh hưởng đến sự tự tin và bản lĩnh cá nhân.
+
+Suy nghĩ kĩ trước khi dùng AI
+3.A1.4. Nêu được một số tình huống có thể gây rủi ro hoặc hậu quả không mong muốn khi sử dụng AI.
+3.A1.5. Tự đặt và trả lời được một số câu hỏi trước khi quyết định sử dụng AI trong một tình huống cụ thể, ví dụ: Việc này có cần dùng AI không? Nếu AI đưa ra kết quả sai thì điều gì có thể xảy ra? …
+3.A1.MR3. Giải thích được rằng việc suy nghĩ và kiểm tra trước khi dùng AI giúp con người phòng tránh rủi ro, bảo vệ an toàn và quyền riêng tư, đồng thời đảm bảo AI được sử dụng vì mục đích tốt.
+A2. AI vì sự tiến bộ của con người
+AI trong trường học
+3.A2.1. Nhận biết được một số ứng dụng hoặc thiết bị có sử dụng AI trong trường học, chẳng hạn như: robot hoặc bảng thông minh, ứng dụng chấm bài hoặc nhận dạng chữ viết.
+3.A2.2. Nêu được mục đích của việc sử dụng AI trong trường học là hỗ trợ giáo viên và học sinh học tập hiệu quả hơn, giúp: cá nhân hoá việc học theo năng lực từng học sinh; tăng hứng thú học tập thông qua các hoạt động tương tác.
+3.A2.MR1. Mô tả được trường học mong muốn trong tương lai – nơi có sự xuất hiện của một số ứng dụng, thiết bị AI.
+3.A2.MR2. Đề xuất được một số nguyên tắc khi sử dụng AI trong học tập.
+
+AI hỗ trợ mọi người
+3.A2.3. Nêu được các đối tượng trong trường học mà AI có thể hỗ trợ, bao gồm: học sinh, giáo viên, …
+3.A2.MR3. Nêu được mục tiêu của AI trong bối cảnh trường học là hỗ trợ tất cả các thành viên của nhà trường, giúp việc dạy và học trở nên dễ dàng, hiệu quả và công bằng hơn.
+A3. Công dân trong kỉ nguyên AI
+Kiểm tra và phản biện kết quả của AI
+3.A3.1. Nêu được một số ví dụ cụ thể về việc AI có thể sai, như: ứng dụng dịch sai nghĩa từ hoặc câu; AI nhận diện nhầm hình ảnh hoặc khuôn mặt; chatbot đưa ra thông tin không đúng sự thật.
+3.A3.2. Trình bày được rằng khi sử dụng AI, học sinh cần kiểm tra lại kết quả, so sánh với nhiều nguồn thông tin khác nhau và trao đổi với giáo viên hoặc người lớn để xác minh.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Phân biệt thật và giả
+3.B2.1. Nhận biết và nêu được ví dụ về việc thông tin hoặc sản phẩm do AI tạo ra có thể không đúng với sự thật.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Cùng máy thông minh làm việc tốt
+3.B3.1. Nhận biết được rằng không nên tạo ra hoặc sử dụng AI cho các mục đích xấu như lừa đảo, bắt nạt hay gây hại cho người khác.
+3.B3.MR1. Nêu được rằng con người cần cung cấp dữ liệu đúng và đa dạng để AI hoạt động chính xác, công bằng.
+C. Các kĩ thuật và ứng dụng AI
+C4. Dữ liệu trong AI
+Dữ liệu học máy
+3.C4.1. Trình bày được khái niệm dữ liệu thông qua một số ví dụ.
+3.C4.MR1. Xác định được đặc trưng của một số bộ dữ liệu đơn giản.
+C5. Kĩ thuật và thuật toán AI
+Kĩ thuật AI dựa trên luật
+3.C5.1. Mô tả được cấu trúc nếu … thì … trong việc giải quyết tình huống hoặc phân loại.
+3.C5.MR1. Nêu được một số công cụ AI đơn giản sử dụng cấu trúc “nếu … thì …”.
+
+Kĩ thuật học máy
+3.C5.2. Nêu được đặc điểm chính của học máy là học trên dữ liệu.
+3.C5.3. Nêu được một số tình huống có thể áp dụng học máy (ví dụ: phân loại rau củ trong nông trại thông minh, dự báo mưa lũ, …).
+3.C5.4. Nhận biết được bài toán học máy phân loại và bài toán học máy dự đoán thông qua tình huống cụ thể.
+3.C5.MR2. Minh họa được bài toán học máy phân loại và bài toán học máy dự đoán bằng các công cụ mã nguồn mở hoặc miễn phí như Teachable Machine, ML for Kids tích hợp trong Scratch, hoặc một số công cụ phù hợp khác.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Quá trình huấn luyện máy thông minh
+3.D1.1. Trình bày được quá trình đơn giản để huấn luyện AI gồm các bước: thu thập ví dụ và cho AI học từ các ví dụ đó.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Dữ liệu tốt cho máy thông minh
+3.D2.1. Nêu được rằng dữ liệu dùng để dạy AI có thể bị thiếu, nhầm lẫn hoặc không đúng sự thật.
+3.D2.2. Nêu được một số yêu cầu cơ bản đối với dữ liệu dùng để huấn luyện AI.
+3.D2.MR1. Thực hành kiểm tra một bộ thẻ dữ liệu mẫu và loại bỏ được các thẻ gán nhãn nhầm, thẻ không đúng sự thật.
+
+Máy thông minh có thể học sai
+3.D2.3. Trình bày được rằng nếu dữ liệu sai hoặc không tốt thì AI sẽ không hiệu quả, thậm chí hoạt động sai.
+LỚP 4
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+AI trong công việc hằng ngày
+4.A1.1. Trình bày được một số lĩnh vực hoặc công việc cụ thể mà trí tuệ nhân tạo (AI) có thể hỗ trợ con người, chẳng hạn như nông nghiệp, y tế, giao thông, …
+
+AI hỗ trợ, con người suy nghĩ
+4.A1.2. Nhận biết được rằng trí tuệ nhân tạo (AI) được tạo ra để hỗ trợ con người học tập và làm việc hiệu quả hơn nhưng không thể thay thế tư duy, cảm xúc và sự sáng tạo của con người.
+4.A1.MR1. Nêu được ví dụ cụ thể về việc AI hỗ trợ trong học tập và giải thích được vì sao người học vẫn cần tự suy nghĩ, kiểm tra và hiểu bài thay vì chỉ chép kết quả do AI đưa ra.
+A2. AI vì sự tiến bộ của con người
+AI vì cuộc sống tốt đẹp hơn
+4.A2.1. Nêu được rằng AI được con người tạo ra để hỗ trợ các hoạt động trong đời sống xã hội, giúp giải quyết vấn đề, tiết kiệm thời gian và nâng cao chất lượng cuộc sống.
+
+AI trong xã hội
+4.A2.2. Trình bày được các đối tượng trong xã hội AI có thể hỗ trợ, bao gồm: người lao động, người yếu thế, …
+A3. Công dân trong kỉ nguyên AI
+Con người quyết định khi dùng AI
+4.A3.1. Trình bày được rằng việc quyết định có sử dụng AI hay không phụ thuộc vào mục đích, nhu cầu và sự an toàn của con người.
+4.A3.MR1. Thực hành đưa quyết định có sử dụng AI hay không trong một số tình huống cụ thể: Nếu AI mang lại lợi ích, giúp tiết kiệm thời gian, tăng hiệu quả hoặc đảm bảo an toàn, con người có thể lựa chọn sử dụng. Nếu AI gây rủi ro, xâm phạm quyền riêng tư, hoặc ảnh hưởng đến giá trị đạo đức, con người có quyền từ chối hoặc dừng sử dụng.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Bảo vệ thông tin cá nhân
+4.B2.1. Nêu được một số loại thông tin cá nhân cần được giữ bí mật và không nên chia sẻ cho AI.
+4.B2.2. Nêu được một số hậu quả khi thông tin cá nhân bị lộ hoặc bị lợi dụng.
+4.B2.MR1. Thực hành xử lí theo hướng dẫn một tình huống giả định đơn giản về việc bị lộ thông tin cá nhân khi dùng AI.
+C. Các kĩ thuật và ứng dụng AI
+C2. Ứng dụng AI trong học tập và cuộc sống
+Một số ứng dụng AI quen thuộc
+4.C2.1. Nêu được các ứng dụng của AI trong học tập và đời sống, đặc biệt là các ứng dụng gần gũi với bối cảnh Việt Nam.
+4.C2.MR1. Thực hành trải nghiệm một số ứng dụng AI trong học tập và đời sống.
+C5. Kĩ thuật và thuật toán AI
+Làm quen với một số công cụ trải nghiệm kĩ thuật học máy
+4.C5.MR1. Thực hiện lại được theo từng bước các thao tác cơ bản với công cụ trải nghiệm AI trực quan dựa trên học máy có giám sát như Teachable Machine, ML for Kids tích hợp trong Scratch, hoặc một số công cụ phù hợp khác theo hướng dẫn mẫu của giáo viên: (1) mở công cụ và đặt tên cho các nhóm cần phân loại; (2) đưa vào mỗi nhóm một số hình ảnh mẫu; (3) bấm lệnh cho máy học từ các mẫu đó; (4) đưa một hình ảnh mới vào và quan sát kết quả máy đưa ra.
+4.C5.MR2. Lặp lại được đầy đủ bốn bước trên với một nhóm dữ liệu tự chọn khác và mô tả được thao tác ở mỗi bước đã làm.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Từ vấn đề đến ý tưởng AI
+4.D1.1. Nêu được một số ý tưởng ban đầu về cách AI có thể học hoặc giúp giải quyết vấn đề, ưu tiên các vấn đề gần gũi với bối cảnh Việt Nam, ví dụ: AI học từ ảnh các loại rác để phân loại rác tái chế.
+4.D1.MR1. Trình bày được cách sử dụng AI để giải quyết vấn đề trong tình huống đơn giản, ưu tiên các vấn đề gần gũi với bối cảnh Việt Nam, ví dụ: AI học từ giọng nói và chữ viết của đồng bào dân tộc thiểu số để dịch sang tiếng phổ thông, giúp học sinh vùng cao học tập thuận lợi hơn.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Liên tục cải tiến AI
+4.D2.1. Trình bày được rằng con người cần liên tục đánh giá và nâng cấp sản phẩm để hệ thống AI cho ra kết quả tốt hơn.
+LỚP 5
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Con người chịu trách nhiệm
+5.A1.1. Trình bày được rằng AI có thể thực hiện một số công việc thay con người, đặc biệt là những việc lặp đi lặp lại, nguy hiểm hoặc đòi hỏi tính chính xác cao, như: robot lắp ráp sản phẩm trong nhà máy; AI kiểm tra lỗi trong sản xuất; xe tự lái chở hàng hoá.
+5.A1.2. Nêu được ví dụ cụ thể về trách nhiệm của người tạo và sử dụng AI, ví dụ: nếu AI chẩn đoán nhầm bệnh, bác sĩ cần kiểm tra lại và chịu trách nhiệm điều chỉnh.
+5.A1.MR1. Trình bày được con người chịu trách nhiệm cuối cùng về mọi quyết định hoặc kết quả do AI tạo ra.
+A2. AI vì sự tiến bộ của con người
+AI không thay thế con người
+5.A2.1. Giải thích được rằng mục đích chính của AI là hỗ trợ con người, chứ không thay thế vai trò, tư duy, cảm xúc và trách nhiệm của con người trong xã hội.
+5.A2.MR1. Trình bày được rằng dù AI làm được nhiều việc, nhưng chỉ con người mới có khả năng suy nghĩ sáng tạo, hiểu cảm xúc và đưa ra quyết định đạo đức – vì vậy, con người phải luôn kiểm soát, định hướng và chịu trách nhiệm về cách AI được sử dụng.
+
+AI phục vụ lợi ích chung
+5.A2.2. Trình bày được rằng AI được con người tạo ra nhằm phục vụ lợi ích chung của xã hội, giúp cải thiện chất lượng cuộc sống, giải quyết các vấn đề phức tạp và hỗ trợ con người trong nhiều lĩnh vực khác nhau.
+5.A2.3. Nêu được ví dụ cụ thể về việc AI mang lại lợi ích cho cộng đồng: y tế, giáo dục, môi trường.
+A3. Công dân trong kỉ nguyên AI
+Con người trong kỉ nguyên AI
+5.A3.1. Trình bày được rằng AI đang ngày càng trở nên phổ biến trong cuộc sống, vì vậy mọi người – dù là trẻ em, người lớn hay người cao tuổi – đều cần hiểu và biết cách sử dụng AI để phục vụ cuộc sống, học tập và công việc một cách an toàn, hiệu quả.
+5.A3.2. Trình bày được rằng việc sử dụng AI phải phù hợp với nhu cầu, khả năng và mục đích của từng người, tránh lạm dụng hoặc sử dụng không an toàn (ví dụ: chia sẻ thông tin cá nhân, tin tưởng tuyệt đối vào AI).
+5.A3.MR1. Trình bày được ý tưởng về một số tình huống trong tương lai mà AI hỗ trợ trẻ em, người lớn hoặc người cao tuổi.
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Hệ thống AI công bằng
+5.B1.1. Nêu được một số ví dụ về sự công bằng hoặc không công bằng trong một số tình huống đơn giản, trong đời sống và khi AI phục vụ con người.
+5.B1.2. Giải thích được rằng AI cần phục vụ con người một cách công bằng, không phân biệt giới tính, vùng miền, điều kiện kinh tế hay hoàn cảnh khác nhau.
+B2. Sử dụng AI an toàn và có trách nhiệm
+Giúp AI công bằng
+5.B2.1. Nêu được một số cách giúp AI hoạt động công bằng hơn, chẳng hạn như sử dụng dữ liệu đa dạng, tránh định kiến hoặc kiểm tra lại kết quả do AI tạo ra.
+5.B2.MR1. Đề xuất được một số quy tắc khi thu thập dữ liệu để có được bộ dữ liệu đa dạng.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Cần hiểu cách AI suy nghĩ
+5.B3.1. Giải thích được vì sao con người cần hiểu cách AI đưa ra quyết định, nhằm đảm bảo tính minh bạch và độ tin cậy khi sử dụng AI.
+C. Các kĩ thuật và ứng dụng AI
+C5. Kĩ thuật và thuật toán AI
+Thuật toán AI dựa trên luật
+5.C5.1. Nêu được cách sử dụng cấu trúc nếu … thì … trong lập trình AI đơn giản.
+5.C5.MR1. Thực hành sử dụng cấu trúc nếu … thì … trong lập trình AI đơn giản.
+
+Làm quen với một số công cụ ứng dụng học máy trực quan
+5.C5.2. Thực hiện được các thao tác cơ bản với công cụ trải nghiệm AI trực quan dựa trên học máy có giám sát như Teachable Machine, ML for Kids tích hợp trong Scratch, hoặc một số công cụ phù hợp khác.
+5.C5.MR2. Huấn luyện được một mô hình phân loại đơn giản trên công cụ trải nghiệm AI trực quan, ví dụ: phân loại lá cây khoẻ – lá cây bị sâu bệnh.
+5.C5.MR3. Kiểm tra được kết quả do mô hình đưa ra, chỉ ra được những trường hợp mô hình phân loại sai.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Quy trình huấn luyện AI
+5.D1.1. Mô tả được ở mức độ đơn giản về các bước cơ bản trong quá trình huấn luyện mô hình AI: xác định vấn đề, thu thập dữ liệu, dạy máy học, kiểm tra và đánh giá kết quả.
+5.D1.MR1. Thực hành thu thập dữ liệu nhằm huấn luyện mô hình AI giải quyết một vấn đề đơn giản.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Cải tiến hệ thống AI bằng dữ liệu
+5.D2.1. Giải thích được bằng ví dụ rằng hệ thống AI có thể được cải tiến và hoạt động tốt hơn khi dữ liệu được bổ sung và cập nhật thường xuyên.
+5.D2.MR1. Thực hành cải tiến hệ thống AI bằng cách bổ sung dữ liệu.
+LỚP 6
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Con người tạo và điều khiển AI
+6.A1.1. Giải thích được AI là sản phẩm do con người tạo ra, lập trình và điều khiển để thực hiện những nhiệm vụ cụ thể; AI không tự sinh ra và không hoạt động độc lập với con người. Nêu được ví dụ về một số công cụ AI quen thuộc trong đời sống hằng ngày và chỉ ra được vai trò của con người trong việc tạo ra chúng.
+
+AI hoạt động theo lập trình
+6.A1.2. Trình bày được vai trò của AI chỉ là công cụ hỗ trợ hoạt động của con người; con người đưa ra quyết định cuối cùng và chịu trách nhiệm khi sử dụng AI.
+6.A1.3. Thực hiện được việc kiểm tra lại một kết quả do AI đưa ra (đối chiếu với sách giáo khoa, nguồn tin cậy khác hoặc hỏi thầy cô) trước khi sử dụng, thể hiện thói quen “con người quyết định cuối cùng”.
+A3. Công dân trong kỉ nguyên AI
+Con người ra quyết định với AI
+6.A3.1. Nêu được ví dụ về tình huống con người ra quyết định với sự hỗ trợ của AI (ví dụ: trong y tế, AI gợi ý chẩn đoán, bác sĩ xem xét và quyết định phương án điều trị; trong giao thông, AI đề xuất lộ trình nhanh hơn, người lái xe cân nhắc trước khi lựa chọn). Thực hành ra quyết định trong một tình huống giả định có gợi ý của AI (nêu lại gợi ý của AI, cân nhắc và đưa ra lựa chọn của bản thân kèm lí do).
+
+Học hỏi và phát triển với AI
+6.A3.2. Trình bày được lợi ích của AI trong việc hỗ trợ con người học hỏi, rèn luyện kĩ năng và mở rộng hiểu biết khi được sử dụng đúng cách, có mục đích rõ ràng. Sử dụng được một công cụ AI phù hợp lứa tuổi (trực tiếp hoặc theo hướng dẫn của giáo viên) để hỗ trợ một nhiệm vụ học tập đơn giản và nói lại được điều mình đã học thêm.
+
+Quyền riêng tư và bảo vệ dữ liệu cá nhân trong thời đại AI
+6.A3.3. Giải thích được dữ liệu cá nhân (hình ảnh, giọng nói, họ tên, địa chỉ, thông tin học tập, thói quen sử dụng mạng,...) là tài sản của mỗi người; chỉ chủ sở hữu mới có quyền quyết định việc chia sẻ hoặc cho phép sử dụng dữ liệu đó.
+6.A3.4. Trình bày được khái niệm quyền riêng tư ở mức đơn giản; nêu được tác hại khi dữ liệu cá nhân bị sử dụng sai mục đích và ý nghĩa của việc bảo vệ quyền riêng tư đối với sự an toàn, danh dự và tự do của con người trong môi trường số. Nhận biết được một số cách ứng phó ban đầu khi có nguy cơ mất an toàn dữ liệu cá nhân (ví dụ: dừng chia sẻ; báo cho cha mẹ, thầy cô; báo cáo trên nền tảng).
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Mặt tốt và mặt xấu
+6.B1.1. Chỉ ra được mặt tích cực và hạn chế của một số tính năng AI cụ thể (ví dụ: tính năng thu thập dữ liệu người dùng giúp AI đưa ra gợi ý chính xác hơn nhưng có thể ảnh hưởng đến quyền riêng tư).
+B2. Sử dụng AI an toàn và có trách nhiệm
+An toàn khi sử dụng AI
+6.B2.1. Đặt được một số câu hỏi đơn giản để kiểm tra tính an toàn và minh bạch của ứng dụng AI (ví dụ: “Công cụ này có an toàn không?”, “Công cụ này có thu thập thông tin cá nhân không?”, “Có thể tắt tính năng này không?”) và áp dụng các câu hỏi đó để nhận xét đơn giản về mức độ an toàn, phù hợp của một số công cụ AI.
+C. Các kĩ thuật và ứng dụng AI
+C1. Đặc điểm chính của AI
+Các thành phần cơ bản trong kiến trúc AI và cách hoạt động cơ bản của AI
+6.C1.1. Giải thích được hai thành phần chính để huấn luyện (“dạy”) AI là dữ liệu (ví dụ: văn bản, hình ảnh) và thuật toán (phương pháp học từ dữ liệu). Mô tả được các bước hoạt động chính của một công cụ AI qua ví dụ đơn giản (ví dụ: trợ lí ảo nhận câu hỏi bằng giọng nói → chuyển giọng nói thành văn bản → xử lí để hiểu yêu cầu → tìm và đưa ra câu trả lời).
+6.C1.MR1. Chỉ ra được mối liên hệ giữa quá trình huấn luyện và hoạt động của một công cụ AI qua ví dụ đơn giản (ví dụ: trợ lí ảo trả lời được câu hỏi nhờ đã được huấn luyện từ dữ liệu; dữ liệu huấn luyện càng phong phú, câu trả lời càng chính xác).
+6.C1.MR2. Thực hiện được thử nghiệm đơn giản với một công cụ AI và nhận xét được các bước hoạt động của công cụ đó (ví dụ: đặt cùng một câu hỏi cho trợ lí ảo theo các cách nói khác nhau và quan sát kết quả).
+
+Tác động tích cực và tiêu cực của AI
+6.C1.2. Nêu được ví dụ về tác động tích cực và tác động tiêu cực của AI đối với cuộc sống của bản thân, gia đình.
+6.C1.MR3. Phân tích được ở mức đơn giản tác động của một công cụ AI cụ thể đối với bản thân và gia đình, trong đó chỉ ra cả mặt tích cực và mặt tiêu cực (ví dụ: tính năng gợi ý video giúp tìm được nội dung phù hợp nhưng dễ lôi cuốn người xem, gây mất nhiều thời gian).
+C2. Ứng dụng AI trong học tập và cuộc sống
+Làm quen với ứng dụng AI
+6.C2.1. Phân biệt được công cụ, tính năng có ứng dụng AI và không ứng dụng AI qua các ví dụ gần gũi trong cuộc sống (ví dụ: trợ lí ảo có ứng dụng AI; máy tính bỏ túi không ứng dụng AI).
+6.C2.2. Kể được tên và mô tả được chức năng chính của một số công cụ AI thông dụng (như trợ lí ảo; ứng dụng bản đồ; công cụ dịch thuật;…).
+6.C2.MR1. Nêu được ví dụ về ứng dụng AI trong cuộc sống, ưu tiên các vấn đề gắn với thực tiễn ở Việt Nam (ví dụ: AI trong nông nghiệp, giáo dục, dự báo lũ, dịch ngôn ngữ các dân tộc,...).
+C3. Công nghệ AI
+Một số công nghệ AI quen thuộc và đơn giản
+6.C3.1. Kể được tên một số công nghệ AI quen thuộc trong đời sống (ví dụ: nhận dạng hình ảnh, chuyển đổi giữa văn bản và giọng nói,...).
+6.C3.MR1. Trình bày được một số tính năng AI tích hợp trong các ứng dụng thường gặp (ví dụ: gợi ý đề xuất nội dung trên mạng xã hội, quảng cáo cá nhân hoá,...) và nêu được ảnh hưởng của các tính năng đó đến việc sử dụng và ra quyết định của người dùng.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Lựa chọn sử dụng AI phù hợp
+6.D1.1. Nêu được một số tình huống quen thuộc nên hoặc không nên sử dụng AI (ví dụ: nên dùng AI để luyện phát âm ngoại ngữ, tìm đường đi; không nên nhờ AI viết hộ bài văn, làm hộ bài tập vì làm giảm cơ hội tự rèn luyện, làm giảm khả năng tự suy nghĩ của bản thân; không nên dùng AI khi có cách giải quyết khác đơn giản và an toàn hơn).
+6.D1.MR1. Trình bày được ý kiến cá nhân về việc nên hay không nên sử dụng AI trong một số tình huống thực tế; giải thích được lí do lựa chọn dựa trên lợi ích và tác hại của việc sử dụng AI trong tình huống đó.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Giới hạn của AI so với con người
+6.D2.1. Trình bày được một số giới hạn của hệ thống AI so với con người qua các tình huống, công việc mà con người thực hiện phù hợp hơn (chẳng hạn như các công việc cần sự thấu hiểu cảm xúc, sáng tạo, ra quyết định trong tình huống phức tạp).
+6.D2.MR1. Giải thích được vì sao AI gặp giới hạn trong một số công việc so với con người (ví dụ: AI học từ dữ liệu có sẵn nên khó xử lí tốt các tình huống mới, chưa từng có trong dữ liệu; AI không có cảm xúc thật nên khó thấu hiểu con người).
+6.D2.MR2. Đề xuất được cách kết hợp giữa con người và AI trong một công việc cụ thể để phát huy thế mạnh của mỗi bên (ví dụ: AI gợi ý ý tưởng, con người lựa chọn và hoàn thiện).
+LỚP 7
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Quyền ra quyết định
+7.A1.1. Giải thích được lí do con người cần giữ quyền ra quyết định khi sử dụng AI (ví dụ như bảo đảm công bằng: con người có thể xem xét hoàn cảnh và cảm xúc mà AI không hiểu được; bảo đảm an toàn: con người có thể ngăn chặn các hành động sai lệch hoặc nguy hiểm do AI gây ra; bảo vệ quyền lợi con người: không để AI xâm phạm quyền riêng tư, tự do hoặc phẩm giá cá nhân).
+
+Xác thực kết quả
+7.A1.2. Nêu được ví dụ hậu quả có thể xảy ra khi không có sự xác thực của con người về độ chính xác của kết quả do AI đưa ra trong một số trường hợp thực tế.
+7.A1.MR1. Thực hiện được việc kiểm chứng một thông tin do AI cung cấp bằng ít nhất một nguồn đáng tin cậy khác (sách giáo khoa, trang thông tin chính thống, ý kiến thầy cô) trước khi sử dụng.
+A2. AI vì sự tiến bộ của con người
+Hậu quả khi AI quyết định
+7.A2.1. Phân tích được các tác hại có thể xảy ra nếu con người cho phép AI đưa ra quyết định cuối cùng trong một số tình huống thực tế.
+
+Ngăn chặn công cụ AI có hại
+7.A2.2. Nêu được các hậu quả có thể xảy ra nếu không có các quy định pháp lý nhằm ngăn chặn việc thiết kế và sản xuất các công cụ AI có hại trong một số tình huống thực tế.
+A3. Công dân trong kỉ nguyên AI
+Quyền tự chủ của con người và AI
+7.A3.1. Nêu được ví dụ về tình huống AI được phép tự động thực hiện một số thao tác thay con người (ví dụ: tự động kiểm tra và sửa lỗi chính tả khi soạn thảo văn bản) và tình huống con người cần trực tiếp quyết định.
+7.A3.MR1. Trình bày được ví dụ về xung đột giữa quyền tự chủ của con người và mức độ tự chủ của AI.
+7.A3.MR2. Nêu được yêu cầu đánh giá mức độ tự chủ của AI dựa trên nhu cầu và yếu tố bối cảnh cụ thể.
+
+Bảo vệ quyền tự chủ của con người
+7.A3.2. Giải thích được sự cần thiết phải bảo vệ quyền tự chủ của con người khi sử dụng AI để đưa ra các quyết định quan trọng.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Đánh giá và hành động vì môi trường AI an toàn, có đạo đức
+7.B2.1. Nêu được một số tiêu chí đơn giản (dựa trên các nguyên tắc đạo đức) để đánh giá mức độ phù hợp, an toàn của một ứng dụng AI.
+7.B2.2. Nêu được ví dụ về các hành động cụ thể góp phần xây dựng môi trường AI có đạo đức (ví dụ: báo cáo lỗi, không sử dụng ứng dụng độc hại, yêu cầu sự minh bạch).
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Trách nhiệm khi sử dụng AI
+7.B3.1. Thể hiện được thái độ và cam kết cá nhân trong việc sử dụng AI có trách nhiệm thông qua một số hình thức đơn giản (ví dụ: bài viết ngắn, hùng biện hoặc sản phẩm học tập cụ thể). Thể hiện được việc khai báo trung thực khi có sử dụng AI trong sản phẩm học tập.
+C. Các kĩ thuật và ứng dụng AI
+C4. Dữ liệu trong AI
+Các khía cạnh đạo đức liên quan đến dữ liệu huấn luyện AI
+7.C4.1. Trình bày được các vấn đề đạo đức có thể nảy sinh từ dữ liệu huấn luyện AI (ví dụ: dữ liệu thiếu đa dạng dẫn đến phân biệt đối xử, dữ liệu riêng tư bị xâm phạm).
+7.C4.MR1. Phân tích được tầm quan trọng của việc sử dụng bộ dữ liệu “sạch” và “công bằng” trong việc tạo ra các công cụ AI có đạo đức.
+C5. Kĩ thuật và thuật toán AI
+Tìm hiểu một số cách học của AI
+7.C5.1. Mô tả được các bước chính trong quá trình huấn luyện AI qua một ví dụ cụ thể (như thu thập và gán nhãn dữ liệu ảnh chó, mèo; cho máy học từ dữ liệu; kiểm tra khả năng phân biệt trên ảnh mới; điều chỉnh nếu kết quả chưa tốt).
+7.C5.2. Nêu được ví dụ về một số cách học khác nhau của AI ở mức độ đơn giản (ví dụ: học từ dữ liệu đã được con người phân loại, gán nhãn sẵn; tự tìm ra quy luật từ dữ liệu; học qua thử nghiệm và rút kinh nghiệm từ kết quả).
+7.C5.MR1. Phân biệt được ba phương pháp học máy cơ bản (học có giám sát, học không giám sát, học tăng cường); nêu được một số ứng dụng AI sử dụng các phương pháp học máy đó.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Ý tưởng dự án AI từ thực tiễn
+7.D1.1. Nêu được ví dụ về một vấn đề trong trường học hoặc cộng đồng có thể được giải quyết hoặc cải thiện bằng AI; mô tả được phạm vi của vấn đề đó (ví dụ: trong trường học có thể xây dựng chatbot giải đáp thắc mắc thường gặp về nội quy, lịch học cho học sinh; trong cộng đồng có thể dùng AI nhận dạng hình ảnh hỗ trợ phân loại rác tái chế).
+7.D1.MR1. Phân tích được tính khả thi của một ý tưởng dự án AI bằng cách trả lời các câu hỏi (ví dụ: dữ liệu có dễ thu thập không, có rủi ro đạo đức hay không, mức độ phức tạp và chi phí có phù hợp hay không).
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Dự án tạo sản phẩm từ AI
+7.D2.1. Lập được kế hoạch cho một dự án sáng tạo có sử dụng AI theo nhóm nhỏ.
+7.D2.MR1. Thực hành tạo được sản phẩm đơn giản theo kế hoạch đã xây dựng.
+LỚP 8
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+AI không thay thế con người
+8.A1.1. Nêu được một số lĩnh vực mà AI không nên thay thế con người (ví dụ: trong giáo dục, giáo viên hiểu tâm lí học sinh, biết khích lệ, hướng dẫn và dạy đạo đức; trong y tế, bác sĩ không chỉ chữa bệnh mà còn động viên, lắng nghe bệnh nhân; trong nghệ thuật, nghệ sĩ thể hiện cảm xúc và trải nghiệm riêng mà AI không có được;...).
+
+Rủi ro khi lạm dụng AI
+8.A1.2. Nêu được những rủi ro của việc lạm dụng các công cụ AI tạo sinh, liên hệ với nguy cơ suy giảm tư duy phản biện, kĩ năng sáng tạo, sử dụng thông tin sai lệch; từ đó nêu được sự cần thiết của việc kiểm chứng nguồn thông tin khi sử dụng AI tạo sinh trong học tập.
+A2. AI vì sự tiến bộ của con người
+Nguy cơ bị hệ thống AI theo dõi, thao túng
+8.A2.1. Giải thích được việc một số hệ thống, dịch vụ sử dụng AI có thể thu thập, phân tích và sử dụng dữ liệu cá nhân của người dùng (vị trí, thói quen, hình ảnh, giọng nói, sở thích,...) để kiểm soát hành vi, gây ảnh hưởng hoặc thao túng quyết định của con người.
+8.A2.2. Nhận biết được hiện tượng sử dụng AI để kiểm soát người dùng (ví dụ: việc sử dụng AI không minh bạch hoặc sai mục đích, khiến người dùng bị theo dõi mà không biết; bị đề xuất thông tin, quảng cáo hoặc nội dung một chiều; bị thao túng suy nghĩ hoặc hành động; bị mất quyền kiểm soát dữ liệu cá nhân).
+A3. Công dân trong kỉ nguyên AI
+Người dùng và người tạo AI
+8.A3.1. Phân biệt được vai trò của người dùng và người phát triển khi tương tác với AI.
+8.A3.MR1. Giải thích được việc người dùng cũng góp phần tác động đến công cụ AI trong quá trình sử dụng (ví dụ: dữ liệu và phản hồi của người dùng được thu thập để tiếp tục huấn luyện, cải thiện hệ thống; nội dung người dùng tương tác nhiều sẽ được AI ưu tiên đề xuất).
+
+Trách nhiệm pháp lý
+8.A3.2. Nêu được ví dụ về các bên (người sáng tạo, nhà cung cấp, người sử dụng) phải chịu trách nhiệm pháp lý đối với hậu quả do công cụ AI gây ra trong một số tình huống cụ thể (ví dụ: người dùng AI tạo hình ảnh giả mạo người khác; nhà cung cấp chatbot lan truyền thông tin sai lệch).
+
+Trách nhiệm giải trình
+8.A3.3. Nêu được những việc thể hiện trách nhiệm giải trình khi sử dụng AI trong học tập và tạo sản phẩm (ví dụ: cho biết sản phẩm có sử dụng AI và sử dụng ở phần nào; nói rõ công cụ AI đã dùng khi được hỏi; chịu trách nhiệm kiểm tra tính chính xác của nội dung do AI tạo ra trước khi sử dụng).
+8.A3.MR2. Nêu được những việc thể hiện trách nhiệm giải trình khi tạo ra hoặc thiết kế AI (ví dụ: cho biết sản phẩm sử dụng dữ liệu gì, giải thích cách sản phẩm hoạt động, nhận trách nhiệm về kết quả sản phẩm tạo ra).
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Rủi ro với AI
+8.B1.1. Nhận diện và phân loại được một số rủi ro phổ biến khi sử dụng AI: rủi ro về dữ liệu và quyền riêng tư; rủi ro do thuật toán thiên vị hoặc đưa ra kết luận sai; rủi ro bị lừa đảo bằng nội dung giả mạo do AI tạo ra (hình ảnh, giọng nói, tin nhắn giả).
+B2. Sử dụng AI an toàn và có trách nhiệm
+Phòng tránh rủi ro dữ liệu
+8.B2.1. Trình bày được một số việc làm, cách thức đơn giản để bảo vệ dữ liệu cá nhân, tôn trọng bản quyền và phòng tránh, giảm thiểu rủi ro khi sử dụng, phát triển AI trong các dự án học tập.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Trách nhiệm phát triển AI
+8.B3.1. Nêu được các vấn đề đạo đức cần lưu ý khi phát triển AI (ví dụ: bảo mật thông tin, không cung cấp thông tin sai lệch, không xúc phạm người khác).
+C. Các kĩ thuật và ứng dụng AI
+C1. Đặc điểm chính của AI
+Cách AI thực hiện một số chức năng cơ bản.
+8.C1.1. Mô tả được ở mức đơn giản cách AI thực hiện một số chức năng cơ bản như “đọc”, “nghe”, “nhìn” (ví dụ: để “nghe”, AI thu âm thanh, chuyển giọng nói thành văn bản rồi phân tích để hiểu nội dung; để “nhìn”, AI phân tích các đặc điểm trong hình ảnh và so sánh với dữ liệu đã học).
+8.C1.MR1. Phân tích được một số công nghệ, kĩ thuật đảm nhiệm các chức năng “đọc”, “nghe”, “nhìn” của AI (ví dụ: xử lí ngôn ngữ tự nhiên, nhận dạng giọng nói, thị giác máy tính).
+C5. Kĩ thuật và thuật toán AI
+Cách AI nhận diện cảm xúc
+8.C5.1. Nêu được cách AI nhận diện cảm xúc dựa vào các đặc điểm (ví dụ: nét mặt; từ khoá trong văn bản và lời nói; ngữ điệu của lời nói; cử chỉ như gật đầu, lắc đầu,...).
+8.C5.MR1. Nhận xét được ở mức đơn giản về độ tin cậy và giới hạn của việc AI nhận diện cảm xúc (ví dụ: cùng một nét mặt có thể biểu thị những cảm xúc khác nhau tùy theo bối cảnh).
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Kế hoạch dự án AI
+8.D1.1. Xác định được một số vấn đề thực tế có thể giải quyết bằng AI.
+8.D1.MR1. Lập được kế hoạch sơ bộ cho dự án AI để giải quyết vấn đề đã xác định.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Dự án AI đơn giản của em
+8.D2.1. Trình bày được ví dụ về một kịch bản hội thoại cho một tình huống cụ thể có ứng dụng AI (ví dụ: chatbot, trợ lí ảo).
+8.D2.MR1. Mô tả được một số đặc điểm cơ bản của một trải nghiệm người dùng (UX) tốt khi tương tác với AI.
+8.D2.MR2. Lập kế hoạch và triển khai được hoạt động làm việc nhóm để phát triển một sản phẩm AI đơn giản (ví dụ: chatbot, mô hình nhận dạng) bằng các công cụ có sẵn.
+LỚP 9
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Thách thức xã hội trong kỉ nguyên AI
+9.A1.1. Trình bày được ý kiến cá nhân về một thách thức mà xã hội đang đối mặt trong kỉ nguyên AI (ví dụ: hi sinh sự an toàn của người dùng để ưu tiên đổi mới và phát triển AI).
+ 
+AI tác động đến xã hội
+9.A2.1. Nêu được dẫn chứng để giải thích vì sao AI có tác động lớn đến xã hội.
+A2. AI vì sự tiến bộ của con người
+Thiên vị và thành kiến trong AI
+9.A2.2. Giải thích được các vấn đề “thiên vị”, “thành kiến” mà AI có thể gây ra đối với xã hội.
+A3. Công dân trong kỉ nguyên AI
+Định hướng học tập trong kỉ nguyên AI
+9.A3.1. Trình bày được những năng lực con người cần rèn luyện trong thế giới có AI, như biết học cách học (rèn luyện khả năng tự học, học suốt đời), phát triển tư duy phản biện (biết phân tích, đánh giá thông tin do AI cung cấp), giữ vững tính sáng tạo và cảm xúc con người (làm những việc AI không thể làm); nâng cao kĩ năng hợp tác và giao tiếp (làm việc hiệu quả với con người và AI).
+9.A3.2. Xác định được mục tiêu học tập cá nhân trong thế giới có AI (ví dụ: học cách sử dụng AI để tìm kiếm và tóm tắt thông tin; sử dụng AI để rèn luyện kĩ năng viết, đọc, vẽ, tư duy logic; luyện tập giao tiếp hoặc học ngôn ngữ mới với công cụ AI; tự đặt mục tiêu phát triển kĩ năng mềm mà AI không thay thế được).
+
+AI giúp thể hiện bản thân
+9.A3.3. Nêu được ví dụ cách sử dụng AI như một công cụ giúp thể hiện bản thân và theo đuổi đam mê.
+
+Nghề nghiệp tương lai
+9.A3.4. Trình bày được ví dụ một số thay đổi mà AI có thể mang lại cho các ngành nghề trong tương lai, từ đó nêu được một số kĩ năng gắn với các ngành nghề cụ thể cần trang bị để làm việc hiệu quả cùng AI.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Trách nhiệm khi sử dụng AI
+9.B2.1. Trình bày được vai trò của người dùng trong việc kiểm soát và chịu trách nhiệm đối với kết quả cuối cùng do AI tạo ra. Khai báo được việc sử dụng AI trong sản phẩm học tập của bản thân.
+9.B2.2. Nêu được vai trò của cá nhân và cộng đồng trong việc giám sát, phản hồi và đề xuất giải pháp để sử dụng AI một cách an toàn, công bằng, hợp lí.
+9.B2.3. Phân tích được một số dấu hiệu của nội dung giả mạo do AI tạo ra; kiểm chứng được thông tin bằng các nguồn phù hợp và đề xuất được cách ứng phó khi phát hiện nội dung có dấu hiệu giả mạo hoặc lừa đảo.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Kiến tạo AI công bằng
+9.B3.1. Giải thích được tầm quan trọng của việc huấn luyện AI theo hướng không phân biệt đối xử và tôn trọng sự đa dạng.
+9.B3.2. Nêu được một số cách thu thập dữ liệu bảo đảm công bằng, không bỏ sót hay thiên vị các nhóm đối tượng khác nhau.
+C. Các kĩ thuật và ứng dụng AI
+C2. Ứng dụng AI trong học tập và cuộc sống
+Thực hành vận dụng AI giải quyết vấn đề, tạo ra sản phẩm đơn giản
+9.C2.1. Đề xuất được ý tưởng mới, sáng tạo để giải quyết một vấn đề bằng AI.
+9.C2.MR1. Vận dụng được kiến thức đã học để tạo ra một công cụ AI đơn giản (ví dụ: chatbot, mô hình nhận dạng hình ảnh) dựa trên các công cụ hoặc nền tảng có sẵn; ưu tiên nền tảng mở, miễn phí, dễ sử dụng, phù hợp độ tuổi và được rà soát về an toàn.
+C4. Dữ liệu trong AI
+Cách cải thiện dữ liệu, nâng cao chất lượng của sản phẩm AI.
+9.C4.1. Trình bày được một số cách cải thiện bộ dữ liệu để nâng cao chất lượng của sản phẩm AI (ví dụ: bổ sung dữ liệu còn thiếu, loại bỏ dữ liệu trùng lặp, sửa dữ liệu sai hoặc gán nhãn lại cho đúng).
+9.C4.MR1. Chỉ ra được những điểm cần cải thiện trong bộ dữ liệu cụ thể ảnh hưởng đến chất lượng của sản phẩm AI.
+9.C4.MR2. Thực hiện được việc cải thiện bộ dữ liệu (thêm, xoá, sửa dữ liệu) để nâng cao chất lượng của sản phẩm AI.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Con người dẫn dắt AI
+9.D1.1. Trình bày được vai trò của con người là người đồng sáng tạo và dẫn dắt trong việc thiết kế, vận hành và phát triển các hệ thống, công cụ AI.
+9.D1.MR1. Phân tích được vai trò đồng sáng tạo và dẫn dắt của con người qua một hệ thống hoặc công cụ AI cụ thể (ví dụ: con người xác định mục tiêu, lựa chọn dữ liệu, đánh giá và điều chỉnh kết quả của hệ thống).
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Đánh giá và cải tiến sản phẩm AI
+9.D2.1. Nêu được một số cách kiểm tra đơn giản để đánh giá sản phẩm AI (ví dụ: với mô hình nhận dạng, thử với dữ liệu mới chưa dùng khi huấn luyện, đếm số lần cho kết quả đúng và sai; với chatbot, đặt nhiều câu hỏi khác nhau, kiểm tra tính chính xác và phù hợp của câu trả lời).
+9.D2.MR1. Thiết kế và thực hiện được một số kiểm tra đơn giản để đánh giá sản phẩm AI.
+9.D2.MR2. Phân tích được kết quả kiểm tra và chủ động thử nghiệm một số cách cải tiến đơn giản, phù hợp nhằm nâng cao chất lượng sản phẩm.
+LỚP 10
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Con người trong hệ thống AI
+10.A1.1. Thực hành xác định được vai trò của con người trong sử dụng, vận hành, tùy chỉnh một hệ thống AI cụ thể.
+
+Con người cần kiểm soát AI
+10.A1.2. Giải thích được tại sao việc con người kiểm soát AI là quan trọng, thông qua việc liên hệ đến các giá trị như an toàn, công bằng và quyền lợi con người.
+A2. AI vì sự tiến bộ của con người
+Rủi ro đối với con người và dự án AI
+10.A2.1. Nêu được một số rủi ro đối với con người, xã hội mà một sản phẩm AI có thể đem lại.
+10.A2.MR1. Nêu được một số biện pháp hạn chế các rủi ro đối với con người, xã hội mà một sản phẩm AI có thể đem lại thông qua một dự án sáng tạo AI.
+A3. Công dân trong kỉ nguyên AI
+Luật pháp với AI
+10.A3.1. Kể tên được một vài quy định hoặc luật lệ (ở mức độ khái niệm, ví dụ: Luật An ninh mạng, Luật Dữ liệu, Luật Bảo vệ dữ liệu cá nhân) có chức năng bảo vệ người dùng trong không gian số.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Tuân thủ quy định và pháp luật khi sử dụng AI
+10.B2.1. Nêu được ví dụ về hành vi sử dụng AI hoặc sự cố liên quan đến AI vi phạm quy định của nhà trường hoặc các văn bản pháp luật liên quan đến sử dụng công nghệ thông tin.
+10.B2.MR1. Nhận biết được một số dấu hiệu của nội dung do AI tạo sinh tạo ra; kiểm tra và nhận xét được mức độ minh bạch của việc khai báo sử dụng AI trong một sản phẩm.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Đạo đức trong vận hành và sáng tạo AI
+10.B3.1. Trình bày được ví dụ minh họa một số vấn đề đạo đức có thể phát sinh trong quá trình thiết kế và vận hành AI (như thiên vị dữ liệu, vi phạm quyền riêng tư hoặc thiếu minh bạch).
+C. Các kĩ thuật và ứng dụng AI
+C2. Ứng dụng AI trong học tập và cuộc sống
+Liên hệ các ứng dụng AI và vấn đề trong thực tế
+10.C2.1. Xác định được các vấn đề thực tế có thể ứng dụng AI để thực hiện. Ưu tiên các vấn đề gần gũi, cần thiết trong bối cảnh Việt Nam, chẳng hạn: sản xuất nông nghiệp, các vấn đề liên quan đến các cộng đồng thiểu số, …
+10.C2.2. Liệt kê được tên các ứng dụng AI theo các tính năng của hệ thống.
+10.C2.MR1. Xác định được các yêu cầu cần có đối với việc ứng dụng AI thực hiện nhiệm vụ cụ thể.
+
+Một số ứng dụng AI trong học tập
+10.C2.3. Nêu được ví dụ một số trường hợp sử dụng AI hỗ trợ quá trình học tập.
+10.C2.MR2. Sử dụng được một số ứng dụng AI trong học tập.
+C3. Công nghệ AI
+Cách đặt prompt phù hợp với mục tiêu cụ thể
+10.C3.1. Mô tả được các yêu cầu để đưa ra prompt phù hợp với mục tiêu cụ thể.
+10.C3.2. Thực hành đặt prompt giải quyết một số vấn đề gần gũi trong cuộc sống, học tập một cách hiệu quả.
+
+Một số công nghệ trong AI
+10.C3.3. Phân biệt được AI tạo sinh với các hệ thống AI phân loại, dự đoán qua ví dụ cụ thể.
+10.C3.MR1. Trình bày được ví dụ mô tả một số công nghệ để thiết kế và tạo AI.
+C4. Dữ liệu trong AI
+Các dạng dữ liệu huấn luyện và ảnh hưởng đến chất lượng AI
+10.C4.1. Phân tích được sự ảnh hưởng của chất lượng dữ liệu đến chất lượng AI.
+10.C4.MR1. Phân tích được các dạng dữ liệu (hình ảnh, âm thanh, từ ngữ, …) được sử dụng để huấn luyện AI.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Ý tưởng hệ thống AI
+10.D1.1. Nêu được ví dụ cụ thể, xác định nhiệm vụ hoặc mục tiêu cụ thể mà một hệ thống AI cần thực hiện, nêu được mối liên hệ giữa mục tiêu đó với các thành phần chính của hệ thống.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Hệ thống AI
+10.D2.1. Mô tả được các thành phần cơ bản của hệ thống AI (dữ liệu, mô hình, thuật toán, đầu ra, phản hồi) phù hợp với nhiệm vụ cụ thể.
+10.D2.2. Nêu được ví dụ về một số vấn đề phát sinh trong quá trình vận hành hoặc tối ưu hoá AI và trình bày được ý nghĩa của việc khắc phục các vấn đề đó.
+LỚP 11
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Quy trình sử dụng AI an toàn
+11.A1.1. Xây dựng được quy trình sử dụng một sản phẩm AI cụ thể một cách thích hợp.
+
+AI để nâng cao năng lực
+11.A1.2. Phân tích được các trường hợp thực tế để thấy được tầm quan trọng của việc sử dụng AI để nâng cao năng lực của con người mà vẫn đảm bảo sự kiểm soát của con người.
+A2. AI vì sự tiến bộ của con người
+Bền vững và công bằng
+11.A2.1. Nêu được ví dụ về một số ứng dụng AI có tác động tích cực và mang lại lợi ích xã hội lâu dài, chẳng hạn như: AI trong nông nghiệp, AI trong y tế, …
+11.A2.2. Phân tích được các yếu tố thể hiện tính bền vững và công bằng của hệ thống AI đó, ví dụ: bền vững - sử dụng năng lượng hiệu quả, góp phần bảo vệ môi trường, duy trì lâu dài mà không gây hại đến con người hay thiên nhiên; công bằng - đảm bảo mọi người đều được hưởng lợi từ công nghệ, không phân biệt giới tính, địa vị, vùng miền hay điều kiện kinh tế.
+A3. Công dân trong kỉ nguyên AI
+Quyền của người và dự án AI
+11.A3.1. Trình bày được các quyền cơ bản của người dùng dữ liệu (quyền được biết, quyền được đồng ý, quyền yêu cầu xoá dữ liệu…).
+11.A3.MR1. Phân tích được mức độ đảm bảo các quyền cơ bản của người dùng đối với một số sản phẩm AI thông qua một dự án sáng tạo AI.
+B. Đạo đức AI
+B2. Sử dụng AI an toàn và có trách nhiệm
+Phòng tránh rủi ro khi sử dụng AI
+11.B2.1. Nhận biết và phân loại được các rủi ro hoặc sự cố liên quan đến việc sử dụng AI có thể dẫn đến vi phạm quy định của nhà trường hoặc các văn bản pháp luật liên quan.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Đạo đức trong thiết kế AI
+11.B3.MR1. Xác định và sơ đồ hoá được các vấn đề đạo đức có thể phát sinh trong từng bước thiết kế và vận hành AI.
+C. Các kĩ thuật và ứng dụng AI
+C2. Ứng dụng AI trong học tập và cuộc sống
+Một số ứng dụng AI trong học tập
+11.C2.1. Trình bày được cách AI hỗ trợ quá trình học tập và thiết kế các công cụ hỗ trợ.
+11.C2.2. Đề xuất được các tính năng AI hỗ trợ hoạt động học tập.
+11.C2.MR1. Sử dụng được công cụ AI để tạo và biên tập nội dung học liệu phục vụ học tập và đánh giá sản phẩm học tập.
+C3. Công nghệ AI
+Cách đặt prompt phù hợp với mục tiêu cụ thể
+11.C3.1. Xác định được một số kĩ thuật prompt nâng cao từ các yêu cầu cụ thể như: ràng buộc định dạng đầu ra, chia nhỏ nhiệm vụ.
+11.C3.MR1. Vận dụng được một số kĩ thuật prompt nâng cao như: ràng buộc định dạng đầu ra, chia nhỏ nhiệm vụ.
+
+Khám phá cách thức vận hành một số hệ thống AI
+11.C3.2. Mô tả được một số công nghệ AI cơ bản như: chatbot, xử lí ngôn ngữ tự nhiên, thị giác máy tính, cảm biến.
+11.C3.MR2. Phân tích được cách các công nghệ đó vận hành trong hệ thống AI.
+
+Một số phương pháp, nhiệm vụ tùy chỉnh hệ thống AI
+11.C3.MR3. Xác định được một số phương pháp để tùy chỉnh hệ thống AI như: bổ sung và điều chỉnh dữ liệu, điều chỉnh các tham số được phép, cung cấp hướng dẫn hệ thống, sử dụng kĩ thuật sinh nội dung tăng cường bằng truy xuất (RAG), …
+11.C3.MR4. Trình bày được ở mức khái niệm cách hoạt động của kĩ thuật sinh nội dung tăng cường bằng truy xuất (RAG) và vì sao nó giúp giảm sai lệch thông tin.
+C5. Kĩ thuật và thuật toán AI
+Kiến thức cơ bản về mạng nơ-ron nhân tạo
+11.C5.1. Nêu được một số ứng dụng mạng nơ-ron nhân tạo.
+11.C5.MR1. Trình bày được kiến thức cơ bản về mạng nơ-ron nhân tạo.
+
+Kiến thức cơ bản về các thuật toán phân cụm và phân lớp
+11.C5.2. Nêu được một số ứng dụng thuật toán phân cụm, phân lớp.
+11.C5.MR2. Trình bày được kiến thức cơ bản về các thuật toán phân cụm, phân lớp và một số ý tưởng thực hiện.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Thiết kế hệ thống AI
+11.D1.1. Trình bày được cách thức thiết kế và vận hành tổng thể của một hệ thống AI, thể hiện được mối quan hệ giữa mục tiêu, dữ liệu và các thành phần trong hệ thống.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Vận hành và tối ưu hoá hệ thống AI
+11.D2.1. Trình bày được cách thức vận hành của công nghệ trong hệ thống AI, thể hiện được mối liên hệ giữa các thành phần của hệ thống trong việc thực hiện một nhiệm vụ cụ thể.
+11.D2.MR1. Trình bày được các cách thức giải quyết vấn đề phát sinh của hệ thống AI nhằm tối ưu hoá hiệu quả hoạt động của hệ thống.
+LỚP 12
+Chủ đề
+Nội dung
+Yêu cầu cần đạt
+A. Tư duy lấy con người làm trung tâm
+A1. Tính chủ động của con người
+Quyền kiểm soát của con người trong dự án AI
+12.A1.1. Phân tích được một hệ thống AI nhằm đảm bảo con người có quyền kiểm soát và chịu trách nhiệm đối với tất cả các bước quan trọng trong vòng đời AI.
+12.A1.MR1. Thực hiện được việc phân tích quyền kiểm soát và trách nhiệm của con người trong vòng đời AI thông qua một dự án sáng tạo AI.
+
+Con người trong hệ thống AI
+12.A1.2. Phân tích được vai trò của con người và AI trong các bước chính của quá trình ra quyết định.
+12.A1.3. Kiểm tra được việc thực hiện trách nhiệm giải trình của con người đối với các quyết định, đối chiếu với các quy định hiện hành trong nước và quốc tế.
+A2. AI vì sự tiến bộ của con người
+Nguyên tắc đạo đức khi thiết kế AI
+12.A2.1. Trình bày được một số nguyên tắc đạo đức cơ bản trong thiết kế, phát triển sản phẩm AI, gồm có: an toàn – không gây nguy hiểm cho con người và môi trường; công bằng – tránh thiên vị, phân biệt đối xử trong dữ liệu và kết quả; minh bạch – công khai cách hoạt động, không che giấu thông tin; tôn trọng quyền riêng tư – không sử dụng, chia sẻ dữ liệu cá nhân trái phép; trách nhiệm – kiểm tra, đánh giá và chịu trách nhiệm về sản phẩm tạo ra; lợi ích xã hội – phục vụ con người, cộng đồng và phát triển bền vững.
+12.A2.MR1. Vận dụng được các nguyên tắc để soạn thảo được bộ nguyên tắc cá nhân cho một dự án thiết kế, phát triển sản phẩm AI cụ thể; đối chiếu các quyết định thiết kế (mục tiêu, dữ liệu, tính năng, kiểm thử) với bộ nguyên tắc đó và điều chỉnh khi phát hiện nguy cơ vi phạm.
+A3. Công dân trong kỉ nguyên AI
+Trách nhiệm công dân trong xã hội có AI
+12.A3.1. Phân tích được nội hàm của “trách nhiệm công dân trong xã hội AI”: sử dụng AI một cách an toàn, trung thực và có đạo đức; tôn trọng quyền riêng tư và dữ liệu của người khác; không sử dụng AI để lan truyền thông tin sai lệch, gian lận hay gây hại; đóng góp vào việc xây dựng môi trường số tích cực, công bằng và nhân văn.
+B. Đạo đức AI
+B1. Các khía cạnh đạo đức của AI
+Vấn đề đạo đức của AI
+12.B1.MR1. Phân tích được nguyên nhân dẫn đến các vấn đề đạo đức hoặc sai lệch trong quá trình hoạt động của hệ thống AI.
+B2. Sử dụng AI an toàn và có trách nhiệm
+Mức độ rủi ro với AI
+12.B2.1. Xác định được mức độ rủi ro khi sử dụng AI có thể dẫn đến vi phạm quy định của nhà trường hoặc các quy định pháp luật liên quan.
+B3. Nguyên tắc đạo đức và trách nhiệm xã hội
+Trách nhiệm trong hệ sinh thái AI
+12.B3.1. Trình bày được quyền và trách nhiệm của người phát triển, người sử dụng AI, cũng như vai trò của cá nhân trong việc góp ý, đề xuất xây dựng chính sách và quy định liên quan đến AI.
+C. Các kĩ thuật và ứng dụng AI
+C2. Ứng dụng AI trong học tập và cuộc sống
+Các yêu cầu dành cho công cụ AI hỗ trợ các hoạt động học tập và xã hội
+12.C2.1. Lựa chọn được ý tưởng thiết kế một số công cụ AI để thực hiện các công việc khác nhau.
+12.C2.MR1. Tùy chỉnh được các yêu cầu hệ thống AI để hỗ trợ các hoạt động học tập và hoạt động xã hội.
+C3. Công nghệ AI
+Một số công cụ thiết kế và phát triển hệ thống AI
+12.C3.1. Nêu được một số công cụ mã nguồn mở hoặc miễn phí dùng để thiết kế, huấn luyện và phát triển hệ thống AI, như: Teachable Machine, ML5.js, TensorFlow.js, MIT App Inventor hoặc công cụ phù hợp khác.
+12.C3.MR1. Sử dụng được một số công cụ mã nguồn mở hoặc miễn phí dùng để thiết kế, huấn luyện và phát triển hệ thống AI.
+
+Tùy chỉnh và tối ưu hệ thống AI
+12.C3.2. Nêu được ví dụ về cách thức đánh giá hiệu quả của hệ thống AI.
+12.C3.MR2. Đánh giá được khả năng tối ưu hệ thống AI thông qua cập nhật công nghệ, kĩ thuật mới.
+12.C3.MR3. Trình bày được một số khái niệm cơ bản của hệ thống ứng dụng học máy như: hàm mục tiêu, tối ưu hoá hệ thống, mô hình quá khớp dữ liệu (overfitting).
+C4. Dữ liệu trong AI
+Thu thập, cải thiện dữ liệu và các công cụ, nền tảng phát triển hệ thống AI
+12.C4.MR1. Thu thập và tổ chức được dữ liệu đáp ứng yêu cầu của việc phát triển hệ thống AI.
+12.C4.MR2. Phân tích và xác định được các nền tảng hoặc bộ công cụ phát triển AI, cải thiện các bộ dữ liệu đáp ứng quá trình thiết kế, phát triển AI.
+D. Thiết kế hệ thống AI
+D1. Nhận diện và hình thành giải pháp
+Giải pháp hệ thống AI
+12.D1.1. Nhận biết được một số phương án thiết kế và vận hành hệ thống AI phù hợp để đạt hiệu quả cao trong một số nhiệm vụ cụ thể.
+12.D1.MR1. Phân tích được một số phương án thiết kế và vận hành hệ thống AI phù hợp để đạt hiệu quả cao trong một số nhiệm vụ cụ thể.
+D2. Cấu trúc và tương tác, cải tiến hệ thống
+Phát triển hệ thống AI
+12.D2.1. Nhận biết được các vai trò khác nhau trong quá trình phát triển một sản phẩm AI (như người đề xuất ý tưởng, lập trình, huấn luyện, kiểm thử) và việc tạo ra sản phẩm AI cần có sự hợp tác giữa nhiều người với chuyên môn khác nhau.
+12.D2.MR1. Phân tích được nguyên nhân của các vấn đề phát sinh trong hệ thống AI và lựa chọn được cách giải quyết phù hợp để hệ thống hoạt động ổn định và hiệu quả hơn.
+12.D2.MR2. Trình bày được khả năng và cấu trúc cơ bản của một hệ thống tác nhân AI (AI agent).
+12.D2.MR3. Xây dựng và kiểm thử được hệ thống tác nhân AI đơn giản phục vụ một nhiệm vụ học tập hoặc cộng đồng.
+V. PHƯƠNG PHÁP GIÁO DỤC
+1. Định hướng chung
+Phát huy năng lực nhận diện, phân tích và giải quyết vấn đề thực tiễn với sự hỗ trợ của AI khi phù hợp; bồi dưỡng sự tự tin, tự chủ, sáng tạo và khả năng tự học suốt đời; giúp học sinh biết lựa chọn, sử dụng và đánh giá công cụ AI để liên tục nâng cao tri thức và thích ứng với sự thay đổi nhanh chóng của công nghệ trí tuệ nhân tạo.
+Thiết kế các hoạt động học tập để học sinh tích cực, chủ động, sáng tạo trong việc khám phá kiến thức và ứng dụng AI; khuyến khích học sinh tạo ra sản phẩm số, mô hình hoặc phương án ứng dụng AI gắn với học tập và đời sống.
+Vận dụng linh hoạt các phương pháp giáo dục tích cực và hình thức tổ chức dạy học đa dạng trong các chuyên đề giáo dục AI; đồng thời tăng cường củng cố, vận dụng nội dung giáo dục AI thông qua dạy học liên môn, lồng ghép trong các môn học, hoạt động giáo dục, dạy học định hướng STEM/STEAM và các vấn đề thực tiễn của nhà trường, cộng đồng, địa phương khi phù hợp.
+Khi thực hiện các định hướng trên, giáo viên lấy hoạt động học của học sinh làm trung tâm; bảo đảm vai trò quyết định, giám sát và trách nhiệm của con người; tích hợp các yêu cầu về đạo đức, an toàn, quyền trẻ em, kiểm chứng và khai báo việc sử dụng AI trong hoạt động học tập.
+2. Định hướng về phương pháp hình thành, phát triển phẩm chất và năng lực chung
+Trong giáo dục AI có nhiều cơ hội để kết hợp hình thành năng lực AI với việc phát triển năm phẩm chất chủ yếu và ba năng lực chung trong Chương trình giáo dục phổ thông 2018.
+a) Phương pháp hình thành và phát triển phẩm chất chủ yếu:
+Các chủ đề về dữ liệu, đạo đức AI, quyền riêng tư, bản quyền số, AI tạo sinh và trách nhiệm xã hội tạo cơ hội để học sinh hình thành và phát triển các phẩm chất yêu nước, nhân ái, chăm chỉ, trung thực và trách nhiệm trong môi trường số. Giáo viên căn cứ các biểu hiện của phẩm chất được quy định trong Chương trình giáo dục phổ thông tổng thể để lựa chọn nội dung, tình huống và hoạt động giáo dục phù hợp trong toàn bộ quá trình giáo dục AI.
+b) Phương pháp hình thành và phát triển năng lực chung:
+Năng lực tự chủ và tự học được phát triển qua việc học sinh lựa chọn, sử dụng công cụ AI phù hợp, tự điều chỉnh chiến lược học tập, kiểm chứng và cải thiện kết quả. Năng lực giao tiếp và hợp tác được phát triển thông qua hoạt động nhóm, xây dựng dự án, phản biện và chia sẻ kết quả. Năng lực giải quyết vấn đề và sáng tạo được phát triển thông qua việc xác định các vấn đề thực tiễn, thiết kế, thử nghiệm, điều chỉnh giải pháp và đánh giá rủi ro.
+3. Định hướng phương pháp và hình thức tổ chức dạy học đặc thù trong giáo dục AI
+Trong quá trình tổ chức dạy học, giáo viên cần:
+a) Áp dụng các phương pháp dạy học tích cực, chú trọng trải nghiệm, thực hành, giải quyết vấn đề và dự án ở mức độ phù hợp; tạo điều kiện để học sinh hợp tác, tự học và sáng tạo. Các hoạt động học tập được tổ chức linh hoạt, tạo hứng thú cho học sinh, đồng thời bảo đảm an toàn và hiệu quả.
+b) Lựa chọn hình thức tổ chức phù hợp với nội dung và đặc điểm lứa tuổi. Các chủ đề về đạo đức AI, nhận diện rủi ro, tìm hiểu quy định và trách nhiệm khi sử dụng AI có thể được tổ chức thông qua thảo luận, tranh biện, đóng vai và nghiên cứu tình huống mà không cần sử dụng máy tính.
+c) Liên hệ và gắn kết kiến thức AI với các vấn đề thực tiễn trong học tập, đời sống, sản xuất và dịch vụ công; tổ chức cho học sinh đề xuất giải pháp, kiểm chứng kết quả, xem xét hiệu quả, tính nhân văn, đạo đức và mức độ phù hợp của giải pháp.
+d) Thực hiện dạy học phân hoá và cá thể hoá. Ở tiểu học, chú trọng trải nghiệm, khơi gợi tò mò và hứng thú ban đầu với AI. Ở cấp trung học cơ sở, tạo điều kiện để học sinh lựa chọn nhiệm vụ và cách thực hiện phù hợp, từng bước phát triển năng lực dữ liệu, tư duy tính toán và khả năng kiểm chứng, chuẩn bị nền tảng cho bậc học cao hơn. Đối với cấp trung học phổ thông, tăng cường các hoạt động phân tích, thiết kế, sáng tạo, tạo cơ sở cho định hướng nghề nghiệp; các hoạt động nghiên cứu, phát triển sản phẩm với AI được tổ chức phù hợp trong nội dung mở rộng..
+4. Phương pháp giáo dục theo cấp học
+Phương pháp giáo dục AI cần được lựa chọn phù hợp với đặc điểm nhận thức, mức độ tự chủ và yêu cầu phát triển năng lực của học sinh ở từng cấp học. Việc tổ chức dạy học được thực hiện theo tiến trình từ trực quan, sinh động ở tiểu học; logic, khoa học và chú trọng kiểm chứng ở trung học cơ sở; đến phân tích, phản biện và đánh giá ở trung học phổ thông. Theo tiến trình này, mức độ hỗ trợ trực tiếp của giáo viên giảm dần, trong khi tính phức tạp của nhiệm vụ, mức độ tự chủ và trách nhiệm của học sinh tăng dần.
+Ở cấp tiểu học, phương pháp giáo dục cần bảo đảm tính trực quan, sinh động, gần gũi và phù hợp với trải nghiệm của học sinh. Ưu tiên sử dụng kể chuyện, tranh hoặc thẻ, trò chơi, đóng vai, quan sát, lựa chọn và xử lí các tình huống đơn giản; tổ chức những trải nghiệm ngắn có sự hướng dẫn trực tiếp của giáo viên; sử dụng mô hình giấy và tạo sản phẩm đơn giản. Giáo viên chuẩn bị dữ liệu, sử dụng câu lệnh ngắn, rõ ràng; ưu tiên các hoạt động không yêu cầu học sinh tạo tài khoản và không phụ thuộc vào thiết bị cá nhân. Khi cần sử dụng thiết bị, ưu tiên tổ chức cho học sinh sử dụng thiết bị dùng chung dưới sự hướng dẫn, giám sát của giáo viên. Trong trường hợp bị hạn chế vì thiếu thiết bị hoặc điện năng, giáo viên có thể hướng dẫn học sinh mô phỏng thủ công.
+Ở cấp trung học cơ sở, phương pháp giáo dục cần chú trọng tính logic, khoa học và khả năng kiểm chứng. Ưu tiên tổ chức cho học sinh điều tra, đặt câu hỏi, so sánh và kiểm chứng thông tin, phân tích dữ liệu và thiên lệch, xử lí tình huống đạo đức, thiết kế và thử nghiệm các giải pháp đơn giản. Giáo viên xác định quy trình và tiêu chí rõ ràng, đồng thời tạo điều kiện để học sinh lựa chọn cách thực hiện trong phạm vi phù hợp. Học sinh được hướng dẫn ghi lại nguồn dữ liệu, câu lệnh hoặc yêu cầu đã cung cấp cho công cụ AI, kết quả thử nghiệm và phản hồi nhận được để làm căn cứ kiểm chứng, giải thích và điều chỉnh kết quả.
+Ở cấp trung học phổ thông, phương pháp giáo dục cần tập trung phát triển khả năng phân tích, phản biện và đánh giá. Ưu tiên sử dụng nghiên cứu trường hợp, tranh biện, phân tích dữ liệu hoặc mô hình, đánh giá rủi ro và sự đánh đổi, thực hiện dự án, phản biện phương án và đề xuất giải pháp. Học sinh được tăng cường mức độ tự chủ trong xác định vấn đề, lựa chọn phương án, kiểm thử, đánh giá và điều chỉnh giải pháp; đồng thời phải tuân thủ yêu cầu về quản trị dữ liệu, đạo đức, an toàn và trách nhiệm. Giáo viên giữ vai trò định hướng, phê duyệt và kiểm soát tại những khâu cần thiết.
+Tiến trình phương pháp giáo dục AI được phát triển từ quan sát, trải nghiệm và nhận biết ở tiểu học; đến tìm hiểu, giải thích và kiểm chứng ở trung học cơ sở; tiến tới phân tích, phản biện, đánh giá và đề xuất giải pháp ở trung học phổ thông. Theo đó, độ phức tạp của nhiệm vụ, mức độ tự chủ, chất lượng minh chứng và trách nhiệm của học sinh trong học tập và sử dụng AI được tăng dần.
+5. Tổ chức nội dung cốt lõi và nội dung mở rộng
+Nội dung giáo dục AI được tổ chức thành nội dung cốt lõi và nội dung mở rộng.
+Nội dung cốt lõi bảo đảm các yêu cầu cần đạt thiết yếu đối với mọi học sinh, được tổ chức thực hiện thông qua các chuyên đề giáo dục AI với thời lượng 12 tiết/lớp/năm học. Các chuyên đề được bố trí phù hợp trong kế hoạch giáo dục của nhà trường và kế hoạch dạy học 2 buổi/ngày; bảo đảm phù hợp với đặc điểm học sinh, điều kiện thực tế và không gây áp lực, quá tải.
+Nội dung giáo dục AI được lồng ghép trong các môn học và hoạt động giáo dục nhằm củng cố, vận dụng và phát triển những kiến thức, kĩ năng thuộc nội dung cốt lõi đã được trang bị qua các chuyên đề; đồng thời có thể thực hiện một phần nội dung mở rộng khi phù hợp với yêu cầu cần đạt, đặc thù môn học, hoạt động giáo dục và điều kiện của cơ sở giáo dục. Việc lồng ghép không làm thay đổi hoặc gia tăng yêu cầu cần đạt của môn học và hoạt động giáo dục.
+Nội dung mở rộng được tổ chức ngoài thời lượng 12 tiết dành cho nội dung cốt lõi, phù hợp với nhu cầu, năng lực của học sinh và điều kiện của cơ sở giáo dục. Nội dung mở rộng có thể được tổ chức thông qua hình thức câu lạc bộ, dự án, hoạt động trải nghiệm, ngoại khoá, nghiên cứu hoặc các hình thức phù hợp khác.
+Việc triển khai nội dung mở rộng không thay thế, không làm giảm yêu cầu thực hiện nội dung cốt lõi và phải bảo đảm cơ hội tiếp cận công bằng cho học sinh.
+VI. ĐÁNH GIÁ KẾT QUẢ GIÁO DỤC
+1. Định hướng chung
+Đánh giá kết quả giáo dục AI là một bộ phận của quá trình tổ chức dạy học, nhằm xác định mức độ đáp ứng yêu cầu cần đạt và sự tiến bộ của học sinh; giúp giáo viên điều chỉnh hoạt động dạy học, đồng thời hỗ trợ học sinh nhận biết điểm mạnh, hạn chế và chủ động cải thiện kết quả học tập.
+Việc đánh giá phải bám sát các yêu cầu cần đạt thuộc nội dung cốt lõi của từng lớp, phù hợp với đặc điểm lứa tuổi và điều kiện tổ chức thực hiện; kết hợp đánh giá quá trình, đánh giá định kì và tổng hợp kết quả vào cuối học kì, trong đó đánh giá quá trình giữ vai trò chủ đạo. Nội dung mở rộng được đánh giá, ghi nhận riêng và không dùng để thay thế, nâng chuẩn hoặc làm điều kiện hoàn thành nội dung cốt lõi.
+Khung không quy định bài kiểm tra, bài thi hoặc đầu điểm riêng đối với nội dung giáo dục AI. Kết quả đánh giá nội dung cốt lõi được ghi nhận bằng nhận xét hoặc mức độ đáp ứng yêu cầu cần đạt trên cơ sở các minh chứng thu thập trong chuyên đề giáo dục AI và quá trình học sinh củng cố, vận dụng nội dung AI trong các môn học, hoạt động giáo dục. Khi phù hợp, minh chứng về việc vận dụng AI có thể được sử dụng trong quá trình đánh giá môn học hoặc hoạt động giáo dục theo quy định hiện hành; không xác lập đầu điểm riêng cho nội dung giáo dục AI.
+Đánh giá phải bảo đảm tính toàn diện, khách quan và công bằng; không gây bất lợi cho học sinh do thiếu thiết bị, tài khoản, kết nối Internet hoặc khả năng tiếp cận một công cụ AI cụ thể. Việc đánh giá không tập trung vào mức độ thành thạo một phần mềm hoặc nền tảng riêng biệt mà chú trọng khả năng vận dụng kiến thức, kĩ năng, thái độ và trách nhiệm của học sinh.
+2. Nội dung đánh giá
+Nội dung đánh giá tập trung vào mức độ học sinh đáp ứng các yêu cầu cần đạt thuộc bốn thành phần năng lực AI, gồm:
+a) Nhận biết vai trò của con người; xác định mục đích và mức độ phù hợp của việc sử dụng AI; duy trì quyền chủ động, kiểm soát và trách nhiệm của con người.
+b) Nhận diện và xử lí phù hợp các vấn đề về đạo đức, an toàn, quyền riêng tư, dữ liệu cá nhân, bản quyền, công bằng, thiên lệch, minh bạch và trách nhiệm giải trình.
+c) Hiểu biết về dữ liệu, thuật toán, mô hình, khả năng và giới hạn của AI; lựa chọn, sử dụng, kiểm chứng và đánh giá thông tin hoặc kết quả do AI cung cấp.
+d) Xác định vấn đề, đề xuất ý tưởng, thiết kế, thử nghiệm, đánh giá và cải tiến sản phẩm hoặc giải pháp có ứng dụng AI ở mức độ phù hợp.
+Việc đánh giá đồng thời chú trọng khả năng hợp tác, giao tiếp, giải thích lựa chọn, cung cấp minh chứng, khai báo việc sử dụng AI và chịu trách nhiệm đối với quá trình, sản phẩm học tập của học sinh.
+Đối với các chủ đề về sử dụng và ứng dụng AI, chú trọng khả năng lựa chọn công cụ, thực hiện nhiệm vụ, kiểm chứng kết quả và giải quyết vấn đề. Đối với các chủ đề về dữ liệu, thuật toán, mô hình và hệ thống AI, chú trọng khả năng mô tả, giải thích, phân tích, thử nghiệm và cải tiến. Đối với các chủ đề về đạo đức, an toàn và pháp luật, cần kết hợp đánh giá việc xử lí tình huống với quan sát thái độ, hành vi và trách nhiệm của học sinh.
+3. Hình thức và thời điểm đánh giá
+Đánh giá quá trình được thực hiện thường xuyên trong các hoạt động học tập thông qua quan sát, trao đổi, câu hỏi, nhiệm vụ, tình huống, thực hành, sản phẩm và hồ sơ học tập. Giáo viên cung cấp phản hồi kịp thời, giúp học sinh nhận biết kết quả đã đạt được, nội dung cần điều chỉnh và cách thức cải thiện; khuyến khích học sinh tự đánh giá và đánh giá đồng đẳng theo tiêu chí phù hợp.
+Đánh giá định kì có thể được thực hiện sau một chuyên đề, một nhóm nội dung hoặc một giai đoạn học tập thông qua bài thực hành, xử lí tình huống, bài trình bày, dự án nhỏ, sản phẩm hoặc hồ sơ học tập. Không tổ chức bài kiểm tra định kì và không xác lập đầu điểm riêng cho nội dung giáo dục AI.
+Vào cuối học kì, giáo viên tổng hợp các minh chứng từ đánh giá quá trình và đánh giá định kì để nhận xét về sự tiến bộ và mức độ đáp ứng các yêu cầu cần đạt cốt lõi của học sinh; không nhất thiết tổ chức bài kiểm tra cuối học kì riêng. Kết luận đánh giá phải dựa trên nhiều minh chứng, không suy rộng thành kết luận về toàn bộ năng lực AI chỉ từ một sản phẩm, một lần thực hiện nhiệm vụ hoặc kết quả sử dụng một công cụ cụ thể.
+4. Phương pháp, công cụ và minh chứng đánh giá
+Giáo viên lựa chọn, phối hợp linh hoạt các phương pháp đánh giá như quan sát, trao đổi, đặt câu hỏi, thảo luận, tranh biện, xử lí tình huống, thực hành, dự án, tự đánh giá và đánh giá đồng đẳng. Công cụ đánh giá có thể gồm bảng kiểm, phiếu quan sát, thang mô tả mức độ, rubric, nhật kí và hồ sơ học tập.
+Minh chứng đánh giá có thể là câu trả lời, phiếu học tập, kết quả xử lí tình huống, bảng kiểm chứng thông tin, sơ đồ, mô hình, sản phẩm số, nguyên mẫu, báo cáo thử nghiệm, bài trình bày, kết quả phản biện và phần giải thích của học sinh. Tiêu chí đánh giá cần chú trọng quá trình xác định mục tiêu, lựa chọn phương án, kiểm chứng kết quả, giải thích quyết định, điều chỉnh sản phẩm và chịu trách nhiệm của học sinh.
+Khi sản phẩm học tập có sử dụng AI, học sinh cần nêu được công cụ, mục đích và phạm vi hỗ trợ của AI, phần việc do học sinh trực tiếp thực hiện, cách kiểm chứng và chỉnh sửa kết quả. Việc khai báo sử dụng AI là minh chứng về tính trung thực và trách nhiệm, không phải là căn cứ để tự động tăng hoặc giảm kết quả đánh giá.
+Nhiệm vụ đánh giá phải phù hợp với điều kiện thực tế, có phương án không sử dụng thiết bị hoặc sử dụng thiết bị dùng chung khi cần thiết; không phụ thuộc bắt buộc vào dịch vụ trả phí, tài khoản cá nhân, nền tảng hoặc thiết bị chuyên biệt. Đánh giá trên diện rộng, nếu thực hiện, phải căn cứ vào các yêu cầu cần đạt thuộc nội dung cốt lõi và không sử dụng nội dung mở rộng làm căn cứ đánh giá bắt buộc đối với mọi học sinh.
+ 
+PHỤ LỤC: 
+GIẢI THÍCH THUẬT NGỮ
+Thuật ngữ
+Giải thích
+Trí tuệ nhân tạo (Artificial Intelligence, AI)
+Là việc thực hiện bằng điện tử các năng lực trí tuệ của con người, bao gồm học tập, suy luận, nhận thức, phán đoán và hiểu ngôn ngữ tự nhiên.
+AI tạo sinh (generative AI)
+Loại AI có khả năng tạo ra nội dung mới như văn bản, hình ảnh, âm thanh, video, mã nguồn hoặc dữ liệu, dựa trên dữ liệu đã học.
+Hệ thống AI (AI system)
+Hệ thống dựa trên máy, được thiết kế để thực hiện các năng lực trí tuệ nhân tạo với các mức độ tự chủ khác nhau, có thể thể hiện khả năng thích nghi sau khi được triển khai; căn cứ vào các mục tiêu được xác định rõ ràng hoặc được hình thành một cách ngầm định, hệ thống suy luận từ dữ liệu đầu vào để tạo ra các đầu ra như dự đoán, nội dung, khuyến nghị hoặc quyết định có thể gây ảnh hưởng tới môi trường vật lý hoặc môi trường số.
+Vòng đời hệ thống AI (AI system lifecycle)
+Các giai đoạn của một hệ thống AI, từ xác định vấn đề, chuẩn bị dữ liệu, thiết kế, thử nghiệm, triển khai, giám sát, xử lí sự cố đến kết thúc sử dụng.
+Mô hình AI (AI model)
+Thành phần của hệ thống AI, tạo ra đầu ra từ đầu vào dựa trên các tham số hoặc quy tắc được xây dựng sẵn hoặc học được từ dữ liệu.
+Thuật toán (algorithm)
+Dãy hữu hạn các bước, quy tắc được xác định rõ ràng nhằm giải quyết một bài toán hoặc thực hiện một nhiệm vụ; là cơ sở để xây dựng chương trình máy tính và mô hình AI.
+Học máy (machine learning)
+Phương pháp xây dựng mô hình AI bằng cách cho máy “học” từ dữ liệu thay vì lập trình tường minh từng quy tắc.
+Học có giám sát (supervised learning)
+Phương pháp học máy trong đó mô hình học từ dữ liệu đã được gán nhãn (có sẵn cặp đầu vào và kết quả đúng) để dự đoán kết quả cho dữ liệu mới; ví dụ: phân loại thư rác, nhận dạng chữ viết tay.
+Học không giám sát (unsupervised learning)
+Phương pháp học máy trong đó mô hình tự tìm cấu trúc, quy luật hoặc nhóm trong dữ liệu chưa được gán nhãn; ví dụ: tự động gom nhóm các tài liệu, bài báo khoa học có nội dung tương tự nhau theo từng chủ đề.
+Học tăng cường (reinforcement learning)
+Phương pháp học máy trong đó mô hình học qua thử nghiệm, nhận phản hồi dạng phần thưởng hoặc hình phạt và điều chỉnh hành động để đạt kết quả tốt nhất; ví dụ: AI học chơi cờ.
+Mạng nơ-ron nhân tạo (artificial neural network)
+Mô hình tính toán gồm các nút liên kết với nhau, thường được tổ chức thành nhiều lớp, lấy cảm hứng từ cách truyền tín hiệu của nơ-ron sinh học; là nền tảng của học sâu và nhiều hệ thống học máy hiện đại.
+Học sâu (deep learning)
+Nhánh của học máy sử dụng mạng nơ-ron nhân tạo nhiều lớp để tự động học các đặc trưng từ dữ liệu; là nền tảng kĩ thuật của nhiều hệ thống AI hiện đại, trong đó có AI tạo sinh.
+Xử lí ngôn ngữ tự nhiên (Natural Language Processing – NLP)
+Lĩnh vực kĩ thuật giúp máy hiểu, phân tích và tạo ra ngôn ngữ của con người dưới dạng văn bản hoặc lời nói.
+Thị giác máy tính (computer vision)
+Lĩnh vực kĩ thuật giúp máy phân tích hình ảnh, video để thực hiện các tác vụ như nhận dạng, phân loại đối tượng.
+Phần mềm hội thoại tự động (Chatbot)
+Ứng dụng giao tiếp với người dùng bằng hội thoại (văn bản hoặc giọng nói); có thể hoạt động theo kịch bản định sẵn hoặc dựa trên các mô hình AI.
+Mô hình ngôn ngữ lớn (Large Language Model – LLM)
+Mô hình AI tạo sinh được huấn luyện trên khối lượng văn bản rất lớn, có khả năng hiểu và tạo ra ngôn ngữ tự nhiên; là nền tảng của nhiều chatbot và trợ lí AI hiện nay.
+Tác nhân AI (AI agent)
+Hệ thống AI có khả năng lập kế hoạch và tự thực hiện một chuỗi hành động nhằm đạt mục tiêu do con người đặt ra. Việc sử dụng tác nhân AI phải trong phạm vi nhiệm vụ được giao và chịu sự giám sát của con người.
+Kĩ thuật sinh nội dung tăng cường bằng truy xuất (Retrieval-Augmented Generation – RAG)
+Kĩ thuật cho phép mô hình AI truy xuất thông tin từ nguồn dữ liệu bên ngoài trước khi tạo câu trả lời, nhằm tăng độ chính xác và giảm nguy cơ tạo ra thông tin sai lệch.
+Câu lệnh (prompt)
+Chỉ dẫn, câu hỏi, dữ liệu hoặc ngữ cảnh do người dùng cung cấp để hệ thống AI tạo ra đầu ra tương ứng.
+Ảo giác AI (hallucination)
+Hiện tượng hệ thống AI tạo ra đầu ra có vẻ hợp lí nhưng sai, thiếu căn cứ hoặc không tồn tại trong thực tế; đây là hạn chế kĩ thuật của mô hình, không phải hành vi có chủ đích.
+Thiên lệch (bias)
+Sai lệch có tính hệ thống trong đầu ra của AI, phát sinh từ dữ liệu, thiết kế, cách triển khai hoặc bối cảnh sử dụng, có thể dẫn đến kết quả thiếu công bằng hoặc phân biệt đối xử.
+Nội dung giả mạo do AI tạo ra (deepfake)
+Hình ảnh, âm thanh, video do AI tạo ra hoặc chỉnh sửa nhằm mô phỏng người, sự kiện thật với độ chân thực cao; có thể bị lợi dụng để lừa dối, thao túng nhận thức hoặc xâm phạm quyền, lợi ích hợp pháp của cá nhân, tổ chức.
+Quá khớp (overfitting)
+Hiện tượng mô hình học quá sát dữ liệu huấn luyện nên hoạt động kém với dữ liệu mới.
+Trải nghiệm người dùng (User Experience – UX)
+Tổng thể cảm nhận, mức độ thuận tiện và hiệu quả của người dùng khi tương tác với một sản phẩm, hệ thống.
+Dữ liệu cá nhân
+Dữ liệu số hoặc thông tin dưới dạng khác xác định hoặc giúp xác định một con người cụ thể, bao gồm: dữ liệu cá nhân cơ bản và dữ liệu cá nhân nhạy cảm. Dữ liệu cá nhân sau khi khử nhận dạng không còn là dữ liệu cá nhân.
+Trách nhiệm giải trình
+Nghĩa vụ giải thích, cung cấp thông tin và chịu trách nhiệm về quyết định, quy trình và tác động liên quan đến việc sử dụng, phát triển AI.
+ 
