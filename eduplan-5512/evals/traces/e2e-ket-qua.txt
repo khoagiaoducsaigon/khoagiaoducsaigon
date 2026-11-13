@@ -1,0 +1,31 @@
+2026-11-13T03:20:44.155Z
+PASS  Bản cũ có kho EduPlan5512DB với dữ liệu thật
+PASS  Bản mới tự phát hiện kho EduPlan cũ (banner)
+PASS  Hộp xem trước số bản ghi (dry-run) hiển thị
+PASS  Di trú 3 KHBD (thật + mẫu được dùng thật) — có 3
+PASS  Di trú 4 tài khoản — có 4
+PASS  Trạng thái duyệt cũ giữ nguyên (lp_real1: chờ BGH)
+PASS  Đã rà soát lại KHBD di trú (không đổi trạng thái)
+PASS  Đối soát 10 bản ghi khớp — thành công
+PASS  Kho cũ vẫn được giữ sau khi chuyển
+PASS  Đã chuyển xong → không còn banner
+PASS  Giáo viên cũ đăng nhập được bằng mật khẩu cũ
+PASS  Mật khẩu cũ được băm lại bằng PBKDF2 ở lần đăng nhập đầu
+PASS  KHBD cũ của giáo viên hiện trên trang chủ
+PASS  Chạy lại di trú (dry-run) không ghi thêm bản ghi nào — 0
+PASS  Số KHBD không đổi sau khi tải lại/chạy lại
+PASS  Chế độ trình diễn: CSDL riêng, tự nạp dữ liệu mẫu
+PASS  Tìm thấy YCCĐ "hình chóp" Toán 8 trong CT 2018 (4)
+PASS  Tạo bài + AI soạn nháp → vào bước 1
+PASS  Bản nháp AI không còn cờ đỏ → nút "Gửi Tổ trưởng duyệt" mở
+PASS  Xuất tệp: KHBD_Hinh-chop-tu-giac-deu.docx, Slide_Hinh-chop-tu-giac-deu.pptx, Phieu-hoc-tap_Hinh-chop-tu-giac-deu.docx, Danh-gia_Hinh-chop-tu-giac-deu.docx
+PASS  Luồng nộp → tổ duyệt → BGH duyệt chạy đúng (trạng thái: da_duyet)
+PASS  KHBD đã duyệt vào Kho của tổ
+PASS  Phiếu PL V: 20/20 — Giỏi
+PASS  Đề xuất điều chỉnh đẩy về "Điều chỉnh sau bài dạy", trạng thái "Đã dạy"
+PASS  Dashboard BGH hiển thị từ CSDL
+PASS  Rà soát nhanh 5512 (luồng cũ) chạy, giữ tên nút quen thuộc
+PASS  23 luật hiển thị, bật/tắt được
+PASS  P14 Chuyển dữ liệu hiển thị migration_logs
+PASS  CSDL thật không lẫn dữ liệu trình diễn
+PASS  Không có lỗi JS (0)

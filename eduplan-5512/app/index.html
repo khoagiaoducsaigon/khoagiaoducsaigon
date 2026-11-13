@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPlan KHBD AI</title>
+<meta name="description" content="Soạn, rà soát, duyệt kế hoạch bài dạy theo CT GDPT 2018 (CV 5512, CV 2345, CV 3456, QĐ 2422) — 3 cấp TH, THCS, THPT.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  if (window.tailwind) tailwind.config = { theme: { extend: {
+    fontFamily: { sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'] },
+    colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' } } } } };
+</script>
+<style>
+  body { background: #f8fafc; font-family: "Be Vietnam Pro", system-ui, sans-serif; }
+  .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+  .input { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: .45rem .7rem; font-size: .875rem; background: #fff; outline: none; }
+  .input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+  textarea.input { line-height: 1.5; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; border-radius: 10px; padding: .5rem .9rem; font-size: .875rem; font-weight: 600; white-space: nowrap; transition: .15s; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-primary { background: #2563eb; color: #fff; } .btn-primary:hover:not(:disabled) { background: #1e40af; }
+  .btn-soft { background: #eff6ff; color: #1e40af; } .btn-soft:hover:not(:disabled) { background: #dbeafe; }
+  .btn-ghost { background: #fff; color: #334155; border: 1px solid #e2e8f0; } .btn-ghost:hover:not(:disabled) { background: #f1f5f9; }
+  .btn-success { background: #059669; color: #fff; } .btn-success:hover:not(:disabled) { background: #047857; }
+  .btn-danger { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+  .badge { display: inline-flex; align-items: center; gap: .25rem; padding: .12rem .5rem; border-radius: 999px; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+  .label { display: block; font-size: .75rem; font-weight: 600; color: #475569; margin-bottom: .25rem; }
+  .nav-tab { display: flex; align-items: center; gap: .35rem; padding: .45rem .7rem; border-radius: 10px; font-size: .82rem; font-weight: 600; color: #475569; white-space: nowrap; }
+  .nav-tab:hover { background: #eff6ff; color: #1e40af; } .nav-tab.active { background: #2563eb; color: #fff; }
+  .tbl th { text-align: left; font-size: .7rem; text-transform: uppercase; letter-spacing: .03em; color: #64748b; font-weight: 700; padding: .55rem .7rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+  .tbl td { padding: .55rem .7rem; border-bottom: 1px solid #f1f5f9; font-size: .84rem; vertical-align: top; }
+  .step { display: flex; align-items: center; gap: .5rem; padding: .55rem .7rem; border-radius: 12px; font-size: .84rem; font-weight: 600; color: #475569; width: 100%; text-align: left; }
+  .step.active { background: #eff6ff; color: #1e3a8a; } .step:hover { background: #f1f5f9; }
+  .dot { width: 1.6rem; height: 1.6rem; border-radius: 999px; display: grid; place-items: center; font-size: .75rem; font-weight: 800; background: #e2e8f0; color: #334155; flex-shrink: 0; position: relative; }
+  .step.active .dot { background: #2563eb; color: #fff; }
+  .dot .red { position: absolute; top: -2px; right: -2px; width: .55rem; height: .55rem; border-radius: 999px; background: #e11d48; border: 2px solid #fff; }
+  .hl { outline: 3px solid #f59e0b; outline-offset: 2px; transition: outline .3s; }
+  .fade-in { animation: fade .2s ease; } @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .spin { animation: spin 1s linear infinite; } @keyframes spin { to { transform: rotate(360deg); } }
+  .phieu { font-family: "Times New Roman", Times, serif; color: #000; font-size: 13pt; line-height: 1.45; }
+  .phieu table.grid { border-collapse: collapse; width: 100%; } .phieu table.grid td, .phieu table.grid th { border: 1px solid #000; padding: 3px 6px; vertical-align: top; font-size: 12pt; }
+  #print-area { display: none; }
+  @media print { @page { size: A4; margin: 2cm 1.5cm 2cm 2.5cm; } body { background: #fff !important; } body > *:not(#print-area) { display: none !important; } #print-area { display: block !important; } }
+  :focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+</style>
+</head>
+<body class="text-slate-800 antialiased">
+<div id="app"><div class="min-h-screen grid place-items-center text-sm text-slate-500">Đang khởi động EduPlan…</div></div>
+<div id="modal-root"></div>
+<div id="toast-root" class="fixed bottom-4 right-4 z-[80] flex flex-col gap-2 items-end" aria-live="polite"></div>
+<div id="print-area"></div>
+<noscript>EduPlan KHBD AI cần bật JavaScript.</noscript>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

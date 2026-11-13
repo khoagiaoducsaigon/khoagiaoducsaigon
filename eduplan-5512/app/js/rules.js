@@ -21,7 +21,7 @@ const RX_TICH_CUC = /(th[ảa]o\s*lu[ậa]n|nh[óo]m|c[ặa]p\s*[đd][ôo]i|phi[
 const RX_THU_DONG = /(GV\s*gi[ảa]ng|GV\s*thuy[ếe]t\s*tr[ìi]nh|GV\s*[đd][ọo]c|GV\s*gi[ảa]i\s*th[íi]ch|GV\s*gi[ớo]i\s*thi[ệe]u|GV\s*l[àa]m\s*th[íi]\s*nghi[ệe]m\s*bi[ểe]u\s*di[ễe]n|GV\s*v[ẽe]|HS\s*(l[ắa]ng\s*)?nghe|HS\s*ghi\s*ch[ée]p|ghi\s*b[àa]i|ghi\s*nh[ớo]|ch[úu]\s*[ýy]\s*l[êe]n\s*b[ảa]ng|[đd][ọo]c\s*SGK|GV\s*g[ọo]i\s*1)/gi;
 const RX_LOI_THOAI = /(GV\s*(n[óo]i|h[ỏo]i)\s*:\s*["“]|HS\s*(tr[ảa]\s*l[ờo]i|n[óo]i)\s*:\s*["“]|["“][^"”]{3,}\?["”]\s*-\s*HS)/i;
 const RX_DONG_TU_MO = /^(hi[ểe]u|bi[ếe]t|n[ắa]m\s*[đd][ượu][ợc]c|n[ắa]m\s*v[ữu]ng|l[àa]m\s*quen)\b/i;
-const RX_DONG_TU_DO = /(n[êe]u\s*[đd][ượu][ợc]c|tr[ìi]nh\s*b[àa]y|t[íi]nh\s*[đd][ượu][ợc]c|gi[ảa]i\s*th[íi]ch|ph[âa]n\s*t[íi]ch|so\s*s[áa]nh|v[ẽe]\s*[đd][ượu][ợc]c|x[áa]c\s*[đd][ịi]nh|m[ôo]\s*t[ảa]|nh[ậa]n\s*bi[ếe]t|v[ậa]n\s*d[ụu]ng|th[ựu]c\s*hi[ệe]n|l[ấa]y\s*[đd][ượu][ợc]c|[đd][ềe]\s*xu[ấa]t|thi[ếe]t\s*k[ếe]|s[ửu]\s*d[ụu]ng\s*[đd][ượu][ợc]c|l[ậa]p\s*[đd][ượu][ợc]c|ch[ỉi]\s*ra|gi[ảa]i\s*quy[ếe]t|ph[âa]n\s*bi[ệe]t|ph[âa]n\s*lo[ạa]i|t[ạa]o\s*l[ậa]p|[đd][ọo]c\s*[đd][ượu][ợc]c|vi[ếe]t\s*[đd][ượu][ợc]c|k[ểe]\s*[đd][ượu][ợc]c)/i;
+const RX_DONG_TU_DO = /(n[êe]u\s*[đd][ượu][ợc]c|tr[ìi]nh\s*b[àa]y|t[íi]nh\s*[đd][ượu][ợc]c|gi[ảa]i\s*th[íi]ch|ph[âa]n\s*t[íi]ch|so\s*s[áa]nh|v[ẽe]\s*[đd][ượu][ợc]c|x[áa]c\s*[đd][ịi]nh|m[ôo]\s*t[ảa]|nh[ậa]n\s*bi[ếe]t|v[ậa]n\s*d[ụu]ng|th[ựu]c\s*hi[ệe]n|l[ấa]y\s*[đd][ượu][ợc]c|[đd][ềe]\s*xu[ấa]t|thi[ếe]t\s*k[ếe]|s[ửu]\s*d[ụu]ng\s*[đd][ượu][ợc]c|l[ậa]p\s*[đd][ượu][ợc]c|ch[ỉi]\s*ra|gi[ảa]i\s*quy[ếe]t|ph[âa]n\s*bi[ệe]t|ph[âa]n\s*lo[ạa]i|t[ạa]o\s*l[ậa]p|[đd][ọo]c\s*[đd][ượu][ợc]c|vi[ếe]t\s*[đd][ượu][ợc]c|k[ểe]\s*[đd][ượu][ợc]c|ho[àa]n\s*th[àa]nh\s*[đd][ượu][ợc]c|l[ắa]ng\s*nghe|ph[ảa]n\s*bi[ệe]n|h[ợo]p\s*t[áa]c)/i;
 const TEN_CHUNG = /^(h[ìi]nh\s*th[àa]nh\s*ki[ếe]n\s*th[ứu]c(\s*m[ớo]i)?|m[ởo]\s*[đd][ầa]u|kh[ởo]i\s*[đd][ộo]ng|luy[ệe]n\s*t[ậa]p|v[ậa]n\s*d[ụu]ng)$/i;
 
 const hdTen = (ctx, i) => `HĐ${i + 1}${ctx.nd.hoat_dong[i]?.ten ? ` (${ctx.nd.hoat_dong[i].ten})` : ''}`;
@@ -187,7 +187,7 @@ export function chiSo(ctx, flags) {
 export function bangKiem4Buoc(flags) {
   const map = { giao: ['TC-02'], thuc_hien: ['TC-03', 'TC-07'], bao_cao: ['TC-04'], ket_luan: ['TC-05'] };
   return BUOC.map(b => {
-    const f = flags.filter(x => map[b.key].includes(x.rule_id) || (x.rule_id === 'TC-01' && x.vi_tri.endsWith(b.key)));
+    const f = flags.filter(x => x.muc !== 'xanh' && (map[b.key].includes(x.rule_id) || (x.rule_id === 'TC-01' && x.vi_tri.endsWith(b.key))));
     return { buoc: b.ten, trang_thai: f.length ? 'Cần điều chỉnh' : 'Đạt', phan_tich: f.length ? f.map(x => x.thong_diep).join(' ') : 'Đạt yêu cầu theo ghi chú 4 Phụ lục IV.' };
   });
 }

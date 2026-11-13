@@ -1,0 +1,70 @@
+{
+ "ngay": "2026-11-13T03:21:22.903Z",
+ "ghi_chu": "Bản nháp Mock AI trên 3 bài mẫu mục 8 v1.0 (chưa có số liệu người dùng thật)",
+ "bai_mau": [
+  {
+   "bai": "Toán 3 – Hình tròn",
+   "khung": "PL3-2345",
+   "yccd": 1,
+   "co_do": 0,
+   "co_vang": 0,
+   "chi_so": {
+    "cau_truc": 100,
+    "bam_yccd": 100,
+    "tich_cuc": 91,
+    "nhat_quan": 100,
+    "tuan_thu_5512": 100
+   },
+   "cau_hoi": 9,
+   "tich_hop": [
+    "1.1.L1-3",
+    "2.4.L1-3",
+    "3.B2.1"
+   ]
+  },
+  {
+   "bai": "Toán 8 – Hình chóp tam giác đều",
+   "khung": "PL4-5512",
+   "yccd": 3,
+   "co_do": 0,
+   "co_vang": 1,
+   "chi_so": {
+    "cau_truc": 100,
+    "bam_yccd": 100,
+    "tich_cuc": 93,
+    "nhat_quan": 100,
+    "tuan_thu_5512": 97
+   },
+   "cau_hoi": 15,
+   "tich_hop": [
+    "1.1.L8-9",
+    "3.1.L8-9",
+    "8.B2.1"
+   ]
+  },
+  {
+   "bai": "Ngữ văn 10 – Hình tượng nhân vật sử thi",
+   "khung": "PL4-5512",
+   "yccd": 1,
+   "co_do": 0,
+   "co_vang": 1,
+   "chi_so": {
+    "cau_truc": 100,
+    "bam_yccd": 100,
+    "tich_cuc": 93,
+    "nhat_quan": 100,
+    "tuan_thu_5512": 97
+   },
+   "cau_hoi": 11,
+   "tich_hop": [
+    "1.1.L10-12",
+    "3.1.L10-12",
+    "10.B2.1"
+   ]
+  }
+ ],
+ "test": {
+  "unit": "23/23",
+  "e2e": "30/30"
+ }
+}

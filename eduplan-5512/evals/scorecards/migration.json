@@ -1,0 +1,70 @@
+{
+ "ngay": "2026-11-13T03:21:22.847Z",
+ "bo_du_lieu": "EduPlan cũ giả lập (evals/tests/fixtures)",
+ "bao_cao_lan_1": {
+  "users": {
+   "doc": 8,
+   "ghi": 4,
+   "bo_qua_mau": 4,
+   "bo_qua_da_co": 0,
+   "loi": 0
+  },
+  "lesson_plans": {
+   "doc": 5,
+   "ghi": 3,
+   "bo_qua_mau": 2,
+   "bo_qua_da_co": 0,
+   "loi": 0
+  },
+  "ai_audits": {
+   "doc": 6,
+   "ghi": 1,
+   "bo_qua_mau": 5,
+   "bo_qua_da_co": 0,
+   "loi": 0
+  },
+  "review_notes": {
+   "doc": 6,
+   "ghi": 1,
+   "bo_qua_mau": 5,
+   "bo_qua_da_co": 0,
+   "loi": 0
+  },
+  "audit_logs": {
+   "doc": 17,
+   "ghi": 2,
+   "bo_qua_mau": 15,
+   "bo_qua_da_co": 0,
+   "loi": 0
+  }
+ },
+ "loi": [],
+ "doi_soat": {
+  "bang": {
+   "users": {
+    "cu": 8,
+    "moi_co_legacy": 4
+   },
+   "lesson_plans": {
+    "cu": 5,
+    "moi_co_legacy": 3
+   },
+   "review_notes": {
+    "cu": 6,
+    "moi_co_legacy": 1
+   },
+   "ai_audits": {
+    "cu": 6,
+    "moi_co_legacy": 1
+   },
+   "audit_logs": {
+    "cu": 17,
+    "moi_co_legacy": 2
+   }
+  },
+  "so_mau": 10,
+  "so_lech": 0
+ },
+ "lan_2_ghi_them": 0,
+ "ket_luan": "ĐẠT"
+}

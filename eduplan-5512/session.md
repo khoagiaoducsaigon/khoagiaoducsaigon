@@ -36,3 +36,9 @@ u1 BGH hieutruong@ · u2 TT Toán tt.toan@ · u3 TT Ngữ văn tt.nguvan@ · u4 
 - 13/11 (lần 5): TS. Khoa gửi "master prompt 1.0" = đề bài gốc EduPlan (đã có). Vẫn thiếu master prompt v1.0 của APP SOẠN KHBD (P1–P13, 3B, 3C, chuỗi 5 bước). Hồ sơ văn bản: đủ trừ "PL V".
 - 13/11 (lần 6): Đã soạn master prompt v1.0 nháp: prompts/system/master-prompt-v1.0-soan-khbd.md (P1–P13, 3B 14 store, 3C 23 luật có nguồn). Chờ duyệt v1.0 + audit + ánh xạ → rồi code theo v1.1.
 - 13/11 (lần 7): Đã nhận PL V (12 tiêu chí/20 điểm) + PL II, III (CV 05/SGDĐT). Cập nhật v1.0. Hồ sơ văn bản ĐỦ. Chỉ còn chờ duyệt: v1.0, audit, ánh xạ.
+
+## 13/11/2026 — CODE BẢN GỘP v1.1 (giai đoạn 1) — XONG
+- app/ (web tĩnh ES modules): P1–P14 đủ; di trú trong trình duyệt + migrate_eduplan.py (kiểm chéo); 23 luật 3C; Mock AI 5 bước; Gemini; xuất docx/pptx; PL V.
+- Test: unit 23/23 (node --test evals/tests/*.test.mjs) · e2e 30/30 (node evals/tests/e2e.mjs) · scorecards: evals/scorecards/{migration,v1.0}.json
+- Deploy: deploy/deploy-v1.1.sh (stage → switch --confirm → verify; rollback; retire sau 14 ngày) + deploy-v1.1-windows.cmd. CHƯA chạy (phiên cloud không SSH được).
+- ĐIỂM DỪNG đang chờ: (1) duyệt đổi Caddy sang bản mới; (2) bản ghi A eduplan-old, khbd; (3) hỏi giai đoạn 2 (API đồng bộ).

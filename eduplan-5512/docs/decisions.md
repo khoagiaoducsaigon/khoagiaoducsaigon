@@ -22,3 +22,8 @@
 | 13/11/2026 | Giữ bản ghi mẫu cũ khi đã bị sửa hoặc được dữ liệu thật tham chiếu | Nguyên tắc "không làm mất dữ liệu" mạnh hơn "bỏ dữ liệu mẫu" |
 | 13/11/2026 | KHBD nhập từ EduPlan / chế độ rà soát nhanh: luật MT-01, NQ-01 hạ từ 🔴 xuống 🟡 | Không hồi quy luồng cũ (nộp KHBD văn bản → duyệt), mục 9 v1.1 |
 | 13/11/2026 | Điểm PL V gợi ý khi chọn mức = cận trên của khoảng mức (bội 0,25); người dự giờ sửa được | Phụ lục V chỉ quy định khoảng % |
+| 13/11/2026 | App v1.1 = web tĩnh ES modules tại app/, thay đúng vị trí eduplan.thaykhoa-ai.tech | IndexedDB theo origin: chỉ cùng tên miền mới đọc được kho EduPlan cũ |
+| 13/11/2026 | Xanh–lục bằng symlink portal/eduplan → eduplan-v1 / eduplan-v11-<ts>; quay lui = 1 lệnh `rollback` | Không phải sửa khối Caddy đang chạy |
+| 13/11/2026 | eduplan-old (basicauth admin) chỉ để quay lui giao diện; KHÔNG chứa dữ liệu người dùng (khác origin) | Giới hạn của lưu trữ trình duyệt — ghi rõ để không hiểu nhầm |
+| 13/11/2026 | CSDL đầu tiên trống → tài khoản đăng ký đầu tiên là admin; đăng ký Tổ trưởng/BGH cần kích hoạt | Khởi tạo trường mới an toàn |
+| 13/11/2026 | Trình diễn dùng CSDL riêng EduPlanKHBD_demo, đổi vai trò nhanh chỉ có ở chế độ này | Mục 8 v1.1: không trộn dữ liệu thật |
