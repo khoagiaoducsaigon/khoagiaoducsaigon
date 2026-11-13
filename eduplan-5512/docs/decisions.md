@@ -8,3 +8,4 @@
 | 13/11/2026 | Dựng khung 4+3 thư mục trong `eduplan-5512/` cho bản gộp v1.1 | Chuẩn dự án AI của TS. Khoa |
 | 13/11/2026 | Dừng trước khi code bản gộp | Mục 11: thiếu master prompt v1.0 và văn bản pháp lý trong data/raw; cần duyệt audit + bảng ánh xạ |
 | 13/11/2026 | Đề xuất di trú bằng mô-đun JS trong trình duyệt, cùng origin; `migrate_eduplan.py` xử lý tệp JSON sao lưu | Dữ liệu cũ chỉ nằm trên IndexedDB của từng máy (xem eduplan-audit.md) |
+| 13/11/2026 | Nhận CV 5512 (thân văn bản), lưu data/raw/van-ban/, trích UTF-8 sang data/processed/ | Văn bản công khai, không thuộc raw/private |

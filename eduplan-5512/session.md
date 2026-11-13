@@ -29,3 +29,4 @@ u1 BGH hieutruong@ · u2 TT Toán tt.toan@ · u3 TT Ngữ văn tt.nguvan@ · u4 
 - Đã làm 2B·B1 (khảo sát từ mã nguồn, CHƯA đối chiếu VPS): docs/eduplan-audit.md. 2B·B3 nháp: docs/eduplan-mapping.md.
 - Phát hiện then chốt: dữ liệu cũ chỉ ở IndexedDB từng trình duyệt → di trú trong trình duyệt, cùng origin eduplan.thaykhoa-ai.tech; eduplan-old không thấy dữ liệu.
 - ĐANG DỪNG (mục 11): thiếu master prompt v1.0; thiếu CV 5512 (PL IV, V), CV 2345, CV 3456, QĐ 2422, CT môn trong data/raw; chờ duyệt audit + ánh xạ.
+- 13/11: Đã nhận CV 5512 (.doc, chỉ thân văn bản, thiếu Phụ lục 1–4 và tiêu chí phân tích bài dạy). Xem data/raw/van-ban/README.md. Vẫn dừng: thiếu v1.0, phụ lục, CV 2345, 3456, QĐ 2422, CT môn.
