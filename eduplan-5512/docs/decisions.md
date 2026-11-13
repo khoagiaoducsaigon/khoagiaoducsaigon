@@ -12,3 +12,4 @@
 | 13/11/2026 | Nạp CV 3456 (+ phụ lục khung NLS), QĐ 2422, CV 3083 HCM vào data/raw/van-ban | Nguồn cho luật năng lực số/AI (P8) |
 | 13/11/2026 | Đề xuất mã năng lực số dạng `miền.năng-lực.bậc` (vd 1.1.L6-7) | Phụ lục 3456 không có ký hiệu mã sẵn — chờ TS. Khoa xác nhận |
 | 13/11/2026 | Nạp TT 32/2018 + 28 chương trình GDPT 2018 (tách từ ZIP nhúng), trích UTF-8 theo môn | Nguồn YCCĐ để rà soát mục tiêu KHBD bám chương trình |
+| 13/11/2026 | Nạp Phụ lục IV CV 5512 (Khung KHBD THCS/THPT) và CV 2345 (PL3 Khung KHBD tiểu học) | App cần 2 khung KHBD theo cấp: TH dùng CV 2345, THCS–THPT dùng PL IV CV 5512 |
