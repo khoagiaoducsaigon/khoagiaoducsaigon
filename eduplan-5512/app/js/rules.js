@@ -1,7 +1,7 @@
 // Luật rà soát KHBD (mục 3C master prompt v1.0 + luật kế thừa EduPlan cũ, nguon = "eduplan v1").
 // Mỗi luật: { id, muc: 'do'|'vang'|'xanh', nhom, mo_ta, nguon, cach_kiem, kiem(ctx) → [{vi_tri, thong_diep, de_xuat}] }
 // ctx = { lesson, nd (nội dung theo khung), yccd: [YCCĐ đã chọn], assessments, worksheets, slides, integrations, nls, ai }
-import { BUOC, mucTieuDong, toText, capHoc } from './khung.js';
+import { BUOC, mucTieuDong, mucTieuMon, toText, capHoc } from './khung.js';
 
 const empty = s => !String(s ?? '').trim();
 const STOP = new Set('được và của các một những cho với trong có là để theo về khi từ này đó như hoặc thì đã sẽ hs gv học sinh giáo viên bài ở tại trên dưới qua bằng nhau lại ra vào mỗi nào gì'.split(' '));
@@ -52,7 +52,7 @@ export const RULES = [
       .concat(ctx.nd.hoat_dong.every(h => empty(h.to_chuc_text + stepText(h))) ? [{ vi_tri: 'hoat_dong', thong_diep: 'Thiếu "3. Các hoạt động dạy học chủ yếu".', de_xuat: 'Mô tả các hoạt động dạy học chủ yếu.' }] : []) },
   { id: 'MT-01', muc: 'do', nhom: 'Mục tiêu', nguon: 'PL IV CV 5512 mục I; TT 32/2018', cach_kiem: 'doi_chieu', mo_ta: 'Mỗi mục tiêu kiến thức/năng lực trích được ít nhất 1 YCCĐ đúng môn, lớp',
     kiem: ctx => {
-      const dong = mucTieuDong(ctx.nd);
+      const dong = mucTieuMon(ctx.nd);
       if (!ctx.yccd?.length) return [{ vi_tri: laTH(ctx) ? 'yeu_cau_can_dat' : 'muc_tieu', thong_diep: 'Chưa chọn yêu cầu cần đạt (YCCĐ) nào của chương trình môn.', de_xuat: 'Ở bước Thiết lập, chọn YCCĐ đúng môn, lớp trong CT GDPT 2018.' }];
       const hit = dong.filter(d => ctx.yccd.some(y => overlap(y.yccd, d) >= 0.4 || overlap(d, y.yccd) >= 0.5));
       if (!hit.length) return [{ vi_tri: 'muc_tieu', thong_diep: 'Không mục tiêu nào bám được YCCĐ đã chọn.', de_xuat: 'Viết mục tiêu dựa sát câu chữ YCCĐ (động từ + nội dung).' }];
@@ -168,17 +168,17 @@ export function chiSo(ctx, flags) {
   const tongO = laTH(ctx) ? 3 + 4 : 4 + 4 * 4 + 4 * 4;
   const thieu = flags.filter(f => ['CT-01', 'CT-02', 'CT-03', 'TH-01', 'TC-01'].includes(f.rule_id)).length;
   const cau_truc = Math.max(0, pct(tongO - thieu, tongO));
-  const dong = mucTieuDong(nd);
+  const dong = mucTieuMon(nd);
   const bam = (ctx.yccd || []).length ? dong.filter(d => ctx.yccd.some(y => overlap(y.yccd, d) >= 0.4 || overlap(d, y.yccd) >= 0.5)).length : 0;
   const a = (t.match(RX_TICH_CUC) || []).length, p = (t.match(RX_THU_DONG) || []).length;
   const tich_cuc = Math.min(96, Math.max(5, Math.round(t.trim().length < 50 ? 10 : 20 + (72 * a) / (a + p + 1) + (/\d+\s*ph[úu]t/i.test(t) ? 4 : 0))));
-  const nq = flags.filter(f => f.rule_id === 'NQ-01').length;
+  const nq = flags.filter(f => f.rule_id === 'NQ-01').length, tatCa = mucTieuDong(nd);
   const vangTC = flags.filter(f => f.muc === 'vang' && /^(CT|TC|TH|DG|VD)/.test(f.rule_id)).length;
   return {
     cau_truc,
     bam_yccd: dong.length ? pct(bam, dong.length) : 0,
     tich_cuc,
-    nhat_quan: Math.max(0, pct(Math.max(0, dong.length + 1 - nq), dong.length + 1)),
+    nhat_quan: Math.max(0, pct(Math.max(0, tatCa.length + 1 - nq), tatCa.length + 1)),
     tuan_thu_5512: Math.max(0, Math.min(100, cau_truc - 3 * vangTC)) // chỉ số quen thuộc của EduPlan cũ
   };
 }

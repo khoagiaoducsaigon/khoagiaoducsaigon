@@ -33,6 +33,10 @@ export function mucTieuDong(nd) {
   return String(src || '').split(/\n|;\s*(?=[A-ZÀ-Ỹ])/).map(s => s.replace(/^\s*[-–−•+*]\s*|^\s*\d+[.)]\s*/, '').trim()).filter(s => s.length >= 8);
 }
 
+const RX_CHUNG = /^(n[ăa]ng\s*l[ựu]c\s*chung|g[óo]p\s*ph[ầa]n|t[ựu]\s*ch[ủu]\s*v[àa]\s*t[ựu]\s*h[ọo]c|giao\s*ti[ếe]p\s*v[àa]\s*h[ợo]p\s*t[áa]c|gi[ảa]i\s*quy[ếe]t\s*v[ấa]n\s*[đd][ềe]\s*v[àa]\s*s[áa]ng\s*t[ạa]o|ch[ăa]m\s*ch[ỉi]|trung\s*th[ựu]c|tr[áa]ch\s*nhi[ệe]m|y[êe]u\s*n[ưu][ớo]c|nh[âa]n\s*[áa]i)/i;
+/** Mục tiêu theo YCCĐ của môn (kiến thức, năng lực đặc thù) — bỏ năng lực chung/phẩm chất (thuộc CT tổng thể). */
+export const mucTieuMon = nd => mucTieuDong(nd).filter(d => !RX_CHUNG.test(d.replace(/^n[ăa]ng\s*l[ựu]c\s*[đd][ặa]c\s*th[ùu]\s*:\s*/i, '')) || /^n[ăa]ng\s*l[ựu]c\s*[đd][ặa]c\s*th[ùu]/i.test(d));
+
 /** Toàn văn KHBD (phục vụ luật từ điển, xuất tệp, rà soát LLM). */
 export function toText(nd, meta = {}) {
   const L = [];
