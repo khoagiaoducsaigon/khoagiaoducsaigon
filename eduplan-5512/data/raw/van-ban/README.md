@@ -10,6 +10,9 @@
 | tt-32-2018-bgddt-ct-gdpt-2018.docx | TT 32/2018/TT-BGDĐT ban hành CT GDPT 2018 — tệp ZIP nhúng chứa **28 chương trình** (tổng thể + toàn bộ môn/HĐGD TH–THCS–THPT, kể cả 6 ngoại ngữ 2) | ✅ Đã tách, trích UTF-8 vào `data/processed/ct-gdpt-2018/` (01-tong-the … 28-tieng-trung); đã đối chiếu YCCĐ khớp 3 bài mẫu |
 | cv-5512-phu-luc-4-khung-khbd.doc | **Phụ lục IV CV 5512 — Khung KHBD** (THCS, THPT): I. Mục tiêu (kiến thức, năng lực, phẩm chất) · II. Thiết bị dạy học, học liệu · III. Tiến trình 4 hoạt động × a) b) c) d) · Ghi chú 1–4 (4 bước tổ chức, KTĐG thường xuyên) | ✅ Xương sống phần Soạn và luật cấu trúc |
 | cv-2345-bgddt-gdth-2021.docx | CV 2345/BGDĐT-GDTH (07/6/2021) — KHGD nhà trường **cấp tiểu học**; Phụ lục 3 = Khung KHBD tiểu học: 1. Yêu cầu cần đạt · 2. Đồ dùng dạy học · 3. Các hoạt động dạy học chủ yếu · 4. Điều chỉnh sau bài dạy | ✅ Khung KHBD cho TH |
-| (chưa có) | Tiêu chí phân tích bài dạy ("PL V", cho phân hệ dự giờ); master prompt v1.0 | Chờ bổ sung |
+| cv-05-sgddt-2021-phu-luc-5-phieu-danh-gia-bai-day.pdf | **Phụ lục V — Mẫu phiếu đánh giá bài dạy** (kèm CV 05/SGDĐT-GDPT 04/01/2021 của Sở GDĐT): 3 nội dung · 12 tiêu chí · thang 20 điểm · 3 mức (50–65%, 65–80%, 80–100%), bội số 0,25 · xếp loại Giỏi ≥18, Khá 13,5–<18, TB 10–<13,5, Không đạt <10 · mô tả mức 1–3 cho từng tiêu chí | ✅ Nguồn cho P10 Dự giờ |
+| cv-05-sgddt-2021-phu-luc-2-khung-kh-hdgd-to.pdf | PL II CV 05/SGDĐT — Khung KH tổ chức hoạt động giáo dục của tổ chuyên môn | ℹ️ Tham khảo (ngoài phạm vi v1.0) |
+| cv-05-sgddt-2021-phu-luc-3-khung-khgd-gv.pdf | PL III CV 05/SGDĐT — Khung KH giáo dục của giáo viên (phân phối chương trình…) | ℹ️ Tham khảo; có thể dùng cho P2 (gợi ý bài theo phân phối CT) |
+| (chưa có) | — | Hồ sơ văn bản đã đủ cho v1.0. Lưu ý: CV 2345 gửi lại lần 2 trùng bản đã có |
 
 Bản trích UTF-8 nằm ở `data/processed/`.

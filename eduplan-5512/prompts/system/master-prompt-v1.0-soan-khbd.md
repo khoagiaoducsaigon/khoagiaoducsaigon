@@ -47,7 +47,8 @@ Mục tiêu đo được (giai đoạn 1):
 | CV 3456/BGDĐT-GDPT (27/6/2025) + phụ lục (triển khai khung NLS theo TT 02/2025) | Khung năng lực số: 6 miền, năng lực thành phần, 5 bậc theo khối (L1-3 Cơ bản 1 · L4-5 Cơ bản 2 · L6-7 Trung cấp 1 · L8-9 Trung cấp 2 · L10-12 Nâng cao 1) |
 | QĐ 2422/QĐ-BGDĐT (18/8/2026) | Khung nội dung giáo dục AI: mạch A (con người làm trung tâm), B (đạo đức AI), C (kỹ thuật, ứng dụng AI), D (thiết kế hệ thống AI); chủ đề A1–D2 |
 | CV 3083/GDĐT-TrH (Sở GDĐT TP.HCM) | Tham khảo cho hoạt động trải nghiệm, ngoài giờ lên lớp |
-| Tiêu chí phân tích, rút kinh nghiệm bài dạy (gọi tắt **PL V**) | Phiếu dự giờ P10. **Chưa có văn bản nguồn** — xem mục 11 |
+| **PL V — Mẫu phiếu đánh giá bài dạy** (kèm CV 05/SGDĐT-GDPT ngày 04/01/2021 của Sở GDĐT) | Phiếu dự giờ P10: 3 nội dung (Kế hoạch bài dạy · Hoạt động của GV · Hoạt động của HS), 12 tiêu chí, tổng 20 điểm; 3 mức (50–65% · 65–80% · 80–100% điểm tối đa), điểm thành phần bội số 0,25; xếp loại Giỏi ≥ 18 · Khá 13,5–<18 · TB 10–<13,5 · Không đạt < 10 |
+| PL II, PL III kèm CV 05/SGDĐT | Tham khảo: khung KH hoạt động GD của tổ, KH giáo dục của GV (phân phối chương trình → gợi ý bài ở P2) |
 
 ### 2C. Công nghệ
 - **Giai đoạn 1 (web, không backend):**
@@ -78,7 +79,7 @@ data/processed/{yccd,nls,ai}.json · agents/tools/*.py · evals/{tests,traces,sc
 | `integrations` | lesson_id, loai (`NLS` / `AI`), ma (vd `1.1.L6-7`, `B2`), hoat_dong_ref, mo_ta_bieu_hien |
 | `audits` | lesson_id, phien_ban, chi_so {cau_truc, bam_yccd, tich_cuc, nhat_quan}, co[] {rule_id, muc (do/vang/xanh), vi_tri, thong_diep, de_xuat, nguon}, engine, luc |
 | `reviews` | lesson_id, phien_ban, cap (`to` / `bgh`), nguoi_duyet_id, ket_luan (Đạt / Chưa đạt / Yêu cầu chỉnh sửa), gop_y_theo_dong[] {vi_tri, noi_dung, trang_thai}, nhan_xet_chung, luc |
-| `observations` | lesson_id, nguoi_du_gio, lop, ngay, phieu_PLV {tieu_chi[], diem/nhan_xet}, phan_tich_4_buoc {hanh_dong_hs, ket_qua, nguyen_nhan, bien_phap}, de_xuat_dieu_chinh |
+| `observations` | lesson_id, nguoi_du_gio, lop, tiet, ngay, phieu_PLV {tieu_chi[12] {ma, noi_dung, diem_toi_da, muc (1/2/3), diem (bội 0,25), nhan_xet}, tong_diem, xep_loai}, phan_tich_4_buoc {hanh_dong_hs, ket_qua, nguyen_nhan, bien_phap}, de_xuat_dieu_chinh |
 | `library` | lesson_id, to, the[], luot_dung, danh_gia — kho KHBD đã duyệt của tổ |
 | `rules` | id, nhom, mo_ta, cach_kiem (`regex` / `cau_truc` / `doi_chieu` / `llm`), muc, nguon, bat |
 | `activity_logs` | nguoi, vai_tro, hanh_dong, doi_tuong, chi_tiet, luc |
@@ -126,7 +127,7 @@ Kiểu kiểm: `cau_truc` (đọc JSON nội dung theo khung) · `regex` · `doi
 | P7 | Tích hợp năng lực số & AI | Gợi ý điểm tích hợp NLS (3456) và giáo dục AI (2422) vào hoạt động, ghi mã và biểu hiện | GV |
 | P8 | Bước 5 — Rà soát nhất quán | Chạy luật 3C + LLM, hiển thị cờ tại đúng vị trí, chỉ số, gợi ý sửa 1 chạm; chặn nộp khi còn 🔴 | GV, TT, BGH |
 | P9 | Duyệt 2 cấp | Tổ trưởng → BGH; góp ý theo dòng; phiên bản; so sánh khác biệt giữa phiên bản; ký duyệt | TT, BGH |
-| P10 | Dự giờ (PL V) | Phiếu dự giờ theo tiêu chí PL V; phân tích bài dạy 4 bước (CV 5512 chú thích [7]); đề xuất điều chỉnh → ghi vào "Điều chỉnh sau bài dạy" | TT, BGH, GV |
+| P10 | Dự giờ (PL V) | Phiếu đánh giá bài dạy PL V: 12 tiêu chí/20 điểm, chọn mức 1–3 có mô tả mức hiện ngay, tự tính tổng và xếp loại, in A4; AI gợi ý điểm nhóm "1. Kế hoạch bài dạy" từ kết quả P8 (người dự giờ quyết định); phân tích bài dạy 4 bước (CV 5512 chú thích [7]); đề xuất điều chỉnh → ghi vào "Điều chỉnh sau bài dạy" | TT, BGH, GV |
 | P11 | Kho KHBD của tổ | Tìm theo môn/lớp/bài/thẻ; nhân bản bài đã duyệt làm điểm xuất phát; đánh giá, lượt dùng | Tất cả |
 | P12 | Dashboard BGH | Tiến độ nộp/duyệt theo tổ, % cờ đỏ, thời gian nộp→duyệt, số vòng sửa, mức tích hợp NLS/AI, kết quả dự giờ | BGH |
 | P13 | Quản trị | Người dùng, bật/tắt luật, phiên bản prompt, sao lưu/khôi phục JSON, nhật ký | Admin |
@@ -158,6 +159,7 @@ Kiểu kiểm: `cau_truc` (đọc JSON nội dung theo khung) · `regex` · `doi
 - Chế độ trình diễn có nút "Nạp/Xóa dữ liệu mẫu" riêng.
 
 ## 9. Kiểm thử
+- Test phiếu PL V: điểm bội 0,25, không vượt điểm tối đa, xếp loại đúng 4 ngưỡng (17,75 → Khá; 18 → Giỏi; 13,5 → Khá; 9,75 → Không đạt).
 - Unit test cho mọi luật 3C: mỗi luật có ít nhất 1 ca đạt và 1 ca vi phạm (`evals/tests/rules/`).
 - Test chuỗi 5 bước: tạo bài → soạn → phiếu → slide → đánh giá → rà soát → nộp → tổ duyệt → BGH duyệt → dự giờ → điều chỉnh.
 - Test đối chiếu YCCĐ: 3 bài mẫu trích đúng YCCĐ (so văn bản gốc).
@@ -169,7 +171,7 @@ Kiểu kiểm: `cau_truc` (đọc JSON nội dung theo khung) · `regex` · `doi
 - Kiểm tra cuối bằng curl từ VPS: mã 200, TLS hợp lệ, title đúng.
 
 ## 11. Điểm dừng
-- Thiếu văn bản nguồn trong `data/raw/` cho phần đang làm. Riêng PL V thiếu thì vẫn làm các phân hệ khác, chỉ dừng P10.
+- Thiếu văn bản nguồn trong `data/raw/` cho phần đang làm (hiện đã đủ cho v1.0).
 - Trước khi chọn thư viện xuất .pptx/.docx có giấy phép không phải MIT/Apache/BSD.
 - Trước khi đưa lên VPS lần đầu.
 - Xong giai đoạn 1: hỏi có làm giai đoạn 2 (API đồng bộ) không.
@@ -181,7 +183,7 @@ Kiểu kiểm: `cau_truc` (đọc JSON nội dung theo khung) · `regex` · `doi
 4. Rà soát nhất quán phát hiện đúng các lệch đã cài sẵn trong bộ test.
 5. Tích hợp NLS/AI có mã đúng bậc, đúng mạch.
 6. Duyệt 2 cấp có góp ý theo dòng, phiên bản, so sánh khác biệt.
-7. Dự giờ ghi phân tích 4 bước và đẩy được "Điều chỉnh sau bài dạy" về KHBD.
+7. Dự giờ chấm đúng PL V (12 tiêu chí, tổng 20, xếp loại đúng ngưỡng), ghi phân tích 4 bước và đẩy được "Điều chỉnh sau bài dạy" về KHBD.
 8. Dashboard BGH hiển thị đúng số liệu từ CSDL.
 9. Xuất .docx/.pptx mở được; tất cả test trong mục 9 đạt.
 10. Chạy công khai tại khbd.thaykhoa-ai.tech, curl 200, TLS hợp lệ.
