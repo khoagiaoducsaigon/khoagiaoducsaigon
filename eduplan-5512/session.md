@@ -34,3 +34,4 @@ u1 BGH hieutruong@ · u2 TT Toán tt.toan@ · u3 TT Ngữ văn tt.nguvan@ · u4 
 - 13/11 (lần 3): Đã nạp TT 32/2018 + 28 CT môn (data/processed/ct-gdpt-2018/). Còn thiếu: PL CV 5512, CV 2345, master prompt v1.0; chờ duyệt audit + ánh xạ.
 - 13/11 (lần 4): Đã có PL IV CV 5512 + CV 2345. Hồ sơ văn bản đủ để code. Còn: master prompt v1.0 (chặn), tiêu chí phân tích bài dạy "PL V" (chỉ cần cho dự giờ), duyệt audit + ánh xạ.
 - 13/11 (lần 5): TS. Khoa gửi "master prompt 1.0" = đề bài gốc EduPlan (đã có). Vẫn thiếu master prompt v1.0 của APP SOẠN KHBD (P1–P13, 3B, 3C, chuỗi 5 bước). Hồ sơ văn bản: đủ trừ "PL V".
+- 13/11 (lần 6): Đã soạn master prompt v1.0 nháp: prompts/system/master-prompt-v1.0-soan-khbd.md (P1–P13, 3B 14 store, 3C 24 luật có nguồn). Chờ duyệt v1.0 + audit + ánh xạ → rồi code theo v1.1.

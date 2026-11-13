@@ -14,3 +14,4 @@
 | 13/11/2026 | Nạp TT 32/2018 + 28 chương trình GDPT 2018 (tách từ ZIP nhúng), trích UTF-8 theo môn | Nguồn YCCĐ để rà soát mục tiêu KHBD bám chương trình |
 | 13/11/2026 | Nạp Phụ lục IV CV 5512 (Khung KHBD THCS/THPT) và CV 2345 (PL3 Khung KHBD tiểu học) | App cần 2 khung KHBD theo cấp: TH dùng CV 2345, THCS–THPT dùng PL IV CV 5512 |
 | 13/11/2026 | Lưu đề bài gốc EduPlan (gửi với tên "master prompt 1.0") vào prompts/system/eduplan-cu-dac-ta-goc.md | Đây là đặc tả app cũ, không phải v1.0 app soạn KHBD mà v1.1 tham chiếu |
+| 13/11/2026 | Claude soạn lại master prompt v1.0 (app soạn KHBD) từ văn bản nguồn; mẫu TH = Toán 3 Hình tròn (YCCĐ lớp 3), THCS = Toán 8, THPT = Ngữ văn 10; tên miền v1.0 = khbd.thaykhoa-ai.tech | TS. Khoa yêu cầu "soạn lại"; bản gốc v1.0 không có |

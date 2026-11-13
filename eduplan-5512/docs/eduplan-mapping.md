@@ -1,7 +1,7 @@
 # Bảng ánh xạ EduPlan cũ → hệ mới (mục 2B · Bước 3) — BẢN NHÁP, CHỜ DUYỆT
 
 > Tên store/trường **phía mới** chỉ chắc chắn ở những gì v1.1 nêu rõ: `lessons`, `reviews`, `migration_logs`, `legacy_id`, `nguon_du_lieu`, `ngay_di_tru`, `legacy{}`, `nhan`.
-> Những tên khác cần **schema 3B của master prompt v1.0**. Chưa có tài liệu này nên các tên đó được đánh dấu `(?)` và sẽ chốt lại khi có.
+> Những tên khác lấy theo **schema 3B của master prompt v1.0 bản nháp** (`prompts/system/master-prompt-v1.0-soan-khbd.md`, soạn 13/11/2026). Các chỗ `(?)` sẽ chốt khi TS. Khoa duyệt v1.0. Trạng thái cũ ánh xạ sang mã mới: draft→ban_nhap · pending (chưa tổ ký)→cho_to_duyet · pending (tổ đã ký)→cho_bgh_duyet · revise→yeu_cau_chinh_sua · approved→da_duyet; nhãn hiển thị giữ nguyên tiếng Việt quen thuộc.
 
 ## Trường chung, thêm vào mọi bản ghi được di trú
 | Trường mới | Giá trị |
