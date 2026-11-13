@@ -16,3 +16,5 @@
 | 13/11/2026 | Lưu đề bài gốc EduPlan (gửi với tên "master prompt 1.0") vào prompts/system/eduplan-cu-dac-ta-goc.md | Đây là đặc tả app cũ, không phải v1.0 app soạn KHBD mà v1.1 tham chiếu |
 | 13/11/2026 | Claude soạn lại master prompt v1.0 (app soạn KHBD) từ văn bản nguồn; mẫu TH = Toán 3 Hình tròn (YCCĐ lớp 3), THCS = Toán 8, THPT = Ngữ văn 10; tên miền v1.0 = khbd.thaykhoa-ai.tech | TS. Khoa yêu cầu "soạn lại"; bản gốc v1.0 không có |
 | 13/11/2026 | Nhận PL V (phiếu đánh giá bài dạy, CV 05/SGDĐT-GDPT 04/01/2021 — văn bản cấp Sở) làm chuẩn cho P10; bổ sung vào v1.0 mục 2A, 3B, 4, 9, 11, 12 | P10 hết bị chặn |
+| 13/11/2026 | Duyệt v1.0 + audit + ánh xạ (TS. Khoa: "duyệt cả ba"); áp dụng đề xuất: bỏ qua dữ liệu mẫu cũ khi di trú, băm lại mật khẩu khi đăng nhập lần đầu; giai đoạn 2 sẽ hỏi sau giai đoạn 1 theo mục 11 | Phê duyệt |
+| 13/11/2026 | YCCĐ dùng khóa nội bộ Y00001…; năng lực AI dùng mã chính thức QĐ 2422 | QĐ 2422 có quy ước mã; CT 2018 không có |
